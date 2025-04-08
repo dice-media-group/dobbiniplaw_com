@@ -124,21 +124,6 @@
       </div>
     </section>
     
-    <!-- Call to Action Section -->
-    <section class="py-8 bg-gray-100">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl font-bold mb-4">Ready to Protect Your Invention?</h2>
-        <p class="mb-4">Contact us today for a complementary strategy session to discuss your patent needs.</p>
-        <p class="text-xl font-bold">
-          <a href="tel:8019696609" class="text-dobbin-green hover:underline">(801) 969-6609</a>
-        </p>
-        <div class="mt-4">
-          <NuxtLink to="/contact" class="inline-block bg-dobbin-green hover:bg-green-900 text-white font-bold py-2 px-6">
-            Schedule a Strategy Session
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 

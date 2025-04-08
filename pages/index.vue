@@ -120,10 +120,10 @@
       </div>
     </section>
     
-    <!-- Three Benefit Columns - Green Sections -->
+    <!-- Three Benefit Columns - Green Sections with UPDATED colors -->
     <section class="py-0">
       <div class="grid grid-cols-1 md:grid-cols-3">
-        <!-- Column 1: You Are the Boss -->
+        <!-- Column 1: You Are the Boss - #12352c (dobbin-dark-green is already this color) -->
         <div class="bg-dobbin-dark-green text-white p-8">
           <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">You Are the Boss</h3>
           <p class="font-crimson text-white mb-4 leading-relaxed">
@@ -131,16 +131,16 @@
           </p>
         </div>
         
-        <!-- Column 2: We Offer Experience & Knowledge -->
-        <div class="bg-dobbin-green text-white p-8">
+        <!-- Column 2: We Offer Experience & Knowledge - #26473f (new color) -->
+        <div style="background-color: #26473f;" class="text-white p-8">
           <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">We Offer Experience & Knowledge</h3>
           <p class="font-crimson text-white mb-4 leading-relaxed">
             After working in intellectual property law for over a decade and a half, we understand the requirements and details necessary for your intellectual property to succeed. With a solid scientific background, Geoffrey Dobbin can grasp a variety of subject matter from the simplest gadgets to lasers and semiconductors. After discussing your invention with you, we will put your application in proper format for submission, and then later use our experience and best efforts to broaden the scope of your patent application.
           </p>
         </div>
         
-        <!-- Column 3: We Are a Small Business Too -->
-        <div class="bg-dobbin-bright-green text-white p-8">
+        <!-- Column 3: We Are a Small Business Too - #4b6660 (new color) -->
+        <div style="background-color: #4b6660;" class="text-white p-8">
           <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">We Are a Small Business Too</h3>
           <p class="font-crimson text-white mb-4 leading-relaxed">
             We know what it's like to go through blood, sweat and tears as you experience the ups and downs of business. We also know the joy that comes from success. We have included a number of frequently asked questions on our website. You can find the links in the menu to the left. Please feel free to browse them, as well as the general information about intellectual property we have provided. If your question has not been answered, please feel free to contact us and schedule a complementary strategy session.
@@ -267,8 +267,7 @@
       </div>
     </section>
     
-    <!-- Use the CTASection component -->
-    <CTASection />
+
   </div>
 </template>
 

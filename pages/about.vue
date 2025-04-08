@@ -78,15 +78,6 @@
       </div>
     </section>
     
-    <!-- Call to Action Section -->
-    <section class="py-8 bg-gray-100">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl font-bold mb-4">Call Now for a Complementary & Confidential Strategy Session!</h2>
-        <p class="mb-2"><strong>Phone:</strong> (801) 969-6609</p>
-        <p class="mb-2"><strong>Fax:</strong> (801) 359-2551</p>
-        <p><strong>Email:</strong> <a href="mailto:getinfo@dobbiniplaw.com" class="text-dobbin-green hover:underline">getinfo@dobbiniplaw.com</a></p>
-      </div>
-    </section>
   </div>
 </template>
 
