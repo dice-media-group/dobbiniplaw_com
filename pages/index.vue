@@ -109,53 +109,72 @@
     </section>
     
     <!-- Client Testimonial Section - UPDATED with dark background and light text -->
-    <section class="py-8 bg-dobbin-dark-green">
+    <section class="py-8 bg-black">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl font-bold mb-6 text-center font-crimson text-white">We Care About Our Clients</h2>
           <p class="mb-4 font-crimson text-white">
             When you choose Dobbin IP Law, you will discover that we care about our clients. We will work with you one on one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch businesses grow and expand.
           </p>
-          
-          <div class="my-8">
-            <div class="testimonial">
-              <p class="italic mb-4 font-crimson">
-                "I am Lee Von Gunten, CEO of Watchdog manufacturing, where we produce and sell Home Security products such as our Watchdog Timers and others. I am pleased and proud to offer this short testimonial regarding Geoff Dobbin and his team at Dobbin IP Law P.C. This is a voluntary testimonial for Geoff and his company. Geoff and his team are tops. I can't recommend them too highly."
-              </p>
-              <p class="font-bold font-crimson">Thank you,</p>
-              <p class="font-crimson">Lee Von Gunten, CEO</p>
-              <p class="font-crimson">Watchdog Manufacturing</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
     
-    <!-- Three Benefits Section with different green backgrounds -->
-    <section class="py-0">
-      <div class="grid grid-cols-1 md:grid-cols-3">
-        <!-- Column 1: You Are the Boss -->
-        <div class="bg-dobbin-dark-green text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white">You Are the Boss</h3>
-          <p class="font-crimson text-white mb-4">
-            Tell us what you want done, and we will be responsive to your needs. We will put our experience to good use to ensure the best quality service and outcome possible. We work one-on-one with our clients, starting with a confidential strategy session. We will tell you as soon as possible whether or not we think your invention is patentable. Your privacy is also a priority. Everything communicated between client and attorney is confidential.
-          </p>
-        </div>
+    <!-- Modern Staggered Testimonials -->
+    <section class="bg-black py-16 px-4 md:px-0">
+      <div class="container mx-auto mb-8">
+        <h2 class="text-3xl font-crimson text-white text-center mb-12">What Our Clients Say</h2>
         
-        <!-- Column 2: We Offer Experience & Knowledge -->
-        <div class="bg-dobbin-green text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white">We Offer Experience & Knowledge</h3>
-          <p class="font-crimson text-white mb-4">
-            After working in intellectual property law for over a decade and a half, we understand the requirements and details necessary for your intellectual property to succeed. With a solid scientific background, Geoffrey Dobbin can grasp a variety of subject matter from the simplest gadgets to lasers and semiconductors. After discussing your invention with you, we will put your application in proper format for submission, and then later use our experience and best efforts to broaden the scope of your patent application.
-          </p>
-        </div>
-        
-        <!-- Column 3: We Are a Small Business Too -->
-        <div class="bg-dobbin-bright-green text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white">We Are a Small Business Too</h3>
-          <p class="font-crimson text-white mb-4">
-            We know what it's like to go through blood, sweat and tears as you experience the ups and downs of business. We also know the joy that comes from success. We have included a number of frequently asked questions on our website. You can find the links in the menu to the left. Please feel free to browse them, as well as the general information about intellectual property we have provided. If your question has not been answered, please feel free to contact us and schedule a complementary strategy session.
-          </p>
+        <!-- Staggered Testimonials Layout -->
+        <div class="flex flex-col md:flex-row md:justify-center items-center md:items-stretch gap-6 max-w-6xl mx-auto">
+          
+          <!-- Testimonial 1 - Base position -->
+          <div class="testimonial-card bg-dobbin-dark-green rounded-lg shadow-xl p-6 md:w-1/3 max-w-md w-full md:transform z-10">
+            <svg class="w-10 h-10 text-white opacity-30 mb-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <div class="mb-6">
+              <p class="text-white font-crimson text-xl mb-4">You Are the Boss</p>
+              <p class="text-white font-crimson text-sm">
+                Tell us what you want done, and we will be responsive to your needs. We will put our experience to good use to ensure the best quality service and outcome possible. We work one-on-one with our clients, starting with a confidential strategy session.
+              </p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-white font-crimson">Client from Utah</p>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 - Shifted down on desktop -->
+          <div class="testimonial-card bg-dobbin-green rounded-lg shadow-xl p-6 md:w-1/3 max-w-md w-full md:transform md:translate-y-12 z-20">
+            <svg class="w-10 h-10 text-white opacity-30 mb-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <div class="mb-6">
+              <p class="text-white font-crimson text-xl mb-4">We Offer Experience & Knowledge</p>
+              <p class="text-white font-crimson text-sm">
+                After working in intellectual property law for over a decade and a half, we understand the requirements and details necessary for your intellectual property to succeed. With a solid scientific background, Geoffrey Dobbin can grasp a variety of subject matter.
+              </p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-white font-crimson">Patent Client</p>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 - Shifted up on desktop -->
+          <div class="testimonial-card bg-dobbin-bright-green rounded-lg shadow-xl p-6 md:w-1/3 max-w-md w-full md:transform md:-translate-y-12 z-30">
+            <svg class="w-10 h-10 text-white opacity-30 mb-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <div class="mb-6">
+              <p class="text-white font-crimson text-xl mb-4">We Are a Small Business Too</p>
+              <p class="text-white font-crimson text-sm">
+                We know what it's like to go through blood, sweat and tears as you experience the ups and downs of business. We also know the joy that comes from success. If your question has not been answered, please feel free to contact us and schedule a complementary strategy session.
+              </p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-white font-crimson">Geoff Dobbin</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -185,3 +204,25 @@ useHead({
   ]
 })
 </script>
+
+<style>
+/* Testimonial card styles */
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+}
+</style>
