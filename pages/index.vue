@@ -165,39 +165,104 @@
           </svg>
         </button>
         
-        <!-- Staggered Testimonial Cards -->
-        <div class="flex flex-col md:flex-row md:justify-center items-center md:items-stretch gap-8 max-w-6xl mx-auto">
-          <!-- Main Testimonial Card -->
-          <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full z-10">
-            <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            
-            <div class="mb-8 text-dobbin-gray">
-              <p class="font-crimson text-lg italic mb-6">
-                I am Lee Von Gunten, CEO of Watchdog manufacturing, where we produce and sell Home Security products such as our Watchdog Timers and others. I am pleased and proud to offer this short but sweet testimonial regarding Geoff Dobbin and his team at Dobbin IP Law P.C. This is a voluntary testimonial for Geoff and his company. Geoff did not ask for it.
-              </p>
+        <!-- Testimonial Carousel -->
+        <div class="relative">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
+              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
               
-              <p class="font-crimson text-lg italic mb-6">
-                We've been working with Geoff and staff for over 12 years with total confidence in the professionality and completeness of their services at fair costs through all of our patent and trademark work. Geoff has been there for us to help and answer questions and to advise us in all matters of Intellectual Law through several patent applications and trademark listings.
-              </p>
+              <div class="mb-8 text-dobbin-gray">
+                <p class="font-crimson text-lg italic mb-6">
+                  I am Lee Von Gunten, CEO of Watchdog manufacturing, where we produce and sell Home Security products such as our Watchdog Timers and others. I am pleased and proud to offer this short but sweet testimonial regarding Geoff Dobbin and his team at Dobbin IP Law P.C. This is a voluntary testimonial for Geoff and his company. Geoff did not ask for it.
+                </p>
+                
+                <p class="font-crimson text-lg italic mb-6">
+                  We've been working with Geoff and staff for over 12 years with total confidence in the professionality and completeness of their services at fair costs through all of our patent and trademark work. Geoff has been there for us to help and answer questions and to advise us in all matters of Intellectual Law through several patent applications and trademark listings.
+                </p>
+                
+                <p class="font-crimson text-lg italic mb-8">
+                  Geoff and his staff are tops. I can't recommend them too highly.
+                </p>
+                
+                <p class="font-crimson font-semibold">Thank you,</p>
+                <p class="font-crimson font-bold text-lg">Lee Von Gunten, CEO</p>
+                <p class="font-crimson">Watchdog Manufacturing</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide hidden">
+            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
+              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
               
-              <p class="font-crimson text-lg italic mb-8">
-                Geoff and his staff are tops. I can't recommend them too highly.
-              </p>
+              <div class="mb-8 text-dobbin-gray">
+                <p class="font-crimson text-lg italic mb-6">
+                  I've known Geoff Dobbin and have used him as my patent attorney for over 7 years. During that time Geoff has filed multiple patents for me. Before meeting Geoff I consulted other patent attorneys and always came away frustrated that I could not get definite answers to my questions. It was refreshing when on my very first meeting with Geoff he gave me straight answers, explaining even the most complicated Intellectual Property issues in easy to understand language.
+                </p>
+                
+                <p class="font-crimson text-lg italic mb-6">
+                  Geoff has demonstrated utmost integrity while working on my patents and has an extensive knowledge of all aspects of Intellectual Property law. His work is of the highest quality and is delivered in a timely manner. I'm pleased to give Geoff my highest recommendation for your Intellectual Property work.
+                </p>
+                
+                <p class="font-crimson font-bold text-lg">Matthew Prestwich</p>
+                <p class="font-crimson">Ready Holster and Tactical Supply</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide hidden">
+            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
+              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
               
-              <p class="font-crimson font-semibold">Thank you,</p>
-              <p class="font-crimson font-bold text-lg">Lee Von Gunten, CEO</p>
-              <p class="font-crimson">Watchdog Manufacturing</p>
+              <div class="mb-8 text-dobbin-gray">
+                <p class="font-crimson text-lg italic mb-6">
+                  I have been working with Geoff Dobbin for approximately 8 years in relation to a range of patent, trademark and product licensing matters. I have found Geoff to be a knowledgeable and diligent intellectual property attorney who is also a pleasure to deal with.
+                </p>
+                
+                <p class="font-crimson text-lg italic mb-6">
+                  Geoff was able to provide practical and timely responses to questions I asked and was instrumental in finalizing patents and a trademark for my invention. I would not hesitate in recommending Geoff.
+                </p>
+                
+                <p class="font-crimson font-bold text-lg">Craig Charlton</p>
+                <p class="font-crimson">Lock Jaw Ladder Grip</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 4 -->
+          <div class="testimonial-slide hidden">
+            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
+              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              
+              <div class="mb-8 text-dobbin-gray">
+                <p class="font-crimson text-lg italic mb-6">
+                  Geoffrey Dobbin has been my patent attorney for the past six years and I am highly impressed by his ability to understand a wide range of complex technologies and describe them clearly, suggest appropriate strategies for intellectual property, and his adroitness in communicating with the USPTO.
+                </p>
+                
+                <p class="font-crimson font-bold text-lg">Dr. Mark J. Hagmann, CTO</p>
+                <p class="font-crimson">NewPath Research, LLC</p>
+              </div>
             </div>
           </div>
         </div>
         
         <!-- Testimonial Indicators -->
         <div class="flex justify-center space-x-2 mt-8">
-          <span class="h-3 w-3 rounded-full bg-dobbin-dark-green"></span>
-          <span class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition"></span>
-          <span class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition"></span>
+          <button class="h-3 w-3 rounded-full bg-dobbin-dark-green" data-slide="0"></button>
+          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="1"></button>
+          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="2"></button>
+          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="3"></button>
         </div>
       </div>
     </section>
@@ -217,6 +282,65 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
+// For carousel functionality
+let currentSlide = ref(0);
+const totalSlides = 4;
+
+function showSlide(index) {
+  // Hide all slides
+  document.querySelectorAll('.testimonial-slide').forEach(slide => {
+    slide.classList.add('hidden');
+    slide.classList.remove('active');
+  });
+  
+  // Show the selected slide
+  const slides = document.querySelectorAll('.testimonial-slide');
+  if (slides[index]) {
+    slides[index].classList.remove('hidden');
+    slides[index].classList.add('active');
+  }
+  
+  // Update indicators
+  document.querySelectorAll('[data-slide]').forEach((indicator, i) => {
+    if (i === index) {
+      indicator.classList.remove('bg-gray-300');
+      indicator.classList.add('bg-dobbin-dark-green');
+    } else {
+      indicator.classList.remove('bg-dobbin-dark-green');
+      indicator.classList.add('bg-gray-300');
+    }
+  });
+  
+  currentSlide.value = index;
+}
+
+function nextSlide() {
+  showSlide((currentSlide.value + 1) % totalSlides);
+}
+
+function prevSlide() {
+  showSlide((currentSlide.value - 1 + totalSlides) % totalSlides);
+}
+
+onMounted(() => {
+  // Set up event listeners for indicators
+  document.querySelectorAll('[data-slide]').forEach((indicator, i) => {
+    indicator.addEventListener('click', () => showSlide(i));
+  });
+  
+  // Set up event listeners for next/prev buttons
+  const prevButton = document.querySelector('.absolute.left-4');
+  const nextButton = document.querySelector('.absolute.right-4');
+  
+  if (prevButton) prevButton.addEventListener('click', prevSlide);
+  if (nextButton) nextButton.addEventListener('click', nextSlide);
+  
+  // Initialize the first slide
+  showSlide(0);
+});
+
 useHead({
   title: 'Dobbin IP Law P.C. | Patent Attorney | Intellectual Property Law',
   meta: [
@@ -237,6 +361,18 @@ useHead({
 .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-slide {
+  transition: opacity 0.5s ease;
+}
+
+.testimonial-slide.active {
+  opacity: 1;
+}
+
+.testimonial-slide.hidden {
+  display: none;
 }
 
 @media (max-width: 768px) {
