@@ -2,16 +2,15 @@
   <div class="flex items-center">
     <div class="mr-3">
       <img 
-        src="/img/gear_swoosh.svg" 
+        src="/img/SideBySide.jpg" 
         alt="Dobbin IP Law Logo" 
-        class="h-20 w-auto" 
-        @error="logoError = true" 
-        v-if="!logoError"
+        class="h-32 w-auto" 
+        @error="logoError = true"
+        :class="{ 'hidden': logoError }"
       />
-      <!-- Fallback SVG if the image fails to load -->
       <svg 
-        v-else
-        class="h-20 w-20" 
+        class="h-32 w-32"
+        :class="{ 'hidden': !logoError }"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -23,7 +22,10 @@
     </div>
     
     <!-- Logo text -->
-    <h1 class="text-4xl font-bold text-dobbin-dark-green tracking-wider font-crimson">
+    <h1 
+      class="text-5xl text-dobbin-dark-green tracking-wider font-crimson"
+      :class="{ 'hidden': !logoError }"
+    >
       DOBBIN IP LAW
     </h1>
   </div>
