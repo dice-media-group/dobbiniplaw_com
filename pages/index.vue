@@ -4,7 +4,7 @@
     <section class="bg-dobbin-dark-green text-white py-12">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl font-bold mb-3 font-crimson text-white">Dobbin IP Law P.C.</h1>
+          <h1 class="text-3xl mb-3 font-crimson text-white">Dobbin IP Law P.C.</h1>
           <h2 class="text-xl mb-4 font-crimson text-white">Geoff Dobbin, Patent and Intellectual Law Attorney</h2>
           <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We will stay open for business and will be using telephone and video calls. Please call and let us know how we can best help you at (801) 969-6609.</p>
         </div>
@@ -71,12 +71,12 @@
       </div>
     </section>
     
-    <!-- IP Needs Section -->
-    <section class="py-8 bg-dobbin-light">
+    <!-- IP Needs Section - UPDATED with dark background and light text -->
+    <section class="py-8 bg-dobbin-dark-green">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl font-bold mb-6 font-crimson text-dobbin-dark-green">Get help for your intellectual property needs</h2>
-          <p class="mb-6 font-crimson">
+          <h2 class="text-2xl font-bold mb-6 font-crimson text-white">Get help for your intellectual property needs</h2>
+          <p class="mb-6 font-crimson text-white">
             When you come up with a new idea and put it into tangible form, you need legal protection to safeguard your work from being copied. Intellectual property comes in several forms; the three most common of which include patents, trademarks, and copyrights.
           </p>
         </div>
@@ -108,13 +108,13 @@
       </div>
     </section>
     
-    <!-- Client Testimonial Section -->
-    <section class="py-8 bg-dobbin-light">
+    <!-- Client Testimonial Section - UPDATED with dark background and light text -->
+    <section class="py-8 bg-dobbin-dark-green">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl font-bold mb-6 text-center font-crimson text-dobbin-dark-green">We Care About Our Clients</h2>
-          <p class="mb-4 font-crimson">
-            We truly believe at Dobbin IP Law that we will be business partners. We will work with you one-on-one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch businesses grow and expand.
+          <h2 class="text-2xl font-bold mb-6 text-center font-crimson text-white">We Care About Our Clients</h2>
+          <p class="mb-4 font-crimson text-white">
+            When you choose Dobbin IP Law, you will discover that we care about our clients. We will work with you one on one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch businesses grow and expand.
           </p>
           
           <div class="my-8">
