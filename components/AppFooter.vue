@@ -1,16 +1,7 @@
 <template>
   <footer>
     <!-- Call to Action Section -->
-    <div class="bg-white py-8 border-t border-gray-200">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl font-bold text-dobbin-dark-green mb-4 font-crimson">Call Now for a Complementary & Confidential Strategy Session!</h2>
-        <div class="max-w-3xl mx-auto border-t border-b border-gray-300 py-4">
-          <p class="mb-2 font-crimson"><strong>Phone:</strong> (801) 969-6609</p>
-          <p class="mb-2 font-crimson"><strong>Fax:</strong> (801) 359-2551</p>
-          <p class="font-crimson"><strong>Email:</strong> <a href="mailto:getinfo@dobbiniplaw.com" class="text-dobbin-green hover:underline">getinfo@dobbiniplaw.com</a></p>
-        </div>
-      </div>
-    </div>
+    <CTASection />
     
     <!-- Main Footer -->
     <div class="bg-dobbin-footer text-white py-8 dobbin-footer">
@@ -57,3 +48,7 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+import CTASection from './CTASection.vue';
+</script>
