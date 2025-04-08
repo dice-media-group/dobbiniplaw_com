@@ -3,9 +3,9 @@
     <!-- Top bar with contact info -->
     <div class="bg-black text-white py-1">
       <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="tel:8019696609" class="text-sm">(801) 969-6609</a>
+        <a href="tel:8019696609" class="text-sm font-crimson">(801) 969-6609</a>
         <div class="flex items-center space-x-4">
-          <a href="mailto:getinfo@dobbiniplaw.com" class="text-sm">getinfo@dobbiniplaw.com</a>
+          <a href="mailto:getinfo@dobbiniplaw.com" class="text-sm font-crimson">getinfo@dobbiniplaw.com</a>
           <div class="flex space-x-2">
             <a href="#" aria-label="Facebook">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -23,37 +23,82 @@
     </div>
     
     <!-- Logo -->
-    <div class="bg-white py-4">
+    <div class="bg-white py-4 dobbin-header">
       <div class="container mx-auto px-4">
         <div class="flex justify-center">
           <NuxtLink to="/" class="logo-link">
             <div class="flex items-center">
-              <svg class="h-12 w-12 text-dobbin-green mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <!-- Gear shape logo similar to original -->
-                <path fill="currentColor" d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37 c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17 c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23 c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17 c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z"/>
-                <circle fill="currentColor" cx="50" cy="50" r="20"/>
+              <!-- Try to load SideBySide.jpg first, with fallbacks -->
+              <img 
+                src="/img/SideBySide.jpg" 
+                alt="Dobbin IP Law Logo" 
+                class="h-16" 
+                @error="logoImageError = true" 
+                v-if="!logoImageError"
+              />
+              <!-- First fallback: Try the SVG we created -->
+              <img 
+                v-else-if="!svgImageError"
+                src="/img/SideBySidegoald.svg" 
+                alt="Dobbin IP Law Logo" 
+                class="h-14 mr-2" 
+                @error="svgImageError = true"
+              />
+              <!-- Second fallback: Use the simpler SVG -->
+              <img 
+                v-else-if="!fallbackSvgError"
+                src="/img/logo-fallback.svg" 
+                alt="Dobbin IP Law Logo" 
+                class="h-14 mr-2" 
+                @error="fallbackSvgError = true"
+              />
+              <!-- Final fallback: Use inline SVG -->
+              <svg 
+                v-else
+                class="h-12 w-12 mr-2" 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 100 100"
+              >
+                <path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#333333"/>
+                <path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245"/>
               </svg>
-              <h1 class="text-2xl font-bold text-dobbin-green tracking-wider">DOBBIN IP LAW</h1>
+              
+              <!-- The text always shows -->
+              <h1 class="text-2xl font-bold text-dobbin-dark-green tracking-wider font-crimson">DOBBIN IP LAW</h1>
             </div>
           </NuxtLink>
         </div>
       </div>
     </div>
     
-    <!-- Main navigation -->
-    <div class="bg-dobbin-green text-white">
+    <!-- Main navigation - Matches original site's style -->
+    <div class="border-t border-gray-200">
       <div class="container mx-auto">
-        <nav class="hidden md:flex">
-          <NuxtLink to="/" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">Home</NuxtLink>
-          <NuxtLink to="/about" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">About Us</NuxtLink>
-          <NuxtLink to="/prior-work" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">Prior Work</NuxtLink>
-          <NuxtLink to="/resources" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">Resources</NuxtLink>
-          <NuxtLink to="/testimonials" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">Testimonials</NuxtLink>
-          <NuxtLink to="/contact" class="nav-link py-3 px-4 text-center flex-1 uppercase text-sm font-medium">Schedule Strategy Session</NuxtLink>
+        <nav class="hidden md:flex justify-center items-center">
+          <NuxtLink to="/" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray">HOME</NuxtLink>
+          <NuxtLink to="/about" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray">ABOUT US</NuxtLink>
+          <NuxtLink to="/prior-work" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray">PRIOR WORK</NuxtLink>
+          <div class="relative group">
+            <NuxtLink to="/resources" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray flex items-center">
+              RESOURCES
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </NuxtLink>
+            <!-- Dropdown menu would go here if needed -->
+          </div>
+          <NuxtLink to="/testimonials" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray">TESTIMONIALS</NuxtLink>
+          <NuxtLink to="/contact" class="nav-link py-4 px-4 uppercase text-sm font-crimson tracking-wide text-dobbin-gray">SCHEDULE STRATEGY SESSION</NuxtLink>
+          <!-- Search icon -->
+          <button class="py-4 px-2 text-dobbin-gray">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
         </nav>
         
         <div class="md:hidden py-2 px-4">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white w-full flex justify-between items-center">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="w-full flex justify-between items-center text-dobbin-gray font-crimson">
             <span>MENU</span>
             <span v-if="!mobileMenuOpen">☰</span>
             <span v-else>✕</span>
@@ -63,14 +108,14 @@
     </div>
     
     <!-- Mobile menu -->
-    <div v-if="mobileMenuOpen" class="mobile-menu md:hidden bg-dobbin-green border-t border-gray-700">
+    <div v-if="mobileMenuOpen" class="mobile-menu md:hidden border-t border-gray-200">
       <ul class="px-4 py-2">
-        <li><NuxtLink to="/" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">HOME</NuxtLink></li>
-        <li><NuxtLink to="/about" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">ABOUT US</NuxtLink></li>
-        <li><NuxtLink to="/prior-work" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">PRIOR WORK</NuxtLink></li>
-        <li><NuxtLink to="/resources" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">RESOURCES</NuxtLink></li>
-        <li><NuxtLink to="/testimonials" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">TESTIMONIALS</NuxtLink></li>
-        <li><NuxtLink to="/contact" class="block nav-link py-2 text-white" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink></li>
+        <li><NuxtLink to="/" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">HOME</NuxtLink></li>
+        <li><NuxtLink to="/about" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">ABOUT US</NuxtLink></li>
+        <li><NuxtLink to="/prior-work" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">PRIOR WORK</NuxtLink></li>
+        <li><NuxtLink to="/resources" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">RESOURCES</NuxtLink></li>
+        <li><NuxtLink to="/testimonials" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">TESTIMONIALS</NuxtLink></li>
+        <li><NuxtLink to="/contact" class="block nav-link py-2 text-dobbin-gray font-crimson" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink></li>
       </ul>
     </div>
   </header>
@@ -78,25 +123,28 @@
 
 <script setup>
 const mobileMenuOpen = ref(false);
+const logoImageError = ref(false);
+const svgImageError = ref(false);
+const fallbackSvgError = ref(false);
 </script>
 
 <style scoped>
 .nav-link {
   position: relative;
-  transition: background-color 0.2s;
+  transition: color 0.2s;
 }
 
 .nav-link:hover, .nav-link.router-link-exact-active {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #009245;
 }
 
 .nav-link.router-link-exact-active::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  background-color: white;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #009245;
 }
 </style>

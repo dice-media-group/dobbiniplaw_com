@@ -3,37 +3,37 @@
     <!-- Call to Action Section -->
     <div class="bg-white py-8 border-t border-gray-200">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Call Now for a Complementary & Confidential Strategy Session!</h2>
+        <h2 class="text-2xl font-bold text-dobbin-dark-green mb-4 font-crimson">Call Now for a Complementary & Confidential Strategy Session!</h2>
         <div class="max-w-3xl mx-auto border-t border-b border-gray-300 py-4">
-          <p class="mb-2"><strong>Phone:</strong> (801) 969-6609</p>
-          <p class="mb-2"><strong>Fax:</strong> (801) 359-2551</p>
-          <p><strong>Email:</strong> <a href="mailto:getinfo@dobbiniplaw.com" class="text-dobbin-green hover:underline">getinfo@dobbiniplaw.com</a></p>
+          <p class="mb-2 font-crimson"><strong>Phone:</strong> (801) 969-6609</p>
+          <p class="mb-2 font-crimson"><strong>Fax:</strong> (801) 359-2551</p>
+          <p class="font-crimson"><strong>Email:</strong> <a href="mailto:getinfo@dobbiniplaw.com" class="text-dobbin-green hover:underline">getinfo@dobbiniplaw.com</a></p>
         </div>
       </div>
     </div>
     
     <!-- Main Footer -->
-    <div class="bg-dobbin-green text-white py-8">
+    <div class="bg-dobbin-footer text-white py-8 dobbin-footer">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-lg font-bold mb-2">Dobbin IP Law P.C.</h3>
-            <p class="mb-1">2290 E Richmond Rd, Suite 3</p>
-            <p class="mb-1">West Valley City, UT 84106</p>
+            <h3 class="text-lg font-bold mb-2 font-crimson">Dobbin IP Law P.C.</h3>
+            <p class="mb-1 font-crimson">2290 E Richmond Rd, Suite 3</p>
+            <p class="mb-1 font-crimson">West Valley City, UT 84106</p>
             <p class="mb-1">&nbsp;</p>
-            <p>(801) 969-6609</p>
+            <p class="font-crimson">(801) 969-6609</p>
           </div>
           
           <div>
-            <p class="text-sm">This website provides general information about patents, trademarks, copyrights and services available at Dobbin IP Law P.C. It is for informational only and does not constitute legal advice, nor does it constitute the start of an attorney-client relationship. For specific, personalized advice about situations, please feel free to contact us.</p>
+            <p class="text-sm font-crimson">This website provides general information about patents, trademarks, copyrights and services available at Dobbin IP Law P.C. It is for informational only and does not constitute legal advice, nor does it constitute the start of an attorney-client relationship. For specific, personalized advice about situations, please feel free to contact us.</p>
           </div>
         </div>
         
         <div class="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm">
           <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mb-4 md:mb-0 text-center md:text-left">
-            <NuxtLink to="/terms-of-service" class="hover:underline">Terms of Service</NuxtLink>
-            <NuxtLink to="/privacy-policy" class="hover:underline">Privacy Policy</NuxtLink>
-            <NuxtLink to="/contact" class="hover:underline">Contact Us</NuxtLink>
+            <NuxtLink to="/terms-of-service" class="hover:underline font-crimson">Terms of Service</NuxtLink>
+            <NuxtLink to="/privacy-policy" class="hover:underline font-crimson">Privacy Policy</NuxtLink>
+            <NuxtLink to="/contact" class="hover:underline font-crimson">Contact Us</NuxtLink>
           </div>
           
           <div class="flex space-x-2">
@@ -50,7 +50,7 @@
           </div>
         </div>
         
-        <div class="mt-4 text-center text-xs">
+        <div class="mt-4 text-center text-xs font-crimson">
           <p>&copy; {{ new Date().getFullYear() }} Dobbin IP Law P.C. All Rights Reserved.</p>
         </div>
       </div>

@@ -1,0 +1,11 @@
+This is a placeholder file. Please replace this with the actual Dobbin IP Law logo image.
+
+To properly include the logo in your site:
+
+1. Save the logo image as "dobbin-logo.png" in this directory (/public/img/)
+2. The logo will automatically appear in the header
+
+The AppHeader.vue component is already configured to use this image path:
+<img src="/img/dobbin-logo.png" alt="Dobbin IP Law Logo" class="h-16 mr-3" />
+
+Alternatively, you can continue using the SVG version that is currently implemented in the AppHeader.vue component.

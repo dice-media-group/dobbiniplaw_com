@@ -2,13 +2,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dobbin-green': '#0A3B25', // Dark green from the website
-        'dobbin-light': '#f5f5f5',
+        'dobbin-dark-green': '#12352c',
+        'dobbin-green': '#206c46',
+        'dobbin-bright-green': '#00693f',
+        'dobbin-footer': '#001c0e',
+        'dobbin-light': '#f9fdfc',
         'dobbin-gray': '#333333',
       },
       fontFamily: {
-        sans: ['Arial', 'sans-serif'],
-        serif: ['Georgia', 'serif'],
+        'crimson': ['"Crimson Text"', 'Georgia', '"Times New Roman"', 'serif'],
+        'sans': ['"Crimson Text"', 'Georgia', '"Times New Roman"', 'serif'],
+        'serif': ['"Crimson Text"', 'Georgia', '"Times New Roman"', 'serif'],
       }
     },
   },
