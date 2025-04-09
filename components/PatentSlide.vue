@@ -46,6 +46,17 @@ const props = defineProps({
 });
 
 /**
+ * Patent type mappings (most common types)
+ * For patents that don't include B1, B2, etc. in patentNumber
+ */
+const patentTypeMappings = {
+  '7271420': 'B2',
+  '9341429': 'B2',
+  '8689672': 'B2',
+  '8234808': 'B2'
+};
+
+/**
  * Formats the patent number to create a Google Patents URL
  * @param {string} patentNumber - The patent number (e.g., "7,271,420")
  * @returns {string} - The Google Patents URL
@@ -54,7 +65,21 @@ const getGooglePatentUrl = (patentNumber) => {
   if (!patentNumber) return '#';
   
   // Remove commas and spaces from patent number
-  const formattedNumber = patentNumber.replace(/,|\s/g, '');
+  let formattedNumber = patentNumber.replace(/,|\s/g, '');
+  
+  // Check if we need to add B1, B2, etc.
+  if (!/[A-Z]\d+$/.test(formattedNumber)) {
+    // Get base number without any designation
+    const baseNumber = formattedNumber.replace(/^US/i, '');
+    
+    // Check if we have a type mapping for this patent
+    if (patentTypeMappings[baseNumber]) {
+      formattedNumber += patentTypeMappings[baseNumber];
+    } else {
+      // Default to B2 if no mapping exists
+      formattedNumber += 'B2';
+    }
+  }
   
   // Check if it's a US patent (most common case)
   const prefix = formattedNumber.startsWith('US') ? '' : 'US';
