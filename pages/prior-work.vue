@@ -4,16 +4,10 @@
     <HeroBanner title="Prior Work" />
     
     <!-- Intro Section -->
-    <section class="py-12 bg-white">
+    <section class="py-8 bg-white">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <p class="mb-6 text-base leading-relaxed text-gray-700">
-            Patents have been secured in a wide range of technical fields, including: flashlights & worklights, laboratory equipment, hunting & fishing equipment, 
-            computer hardware/architecture, animal leashes, household items, semiconductors, lasers and LEDs, dentistry, mailboxes, forensics, exercise equipment, 
-            games, and especially firearms, ordinance, and firearm accessories. Many trademarks and copyrights have also been registered.
-          </p>
-          
-          <p class="mb-10 text-base leading-relaxed text-gray-700">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-base leading-relaxed text-gray-700">
             Below, are some actual examples of past work. To view click the patent number.
           </p>
         </div>
@@ -23,10 +17,13 @@
     <!-- Patent Carousel Section with full-width background -->
     <PatentCarousel />
     
-    <!-- Call to Action Button -->
+    <!-- Call to Action Button - styled exactly as shown in screenshot -->
     <section class="py-12 bg-white text-center">
       <div class="container mx-auto px-4">
-        <a href="#" class="inline-block bg-dobbin-dark-green hover:bg-dobbin-green text-white font-bold py-3 px-8 transition-colors duration-300">
+        <a 
+          href="#" 
+          class="inline-block bg-dobbin-dark-green hover:bg-dobbin-green text-white font-bold py-3 px-6"
+        >
           To see more, please click here.
         </a>
       </div>
@@ -36,6 +33,19 @@
 
 <script setup>
 import PatentCarousel from '~/components/PatentCarousel.vue';
+
+// Attempt to fetch content from markdown if available
+const { data: pageContent } = await useAsyncData('prior-work', () => 
+  queryContent('/prior-work').find()
+);
+
+// Fallback text if content module fails or content is not available
+const introText = computed(() => {
+  if (pageContent.value && pageContent.value.length > 0) {
+    return pageContent.value[0].body;
+  }
+  return "Below, are some actual examples of past work. To view click the patent number.";
+});
 
 useHead({
   title: 'Prior Work | Dobbin IP Law P.C.',

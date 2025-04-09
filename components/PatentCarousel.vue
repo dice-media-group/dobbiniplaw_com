@@ -1,11 +1,11 @@
 <template>
   <div class="patent-carousel relative">
-    <!-- Carousel container with full-width background -->
-    <div class="carousel-bg py-12 relative">
-      <!-- Navigation arrows -->
+    <!-- Carousel container with full-width background - simplified design -->
+    <div class="carousel-bg py-16 relative">
+      <!-- Navigation arrows - matching the screenshot exactly -->
       <button 
         @click="prevSlide" 
-        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green/80 hover:bg-dobbin-dark-green text-white p-2 rounded-full"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Previous slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +15,7 @@
       
       <button 
         @click="nextSlide" 
-        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green/80 hover:bg-dobbin-dark-green text-white p-2 rounded-full"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Next slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,43 +23,10 @@
         </svg>
       </button>
       
-      <!-- Carousel content -->
+      <!-- Carousel content - simplified, showing just the basic structure -->
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
-          <div v-if="slides.length > 0" class="flex flex-col md:flex-row bg-white shadow-lg rounded overflow-hidden">
-            <!-- Slide image -->
-            <div class="md:w-1/2 p-6 flex items-center justify-center">
-              <img 
-                :src="slides[currentSlide].image" 
-                :alt="slides[currentSlide].title" 
-                class="max-w-full max-h-64 object-contain"
-              />
-            </div>
-            
-            <!-- Slide content -->
-            <div class="md:w-1/2 p-6 bg-white">
-              <h3 class="text-xl font-bold mb-4 text-dobbin-dark-green">{{ slides[currentSlide].title }}</h3>
-              <p class="mb-6 text-gray-700">{{ slides[currentSlide].description }}</p>
-              <a 
-                :href="slides[currentSlide].patentNumber ? '#' + slides[currentSlide].patentNumber : '#'"
-                class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4 rounded"
-              >
-                {{ slides[currentSlide].linkText || 'Patent ' + slides[currentSlide].patentNumber }}
-              </a>
-            </div>
-          </div>
-          
-          <!-- Slide indicators -->
-          <div class="flex justify-center mt-6">
-            <button 
-              v-for="(slide, index) in slides" 
-              :key="index"
-              @click="currentSlide = index"
-              class="w-3 h-3 rounded-full mx-1"
-              :class="index === currentSlide ? 'bg-dobbin-green' : 'bg-gray-300'"
-              :aria-label="'Go to slide ' + (index + 1)"
-            ></button>
-          </div>
+          <!-- Content is intentionally empty - matching the screenshot -->
         </div>
       </div>
     </div>
@@ -85,7 +52,7 @@ let intervalId = null;
 const props = defineProps({
   autoplay: {
     type: Boolean,
-    default: true
+    default: false // Changed to false to match screenshot
   },
   interval: {
     type: Number,
@@ -105,6 +72,21 @@ const prevSlide = () => {
   }
 };
 
+// Define exposed data for parent components
+const currentPatent = computed(() => {
+  if (slides.value.length > 0) {
+    return slides.value[currentSlide.value];
+  }
+  return null;
+});
+
+defineExpose({
+  currentPatent,
+  currentSlide,
+  nextSlide,
+  prevSlide
+});
+
 onMounted(() => {
   if (props.autoplay && slides.value.length > 0) {
     intervalId = setInterval(nextSlide, props.interval);
@@ -120,27 +102,12 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel-bg {
-  background-image: url('/img/Patent-Diagram.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #e5ede8; /* Light green color from screenshot */
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-}
-
-/* Ensure the background has a green tint */
-.carousel-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(32, 108, 70, 0.2); /* Green tint overlay */
-  z-index: -1;
 }
 </style>
