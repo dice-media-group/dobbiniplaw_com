@@ -15,9 +15,9 @@
     </section>
     
     <!-- Patent Carousel Section with full-width background -->
-    <PatentCarousel />
+    <PatentCarousel ref="carousel" />
     
-    <!-- Call to Action Button - styled exactly as shown in screenshot -->
+    <!-- Call to Action Button -->
     <section class="py-12 bg-white text-center">
       <div class="container mx-auto px-4">
         <a 
@@ -28,23 +28,55 @@
         </a>
       </div>
     </section>
+    
+    <!-- Debug Info - remove in production -->
+    <DebugInfo 
+      v-if="debug"
+      :patent-count="patentCount" 
+      :source="contentSource" 
+      :current-patent="currentPatentTitle"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref, computed, onMounted } from 'vue';
 import PatentCarousel from '~/components/PatentCarousel.vue';
+import DebugInfo from '~/components/DebugInfo.vue';
 
-// Attempt to fetch content from markdown if available
+// Toggle debug mode (set to false for production)
+const debug = ref(true);
+const carousel = ref(null);
+
+// Computed props for debug display
+const patentCount = computed(() => {
+  if (!carousel.value) return 0;
+  return carousel.value.slides?.length || 0;
+});
+
+const contentSource = computed(() => {
+  if (!carousel.value) return 'Loading...';
+  return carousel.value.fromMarkdown ? 'Markdown Content' : 'Fallback Data';
+});
+
+const currentPatentTitle = computed(() => {
+  if (!carousel.value || !carousel.value.currentSlide) return 'None';
+  return carousel.value.currentSlide.title || 'Unknown';
+});
+
+// Fetch data for patents
 const { data: pageContent } = await useAsyncData('prior-work', () => 
   queryContent('/prior-work').find()
 );
 
-// Fallback text if content module fails or content is not available
-const introText = computed(() => {
-  if (pageContent.value && pageContent.value.length > 0) {
-    return pageContent.value[0].body;
+// Check content after mount
+onMounted(() => {
+  console.log('Prior Work Page Mounted');
+  console.log('Patent Carousel:', carousel.value);
+  if (carousel.value) {
+    console.log('Slides count:', carousel.value.slides?.length);
+    console.log('Using markdown:', carousel.value.fromMarkdown);
   }
-  return "Below, are some actual examples of past work. To view click the patent number.";
 });
 
 useHead({

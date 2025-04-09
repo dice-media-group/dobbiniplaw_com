@@ -30,21 +30,21 @@
             <!-- Slide image -->
             <div class="md:w-1/2 p-8 flex items-center justify-center bg-white border-r border-gray-200">
               <img 
-                :src="slides[currentSlide].image" 
-                :alt="slides[currentSlide].title" 
+                :src="currentSlide.image" 
+                :alt="currentSlide.title" 
                 class="max-w-full max-h-64 object-contain"
               />
             </div>
             
             <!-- Slide content -->
             <div class="md:w-1/2 p-8 bg-white">
-              <h3 class="text-xl font-bold mb-4 text-dobbin-dark-green">{{ slides[currentSlide].title }}</h3>
-              <p class="mb-6 text-gray-700">{{ slides[currentSlide].description }}</p>
+              <h3 class="text-xl font-bold mb-4 text-dobbin-dark-green">{{ currentSlide.title }}</h3>
+              <p class="mb-6 text-gray-700">{{ currentSlide.description }}</p>
               <a 
-                :href="slides[currentSlide].patentNumber ? '#' + slides[currentSlide].patentNumber : '#'"
+                :href="currentSlide.patentNumber ? '#' + currentSlide.patentNumber : '#'"
                 class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4"
               >
-                {{ slides[currentSlide].linkText || 'Patent ' + slides[currentSlide].patentNumber }}
+                {{ currentSlide.linkText || 'Patent ' + currentSlide.patentNumber }}
               </a>
             </div>
           </div>
@@ -55,10 +55,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+
+// For debugging purposes
+const fromMarkdown = ref(false);
+
+// Set up the slide index
+const currentIndex = ref(0);
 
 // Use Nuxt Content module to fetch patent data
-const { data: patents } = await useAsyncData('patents', () => 
+const { data: patentContent } = await useAsyncData('patents', () => 
   queryContent('/patents').sort({ order: 1 }).find()
 );
 
@@ -94,14 +100,44 @@ const fallbackPatents = [
   }
 ];
 
-// Computed property for slides with fallback
+// Slides from markdown or fallback
 const slides = computed(() => {
-  return (patents.value && patents.value.length > 0) ? patents.value : fallbackPatents;
+  // Check if we have valid content from markdown
+  if (patentContent.value && patentContent.value.length > 0) {
+    fromMarkdown.value = true;
+    console.log('Using markdown content:', patentContent.value);
+    return patentContent.value;
+  }
+  
+  // Use fallback if no markdown content
+  console.log('Using fallback patent data');
+  fromMarkdown.value = false;
+  return fallbackPatents;
 });
 
-const currentSlide = ref(0);
-let intervalId = null;
+// Current slide based on index
+const currentSlide = computed(() => {
+  if (slides.value.length > 0) {
+    return slides.value[currentIndex.value];
+  }
+  return null;
+});
 
+// Previous slide navigation
+const prevSlide = () => {
+  if (slides.value.length > 0) {
+    currentIndex.value = (currentIndex.value - 1 + slides.value.length) % slides.value.length;
+  }
+};
+
+// Next slide navigation
+const nextSlide = () => {
+  if (slides.value.length > 0) {
+    currentIndex.value = (currentIndex.value + 1) % slides.value.length;
+  }
+};
+
+// Props for configuration
 const props = defineProps({
   autoplay: {
     type: Boolean,
@@ -113,24 +149,29 @@ const props = defineProps({
   }
 });
 
-const nextSlide = () => {
-  if (slides.value.length > 0) {
-    currentSlide.value = (currentSlide.value + 1) % slides.value.length;
-  }
-};
+// Expose properties and methods for parent components
+defineExpose({
+  slides,
+  currentSlide,
+  fromMarkdown,
+  prevSlide,
+  nextSlide
+});
 
-const prevSlide = () => {
-  if (slides.value.length > 0) {
-    currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
-  }
-};
+let intervalId = null;
 
+// Set up autoplay if enabled
 onMounted(() => {
   if (props.autoplay && slides.value.length > 0) {
     intervalId = setInterval(nextSlide, props.interval);
   }
+  
+  // Log content for debugging
+  console.log('Patent content loaded:', patentContent.value);
+  console.log('Using content from markdown:', fromMarkdown.value);
 });
 
+// Clean up interval on component unmount
 onUnmounted(() => {
   if (intervalId) {
     clearInterval(intervalId);
