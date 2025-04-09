@@ -44,9 +44,10 @@
         </svg>
       </button>
       
-      <!-- Carousel content -->
+      <!-- Carousel content aligned with text container -->
       <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto">
+        <!-- Removed max-width to match paragraph width -->
+        <div class="mx-auto"> 
           <!-- Carousel slide container -->
           <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
             <!-- Removed transition-group for no animation -->
