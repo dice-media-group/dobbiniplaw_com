@@ -347,12 +347,29 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel-bg {
-  background-color: #e5ede8; /* Light green color from screenshot */
+  background-image: url('/img/Patent-Diagram.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e5ede8; /* Light green color as fallback and overlay tint */
+  background-blend-mode: overlay; /* Blend the image with the background color */
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* Ensure the background has a green tint */
+.carousel-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(32, 108, 70, 0.1); /* Light green overlay */
+  z-index: -1;
 }
 </style>
