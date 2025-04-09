@@ -1,7 +1,7 @@
 <template>
   <div class="patent-carousel relative">
     <!-- Carousel container with full-width background -->
-    <div class="carousel-bg py-16 relative">
+    <div class="carousel-bg py-20 relative">
       <!-- Navigation arrows -->
       <button 
         @click="prevSlide" 
@@ -55,30 +55,45 @@
         </svg>
       </button>
       
-      <!-- Carousel content -->
+      <!-- Carousel content with animation -->
       <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto" v-if="currentSlide">
-          <div class="flex flex-col md:flex-row bg-white shadow-lg overflow-hidden">
-            <!-- Slide image -->
-            <div class="md:w-1/2 p-8 flex items-center justify-center bg-white border-r border-gray-200">
-              <img 
-                :src="currentSlide.image" 
-                :alt="currentSlide.title" 
-                class="max-w-full max-h-64 object-contain"
-              />
-            </div>
-            
-            <!-- Slide content -->
-            <div class="md:w-1/2 p-8 bg-white">
-              <h3 class="text-xl font-bold mb-4 text-dobbin-dark-green">{{ currentSlide.title }}</h3>
-              <p class="mb-6 text-gray-700">{{ currentSlide.description }}</p>
-              <a 
-                :href="currentSlide.patentNumber ? '#' + currentSlide.patentNumber : '#'"
-                class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4"
+        <div class="max-w-5xl mx-auto">
+          <!-- Carousel slide container with overflow hidden for animation -->
+          <div class="overflow-hidden bg-white shadow-lg rounded" style="min-height: 400px;">
+            <transition-group 
+              name="slide" 
+              tag="div"
+              class="relative"
+            >
+              <!-- Each slide is absolutely positioned and shown/hidden based on index -->
+              <div 
+                v-for="(patent, idx) in allPatents" 
+                :key="patent.title" 
+                v-show="idx === currentIndex"
+                class="flex flex-col md:flex-row w-full"
               >
-                {{ currentSlide.linkText || 'Patent ' + currentSlide.patentNumber }}
-              </a>
-            </div>
+                <!-- Slide image -->
+                <div class="md:w-1/2 p-10 flex items-center justify-center bg-white border-r border-gray-200">
+                  <img 
+                    :src="patent.image" 
+                    :alt="patent.title" 
+                    class="max-w-full max-h-80 object-contain patent-image"
+                  />
+                </div>
+                
+                <!-- Slide content -->
+                <div class="md:w-1/2 p-10 bg-white">
+                  <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
+                  <p class="mb-8 text-gray-700 patent-description">{{ patent.description }}</p>
+                  <a 
+                    :href="patent.patentNumber ? '#' + patent.patentNumber : '#'"
+                    class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 patent-button"
+                  >
+                    {{ patent.linkText || 'Patent ' + patent.patentNumber }}
+                  </a>
+                </div>
+              </div>
+            </transition-group>
           </div>
         </div>
       </div>
@@ -98,6 +113,9 @@ const queryError = ref(null);
 const currentIndex = ref(0);
 const markdownPatents = ref([]);
 const allPatents = ref([]);
+
+// Animation direction (for transitions)
+const direction = ref('right'); // 'right' or 'left'
 
 // Try direct content API access
 const fetchPatentsDirectly = async () => {
@@ -234,16 +252,18 @@ const currentSlide = computed(() => {
   return null;
 });
 
-// Previous slide navigation
+// Previous slide navigation with animation direction
 const prevSlide = () => {
   if (allPatents.value.length > 0) {
+    direction.value = 'left';
     currentIndex.value = (currentIndex.value - 1 + allPatents.value.length) % allPatents.value.length;
   }
 };
 
-// Next slide navigation
+// Next slide navigation with animation direction
 const nextSlide = () => {
   if (allPatents.value.length > 0) {
+    direction.value = 'right';
     currentIndex.value = (currentIndex.value + 1) % allPatents.value.length;
   }
 };
@@ -371,5 +391,47 @@ onUnmounted(() => {
   bottom: 0;
   background-color: rgba(32, 108, 70, 0.1); /* Light green overlay */
   z-index: -1;
+}
+
+/* Slide animations */
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* Animation for individual elements */
+.patent-image, .patent-title, .patent-description, .patent-button {
+  transition: all 0.5s;
+  transition-delay: 0.2s;
+}
+
+.slide-enter-from .patent-image,
+.slide-enter-from .patent-title,
+.slide-enter-from .patent-description,
+.slide-enter-from .patent-button {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide-enter-from .patent-title {
+  transition-delay: 0.3s;
+}
+
+.slide-enter-from .patent-description {
+  transition-delay: 0.4s;
+}
+
+.slide-enter-from .patent-button {
+  transition-delay: 0.5s;
 }
 </style>
