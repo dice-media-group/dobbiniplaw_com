@@ -2,10 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxt/image'],
 
   content: {
     documentDriven: true,

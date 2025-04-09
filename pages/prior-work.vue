@@ -1,12 +1,11 @@
 <template>
   <div>
     <!-- Header Section -->
-    <section class="bg-dobbin-green text-white py-8">
-      <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-bold mb-4">Prior Work</h1>
-        <p class="mb-2">Examples of our intellectual property work</p>
-      </div>
-    </section>
+    <!-- Use the reusable hero banner component with just title -->
+    <HeroBanner title="Prior Work">
+      <p class="font-crimson text-white">
+      </p>
+    </HeroBanner>
     
     <!-- Content Section -->
     <section class="py-8">

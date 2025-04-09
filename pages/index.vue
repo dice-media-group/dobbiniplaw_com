@@ -1,19 +1,16 @@
 <template>
   <div>
-    <!-- Hero Banner - Fixed text visibility -->
-    <section class="bg-dobbin-dark-green text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl mb-3 font-crimson text-white">Dobbin IP Law P.C.</h1>
-          <h2 class="text-xl mb-4 font-crimson text-white">Geoff Dobbin, Patent and Intellectual Law Attorney</h2>
-          <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We will stay open for business and will be using telephone and video calls. Please call and let us know how we can best help you at (801) 969-6609.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Use the reusable hero banner component with title and subtitle -->
+    <HeroBanner 
+      title="Dobbin IP Law P.C." 
+      subtitle="Geoff Dobbin, Patent and Intellectual Law Attorney"
+    >
+      <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We are still open for business and will be using telephonic and video calls. Please call and let's see how we can best help you at (801) 969-6609!</p>
+    </HeroBanner>
     
     <!-- Video and Copyright Section -->
     <section class="py-8">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Video Section -->
           <div class="bg-gray-100 p-2">
@@ -58,8 +55,8 @@
     
     <!-- Main Content Section -->
     <section class="py-8">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mx-auto">
           <p class="text-lg mb-6 font-crimson">
             <span class="et-dropcap">Y</span>our work is your baby – whether it is an invention or art. Like any parent you want to protect and nurture your baby and help it grow to its fullest potential. How do you do that? That's where we can help. At Dobbin IP Law, we specialize in obtaining patents to protect your inventions, copyrights to protect your authorship, and trademarks to protect your marketing. Let us help you with these parts of the "parenting" process.
           </p>
@@ -71,10 +68,10 @@
       </div>
     </section>
     
-    <!-- IP Needs Section - UPDATED with dark background and light text -->
+    <!-- IP Needs Section -->
     <section class="py-8 bg-dobbin-dark-green">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mx-auto">
           <h2 class="text-2xl font-bold mb-6 font-crimson text-white">Get help for your intellectual property needs</h2>
           <p class="mb-6 font-crimson text-white">
             When you come up with a new idea and put it into tangible form, you need legal protection to safeguard your work from being copied. Intellectual property comes in several forms; the three most common of which include patents, trademarks, and copyrights.
@@ -85,8 +82,8 @@
     
     <!-- Attorney Bio Section -->
     <section class="py-8">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="md:col-span-1">
             <img src="https://placehold.co/300x400?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
           </div>
@@ -110,8 +107,8 @@
     
     <!-- We Care About Our Clients - Black bg white text section -->
     <section class="py-12 bg-black">
-      <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mx-auto">
           <h2 class="text-3xl mb-6 font-crimson text-white">We Care About Our Clients</h2>
           <p class="mb-4 font-crimson text-white leading-relaxed text-lg">
             When you choose Dobbin IP Law, you will discover that we care about our clients. We will work with you one on one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch business grow and expand.
@@ -151,7 +148,7 @@
     
     <!-- Main White Testimonial Section with Arrows -->
     <section class="bg-white py-16 px-4 md:px-8 relative">
-      <div class="container mx-auto">
+      <div class="container mx-auto max-w-6xl">
         <!-- Navigation Arrows -->
         <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-dobbin-dark-green transition focus:outline-none z-10">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -266,14 +263,13 @@
         </div>
       </div>
     </section>
-    
-
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import CTASection from '../components/CTASection.vue';
+import HeroBanner from '../components/HeroBanner.vue';
 
 // For carousel functionality
 let currentSlide = ref(0);
@@ -369,6 +365,13 @@ useHead({
 @media (max-width: 768px) {
   .testimonial-card:hover {
     transform: translateY(-5px);
+  }
+}
+
+/* Adjust the max width for desktop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1280px;
   }
 }
 </style>

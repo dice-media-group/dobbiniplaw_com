@@ -1,91 +1,119 @@
 <template>
   <div>
-    <!-- Header Section -->
-    <section class="bg-dobbin-green text-white py-8">
-      <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-bold mb-4">About Dobbin IP Law</h1>
-        <p class="mb-2">Geoff Dobbin, Patent and Intellectual Law Attorney</p>
-      </div>
-    </section>
+    <!-- Use the reusable hero banner component with just title -->
+    <HeroBanner title="About Dobbin IP Law">
+      <p class="font-crimson text-white">
+        We are committed to continue serving you in these trying times. We are still open for business and will be using telephonic and video calls. Please call and let's see how we can best help you!
+      </p>
+    </HeroBanner>
     
-    <!-- About Content Section -->
-    <section class="py-8">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <!-- Geoff Section -->
+    <section class="py-6">
+      <div class="container mx-auto">
+        <div class="mx-auto px-4 max-w-[1140px]">
+          <h2 class="text-xl font-crimson text-dobbin-dark-green border-b border-gray-200 pb-1 mb-1">Geoff</h2>
+          <p class="mb-4 italic text-sm font-crimson text-dobbin-gray">
+            Intellectual property attorney protects inventions and other creations
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-4">
             <div class="md:col-span-1">
-              <img src="https://placehold.co/300x400?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
+              <div class="mx-2 my-2">
+                <img src="https://placehold.co/250x350?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
+              </div>
             </div>
-            <div class="md:col-span-2">
-              <h2 class="text-xl font-bold mb-4">About Geoff Dobbin</h2>
-              <p class="mb-4">
-                For over 20 years, Geoff Dobbin has assisted independent inventors and other creators of intellectual property with protecting their "babies." He understands your love invested you to not just dive at the hard work that went into your creation.
+            <div class="md:col-span-3">
+              <p class="mb-3 font-crimson text-dobbin-gray">
+                For over 20 years, Geoff Dobbin has assisted independent inventors and other creators of intellectual property with protecting their "babies." He understands just how invested you can feel after all the hard work that went into your creation.
               </p>
-              <p class="mb-4">
-                Although he founded Dobbin IP Law P.C. when he moved to Utah in 2004, Mr. Dobbin has been practicing intellectual property law and representing creators in need of patents, copyrights and trademarks since 1998. 
+              <p class="mb-3 font-crimson text-dobbin-gray">
+                Although he founded Dobbin IP Law P.C. when he moved to Utah in 2004, Geoff has been practicing intellectual property law and representing creators in need of patents, copyrights and trademarks since 1998. With a degree in physics that gives him a solid scientific background to understand many different technical fields, he is quick on the uptake and easily grasps new concepts and ideas, no matter how complex.
               </p>
-              <p class="mb-4">
-                With a degree in physics that gives him a solid scientific background in traditional patent subject matter, Mr. Dobbin is as quick on the uptake and ready grasp new concepts and ideas, no matter how complex.
-              </p>
-              <p>
-                Mr. Dobbin is a solo practitioner with a strong track record of hard work by prior word. He especially enjoys working with independent inventors and watching businesses grow and expand.
+              <p class="font-crimson text-dobbin-gray">
+                Geoff is a solo practitioner with a strong track record as evidenced by his prior work. He especially enjoys working with independent inventors and watching businesses grow and expand. He is an avid fan of Doctor Who, the Lord of the Rings, Star Wars, and Star Trek. In his spare time he enjoys smoking various kinds of foods and volunteers at his local church.
               </p>
             </div>
           </div>
           
-          <div class="mb-8">
-            <h2 class="text-xl font-bold mb-4">We Care About Our Clients</h2>
-            <p class="mb-4">
-              We truly believe at Dobbin IP Law that we will be business partners. We will work with you one-on-one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch businesses grow and expand.
-            </p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div class="p-6 bg-gray-100">
-              <h3 class="font-bold mb-2">You Are the Boss</h3>
-              <p>Tell us what you need, and we will work together to meet your needs. We will put our experience to good use to ensure the best outcome is reasonably possible. We work with you one-on-one, starting with a confidential strategy session. We will help you prioritize whether or not to spend your money on a particular IP protection if possible. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential.</p>
+          <!-- Practice Areas, Bar Admissions, Education Section -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+              <h3 class="text-base font-bold mb-2 font-crimson text-dobbin-dark-green">Practice Areas</h3>
+              <ul class="list-disc pl-5 font-crimson text-dobbin-gray">
+                <li>Intellectual Property</li>
+                <li>Patents</li>
+                <li>Trademarks</li>
+                <li>Copyrights</li>
+              </ul>
             </div>
             
-            <div class="p-6 bg-gray-100">
-              <h3 class="font-bold mb-2">We Offer Experience & Knowledge</h3>
-              <p>After working with traditional property attorneys over a half-decade, we understand the requirements and details necessary for your application's approval. With a solid scientific background, Geoffrey Dobbin can grasp a variety of subject matter from the strange physics to heavy manufacturing to. After developing your ideas, we can help you prepare your application in proper format for submission, and then turn on our experience to best effort achieve the scope of your patent application.</p>
+            <div>
+              <h3 class="text-base font-bold mb-2 font-crimson text-dobbin-dark-green">Bar Admissions</h3>
+              <ul class="list-disc pl-5 font-crimson text-dobbin-gray">
+                <li>Colorado, 1997 (inactive)</li>
+                <li>Utah, 2002</li>
+                <li>U.S. Patent & Trademark Office, 1998</li>
+              </ul>
             </div>
             
-            <div class="p-6 bg-gray-100">
-              <h3 class="font-bold mb-2">We Are a Small Business Too</h3>
-              <p>We know what it's like to go through (and succeed) against the experience dup and downs of business. We also know the cost of hiring an attorney and will work with you to find a cost-effective solution. We have included a number of frequently asked questions on our website. You can find the link in the menu at the top. Please refer to browse them, as well as the general information about intellectual property we have provided. If your question has not been answered, please feel free to contact us and schedule a complementary strategy session.</p>
+            <div>
+              <h3 class="text-base font-bold mb-2 font-crimson text-dobbin-dark-green">Education</h3>
+              <ul class="list-disc pl-5 font-crimson text-dobbin-gray">
+                <li>J.D., University of Colorado, 1997</li>
+                <li>B.A., Physics, Alfred University, 1994</li>
+              </ul>
             </div>
           </div>
           
-          <div class="mb-8">
-            <h2 class="text-xl font-bold mb-4">Client Testimonial</h2>
-            <div class="bg-white p-6 border border-gray-200">
-              <p class="italic mb-4">
-                "I am Lee Von Gunten, CEO of Watchdog manufacturing, where we produce and sell Home Security products such as our Watchdog Timers and others. I am pleased and proud to offer this short testimonial regarding Geoff Dobbin and his team at Dobbin IP Law P.C. This is a voluntary testimonial for Geoff and his company."
+          <!-- Shaylyn Section -->
+          <h2 class="text-xl font-crimson text-dobbin-dark-green border-b border-gray-200 pb-1 mb-1">Shaylyn</h2>
+          <p class="mb-4 italic text-sm font-crimson text-dobbin-gray">
+            Paralegal
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="md:col-span-3 order-2 md:order-1">
+              <p class="mb-3 font-crimson text-dobbin-gray">
+                Shaylyn has been working at Dobbin IP Law since 2012. When she first started, she worked as Geoff's office and personal assistant. Seven years later, she is now working as our intellectual property paralegal. She spends most of her time keeping track of the docket, communicating with clients, and helping Geoff with legal filings. She is also a notary and is primarily responsible for keeping the office running as smoothly as possible.
               </p>
-              <p class="mb-4">
-                "We've been working with Geoff and staff for over 12 years with total confidence in the professionality and completeness of their services as they carry through all of our patent and trademark work. Geoff has been there for us to help and answer questions and to be on top of all that concerns all of our intellectual property applications."
+              <p class="font-crimson text-dobbin-gray">
+                She is currently attending Salt Lake Community College to receive her AAS in paralegal studies. When she is not working or busy with school, she enjoys sitting down to read a good book, dancing, and going on hikes.
               </p>
-              <p class="mb-4">
-                "Geoff and his staff are tops. I can't recommend them too highly."
-              </p>
-              <p class="font-bold">Thank you,</p>
-              <p>Lee Von Gunten, CEO</p>
-              <p>Watchdog Manufacturing</p>
+            </div>
+            <div class="md:col-span-1 order-1 md:order-2">
+              <img src="https://placehold.co/300x300?text=Shaylyn" alt="Shaylyn" class="w-full">
             </div>
           </div>
         </div>
       </div>
     </section>
-    
   </div>
 </template>
 
 <script setup>
+import HeroBanner from '../components/HeroBanner.vue';
+
 useHead({
   title: 'About Us | Dobbin IP Law P.C.',
   meta: [
-    { name: 'description', content: 'Learn about Geoff Dobbin and Dobbin IP Law, specializing in patents, trademarks, and copyrights for over 20 years.' }
+    { name: 'description', content: 'Learn about the team at Dobbin IP Law, specializing in patents, trademarks, and copyrights for over 20 years.' }
   ]
 })
 </script>
+
+<style scoped>
+/* Font weight for headings */
+h2 {
+  font-weight: normal;
+}
+
+/* Custom italic style for the description */
+.italic {
+  font-style: italic;
+}
+
+/* Define global container for content alignment */
+.container {
+  width: 100%;
+}
+</style>
