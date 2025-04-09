@@ -1,7 +1,7 @@
 ---
 title: "Magazine Grip"
 description: "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches, providing better grip and reducing noise."
-image: "/img/magazine-grip.png"
+image: "/img/prior-work/magazine-grip-1.png"
 patentNumber: "9,341,429"
 linkText: "Patent 9,341,429"
 order: 2
@@ -9,7 +9,7 @@ order: 2
 
 # Magazine Grip
 
-A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine.
+A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches. The design comprises a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine.
 
 ## Technical Details
 
