@@ -20,7 +20,7 @@
       </div>
     </section>
     
-    <!-- Patent Carousel Section -->
+    <!-- Patent Carousel Section with full-width background -->
     <PatentCarousel :slides="patentSlides" />
     
     <!-- Call to Action Button -->

@@ -1,7 +1,7 @@
 <template>
   <div class="patent-carousel relative">
-    <!-- Carousel container with background -->
-    <div class="carousel-bg bg-green-100/20 py-12 relative">
+    <!-- Carousel container with full-width background -->
+    <div class="carousel-bg py-12 relative">
       <!-- Navigation arrows -->
       <button 
         @click="prevSlide" 
@@ -43,7 +43,7 @@
               <a 
                 :href="slides[currentSlide].link" 
                 class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4 rounded"
-                v-if="slides[currentSlide].link"
+                v-if="slides[currentSlide].patentNumber"
               >
                 {{ slides[currentSlide].linkText || 'Patent ' + slides[currentSlide].patentNumber }}
               </a>
@@ -111,13 +111,19 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel-bg {
-  background-image: url('/img/patent-bg.jpg');
+  background-image: url('/img/Patent-Diagram.png');
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
-/* Fallback if image doesn't load */
+/* Ensure the background has a green tint */
 .carousel-bg::before {
   content: '';
   position: absolute;
@@ -125,7 +131,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(18, 53, 44, 0.05);
+  background-color: rgba(32, 108, 70, 0.2); /* Green tint overlay */
   z-index: -1;
 }
 </style>
