@@ -13,7 +13,7 @@ A digit support for AR family receivers designed to reside in a gap left between
 
 ## Technical Details
 
-This invention addresses an ergonomic issue in the AR platform by providing a specialized support for the shooter's finger when not engaged with the trigger. The support is contoured to fit precisely in the space between the pistol grip and trigger guard of AR-style firearms. It provides a comfortable resting position that improves hand positioning and reduces fatigue during extended use. The design enhances overall control while maintaining quick access to the trigger when needed. Constructed of durable materials compatible with the firearm's existing finish, the support can be installed without special tools or permanent modifications to the weapon.
+A digit support for AR family receivers designed to reside in a gap left between a receiver’s pistol grip and trigger guard. The support fills the gap and ideally separates a user’s digit from the gap, thereby protecting the user’s digit from injury due to prolonged contact with the walls forming said gap. The digit support is easily installed without removal of any components of or attachments to the receiver and in its best mode allows for the simultaneous opening of the receiver’s trigger guard. In the best mode, the support is a body molded from a rubber compound having dimensions to fit snugly in the gap left between the trigger guard and the pistol grip. Ideally, the remaining exposed surface extends slightly higher than the depth of the gap and is cylindrically domed. Also in the best mode, the side of the body abutting the trigger guard mount should have a concavity designed to fit around the trigger guard mount so as to encompass said mount.
 
 ## Patent Number
 
