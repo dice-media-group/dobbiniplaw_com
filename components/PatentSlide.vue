@@ -3,9 +3,9 @@
     v-show="isActive"
     class="flex flex-col md:flex-row w-full patent-slide"
   >
-    <!-- Slide image with improved centering and increased height -->
-    <div class="md:w-1/2 p-6 flex items-center justify-center bg-white border-r border-gray-200">
-      <div class="w-full h-full flex items-center justify-center">
+    <!-- Slide image with improved centering, increased height and padding top -->
+    <div class="md:w-1/2 pt-12 pb-6 px-6 flex items-center justify-center bg-white border-r border-gray-200">
+      <div class="w-full h-full flex items-center justify-center mt-8">
         <img 
           :src="patent.image" 
           :alt="patent.title" 
@@ -93,5 +93,6 @@ const props = defineProps({
   margin: 0 auto;
   max-height: 400px; /* Increased maximum height */
   width: auto;
+  margin-top: 1.5rem; /* Additional top margin */
 }
 </style>

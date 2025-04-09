@@ -47,7 +47,7 @@
       <!-- Carousel content -->
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
-          <!-- Carousel slide container with increased height -->
+          <!-- Carousel slide container with further increased height -->
           <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
             <transition-group 
               name="slide" 
@@ -195,7 +195,7 @@ onUnmounted(() => {
 /* Fixed height container for slides to prevent layout shifts - increased height */
 .slide-container {
   position: relative;
-  min-height: 500px; /* Increased from 400px to allow more space for images */
+  min-height: 550px; /* Further increased from 500px to allow more space for vertical positioning */
 }
 
 /* Crossfade with scale animation */
