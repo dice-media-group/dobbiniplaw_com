@@ -3,13 +3,13 @@
     v-show="isActive"
     class="flex flex-col md:flex-row w-full patent-slide"
   >
-    <!-- Slide image with improved centering -->
-    <div class="md:w-1/2 p-10 flex items-center justify-center bg-white border-r border-gray-200">
+    <!-- Slide image with improved centering and increased height -->
+    <div class="md:w-1/2 p-6 flex items-center justify-center bg-white border-r border-gray-200">
       <div class="w-full h-full flex items-center justify-center">
         <img 
           :src="patent.image" 
           :alt="patent.title" 
-          class="max-w-full max-h-80 object-contain patent-image mx-auto"
+          class="max-w-full max-h-96 object-contain patent-image mx-auto"
         />
       </div>
     </div>
@@ -54,6 +54,7 @@ const props = defineProps({
   left: 0;
   right: 0;
   bottom: 0;
+  height: 100%;
 }
 
 /* Animation for individual elements */
@@ -86,9 +87,11 @@ const props = defineProps({
   transition-delay: 0.5s;
 }
 
-/* Additional centering for image */
+/* Additional centering and sizing for image */
 .patent-image {
   display: block;
   margin: 0 auto;
+  max-height: 400px; /* Increased maximum height */
+  width: auto;
 }
 </style>
