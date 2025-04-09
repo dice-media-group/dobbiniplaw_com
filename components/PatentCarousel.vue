@@ -47,13 +47,10 @@
       <!-- Carousel content -->
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
-          <!-- Carousel slide container with further increased height -->
+          <!-- Carousel slide container -->
           <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
-            <transition-group 
-              name="slide" 
-              tag="div"
-              class="relative"
-            >
+            <!-- Removed transition-group for no animation -->
+            <div class="relative">
               <PatentSlide 
                 v-for="(patent, idx) in allPatents" 
                 :key="patent.title" 
@@ -61,7 +58,7 @@
                 :isActive="idx === currentIndex"
                 :slideDirection="direction"
               />
-            </transition-group>
+            </div>
           </div>
         </div>
       </div>
@@ -150,10 +147,7 @@ onMounted(async () => {
   // Fetch patents
   await fetchPatents();
   
-  // Set up autoplay if enabled
-  if (props.autoplay && allPatents.value.length > 0) {
-    intervalId = setInterval(nextSlide, props.interval);
-  }
+  // Autoplay is disabled - no interval setup
 });
 
 // Clean up interval on component unmount
@@ -192,27 +186,21 @@ onUnmounted(() => {
   z-index: -1;
 }
 
-/* Fixed height container for slides to prevent layout shifts - increased height */
+/* Fixed height container for slides to prevent layout shifts */
 .slide-container {
   position: relative;
-  min-height: 550px; /* Further increased from 500px to allow more space for vertical positioning */
+  min-height: 550px;
 }
 
-/* Crossfade with scale animation */
+/* Animations disabled */
 .slide-enter-active,
-.slide-leave-active {
-  transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+.slide-leave-active,
+.slide-enter-from,
+.slide-leave-to {
+  transition: none;
   position: absolute;
   width: 100%;
-}
-
-.slide-enter-from {
-  opacity: 0;
-  transform: scale(1.05);
-}
-
-.slide-leave-to {
-  opacity: 0;
-  transform: scale(0.95);
+  transform: none;
+  opacity: 1;
 }
 </style>

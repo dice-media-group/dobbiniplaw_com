@@ -3,8 +3,8 @@
     v-show="isActive"
     class="flex flex-col md:flex-row w-full patent-slide"
   >
-    <!-- Slide image with top aligned with title -->
-    <div class="md:w-1/2 flex bg-white border-r border-gray-200">
+    <!-- Slide image with orange background -->
+    <div class="md:w-1/2 flex bg-orange-400 border-r border-gray-200">
       <div class="w-full flex flex-col justify-center px-6">
         <!-- Added empty div with same height as title margin + padding for alignment -->
         <div class="h-10"></div>
@@ -61,41 +61,26 @@ const props = defineProps({
   height: 100%;
 }
 
-/* Animation for individual elements */
+/* Animation for individual elements - disabled for now */
 .patent-image, .patent-title, .patent-description, .patent-button {
-  transition: all 0.5s;
+  transition: none; /* Disabled transitions */
 }
 
-/* Staggered animation for elements within the slide */
-.slide-enter-from .patent-image {
-  opacity: 0;
-  transform: scale(0.9);
-  transition-delay: 0.2s;
-}
-
-.slide-enter-from .patent-title {
-  opacity: 0;
-  transform: scale(0.9);
-  transition-delay: 0.3s;
-}
-
-.slide-enter-from .patent-description {
-  opacity: 0;
-  transform: scale(0.9);
-  transition-delay: 0.4s;
-}
-
+/* Staggered animation disabled */
+.slide-enter-from .patent-image,
+.slide-enter-from .patent-title,
+.slide-enter-from .patent-description,
 .slide-enter-from .patent-button {
-  opacity: 0;
-  transform: scale(0.9);
-  transition-delay: 0.5s;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
 }
 
 /* Additional centering and sizing for image */
 .patent-image {
   display: block;
   margin: 0 auto;
-  max-height: 350px; /* Adjusted to fit with aligned top */
+  max-height: 350px;
   width: auto;
 }
 </style>
