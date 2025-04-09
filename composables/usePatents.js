@@ -11,24 +11,24 @@ const fallbackPatents = [
   },
   {
     title: "Magazine Grip",
-    description: "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches, providing better grip and reducing noise.",
+    description: "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine. The top of the band has an even slightly smaller inner circumference than the lower part of the band. Extending from the top of the band is a handle designed to allow a finger to wrap around the handle and extract the magazine. Also provided are recessed areas and four diagonal force distribution beams to constrict the invention and allow it to grip a magazine more snugly when the handle is pulled. The invention is also used in combination with a magazine pouch to deaden noise by biasing the magazines against the pouch and each other.",
     image: "/img/prior-work/magazine-grip-1.png",
-    patentNumber: "9,341,429",
-    linkText: "Patent 9,341,429"
+    patentNumber: "6,212,815",
+    linkText: "Patent 6,212,815"
   },
   {
-    title: "Firearm Gas System",
-    description: "A gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to operate the bolt system.",
+    title: "Gas system for an automatic firearm ",
+    description: "The present invention is a gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to impinge upon and operate the firearm's bolt operating system. The system does not have a translation rod extending between the two components as in prior art systems nor does it have a rearward tap like others. As such, it balances cleanliness and weight reduction of the prior art systems and reduces moving parts.",
     image: "/img/prior-work/gas-system-1.png",
-    patentNumber: "8,689,672",
-    linkText: "Patent 8,689,672"
+    patentNumber: "8,201,489",
+    linkText: "Patent 8,201,489"
   },
   {
     title: "Quick-Change Barrel System",
-    description: "A quick-change barrel system for firearms that allows rapid barrel replacement without special tools, increasing versatility and reducing maintenance time.",
+    description: "The present invention is an improved quick change barrel system for a firearm. It features an interlocking trunnion and lock ring that hold the barrel in place proximate the receiver. Intermittent threading provides multiple points of interface. A foldable handle is provided to allow safe removal of the lock ring and additional torque for attachment and removal of the lock ring from the system.",
     image: "/img/prior-work/Quick-Change-Barrel.png",
-    patentNumber: "8,234,808",
-    linkText: "Patent 8,234,808"
+    patentNumber: "7,574,823",
+    linkText: "Patent 7,574,823"
   }
 ];
 
