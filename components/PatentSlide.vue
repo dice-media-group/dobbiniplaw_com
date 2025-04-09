@@ -4,18 +4,12 @@
     class="flex flex-col md:flex-row w-full patent-slide"
   >
     <!-- Slide image with orange background -->
-    <div class="md:w-1/2 flex bg-orange-400 border-r border-gray-200">
-      <div class="w-full flex flex-col justify-center px-6">
-        <!-- Added empty div with same height as title margin + padding for alignment -->
-        <div class="h-10"></div>
-        <div class="flex items-center justify-center">
-          <img 
+    <div class="md:w-1/2 p-10 bg-white">
+      <img 
             :src="patent.image" 
             :alt="patent.title" 
             class="max-w-full max-h-96 object-contain patent-image mx-auto"
           />
-        </div>
-      </div>
     </div>
     
     <!-- Slide content -->
@@ -23,8 +17,10 @@
       <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
       <p class="mb-8 text-gray-700 patent-description">{{ patent.description }}</p>
       <a 
-        :href="patent.patentNumber ? '#' + patent.patentNumber : '#'"
+        :href="getGooglePatentUrl(patent.patentNumber)"
         class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 patent-button"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {{ patent.linkText || 'Patent ' + patent.patentNumber }}
       </a>
@@ -48,6 +44,24 @@ const props = defineProps({
     default: 'right'
   }
 });
+
+/**
+ * Formats the patent number to create a Google Patents URL
+ * @param {string} patentNumber - The patent number (e.g., "7,271,420")
+ * @returns {string} - The Google Patents URL
+ */
+const getGooglePatentUrl = (patentNumber) => {
+  if (!patentNumber) return '#';
+  
+  // Remove commas and spaces from patent number
+  const formattedNumber = patentNumber.replace(/,|\s/g, '');
+  
+  // Check if it's a US patent (most common case)
+  const prefix = formattedNumber.startsWith('US') ? '' : 'US';
+  
+  // Construct the Google Patents URL
+  return `https://patents.google.com/patent/${prefix}${formattedNumber}/en`;
+};
 </script>
 
 <style scoped>
