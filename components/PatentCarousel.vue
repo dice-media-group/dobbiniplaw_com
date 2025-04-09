@@ -26,7 +26,7 @@
       <!-- Carousel content -->
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
-          <div class="flex flex-col md:flex-row bg-white shadow-lg rounded overflow-hidden">
+          <div v-if="slides.length > 0" class="flex flex-col md:flex-row bg-white shadow-lg rounded overflow-hidden">
             <!-- Slide image -->
             <div class="md:w-1/2 p-6 flex items-center justify-center">
               <img 
@@ -41,9 +41,8 @@
               <h3 class="text-xl font-bold mb-4 text-dobbin-dark-green">{{ slides[currentSlide].title }}</h3>
               <p class="mb-6 text-gray-700">{{ slides[currentSlide].description }}</p>
               <a 
-                :href="slides[currentSlide].link" 
+                :href="slides[currentSlide].patentNumber ? '#' + slides[currentSlide].patentNumber : '#'"
                 class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4 rounded"
-                v-if="slides[currentSlide].patentNumber"
               >
                 {{ slides[currentSlide].linkText || 'Patent ' + slides[currentSlide].patentNumber }}
               </a>
@@ -68,13 +67,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+
+// Use Nuxt Content module to fetch patent data
+const { data: patents } = await useAsyncData('patents', () => 
+  queryContent('/patents').sort({ order: 1 }).find()
+);
+
+// Computed property for slides based on content
+const slides = computed(() => {
+  return patents.value || [];
+});
+
+const currentSlide = ref(0);
+let intervalId = null;
 
 const props = defineProps({
-  slides: {
-    type: Array,
-    required: true
-  },
   autoplay: {
     type: Boolean,
     default: true
@@ -85,19 +93,20 @@ const props = defineProps({
   }
 });
 
-const currentSlide = ref(0);
-let intervalId = null;
-
 const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % props.slides.length;
+  if (slides.value.length > 0) {
+    currentSlide.value = (currentSlide.value + 1) % slides.value.length;
+  }
 };
 
 const prevSlide = () => {
-  currentSlide.value = (currentSlide.value - 1 + props.slides.length) % props.slides.length;
+  if (slides.value.length > 0) {
+    currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
+  }
 };
 
 onMounted(() => {
-  if (props.autoplay) {
+  if (props.autoplay && slides.value.length > 0) {
     intervalId = setInterval(nextSlide, props.interval);
   }
 });
