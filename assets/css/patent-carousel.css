@@ -1,0 +1,11 @@
+.carousel-bg {
+  background-image: url('/img/Patent-Diagram.png');
+  background-size: cover;
+  background-position: center;
+  /* ... rest of carousel styles ... */
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  /* ... animation styles ... */
+}
