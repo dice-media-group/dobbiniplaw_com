@@ -3,13 +3,15 @@
     v-show="isActive"
     class="flex flex-col md:flex-row w-full patent-slide"
   >
-    <!-- Slide image -->
+    <!-- Slide image with improved centering -->
     <div class="md:w-1/2 p-10 flex items-center justify-center bg-white border-r border-gray-200">
-      <img 
-        :src="patent.image" 
-        :alt="patent.title" 
-        class="max-w-full max-h-80 object-contain patent-image"
-      />
+      <div class="w-full h-full flex items-center justify-center">
+        <img 
+          :src="patent.image" 
+          :alt="patent.title" 
+          class="max-w-full max-h-80 object-contain patent-image mx-auto"
+        />
+      </div>
     </div>
     
     <!-- Slide content -->
@@ -82,5 +84,11 @@ const props = defineProps({
   opacity: 0;
   transform: scale(0.9);
   transition-delay: 0.5s;
+}
+
+/* Additional centering for image */
+.patent-image {
+  display: block;
+  margin: 0 auto;
 }
 </style>
