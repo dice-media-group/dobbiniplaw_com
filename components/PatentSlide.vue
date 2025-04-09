@@ -1,7 +1,7 @@
 <template>
   <div 
     v-show="isActive"
-    class="flex flex-col md:flex-row w-full"
+    class="flex flex-col md:flex-row w-full patent-slide"
   >
     <!-- Slide image -->
     <div class="md:w-1/2 p-10 flex items-center justify-center bg-white border-r border-gray-200">
@@ -45,29 +45,42 @@ const props = defineProps({
 </script>
 
 <style scoped>
+/* Ensure slide has proper positioning for animation */
+.patent-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 /* Animation for individual elements */
 .patent-image, .patent-title, .patent-description, .patent-button {
   transition: all 0.5s;
+}
+
+/* Staggered animation for elements within the slide */
+.slide-enter-from .patent-image {
+  opacity: 0;
+  transform: scale(0.9);
   transition-delay: 0.2s;
 }
 
-.slide-enter-from .patent-image,
-.slide-enter-from .patent-title,
-.slide-enter-from .patent-description,
-.slide-enter-from .patent-button {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
 .slide-enter-from .patent-title {
+  opacity: 0;
+  transform: scale(0.9);
   transition-delay: 0.3s;
 }
 
 .slide-enter-from .patent-description {
+  opacity: 0;
+  transform: scale(0.9);
   transition-delay: 0.4s;
 }
 
 .slide-enter-from .patent-button {
+  opacity: 0;
+  transform: scale(0.9);
   transition-delay: 0.5s;
 }
 </style>

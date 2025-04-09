@@ -2,10 +2,10 @@
   <div class="patent-carousel relative">
     <!-- Carousel container with full-width background -->
     <div class="carousel-bg py-20 relative">
-      <!-- Navigation arrows -->
+      <!-- Navigation arrows - positioned with higher z-index to stay above slides -->
       <button 
         @click="prevSlide" 
-        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Previous slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +15,7 @@
       
       <button 
         @click="nextSlide" 
-        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Next slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,8 +47,8 @@
       <!-- Carousel content -->
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
-          <!-- Carousel slide container -->
-          <div class="overflow-hidden bg-white shadow-lg rounded" style="min-height: 400px;">
+          <!-- Carousel slide container with fixed height -->
+          <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
             <transition-group 
               name="slide" 
               tag="div"
@@ -192,19 +192,27 @@ onUnmounted(() => {
   z-index: -1;
 }
 
-/* Slide animations */
+/* Fixed height container for slides to prevent layout shifts */
+.slide-container {
+  position: relative;
+  min-height: 400px;
+}
+
+/* Crossfade with scale animation */
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+  position: absolute;
+  width: 100%;
 }
 
 .slide-enter-from {
-  transform: translateX(100%);
   opacity: 0;
+  transform: scale(1.05);
 }
 
 .slide-leave-to {
-  transform: translateX(-100%);
   opacity: 0;
+  transform: scale(0.95);
 }
 </style>
