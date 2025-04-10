@@ -12,8 +12,8 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css',
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '~/assets/css/main.css'
+    // Removed FontAwesome CSS import that was causing errors
   ],
 
   app: {
