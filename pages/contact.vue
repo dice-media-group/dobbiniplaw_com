@@ -1,11 +1,11 @@
 <template>
   <div class="contact-page">
     <!-- Header Section -->
-    <section class="bg-dobbin-dark-green text-white py-12">
-      <div class="container mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-4 font-crimson">Contact Us</h1>
-      </div>
-    </section>
+    <!-- Use the reusable hero banner component with just title -->
+    <HeroBanner title="Contact Us">
+      <p class="font-crimson text-white"></p>
+    </HeroBanner>
+
     
     <!-- Contact Information Section -->
     <section class="py-8">
@@ -120,26 +120,6 @@
       </div>
     </section>
     
-    <!-- Disclaimer Section -->
-    <section class="bg-dobbin-dark-green text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <div class="mb-6">
-            <p class="mb-1 font-crimson">Dobbin IP Law P.C.</p>
-            <p class="mb-1 font-crimson">2250 S Redwood Rd, Suite 5</p>
-            <p class="mb-4 font-crimson">West Valley City, UT 84119</p>
-            
-            <p class="mb-4 font-crimson">(801) 969-6609</p>
-          </div>
-          
-          <p class="font-crimson text-sm mb-2">
-            This website provides general information about patents, trademarks, copyrights and services available at Dobbin IP Law P.C. It 
-            is for information only and does not constitute legal advice, nor does it constitute the start of an attorney-client relationship. For 
-            specific questions about your situation, please feel free to <a href="#" @click.prevent="scrollToContactForm" class="underline hover:text-dobbin-bright-green">contact us</a>.
-          </p>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 

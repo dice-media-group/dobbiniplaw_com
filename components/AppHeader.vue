@@ -57,7 +57,7 @@
             </div>
           </div>
           <NuxtLink to="/testimonials" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">TESTIMONIALS</NuxtLink>
-          <NuxtLink to="/schedule" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">SCHEDULE STRATEGY SESSION</NuxtLink>
+          <NuxtLink to="/contact" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">SCHEDULE STRATEGY SESSION</NuxtLink>
           <!-- Search button -->
           <button class="py-4 px-3 text-dobbin-gray hover:text-dobbin-bright-green">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -85,7 +85,7 @@
         <NuxtLink to="/prior-work" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">PRIOR WORK</NuxtLink>
         <NuxtLink to="/resources" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">RESOURCES</NuxtLink>
         <NuxtLink to="/testimonials" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">TESTIMONIALS</NuxtLink>
-        <NuxtLink to="/schedule" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink>
+        <NuxtLink to="/contact" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink>
         
         <!-- Mobile search -->
         <div class="mt-4 relative">
