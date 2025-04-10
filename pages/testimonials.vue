@@ -111,7 +111,7 @@
           <p class="mb-6 font-crimson">
             Contact us today to schedule your complementary strategy session and see how we can help protect your inventions, copyrights, and trademarks.
           </p>
-          <a href="/schedule-strategy-session" class="inline-block bg-white text-dobbin-dark-green font-bold py-2 px-8 rounded hover:bg-gray-100 transition font-crimson">
+          <a href="/contact" class="inline-block bg-white text-dobbin-dark-green font-bold py-2 px-8 rounded hover:bg-gray-100 transition font-crimson">
             Schedule a Strategy Session
           </a>
         </div>
