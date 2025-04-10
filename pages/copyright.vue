@@ -125,21 +125,27 @@
       </div>
     </section>
     
-    <!-- Placeholder for FAQ section -->
-    <div id="faq" class="bg-dobbin-dark-green text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl font-bold font-crimson">Frequently Asked Questions About Copyrights</h2>
-          <p class="mt-4">FAQ section coming soon.</p>
-        </div>
-      </div>
-    </div>
+    <!-- FAQ Component -->
+    <CopyrightFAQ />
   </div>
 </template>
 
 <script>
+import CopyrightFAQ from '~/components/CopyrightFAQ.vue';
+
 export default {
-  name: 'CopyrightPage'
+  name: 'CopyrightPage',
+  components: {
+    CopyrightFAQ
+  },
+  head() {
+    return {
+      title: 'Copyright Information | Dobbin IP Law P.C.',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Copyright information and services to protect your creative works. Register copyrights for your literature, art, music, and other creative works with Dobbin IP Law P.C.' }
+      ]
+    }
+  }
 }
 </script>
 
