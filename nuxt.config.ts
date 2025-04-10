@@ -2,14 +2,20 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxt/image'],
-
+  modules: [
+    '@nuxt/content', 
+    '@nuxtjs/tailwindcss', 
+    '@nuxt/image'
+    // Removed @nuxtjs/fontawesome module
+  ],
+  // Removed fontawesome configuration
+  
   content: {
     documentDriven: true,
     highlight: {
       theme: 'github-light'
     }
-  },
+  },  
 
   css: [
     '~/assets/css/main.css'
