@@ -225,8 +225,8 @@
       </div>
     </section>
     
-    <!-- FAQ Items Section -->
-    <section class="py-8 patent-diagram-bg-light">
+    <!-- FAQ Items Section - UPDATED background to Circuit-Board -->
+    <section class="py-8 circuit-board-bg">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <!-- FAQ Items -->
@@ -294,6 +294,20 @@
               </div>
             </div>
           </transition>
+          
+          <!-- YouTube Video Section -->
+          <div class="mt-12 w-full">
+            <div class="aspect-w-16 aspect-h-9 bg-white rounded-lg shadow-md overflow-hidden">
+              <iframe 
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/nDxe4du1ceQ" 
+                title="What is a design patent?"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -499,13 +513,27 @@ useHead({
   opacity: 0.1;
 }
 
-.patent-diagram-bg-light {
-  background-image: url('/img/Patent-Diagram.png');
+/* Updated background for FAQ section to use Circuit-Board.png */
+.circuit-board-bg {
+  background-image: url('/img/Circuit-Board.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #f3f4f6;
+  background-color: rgba(240, 240, 240, 0.95);
   background-blend-mode: overlay;
+  position: relative;
+}
+
+/* Add inner shadow to match original site */
+.circuit-board-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
 }
 
 .patent-work-banner {
@@ -541,5 +569,19 @@ section.w-full {
 .slide-fade-leave-to {
   opacity: 0;
   height: 0;
+}
+
+/* YouTube Video Responsive Container */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.aspect-w-16 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
