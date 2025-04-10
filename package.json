@@ -1,0 +1,24 @@
+{
+  "name": "dobbiniplaw_com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.4.0",
+    "@nuxt/image": "^1.10.0",
+    "@nuxtjs/tailwindcss": "^6.11.0",
+    "ipx": "^3.0.3",
+    "nuxt": "^3.9.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "sass": "^1.69.7",
+    "sass-loader": "^13.3.3"
+  }
+}
