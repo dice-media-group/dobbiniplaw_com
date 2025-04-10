@@ -48,12 +48,13 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </NuxtLink>
-            <!-- Dropdown menu - Can be implemented later -->
+            <!-- Dropdown menu with Helpful Links added -->
             <div class="hidden group-hover:block absolute z-10 bg-white shadow-lg w-48 py-2">
               <NuxtLink to="#" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Intellectual Property</NuxtLink>
               <NuxtLink to="/patents" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Patents</NuxtLink>
               <NuxtLink to="/trademarks" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Trademarks</NuxtLink>
               <NuxtLink to="/copyright" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Copyright</NuxtLink>
+              <NuxtLink to="/helpful-links" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Helpful Links</NuxtLink>
             </div>
           </div>
           <NuxtLink to="/testimonials" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">TESTIMONIALS</NuxtLink>
@@ -83,7 +84,19 @@
         <NuxtLink to="/" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">HOME</NuxtLink>
         <NuxtLink to="/about" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">ABOUT US</NuxtLink>
         <NuxtLink to="/prior-work" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">PRIOR WORK</NuxtLink>
-        <NuxtLink to="/resources" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">RESOURCES</NuxtLink>
+        
+        <!-- Mobile Resources submenu -->
+        <div class="py-2">
+          <div class="text-dobbin-gray font-crimson uppercase text-sm tracking-wider mb-1">RESOURCES</div>
+          <div class="pl-4">
+            <NuxtLink to="#" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Intellectual Property</NuxtLink>
+            <NuxtLink to="/patents" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Patents</NuxtLink>
+            <NuxtLink to="/trademarks" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Trademarks</NuxtLink>
+            <NuxtLink to="/copyright" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Copyright</NuxtLink>
+            <NuxtLink to="/helpful-links" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Helpful Links</NuxtLink>
+          </div>
+        </div>
+        
         <NuxtLink to="/testimonials" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">TESTIMONIALS</NuxtLink>
         <NuxtLink to="/contact" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink>
         

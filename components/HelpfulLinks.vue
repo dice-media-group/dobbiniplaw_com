@@ -1,0 +1,82 @@
+<template>
+  <div>
+    <!-- Use the reusable hero banner component with title and no content -->
+    <HeroBanner title="Helpful Links" :hasContent="false" />
+    
+    <!-- Helpful Links Section -->
+    <section class="py-12">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mx-auto">
+          <!-- Links Container -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            
+            <!-- United States Patent and Trademark Office -->
+            <div class="flex flex-col items-center">
+              <div class="mb-4">
+                <font-awesome-icon :icon="['fas', 'gear']" class="text-dobbin-dark-green" style="height: 80px; width: 80px;" />
+              </div>
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">United States Patent and Trademark Office</h2>
+              <a href="https://www.uspto.gov/" target="_blank" rel="noopener noreferrer" 
+                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+                Visit Website
+              </a>
+            </div>
+            
+            <!-- United States Copyright Office -->
+            <div class="flex flex-col items-center">
+              <div class="mb-4">
+                <font-awesome-icon :icon="['fas', 'copyright']" class="text-dobbin-dark-green" style="height: 80px; width: 80px;" />
+              </div>
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">United States Copyright Office</h2>
+              <a href="https://www.copyright.gov/" target="_blank" rel="noopener noreferrer" 
+                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+                Visit Website
+              </a>
+            </div>
+            
+            <!-- Free Patents Online -->
+            <div class="flex flex-col items-center">
+              <div class="mb-4">
+                <font-awesome-icon :icon="['fas', 'globe']" class="text-dobbin-dark-green" style="height: 80px; width: 80px;" />
+              </div>
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">Free Patents Online</h2>
+              <a href="https://www.freepatentsonline.com/" target="_blank" rel="noopener noreferrer" 
+                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+                Visit Website
+              </a>
+            </div>
+            
+            <!-- World Intellectual Property Organization -->
+            <div class="flex flex-col items-center">
+              <div class="mb-4">
+                <font-awesome-icon :icon="['fas', 'earth-americas']" class="text-dobbin-dark-green" style="height: 80px; width: 80px;" />
+              </div>
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">World Intellectual Property Organization</h2>
+              <a href="https://www.wipo.int/" target="_blank" rel="noopener noreferrer" 
+                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+                Visit Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { useHead } from '#imports';
+import HeroBanner from './HeroBanner.vue';
+
+// Add page meta information
+useHead({
+  title: 'Helpful Links | Dobbin IP Law P.C.',
+  meta: [
+    { name: 'description', content: 'Helpful resources for patents, trademarks, copyrights, and other intellectual property matters.' }
+  ]
+})
+</script>
+
+<style scoped>
+/* Add any specific styles if needed */
+</style>

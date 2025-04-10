@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   app: {
@@ -34,9 +35,18 @@ export default defineNuxtConfig({
       routes: [
         '/prior-work',
         '/resources',
-        '/testimonials'
+        '/testimonials',
+        '/helpful-links'
       ]
     }
+  },
+
+  build: {
+    transpile: [
+      '@fortawesome/vue-fontawesome',
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-solid-svg-icons'
+    ]
   },
 
   compatibilityDate: '2025-04-08'
