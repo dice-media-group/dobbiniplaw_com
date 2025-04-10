@@ -5,28 +5,28 @@ const fallbackPatents = [
   {
     title: "Monolithic LED Chip to Emit Multiple Colors",
     description: "A light emitting diode chip with red, green and blue light emission regions on a single substrate. The light emission regions may be powered selectively to only emit one color light at a time. Or all three regions may be powered simultaneously so that the LED chip emits white light.",
-    image: "/img/prior-work/monolitholic-led-chip-1.png",
+    image: "/img/led-chip.png",
     patentNumber: "7,271,420",
     linkText: "Patent 7,271,420"
   },
   {
     title: "Magazine Grip",
-    description: "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine. The top of the band has an even slightly smaller inner circumference than the lower part of the band. Extending from the top of the band is a handle designed to allow a finger to wrap around the handle and extract the magazine. Also provided are recessed areas and four diagonal force distribution beams to constrict the invention and allow it to grip a magazine more snugly when the handle is pulled. The invention is also used in combination with a magazine pouch to deaden noise by biasing the magazines against the pouch and each other.",
-    image: "/img/prior-work/magazine-grip-1.png",
+    description: "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine.",
+    image: "/img/magazine-grip.png",
     patentNumber: "6,212,815",
     linkText: "Patent 6,212,815"
   },
   {
-    title: "Gas system for an automatic firearm ",
-    description: "The present invention is a gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to impinge upon and operate the firearm's bolt operating system. The system does not have a translation rod extending between the two components as in prior art systems nor does it have a rearward tap like others. As such, it balances cleanliness and weight reduction of the prior art systems and reduces moving parts.",
-    image: "/img/prior-work/gas-system-1.png",
+    title: "Gas System for an Automatic Firearm",
+    description: "The present invention is a gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to impinge upon and operate the firearm's bolt operating system.",
+    image: "/img/firearm-gas.png",
     patentNumber: "8,201,489",
     linkText: "Patent 8,201,489"
   },
   {
-    title: "Quick-Change Barrel System",
-    description: "The present invention is an improved quick change barrel system for a firearm. It features an interlocking trunnion and lock ring that hold the barrel in place proximate the receiver. Intermittent threading provides multiple points of interface. A foldable handle is provided to allow safe removal of the lock ring and additional torque for attachment and removal of the lock ring from the system.",
-    image: "/img/prior-work/Quick-Change-Barrel.png",
+    title: "Security Mailbox",
+    description: "The present invention is a security mailbox utilizing a combination package rest and security panel. A mail slot in the security panel prevents easy access to contents of the mailbox. The present invention may be utilized in situations other than mail delivery where security for contents is desired.",
+    image: "/img/security-mailbox.png",
     patentNumber: "7,574,823",
     linkText: "Patent 7,574,823"
   }
@@ -92,9 +92,12 @@ export function usePatents() {
       // Define all the patent files we know exist
       const patentFiles = [
         '/patents/1-monolithic-led-chip',
+        '/patents/1-led-chip',
         '/patents/2-magazine-grip',
+        '/patents/3-firearm-gas',
         '/patents/3-gas-system',
         '/patents/4-quick-change-barrel',
+        '/patents/4-security-mailbox',
         '/patents/5-spring-loaded',
         '/patents/6-grip',
         '/patents/7-work-light',
