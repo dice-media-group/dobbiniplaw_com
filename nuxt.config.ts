@@ -13,7 +13,6 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/css/main.css'
-    // Removed FontAwesome CSS import that was causing errors
   ],
 
   app: {
@@ -39,14 +38,6 @@ export default defineNuxtConfig({
         '/helpful-links'
       ]
     }
-  },
-
-  build: {
-    transpile: [
-      '@fortawesome/vue-fontawesome',
-      '@fortawesome/fontawesome-svg-core',
-      '@fortawesome/free-solid-svg-icons'
-    ]
   },
 
   compatibilityDate: '2025-04-08'
