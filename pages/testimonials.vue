@@ -7,22 +7,22 @@
     <section class="py-8">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="mx-auto">
-          <!-- Embedded Video -->
-          <div class="bg-gray-100 p-2 max-w-4xl mx-auto mb-8">
-            <div class="aspect-w-16 aspect-h-9">
-              <iframe 
-                src="https://www.youtube.com/embed/18gFVGE2Za0" 
-                title="Dobbin IP Law Testimonials" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="w-full h-full">
-              </iframe>
-            </div>
-          </div>
-          
-          <!-- Written Testimonials -->
+          <!-- Testimonials Container -->
           <div class="space-y-8">
+            <!-- Embedded Video -->
+            <div class="bg-gray-100 p-2 rounded-lg shadow-md">
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe 
+                  src="https://www.youtube.com/embed/18gFVGE2Za0" 
+                  title="Dobbin IP Law Testimonials" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  class="w-full h-full">
+                </iframe>
+              </div>
+            </div>
+            
             <!-- Testimonial 1 -->
             <div class="bg-white p-6 border border-gray-200 shadow-md rounded-lg">
               <svg class="w-10 h-10 text-dobbin-dark-green opacity-50 mb-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
