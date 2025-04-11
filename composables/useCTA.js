@@ -2,15 +2,23 @@ import { useRoute, computed } from '#imports';
 
 /**
  * Composable to provide CTA visibility control
- * Only shows CTA on the home page (index.vue)
+ * Only shows CTA on explicitly listed pages
  * @returns {Object} CTA related properties and methods
  */
 export const useCTA = () => {
   const route = useRoute();
   
-  // Only show CTA on the home page
+  // Define pages that should show the CTA (whitelist approach)
+  const showCTAPages = [
+    '/',
+    '/index',
+    // Add other paths here where CTA should be shown
+    // Example: '/testimonials', '/about', etc.
+  ];
+  
+  // Only show CTA on whitelisted pages
   const showCTA = computed(() => {
-    return route.path === '/' || route.path === '/index';
+    return showCTAPages.includes(route.path);
   });
 
   return {
