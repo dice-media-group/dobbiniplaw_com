@@ -1,10 +1,10 @@
 <template>
-  <div class="flex items-center">
-    <div class="mr-3">
+  <div class="flex flex-col md:flex-row items-center">
+    <div class="logo-container mr-3">
       <img 
         src="/img/SideBySide.jpg" 
         alt="Dobbin IP Law Logo" 
-        class="h-32 w-auto" 
+        class="logo-image max-h-32 w-auto object-contain" 
         @error="logoError = true"
         :class="{ 'hidden': logoError }"
       />
@@ -23,7 +23,7 @@
     
     <!-- Logo text -->
     <h1 
-      class="text-5xl text-dobbin-dark-green tracking-wider font-crimson"
+      class="text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0"
       :class="{ 'hidden': !logoError }"
     >
       DOBBIN IP LAW
@@ -38,6 +38,27 @@ const logoError = ref(false);
 </script>
 
 <style scoped>
+/* Responsive logo styling */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: auto;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .logo-image {
+    max-height: 6rem; /* Smaller on mobile */
+  }
+}
+
 /* Optional smooth transition for hover effects */
 img, svg {
   transition: transform 0.3s ease;
