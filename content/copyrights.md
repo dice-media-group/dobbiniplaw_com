@@ -95,3 +95,5 @@ Our copyright attorneys bring specialized knowledge and experience to help creat
 Don't leave your creative works vulnerable to infringement. Contact Dobbin IP Law today to schedule a complementary strategy session to discuss your copyright protection needs.
 
 [Contact Us](/contact) to protect your creative works.
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.

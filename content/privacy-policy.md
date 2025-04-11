@@ -5,71 +5,45 @@ description: 'Privacy policy for the Dobbin IP Law website'
 
 ## Privacy Policy
 
-This Privacy Policy describes how Dobbin IP Law P.C. ("Dobbin IP Law", "we", "us", or "our") collects, uses, and shares information about you when you visit our website at dobbiniplaw.com (the "Website").
+Dobbin IP Law P.C. ("Dobbin IP Law") operates dobbiniplaw.com and may operate other websites. It is Dobbin IP Law's policy to respect your privacy regarding any information we may collect while operating our websites.
 
-By using the Website, you agree to the collection, use, and sharing of your information as described in this Privacy Policy. If you do not agree with our policies and practices, do not use the Website.
+### Website Visitors
 
-## Information We Collect
+Like most website operators, Dobbin IP Law collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. Dobbin IP Law's purpose in collecting non-personally-identifying information is to better understand how Dobbin IP Law's visitors use its website. From time to time, Dobbin IP Law may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website.
 
-### Information You Provide to Us
+Dobbin IP Law also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users and for users leaving comments on dobbiniplaw.com blogs/sites. Dobbin IP Law only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below, except that commenter IP addresses and email addresses are visible and disclosed to the administrators of the blog/site where the comment was left.
 
-We collect information you provide directly to us. For example, we collect information when you fill out a contact form, send us an email, or otherwise communicate with us. This information may include your name, email address, phone number, and any other information you choose to provide.
+### Gathering of Personally-Identifying Information
 
-### Information We Collect Automatically
+Certain visitors to Dobbin IP Law's websites choose to interact with Dobbin IP Law in ways that require Dobbin IP Law to gather personally-identifying information. The amount and type of information that Dobbin IP Law gathers depends on the nature of the interaction. For example, we ask visitors who sign up at dobbiniplaw.com to provide a username and email address. Those who engage in transactions with Dobbin IP Law are asked to provide additional information, including as necessary the personal and financial information required to process those transactions. In each case, Dobbin IP Law collects such information only insofar as is necessary or appropriate to fulfill the purpose of the visitor's interaction with Dobbin IP Law. Dobbin IP Law does not disclose personally-identifying information other than as described below. And visitors can always refuse to supply personally-identifying information, with the caveat that it may prevent them from engaging in certain website-related activities.
 
-When you visit the Website, we automatically collect certain information about your device and your visit, including:
+### Aggregated Statistics
 
-- **Log Information**: We collect log information about your use of the Website, including the type of browser you use, access times, pages viewed, and your IP address.
-- **Device Information**: We collect information about the device you use to access the Website, including the hardware model, operating system and version, and unique device identifiers.
-- **Usage Information**: We collect information about how you use the Website, such as the actions you take and the features you use.
+Dobbin IP Law may collect statistics about the behavior of visitors to its websites. Dobbin IP Law may display this information publicly or provide it to others. However, Dobbin IP Law does not disclose personally-identifying information other than as described below.
 
-### Cookies and Other Tracking Technologies
+### Protection of Certain Personally-Identifying Information
 
-We and our service providers use various technologies to collect information, including cookies and web beacons. Cookies are small data files stored on your hard drive or in device memory that help us improve the Website and your experience, see which areas and features of the Website are popular, and count visits. Web beacons are electronic images that may be used in the Website or emails and help deliver cookies, count visits, and understand usage and campaign effectiveness.
-
-## How We Use Your Information
-
-We use the information we collect to:
-
-- Provide, maintain, and improve the Website;
-- Respond to your comments, questions, and requests;
-- Communicate with you about news, updates, and other information we think will be of interest to you;
-- Monitor and analyze trends, usage, and activities in connection with the Website;
-- Detect, investigate, and prevent security incidents and other malicious, deceptive, fraudulent, or illegal activity;
-- Comply with legal obligations; and
-- Carry out any other purpose described to you at the time the information was collected.
-
-## Sharing of Information
-
-We may share information about you as follows:
-
-- With vendors, service providers, and consultants that perform services for us;
-- In response to a request for information if we believe disclosure is in accordance with, or required by, any applicable law or legal process;
-- If we believe your actions are inconsistent with our user agreements or policies, or to protect the rights, property, and safety of Dobbin IP Law or others;
-- In connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business by another company;
-- With your consent or at your direction.
-
-## Data Security
-
-We take reasonable measures to help protect information about you from loss, theft, misuse, and unauthorized access, disclosure, alteration, and destruction.
-
-## Your Choices
+Dobbin IP Law discloses potentially personally-identifying and personally-identifying information only to those of its employees, contractors and affiliated organizations that (i) need to know that information in order to process it on Dobbin IP Law's behalf or to provide services available at Dobbin IP Law's websites, and (ii) that have agreed not to disclose it to others. Some of those employees, contractors and affiliated organizations may be located outside of your home country; by using Dobbin IP Law's websites, you consent to the transfer of such information to them. Dobbin IP Law will not rent or sell potentially personally-identifying and personally-identifying information to anyone. Other than to its employees, contractors and affiliated organizations, as described above, Dobbin IP Law discloses potentially personally-identifying and personally-identifying information only in response to a subpoena, court order or other governmental request, or when Dobbin IP Law believes in good faith that disclosure is reasonably necessary to protect the property or rights of Dobbin IP Law, third parties or the public at large. If you are a registered user of an Dobbin IP Law website and have supplied your email address, Dobbin IP Law may occasionally send you an email to tell you about new features, solicit your feedback, or just keep you up to date with what's going on with Dobbin IP Law and our products. If you send us a request (for example via email or via one of our feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your request or to help us support other users. Dobbin IP Law takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of potentially personally-identifying and personally-identifying information.
 
 ### Cookies
 
-Most web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove or reject browser cookies. Please note that if you choose to remove or reject cookies, this could affect the availability and functionality of the Website.
+A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns. Dobbin IP Law uses cookies to help Dobbin IP Law identify and track visitors, their usage of Dobbin IP Law website, and their website access preferences. Dobbin IP Law visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using Dobbin IP Law's websites, with the drawback that certain features of Dobbin IP Law's websites may not function properly without the aid of cookies.
 
-### Promotional Communications
+### Business Transfers
 
-You may opt out of receiving promotional emails from us by following the instructions in those emails. If you opt out, we may still send you non-promotional emails, such as those about your account or our ongoing business relations.
+If Dobbin IP Law, or substantially all of its assets, were acquired, or in the unlikely event that Dobbin IP Law goes out of business or enters bankruptcy, user information would be one of the assets that is transferred or acquired by a third party. You acknowledge that such transfers may occur, and that any acquirer of Dobbin IP Law may continue to use your personal information as set forth in this policy.
 
-## Contact Us
+### Ads
 
-If you have any questions about this Privacy Policy, please contact us at:
+Ads appearing on any of our websites may be delivered to users by advertising partners, who may set cookies. These cookies allow the ad server to recognize your computer each time they send you an online advertisement to compile information about you or others who use your computer. This information allows ad networks to, among other things, deliver targeted advertisements that they believe will be of most interest to you. This Privacy Policy covers the use of cookies by Dobbin IP Law and does not cover the use of cookies by any advertisers.
 
-- Email: getinfo@dobbiniplaw.com
-- Phone: (801) 969-6609
+### Privacy Policy Changes
 
-## Changes to this Privacy Policy
+Although most changes are likely to be minor, Dobbin IP Law may change its Privacy Policy from time to time, and in Dobbin IP Law's sole discretion. Dobbin IP Law encourages visitors to frequently check this page for any changes to its Privacy Policy. If you have a dobbiniplaw.com account, you might also receive an alert informing you of these changes. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
 
-We may update this Privacy Policy from time to time. If we make material changes to how we treat our users' personal information, we will notify you through a notice on the Website. The date the Privacy Policy was last revised is identified at the top of the page. You are responsible for ensuring we have an up-to-date, active, and deliverable email address for you, and for periodically visiting the Website and this Privacy Policy to check for any changes.
+Dobbin IP Law P.C.  
+2159 S Redwood Rd, Suite 5  
+West Valley City, UT 84119  
+(801) 969-6609
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.

@@ -70,3 +70,5 @@ When you work with Dobbin IP Law, you benefit from:
 Ready to protect your valuable intellectual property? Contact us today to schedule a complementary strategy session to discuss your intellectual property needs.
 
 [Contact Us](/contact)
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.
