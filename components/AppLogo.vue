@@ -1,15 +1,15 @@
 <template>
-  <div class="flex items-center">
-    <div class="mr-3">
+  <div class="flex justify-center items-center flex-col md:flex-row">
+    <div class="logo-container mx-auto">
       <img 
         src="/img/SideBySide.jpg" 
         alt="Dobbin IP Law Logo" 
-        class="h-32 w-auto" 
+        class="logo-image max-h-32 w-auto object-contain mx-auto" 
         @error="logoError = true"
         :class="{ 'hidden': logoError }"
       />
       <svg 
-        class="h-32 w-32"
+        class="h-32 w-32 mx-auto"
         :class="{ 'hidden': !logoError }"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@
     
     <!-- Logo text -->
     <h1 
-      class="text-5xl text-dobbin-dark-green tracking-wider font-crimson"
+      class="text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0"
       :class="{ 'hidden': !logoError }"
     >
       DOBBIN IP LAW
@@ -38,6 +38,30 @@ const logoError = ref(false);
 </script>
 
 <style scoped>
+/* Responsive logo styling */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: auto;
+  display: block;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .logo-image {
+    max-height: 6rem; /* Smaller on mobile */
+  }
+}
+
 /* Optional smooth transition for hover effects */
 img, svg {
   transition: transform 0.3s ease;
