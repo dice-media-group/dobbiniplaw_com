@@ -4,7 +4,7 @@
     <main class="main-content">
       <slot />
     </main>
-    <PageCTA v-if="showCTA" />
+    <PageCTA v-if="showCTA" :show="showCTA" />
     <AppFooter />
   </div>
 </template>
@@ -15,6 +15,7 @@ import PageCTA from '~/components/PageCTA.vue';
 
 // Use the CTA composable to determine visibility
 const { showCTA } = useCTA();
+console.log('Layout showCTA value:', showCTA.value);
 </script>
 
 <style scoped>

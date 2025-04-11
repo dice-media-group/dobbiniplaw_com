@@ -18,7 +18,20 @@ export const useCTA = () => {
   
   // Only show CTA on whitelisted pages
   const showCTA = computed(() => {
-    return showCTAPages.includes(route.path);
+    const currentPath = route.path;
+    console.log('Current route path:', currentPath);
+    
+    // Check if current path is in the whitelist
+    const shouldShow = showCTAPages.includes(currentPath);
+    console.log('Should show CTA:', shouldShow);
+    
+    // Check specific about page condition 
+    if (currentPath === '/about') {
+      console.log('On about page, CTA should be hidden');
+      return false;
+    }
+    
+    return shouldShow;
   });
 
   return {

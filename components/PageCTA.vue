@@ -9,12 +9,18 @@
         <a :href="buttonLink" class="inline-block bg-white text-dobbin-dark-green font-bold py-2 px-8 rounded hover:bg-gray-100 transition font-crimson">
           {{ buttonText }}
         </a>
+        <p class="mt-2 text-xs opacity-50">Current path: {{ currentPath }}</p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useRoute, computed } from '#imports';
+
+const route = useRoute();
+const currentPath = computed(() => route.path);
+
 // Props with default values
 const props = defineProps({
   show: {
