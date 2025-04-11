@@ -22,15 +22,13 @@
       </div>
     </div>
     
-    <!-- Logo Section - Enhanced for responsiveness -->
+    <!-- Logo Section - Enhanced for responsiveness and proper centering -->
     <div class="bg-white py-4 sm:py-6">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-center">
-          <NuxtLink to="/" class="logo-link">
-            <!-- Using the AppLogo component -->
-            <AppLogo />
-          </NuxtLink>
-        </div>
+      <div class="container mx-auto px-4 flex justify-center items-center">
+        <NuxtLink to="/" class="logo-link flex justify-center items-center">
+          <!-- Using the AppLogo component -->
+          <AppLogo />
+        </NuxtLink>
       </div>
     </div>
     
@@ -148,9 +146,10 @@ const mobileMenuOpen = ref(false);
 /* Additional transition effects */
 .logo-link {
   transition: opacity 0.2s;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: center;
 }
 
 .logo-link:hover {
@@ -168,7 +167,6 @@ const mobileMenuOpen = ref(false);
 @media (max-width: 640px) {
   .logo-link {
     margin: 0 auto;
-    padding: 0 1rem;
   }
 }
 </style>

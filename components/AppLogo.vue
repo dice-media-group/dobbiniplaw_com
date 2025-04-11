@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-col md:flex-row items-center">
-    <div class="logo-container mr-3">
+  <div class="flex justify-center items-center flex-col md:flex-row">
+    <div class="logo-container mx-auto">
       <img 
         src="/img/SideBySide.jpg" 
         alt="Dobbin IP Law Logo" 
-        class="logo-image max-h-32 w-auto object-contain" 
+        class="logo-image max-h-32 w-auto object-contain mx-auto" 
         @error="logoError = true"
         :class="{ 'hidden': logoError }"
       />
       <svg 
-        class="h-32 w-32"
+        class="h-32 w-32 mx-auto"
         :class="{ 'hidden': !logoError }"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +43,8 @@ const logoError = ref(false);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .logo-image {
@@ -50,6 +52,7 @@ const logoError = ref(false);
   height: auto;
   object-fit: contain;
   aspect-ratio: auto;
+  display: block;
 }
 
 /* Responsive adjustments for smaller screens */
