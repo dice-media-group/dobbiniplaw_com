@@ -2,11 +2,11 @@
   <div>
     <div class="bg-navy text-white py-12">
       <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-semibold">Terms of Service</h1>
+        <h1 class="text-4xl font-crimson font-semibold">Terms of Service</h1>
       </div>
     </div>
     <div class="container mx-auto py-12 px-4">
-      <div class="max-w-4xl terms-content">
+      <div class="max-w-4xl terms-content font-crimson">
         <p>The following terms and conditions govern all use of the dobbiniplaw.com website and all content, services and products available at or through the website (taken together, the Website). The Website is owned and operated by Dobbin IP Law P.C. ("Dobbin IP Law"). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Dobbine IP Law's Privacy Policy) and procedures that may be published from time to time on this Site by Dobbin IP Law (collectively, the "Agreement").</p>
 
         <p>Please read this Agreement carefully before accessing or using the Website. By accessing or using any part of the web site, you agree to become bound by the terms and conditions of this agreement. If you do not agree to all the terms and conditions of this agreement, then you may not access the Website or use any services. If these terms and conditions are considered an offer by Dobbin IP Law, acceptance is expressly limited to these terms. The Website is available only to individuals who are at least 13 years old.</p>
@@ -113,6 +113,7 @@
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-family: 'Crimson Text', Georgia, "Times New Roman", serif;
 }
 
 .terms-content h3 {
@@ -121,20 +122,31 @@
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+  font-family: 'Crimson Text', Georgia, "Times New Roman", serif;
 }
 
 .terms-content p {
   margin-bottom: 1rem;
   line-height: 1.7;
+  font-family: 'Crimson Text', Georgia, "Times New Roman", serif;
 }
 
 .terms-content ul {
   list-style-type: disc;
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
+  font-family: 'Crimson Text', Georgia, "Times New Roman", serif;
 }
 
 .terms-content li {
   margin-bottom: 0.5rem;
+  font-family: 'Crimson Text', Georgia, "Times New Roman", serif;
+}
+
+/* Responsive container to match header margins */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+  }
 }
 </style>
