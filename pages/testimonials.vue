@@ -16,6 +16,7 @@
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 import TestimonialSection from '../components/TestimonialSection.vue';
+import { ref } from 'vue';
 
 useHead({
   title: 'Testimonials | Dobbin IP Law P.C.',
@@ -24,10 +25,29 @@ useHead({
   ]
 });
 
-// Query all testimonials from the content directory
-const { data: testimonials } = await useAsyncData('testimonials', () => 
-  queryContent('/testimonials')
-    .sort({ order: 1 }) // Sort by the order field in frontmatter
-    .find()
-);
+// Default empty array
+const testimonials = ref([]);
+
+onMounted(async () => {
+  try {
+    // Fetch testimonials directly to avoid SSR issues
+    const testimonialFiles = await queryContent('testimonials')
+      .where({ _extension: 'md', _path: { $ne: '/testimonials/index' } })
+      .sort({ order: 1 })
+      .find();
+      
+    console.log('Testimonial files:', testimonialFiles);
+    
+    if (testimonialFiles && testimonialFiles.length) {
+      testimonials.value = testimonialFiles;
+    } else {
+      console.warn('No testimonial files found');
+      // Try a fallback approach
+      const allContent = await queryContent().find();
+      console.log('All content:', allContent);
+    }
+  } catch (error) {
+    console.error('Error loading testimonials:', error);
+  }
+});
 </script>

@@ -8,20 +8,27 @@
       
       <!-- Testimonial content using Nuxt Content -->
       <div class="mb-8 text-dobbin-gray">
-        <ContentRenderer 
-          :value="testimonial" 
-          class="font-crimson text-lg italic testimonial-content" 
-        />
+        <template v-if="testimonial._type === 'markdown'">
+          <ContentRenderer 
+            :value="testimonial" 
+            class="font-crimson text-lg italic testimonial-content" 
+          />
+        </template>
+        <template v-else>
+          <p class="font-crimson text-lg italic mb-6">
+            {{ testimonial.content || 'No testimonial content available' }}
+          </p>
+        </template>
       </div>
       
       <!-- Client information -->
       <div class="flex items-center">
         <div class="mr-4">
-          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="testimonial.name" class="w-16 h-16 rounded-full">
+          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="clientName" class="w-16 h-16 rounded-full">
         </div>
         <div>
-          <p class="font-crimson font-bold text-lg">{{ testimonial.name }}</p>
-          <p class="font-crimson text-sm">{{ testimonial.position }}</p>
+          <p class="font-crimson font-bold text-lg">{{ clientName }}</p>
+          <p class="font-crimson text-sm">{{ clientPosition }}</p>
         </div>
       </div>
     </div>
@@ -29,11 +36,23 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   testimonial: {
     type: Object,
-    required: true
+    required: true,
+    default: () => ({})
   }
+});
+
+// Computed properties for client info with fallbacks
+const clientName = computed(() => {
+  return props.testimonial.name || 'Anonymous Client';
+});
+
+const clientPosition = computed(() => {
+  return props.testimonial.position || '';
 });
 </script>
 
