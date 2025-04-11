@@ -9,14 +9,13 @@
     </HeroBanner>
     
     <!-- Testimonials Grid using our new component -->
-    <TestimonialSection :testimonials="testimonials || []" />
+    <TestimonialSection :testimonials="testimonials" />
   </div>
 </template>
 
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 import TestimonialSection from '../components/TestimonialSection.vue';
-import { ref } from 'vue';
 
 useHead({
   title: 'Testimonials | Dobbin IP Law P.C.',
@@ -25,7 +24,10 @@ useHead({
   ]
 });
 
-// Import testimonials directly
-import testimonialData from '../content/testimonials/testimonials.json';
-const testimonials = ref(testimonialData);
+// Query all testimonials from the content directory
+const { data: testimonials } = await useAsyncData('testimonials', () => 
+  queryContent('/testimonials')
+    .sort({ order: 1 }) // Sort by the order field in frontmatter
+    .find()
+);
 </script>

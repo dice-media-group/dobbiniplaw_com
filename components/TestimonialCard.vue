@@ -6,25 +6,22 @@
         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
       </svg>
       
-      <!-- Testimonial content -->
+      <!-- Testimonial content using Nuxt Content -->
       <div class="mb-8 text-dobbin-gray">
-        <p 
-          v-for="(paragraph, index) in testimonialParagraphs" 
-          :key="index" 
-          class="font-crimson text-lg italic mb-6"
-        >
-          {{ paragraph }}
-        </p>
+        <ContentRenderer 
+          :value="testimonial" 
+          class="font-crimson text-lg italic testimonial-content" 
+        />
       </div>
       
       <!-- Client information -->
       <div class="flex items-center">
         <div class="mr-4">
-          <img :src="clientImage || 'https://placehold.co/80x80'" :alt="clientName" class="w-16 h-16 rounded-full">
+          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="testimonial.name" class="w-16 h-16 rounded-full">
         </div>
         <div>
-          <p class="font-crimson font-bold text-lg">{{ clientName }}</p>
-          <p class="font-crimson text-sm">{{ clientPosition }}</p>
+          <p class="font-crimson font-bold text-lg">{{ testimonial.name }}</p>
+          <p class="font-crimson text-sm">{{ testimonial.position }}</p>
         </div>
       </div>
     </div>
@@ -32,30 +29,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-
-const props = defineProps({
+defineProps({
   testimonial: {
-    type: String,
+    type: Object,
     required: true
-  },
-  clientName: {
-    type: String,
-    required: true
-  },
-  clientPosition: {
-    type: String,
-    required: true
-  },
-  clientImage: {
-    type: String,
-    default: 'https://placehold.co/80x80'
   }
-});
-
-// Split the testimonial text into paragraphs
-const testimonialParagraphs = computed(() => {
-  return props.testimonial.split('\n\n').filter(p => p.trim() !== '');
 });
 </script>
 
@@ -72,5 +50,14 @@ const testimonialParagraphs = computed(() => {
 .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Style for the rendered content */
+:deep(.testimonial-content p) {
+  @apply mb-6 font-crimson text-lg italic;
+}
+
+:deep(.testimonial-content p:last-child) {
+  @apply mb-0;
 }
 </style>

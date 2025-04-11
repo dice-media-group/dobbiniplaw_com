@@ -3,12 +3,9 @@
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <TestimonialCard
-          v-for="(testimonial, index) in testimonials"
-          :key="index"
-          :testimonial="testimonial.content"
-          :client-name="testimonial.name"
-          :client-position="testimonial.position"
-          :client-image="testimonial.image"
+          v-for="testimonial in testimonials"
+          :key="testimonial._path"
+          :testimonial="testimonial"
         />
       </div>
     </div>
