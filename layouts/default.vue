@@ -4,18 +4,25 @@
     <main class="main-content">
       <slot />
     </main>
-    <PageCTA v-if="showCTA" :show="showCTA" />
+    <!-- Only on home page -->
+    <PageCTA v-if="isHomePage" :show="isHomePage" />
     <AppFooter />
   </div>
 </template>
 
 <script setup>
-import { useCTA } from '~/composables/useCTA';
+import { useRoute, computed } from '#imports';
 import PageCTA from '~/components/PageCTA.vue';
 
-// Use the CTA composable to determine visibility
-const { showCTA } = useCTA();
-console.log('Layout showCTA value:', showCTA.value);
+const route = useRoute();
+
+// Simple approach: only show on home page
+const isHomePage = computed(() => {
+  return route.path === '/' || route.path === '/index';
+});
+
+console.log('Current path:', route.path);
+console.log('Is home page:', isHomePage.value);
 </script>
 
 <style scoped>

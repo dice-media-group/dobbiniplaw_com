@@ -1,5 +1,5 @@
 <template>
-  <section v-if="show" class="py-8 bg-dobbin-dark-green text-white">
+  <section v-if="shouldDisplay" class="py-8 bg-dobbin-dark-green text-white">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="mx-auto text-center">
         <h2 class="text-2xl font-bold mb-4 font-crimson">{{ title }}</h2>
@@ -9,7 +9,7 @@
         <a :href="buttonLink" class="inline-block bg-white text-dobbin-dark-green font-bold py-2 px-8 rounded hover:bg-gray-100 transition font-crimson">
           {{ buttonText }}
         </a>
-        <p class="mt-2 text-xs opacity-50">Current path: {{ currentPath }}</p>
+        <p class="mt-2 text-xs opacity-50">Current path: {{ currentPath }} (Show: {{ shouldDisplay }})</p>
       </div>
     </div>
   </section>
@@ -43,5 +43,10 @@ const props = defineProps({
     type: String,
     default: '/contact'
   }
+});
+
+// Additional check to make sure we never show on about page
+const shouldDisplay = computed(() => {
+  return props.show && currentPath.value !== '/about';
 });
 </script>
