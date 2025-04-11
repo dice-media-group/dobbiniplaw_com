@@ -263,12 +263,16 @@
         </div>
       </div>
     </section>
+    
+    <!-- Page CTA Component -->
+    <PageCTA />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import HeroBanner from '../components/HeroBanner.vue';
+import PageCTA from '../components/PageCTA.vue';
 
 // For carousel functionality
 let currentSlide = ref(0);
