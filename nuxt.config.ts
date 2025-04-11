@@ -6,9 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/content', 
     '@nuxtjs/tailwindcss', 
     '@nuxt/image'
-    // Removed @nuxtjs/fontawesome module
   ],
-  // Removed fontawesome configuration
   
   content: {
     documentDriven: true,
@@ -18,7 +16,8 @@ export default defineNuxtConfig({
   },  
 
   css: [
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   app: {
@@ -32,6 +31,15 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap' }
       ]
     }
+  },
+
+  // For FontAwesome to work correctly with Nuxt 3
+  build: {
+    transpile: [
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/vue-fontawesome'
+    ]
   },
 
   // Generate additional routes that don't exist in pages directory
