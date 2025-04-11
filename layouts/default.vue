@@ -4,9 +4,18 @@
     <main class="main-content">
       <slot />
     </main>
+    <PageCTA v-if="showCTA" />
     <AppFooter />
   </div>
 </template>
+
+<script setup>
+import { useCTA } from '~/composables/useCTA';
+import PageCTA from '~/components/PageCTA.vue';
+
+// Use the CTA composable to determine visibility
+const { showCTA } = useCTA();
+</script>
 
 <style scoped>
 .layout {
@@ -17,9 +26,5 @@
 
 .main-content {
   flex: 1;
-  padding: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
 }
 </style>

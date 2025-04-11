@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- Use the reusable hero banner component with title and no content -->
-    <HeroBanner title="Helpful Links">
-      <p class="font-crimson text-white">
-        &nbsp;
-      </p>
-    </HeroBanner>
+    <HeroBanner title="Helpful Links" :hasContent="false" />
+    
     <!-- Helpful Links Section -->
     <section class="py-12">
       <div class="container mx-auto px-4 max-w-6xl">

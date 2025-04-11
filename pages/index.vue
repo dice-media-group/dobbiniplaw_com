@@ -268,7 +268,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import CTASection from '../components/CTASection.vue';
 import HeroBanner from '../components/HeroBanner.vue';
 
 // For carousel functionality
