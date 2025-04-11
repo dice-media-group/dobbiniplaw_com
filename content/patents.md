@@ -113,3 +113,5 @@ Our patent attorneys bring specialized knowledge and experience to help inventor
 Don't risk losing your exclusive rights to your valuable inventions. Contact Dobbin IP Law today to schedule a complementary strategy session to discuss your patent protection needs.
 
 [Contact Us](/contact) to protect your innovations.
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.

@@ -78,3 +78,5 @@ When intellectual property disputes arise, we provide effective representation:
 Contact us today to schedule a complementary strategy session to discuss how we can help protect your intellectual property assets.
 
 [Get in touch with us](/contact)
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.

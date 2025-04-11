@@ -106,3 +106,5 @@ Our trademark attorneys bring specialized knowledge and experience to help busin
 Don't leave your valuable brand vulnerable to infringement or dilution. Contact Dobbin IP Law today to schedule a complementary strategy session to discuss your trademark protection needs.
 
 [Contact Us](/contact) to protect your brand identity.
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.
