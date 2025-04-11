@@ -9,7 +9,7 @@
     
     <!-- YouTube Video Section -->
     <section class="py-10 bg-white">
-      <div class="container mx-auto px-4 max-w-5xl">
+      <div class="container mx-auto px-4">
         <h2 class="text-2xl font-crimson font-bold text-dobbin-dark-green mb-6 text-center">Watch Our Client Video</h2>
         <div class="relative pb-16:9 h-0" style="padding-bottom: 56.25%;">
           <iframe 
