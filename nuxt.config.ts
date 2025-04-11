@@ -2,17 +2,22 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxt/image'],
-
+  modules: [
+    '@nuxt/content', 
+    '@nuxtjs/tailwindcss', 
+    '@nuxt/image'
+  ],
+  
   content: {
     documentDriven: true,
     highlight: {
       theme: 'github-light'
     }
-  },
+  },  
 
   css: [
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   app: {
@@ -28,13 +33,23 @@ export default defineNuxtConfig({
     }
   },
 
+  // For FontAwesome to work correctly with Nuxt 3
+  build: {
+    transpile: [
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/vue-fontawesome'
+    ]
+  },
+
   // Generate additional routes that don't exist in pages directory
   nitro: {
     prerender: {
       routes: [
         '/prior-work',
         '/resources',
-        '/testimonials'
+        '/testimonials',
+        '/helpful-links'
       ]
     }
   },
