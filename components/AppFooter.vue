@@ -41,7 +41,7 @@
         </div>
         
         <div class="mt-4 text-center text-xs font-crimson">
-          <p>&copy; {{ new Date().getFullYear() }} Dobbin IP Law P.C. All Rights Reserved.</p>
+          <p>Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.</p>
         </div>
       </div>
     </div>
