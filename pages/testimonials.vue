@@ -8,8 +8,8 @@
     </HeroBanner>
     
     <!-- YouTube Video Section -->
-    <section class="py-10 bg-gray-50">
-      <div class="container mx-auto px-4" style="max-width: 1024px;">
+    <section class="py-10 bg-white">
+      <div class="container mx-auto px-4 max-w-5xl">
         <h2 class="text-2xl font-crimson font-bold text-dobbin-dark-green mb-6 text-center">Watch Our Client Video</h2>
         <div class="relative pb-16:9 h-0" style="padding-bottom: 56.25%;">
           <iframe 
