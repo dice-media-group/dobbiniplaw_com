@@ -21,9 +21,9 @@
         
         <div class="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm">
           <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mb-4 md:mb-0 text-center md:text-left">
-            <NuxtLink to="/terms-of-service" class="hover:underline font-crimson">Terms of Service</NuxtLink>
-            <NuxtLink to="/privacy-policy" class="hover:underline font-crimson">Privacy Policy</NuxtLink>
-            <NuxtLink to="/contact" class="hover:underline font-crimson">Contact Us</NuxtLink>
+            <NuxtLink v-if="route.path !== '/terms-of-service'" to="/terms-of-service" class="hover:underline font-crimson">Terms of Service</NuxtLink>
+            <NuxtLink v-if="route.path !== '/privacy-policy'" to="/privacy-policy" class="hover:underline font-crimson">Privacy Policy</NuxtLink>
+            <NuxtLink v-if="route.path !== '/contact'" to="/contact" class="hover:underline font-crimson">Contact Us</NuxtLink>
           </div>
           
           <div class="flex space-x-2">
@@ -49,4 +49,5 @@
 </template>
 
 <script setup>
+const route = useRoute();
 </script>

@@ -1,16 +1,22 @@
 <template>
   <div>
     <!-- Hero section with navy background -->
-    <div class="bg-[#0c1559] text-white py-20">
-      <div class="container mx-auto px-4">
-        <h1 class="text-5xl font-crimson font-light tracking-wide text-white text-center">Terms of Service</h1>
+
+    <section class="bg-[#0c1559] text-white py-12 w-full">
+    <div class="container mx-auto">
+      <div class="mx-auto px-8 max-w-[1140px]"> <!-- Changed px-4 to px-8 -->
+        <h1 class="text-5xl mb-3 font-crimson text-white">Terms of Service</h1>
+        <slot>
+          <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We will stay open for business and will be using telephone and video calls. Please call and let us know how we can best help you at (801) 969-6609.</p>
+        </slot>
       </div>
     </div>
+  </section>
     
     <!-- Main content section -->
     <div class="py-12">
-      <div class="container mx-auto px-4 flex justify-center">
-        <div class="max-w-3xl terms-content font-crimson">
+      <div class="container mx-auto px-8"> <!-- Changed px-4 to px-8 -->
+        <div class="max-w-2xl mx-auto terms-content font-crimson"> <!-- Changed max-w-3xl to max-w-2xl -->
           <h2 class="text-2xl font-crimson font-normal mb-6">Terms of Service:</h2>
           
           <p>The following terms and conditions govern all use of the dobbiniplaw.com website and all content, services and products available at or through the website (taken together, the Website). The Website is owned and operated by Dobbin IP Law P.C. ("Dobbin IP Law"). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Dobbine IP Law's Privacy Policy) and procedures that may be published from time to time on this Site by Dobbin IP Law (collectively, the "Agreement").</p>
