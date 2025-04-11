@@ -16,7 +16,7 @@
                 <!-- Gear Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="gear" 
-                  class="h-20 w-20 text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green"
                   aria-hidden="true"
                 />
               </div>
@@ -33,7 +33,7 @@
                 <!-- Copyright Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="copyright" 
-                  class="h-20 w-20 text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green"
                   aria-hidden="true"
                 />
               </div>
@@ -50,7 +50,7 @@
                 <!-- Globe Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="globe" 
-                  class="h-20 w-20 text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green"
                   aria-hidden="true"
                 />
               </div>
@@ -67,7 +67,7 @@
                 <!-- Earth Americas Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="earth-americas" 
-                  class="h-20 w-20 text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green"
                   aria-hidden="true"
                 />
               </div>
@@ -98,5 +98,10 @@ useHead({
 </script>
 
 <style scoped>
-/* Add any specific styles if needed */
+/* Custom large icon style to match original SVG size */
+.icon-large {
+  width: 6rem;
+  height: 6rem;
+  font-size: 6rem;
+}
 </style>
