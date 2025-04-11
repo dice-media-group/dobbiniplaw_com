@@ -13,15 +13,10 @@
         </p>
       </div>
       
-      <!-- Client information -->
-      <div class="flex items-center">
-        <div class="mr-4">
-          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="testimonial.name" class="w-16 h-16 rounded-full">
-        </div>
-        <div>
-          <p class="font-crimson font-bold text-lg">{{ testimonial.name }}</p>
-          <p class="font-crimson text-sm">{{ testimonial.position }}</p>
-        </div>
+      <!-- Client information - removed image, kept name and position -->
+      <div>
+        <p class="font-crimson font-bold text-lg">{{ testimonial.name }}</p>
+        <p class="font-crimson text-sm">{{ testimonial.position }}</p>
       </div>
     </div>
   </div>
@@ -35,7 +30,6 @@ defineProps({
     default: () => ({
       name: 'Anonymous Client',
       position: '',
-      image: 'https://placehold.co/80x80',
       content: 'No testimonial content available.'
     })
   }
