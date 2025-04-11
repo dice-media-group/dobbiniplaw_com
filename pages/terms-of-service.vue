@@ -3,13 +3,13 @@
     <!-- Hero section with navy background -->
     <div class="bg-[#0c1559] text-white py-20">
       <div class="container mx-auto px-4">
-        <h1 class="text-5xl font-crimson font-light tracking-wide text-white">Terms of Service</h1>
+        <h1 class="text-5xl font-crimson font-light tracking-wide text-white text-center">Terms of Service</h1>
       </div>
     </div>
     
     <!-- Main content section -->
     <div class="py-12">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 flex justify-center">
         <div class="max-w-3xl terms-content font-crimson">
           <h2 class="text-2xl font-crimson font-normal mb-6">Terms of Service:</h2>
           
