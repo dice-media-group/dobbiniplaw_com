@@ -4,14 +4,13 @@
     <HeroBanner 
       title="Testimonials" 
     >
-      <p class="mb-4 font-crimson text-white">Dobbin IP Law P.C. is proud to serve our clients with excellence. Here's what some of our clients have to say about working with us.</p>
+      <p class="mb-4 font-crimson text-white"></p>
     </HeroBanner>
     
     <!-- YouTube Video Section -->
     <section class="py-10 bg-white">
       <div class="container mx-auto">
         <div class="mx-auto px-4 max-w-[1140px]">
-          <h2 class="text-2xl font-crimson font-bold text-dobbin-dark-green mb-6 text-center">Watch Our Client Video</h2>
           <div class="relative pb-16:9 h-0" style="padding-bottom: 56.25%;">
             <iframe 
               class="absolute top-0 left-0 w-full h-full" 
