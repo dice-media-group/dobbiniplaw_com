@@ -1,15 +1,12 @@
 <template>
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div v-if="testimonials && testimonials.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <TestimonialCard
           v-for="(testimonial, index) in testimonials"
-          :key="testimonial._path || index"
+          :key="index"
           :testimonial="testimonial"
         />
-      </div>
-      <div v-else class="text-center py-12">
-        <p class="font-crimson text-lg text-dobbin-gray">Loading testimonials...</p>
       </div>
     </div>
   </section>

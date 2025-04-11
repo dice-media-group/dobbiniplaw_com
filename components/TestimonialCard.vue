@@ -8,35 +8,19 @@
       
       <!-- Testimonial content -->
       <div class="mb-8 text-dobbin-gray">
-        <!-- If it's a markdown content item -->
-        <template v-if="testimonial._type === 'markdown' && testimonial.body">
-          <ContentRenderer 
-            :value="testimonial" 
-            class="font-crimson text-lg italic testimonial-content" 
-          />
-        </template>
-        <!-- If it's our fallback object with content property -->
-        <template v-else-if="testimonial.content">
-          <p class="font-crimson text-lg italic mb-6">
-            {{ testimonial.content }}
-          </p>
-        </template>
-        <!-- If no content is available -->
-        <template v-else>
-          <p class="font-crimson text-lg italic mb-6">
-            Testimonial content unavailable.
-          </p>
-        </template>
+        <p class="font-crimson text-lg italic mb-6">
+          {{ testimonial.content }}
+        </p>
       </div>
       
       <!-- Client information -->
       <div class="flex items-center">
         <div class="mr-4">
-          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="clientName" class="w-16 h-16 rounded-full">
+          <img :src="testimonial.image || 'https://placehold.co/80x80'" :alt="testimonial.name" class="w-16 h-16 rounded-full">
         </div>
         <div>
-          <p class="font-crimson font-bold text-lg">{{ clientName }}</p>
-          <p class="font-crimson text-sm">{{ clientPosition }}</p>
+          <p class="font-crimson font-bold text-lg">{{ testimonial.name }}</p>
+          <p class="font-crimson text-sm">{{ testimonial.position }}</p>
         </div>
       </div>
     </div>
@@ -44,23 +28,17 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-
-const props = defineProps({
+defineProps({
   testimonial: {
     type: Object,
     required: true,
-    default: () => ({})
+    default: () => ({
+      name: 'Anonymous Client',
+      position: '',
+      image: 'https://placehold.co/80x80',
+      content: 'No testimonial content available.'
+    })
   }
-});
-
-// Computed properties for client info with fallbacks
-const clientName = computed(() => {
-  return props.testimonial.name || 'Anonymous Client';
-});
-
-const clientPosition = computed(() => {
-  return props.testimonial.position || '';
 });
 </script>
 
@@ -77,14 +55,5 @@ const clientPosition = computed(() => {
 .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Style for the rendered content */
-:deep(.testimonial-content p) {
-  @apply mb-6 font-crimson text-lg italic;
-}
-
-:deep(.testimonial-content p:last-child) {
-  @apply mb-0;
 }
 </style>
