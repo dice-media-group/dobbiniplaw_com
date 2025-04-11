@@ -2,11 +2,27 @@
   <div>
     <!-- Use the reusable hero banner component with title and content -->
     <HeroBanner 
-      title="Client Testimonials" 
-      subtitle="What Our Clients Are Saying"
+      title="Testimonials" 
     >
-      <p class="mb-4 font-crimson text-white">At Dobbin IP Law P.C., we pride ourselves on our client relationships and the quality of our intellectual property services. Here's what some of our valued clients have to say about working with us.</p>
+      <p class="mb-4 font-crimson text-white"></p>
     </HeroBanner>
+    
+    <!-- YouTube Video Section -->
+    <section class="py-10 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-2xl font-crimson font-bold text-dobbin-dark-green mb-6 text-center">Watch Our Client Video</h2>
+        <div class="relative pb-16:9 h-0" style="padding-bottom: 56.25%;">
+          <iframe 
+            class="absolute top-0 left-0 w-full h-full" 
+            src="https://www.youtube.com/embed/18gFVGE2Za0" 
+            title="Dobbin IP Law Client Testimonial Video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
     
     <!-- Testimonials Grid using our new component -->
     <TestimonialSection :testimonials="testimonials" />
