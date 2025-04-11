@@ -45,3 +45,5 @@ Dobbin IP Law P.C.
 2159 S Redwood Rd, Suite 5  
 West Valley City, UT 84119  
 (801) 969-6609
+
+Copyright 2017 - 2025 Dobbin IP Law P.C. All Rights Reserved.

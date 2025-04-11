@@ -6,7 +6,7 @@
       bgColor="bg-dobbin-navy"
       titleSize="text-5xl"
     >
-      <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We will stay open for business and will be using telephone and video calls. Please call and let us know how we can best help you at (801) 969-6609.</p>
+      <p class="mb-4 font-crimson text-white"></p>
     </HeroBanner>
     
     <!-- Main content section -->
