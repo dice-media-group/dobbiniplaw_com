@@ -1,7 +1,6 @@
 <template>
   <footer>
     <!-- Call to Action Section -->
-    <CTASection />
     
     <!-- Main Footer -->
     <div class="bg-dobbin-footer text-white py-8 dobbin-footer">
@@ -50,5 +49,4 @@
 </template>
 
 <script setup>
-import CTASection from './CTASection.vue';
 </script>
