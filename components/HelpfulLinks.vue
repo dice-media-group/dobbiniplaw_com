@@ -11,72 +11,92 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             
             <!-- United States Patent and Trademark Office -->
-            <div class="flex flex-col items-center">
+            <a 
+              href="https://www.uspto.gov/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition duration-300 group cursor-pointer"
+            >
               <div class="mb-4">
-                <!-- Gear Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="gear" 
-                  class="icon-large text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green group-hover:text-dobbin-green transition-colors"
                   aria-hidden="true"
                 />
               </div>
-              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">United States Patent and Trademark Office</h2>
-              <a href="https://www.uspto.gov/" target="_blank" rel="noopener noreferrer" 
-                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2 group-hover:text-dobbin-green transition-colors">
+                United States Patent and Trademark Office
+              </h2>
+              <span class="block font-crimson text-dobbin-green group-hover:text-dobbin-bright-green transition-colors text-sm">
                 Visit Website
-              </a>
-            </div>
+              </span>
+            </a>
             
             <!-- United States Copyright Office -->
-            <div class="flex flex-col items-center">
+            <a 
+              href="https://www.copyright.gov/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition duration-300 group cursor-pointer"
+            >
               <div class="mb-4">
-                <!-- Copyright Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="copyright" 
-                  class="icon-large text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green group-hover:text-dobbin-green transition-colors"
                   aria-hidden="true"
                 />
               </div>
-              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">United States Copyright Office</h2>
-              <a href="https://www.copyright.gov/" target="_blank" rel="noopener noreferrer" 
-                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2 group-hover:text-dobbin-green transition-colors">
+                United States Copyright Office
+              </h2>
+              <span class="block font-crimson text-dobbin-green group-hover:text-dobbin-bright-green transition-colors text-sm">
                 Visit Website
-              </a>
-            </div>
+              </span>
+            </a>
             
             <!-- Free Patents Online -->
-            <div class="flex flex-col items-center">
+            <a 
+              href="https://www.freepatentsonline.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition duration-300 group cursor-pointer"
+            >
               <div class="mb-4">
-                <!-- Globe Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="globe" 
-                  class="icon-large text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green group-hover:text-dobbin-green transition-colors"
                   aria-hidden="true"
                 />
               </div>
-              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">Free Patents Online</h2>
-              <a href="https://www.freepatentsonline.com/" target="_blank" rel="noopener noreferrer" 
-                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2 group-hover:text-dobbin-green transition-colors">
+                Free Patents Online
+              </h2>
+              <span class="block font-crimson text-dobbin-green group-hover:text-dobbin-bright-green transition-colors text-sm">
                 Visit Website
-              </a>
-            </div>
+              </span>
+            </a>
             
             <!-- World Intellectual Property Organization -->
-            <div class="flex flex-col items-center">
+            <a 
+              href="https://www.wipo.int/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition duration-300 group cursor-pointer"
+            >
               <div class="mb-4">
-                <!-- Earth Americas Icon using FontAwesome -->
                 <font-awesome-icon 
                   icon="earth-americas" 
-                  class="icon-large text-dobbin-dark-green"
+                  class="icon-large text-dobbin-dark-green group-hover:text-dobbin-green transition-colors"
                   aria-hidden="true"
                 />
               </div>
-              <h2 class="text-lg font-crimson text-dobbin-gray mb-2">World Intellectual Property Organization</h2>
-              <a href="https://www.wipo.int/" target="_blank" rel="noopener noreferrer" 
-                 class="block font-crimson text-dobbin-green hover:text-dobbin-bright-green transition text-sm">
+              <h2 class="text-lg font-crimson text-dobbin-gray mb-2 group-hover:text-dobbin-green transition-colors">
+                World Intellectual Property Organization
+              </h2>
+              <span class="block font-crimson text-dobbin-green group-hover:text-dobbin-bright-green transition-colors text-sm">
                 Visit Website
-              </a>
-            </div>
+              </span>
+            </a>
           </div>
         </div>
       </div>
