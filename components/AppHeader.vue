@@ -2,8 +2,8 @@
   <header>
     <!-- Top bar with contact info - IMPROVED CONTRAST -->
     <div class="bg-black text-white py-2">
-      <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="tel:8019696609" class="text-sm font-crimson text-white font-medium hover:text-gray-200">(801) 969-6609</a>
+      <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+        <a href="tel:8019696609" class="text-sm font-crimson text-white font-medium hover:text-gray-200 mb-1 sm:mb-0">(801) 969-6609</a>
         <div class="flex items-center space-x-4">
           <a href="mailto:getinfo@dobbiniplaw.com" class="text-sm font-crimson text-white font-medium hover:text-gray-200">getinfo@dobbiniplaw.com</a>
           <div class="flex space-x-3">
@@ -22,15 +22,13 @@
       </div>
     </div>
     
-    <!-- Logo Section -->
-    <div class="bg-white py-6">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-center">
-          <NuxtLink to="/" class="logo-link">
-            <!-- Using the AppLogo component -->
-            <AppLogo />
-          </NuxtLink>
-        </div>
+    <!-- Logo Section - Enhanced for responsiveness and proper centering -->
+    <div class="bg-white py-4 sm:py-6">
+      <div class="container mx-auto px-4 flex justify-center items-center">
+        <NuxtLink to="/" class="logo-link flex justify-center items-center">
+          <!-- Using the AppLogo component -->
+          <AppLogo />
+        </NuxtLink>
       </div>
     </div>
     
@@ -38,11 +36,11 @@
     <div class="border-t border-gray-200 bg-white">
       <div class="container mx-auto">
         <nav class="hidden md:flex justify-center items-center">
-          <NuxtLink to="/" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">HOME</NuxtLink>
-          <NuxtLink to="/about" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">ABOUT US</NuxtLink>
-          <NuxtLink to="/prior-work" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">PRIOR WORK</NuxtLink>
+          <NuxtLink to="/" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">HOME</NuxtLink>
+          <NuxtLink to="/about" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">ABOUT US</NuxtLink>
+          <NuxtLink to="/prior-work" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">PRIOR WORK</NuxtLink>
           <div class="relative group">
-            <NuxtLink to="#" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green flex items-center">
+            <NuxtLink to="#" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green flex items-center">
               RESOURCES
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -57,8 +55,8 @@
               <NuxtLink to="/helpful-links" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Helpful Links</NuxtLink>
             </div>
           </div>
-          <NuxtLink to="/testimonials" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">TESTIMONIALS</NuxtLink>
-          <NuxtLink to="/contact" class="nav-link py-4 px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">SCHEDULE STRATEGY SESSION</NuxtLink>
+          <NuxtLink to="/testimonials" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">TESTIMONIALS</NuxtLink>
+          <NuxtLink to="/contact" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">SCHEDULE SESSION</NuxtLink>
           <!-- Search button -->
           <button class="py-4 px-3 text-dobbin-gray hover:text-dobbin-bright-green">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,6 +146,10 @@ const mobileMenuOpen = ref(false);
 /* Additional transition effects */
 .logo-link {
   transition: opacity 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .logo-link:hover {
@@ -158,6 +160,13 @@ const mobileMenuOpen = ref(false);
 @media (min-width: 768px) {
   .container {
     max-width: 1200px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .logo-link {
+    margin: 0 auto;
   }
 }
 </style>
