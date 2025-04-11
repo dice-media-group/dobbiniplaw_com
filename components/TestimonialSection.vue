@@ -1,6 +1,6 @@
 <template>
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
+    <div class="container mx-auto px-4" style="max-width: 1024px;">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <TestimonialCard
           v-for="(testimonial, index) in testimonials"
@@ -23,12 +23,3 @@ defineProps({
   }
 });
 </script>
-
-<style scoped>
-/* Adjust the max width for desktop */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-</style>
