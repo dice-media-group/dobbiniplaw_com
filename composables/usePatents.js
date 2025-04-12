@@ -98,47 +98,15 @@ export function usePatents() {
         console.log('Patents directory query failed, trying another approach');
       }
       
-      // 3. As a last resort, try to fetch from a hardcoded list of files
-      try {
-        console.log('Trying to fetch individual patent files...');
-        const fileNames = [
-          '1-monolithic-led-chip',
-          '2-magazine-grip',
-          '3-gas-system',
-          '4-security-mailbox'
-        ];
-        
-        const patentPromises = fileNames.map(async (fileName) => {
-          try {
-            const fileResponse = await fetch(`/_content/patents/${fileName}.md?_hash=${timestamp}`);
-            if (fileResponse.ok) {
-              const fileData = await fileResponse.json();
-              return fileData;
-            }
-          } catch (fileErr) {
-            console.log(`Failed to fetch ${fileName}.md`);
-            return null;
-          }
-        });
-        
-        const patentResults = await Promise.all(patentPromises);
-        const validPatents = patentResults.filter(p => p !== null);
-        
-        if (validPatents.length > 0) {
-          console.log('Successfully fetched individual patent files:', validPatents);
-          return validPatents;
-        }
-      } catch (filesErr) {
-        console.log('Individual files approach failed');
-      }
+      // Since we've reached this point, no content API methods worked
+      // Let's use our fallback data directly instead of trying to fetch individual files
+      console.log('Content API methods failed, using fallback data');
+      return fallbackPatents;
       
-      // If we get here, all approaches failed
-      console.log('All content fetch approaches failed, using fallback data');
-      return [];
     } catch (err) {
       console.error('Error fetching patents directly:', err);
       error.value = err.message;
-      return [];
+      return fallbackPatents; // Return fallback data on error
     }
   };
 
@@ -153,13 +121,13 @@ export function usePatents() {
       // Try direct API method 
       const directResult = await fetchPatentsDirectly();
       
-      // Use direct result or fallback
-      if (directResult && directResult.length > 0) {
-        console.log('Using direct API results, found', directResult.length, 'patents');
+      // Safety check for results - ensure we always have a valid array of patent objects
+      if (directResult && Array.isArray(directResult) && directResult.length > 0 && directResult.every(p => p !== undefined)) {
+        console.log('Using content API results, found', directResult.length, 'patents');
         patents.value = directResult;
         fromMarkdown.value = true;
       } else {
-        console.log('No content patents found, using fallback data');
+        console.log('No valid content patents found or some patents were undefined, using fallback data');
         patents.value = fallbackPatents;
         fromMarkdown.value = false;
       }

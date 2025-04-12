@@ -8,7 +8,8 @@
       <p class="font-semibold mt-2">Patents loaded:</p>
       <ul class="list-disc pl-4 text-xs">
         <li v-for="(patent, idx) in patents" :key="idx">
-          {{ patent.title }} ({{ patent._path || 'fallback' }})
+          {{ patent ? patent.title : 'undefined patent' }} 
+          {{ patent && patent._path ? `(${patent._path})` : '(fallback)' }}
         </li>
       </ul>
     </div>

@@ -15,7 +15,7 @@
         @click="prevSlide" 
         class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Previous slide"
-        v-if="allPatents && allPatents.length > 1"
+        v-if="hasValidPatents && allPatents.length > 1"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -26,7 +26,7 @@
         @click="nextSlide" 
         class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Next slide"
-        v-if="allPatents && allPatents.length > 1"
+        v-if="hasValidPatents && allPatents.length > 1"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -45,7 +45,6 @@
       
       <!-- Toggle Debug Button -->
       <button 
-        v-if="!showDebug"
         @click="showDebug = !showDebug" 
         class="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 p-1 rounded z-50"
       >
@@ -55,7 +54,7 @@
       </button>
       
       <!-- Error message if no patents are loaded -->
-      <div v-if="!isLoading && (!allPatents || allPatents.length === 0)" class="container mx-auto px-4 text-center py-8">
+      <div v-if="!isLoading && !hasValidPatents" class="container mx-auto px-4 text-center py-8">
         <p class="text-red-600">No patent data available. Please try refreshing the page.</p>
         <button @click="refreshPatents" class="mt-4 bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4 rounded">
           Refresh Data
@@ -63,7 +62,7 @@
       </div>
       
       <!-- Carousel content aligned with text container -->
-      <div v-if="!isLoading && allPatents && allPatents.length > 0" class="container mx-auto px-4">
+      <div v-if="!isLoading && hasValidPatents" class="container mx-auto px-4">
         <!-- Removed max-width to match paragraph width -->
         <div class="mx-auto"> 
           <!-- Carousel slide container -->
@@ -72,7 +71,7 @@
             <div class="relative">
               <PatentSlide 
                 v-for="(patent, idx) in allPatents" 
-                :key="patent.title + idx" 
+                :key="'patent-' + idx" 
                 :patent="patent" 
                 :isActive="idx === currentIndex"
                 :slideDirection="direction"
@@ -111,6 +110,14 @@ const {
   refreshPatents
 } = usePatents();
 
+// Check if we have valid patents
+const hasValidPatents = computed(() => {
+  return allPatents.value && 
+         Array.isArray(allPatents.value) && 
+         allPatents.value.length > 0 && 
+         allPatents.value.every(patent => patent !== undefined);
+});
+
 // Watch for errors
 watch(error, (newError) => {
   if (newError) {
@@ -119,25 +126,25 @@ watch(error, (newError) => {
   }
 });
 
-// Current slide based on index
+// Current slide based on index - with safety checks
 const currentSlide = computed(() => {
-  if (allPatents.value && allPatents.value.length > 0) {
+  if (hasValidPatents.value && currentIndex.value < allPatents.value.length) {
     return allPatents.value[currentIndex.value];
   }
   return null;
 });
 
-// Previous slide navigation with animation direction
+// Previous slide navigation with animation direction and safety checks
 const prevSlide = () => {
-  if (allPatents.value && allPatents.value.length > 0) {
+  if (hasValidPatents.value) {
     direction.value = 'left';
     currentIndex.value = (currentIndex.value - 1 + allPatents.value.length) % allPatents.value.length;
   }
 };
 
-// Next slide navigation with animation direction
+// Next slide navigation with animation direction and safety checks
 const nextSlide = () => {
-  if (allPatents.value && allPatents.value.length > 0) {
+  if (hasValidPatents.value) {
     direction.value = 'right';
     currentIndex.value = (currentIndex.value + 1) % allPatents.value.length;
   }
@@ -170,7 +177,7 @@ let intervalId = null;
 
 // Set up autoplay if enabled
 const setupAutoplay = () => {
-  if (props.autoplay && props.interval > 0 && allPatents.value && allPatents.value.length > 1) {
+  if (props.autoplay && props.interval > 0 && hasValidPatents.value) {
     // Clear any existing interval first
     if (intervalId) {
       clearInterval(intervalId);
@@ -193,14 +200,14 @@ onMounted(async () => {
   await fetchPatents();
   
   // Setup autoplay if enabled
-  if (props.autoplay) {
+  if (props.autoplay && hasValidPatents.value) {
     setupAutoplay();
   }
 });
 
 // Watch for patent data changes to setup autoplay
-watch(allPatents, (newPatents) => {
-  if (newPatents && newPatents.length > 0 && props.autoplay) {
+watch(hasValidPatents, (newValue) => {
+  if (newValue && props.autoplay) {
     setupAutoplay();
   }
 });

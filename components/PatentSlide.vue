@@ -3,29 +3,39 @@
     v-show="isActive"
     class="flex flex-col md:flex-row w-full patent-slide"
   >
-    <!-- Slide image with orange background -->
-    <div class="md:w-1/2 p-10 bg-white">
-      <img 
-            :src="getImagePath(patent.image)" 
-            :alt="patent.title" 
-            class="max-w-full max-h-96 object-contain patent-image mx-auto"
-            @error="handleImageError"
-          />
-    </div>
+    <!-- Added patent existence check -->
+    <template v-if="patent">
+      <!-- Slide image with orange background -->
+      <div class="md:w-1/2 p-10 bg-white">
+        <img 
+          :src="getImagePath(patent.image)" 
+          :alt="patent.title" 
+          class="max-w-full max-h-96 object-contain patent-image mx-auto"
+          @error="handleImageError"
+        />
+      </div>
+      
+      <!-- Slide content -->
+      <div class="md:w-1/2 p-10 bg-white">
+        <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
+        <p class="mb-8 text-gray-700 patent-description">{{ patent.description }}</p>
+        <a 
+          :href="getGooglePatentUrl(patent.patentNumber)"
+          class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 patent-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ patent.linkText || 'Patent ' + patent.patentNumber }}
+        </a>
+      </div>
+    </template>
     
-    <!-- Slide content -->
-    <div class="md:w-1/2 p-10 bg-white">
-      <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
-      <p class="mb-8 text-gray-700 patent-description">{{ patent.description }}</p>
-      <a 
-        :href="getGooglePatentUrl(patent.patentNumber)"
-        class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 patent-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {{ patent.linkText || 'Patent ' + patent.patentNumber }}
-      </a>
-    </div>
+    <!-- Fallback for undefined patent -->
+    <template v-else>
+      <div class="w-full p-10 bg-white text-center">
+        <p class="text-gray-600">Patent information is currently unavailable.</p>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -36,7 +46,7 @@ import { ref } from 'vue';
 const props = defineProps({
   patent: {
     type: Object,
-    required: true
+    default: null // Changed from required to allow null/undefined
   },
   isActive: {
     type: Boolean,
@@ -96,6 +106,10 @@ const handleImageError = (event) => {
  * Gets the appropriate image path with fallback handling
  */
 const getImagePath = (imagePath) => {
+  if (!imagePath) {
+    return '/img/Patent-Diagram.png'; // Default image if none provided
+  }
+  
   if (imageError.value && fallbackSrc.value) {
     return fallbackSrc.value;
   }
