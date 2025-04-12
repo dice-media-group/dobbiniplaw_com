@@ -1,100 +1,65 @@
 # Dobbin IP Law Website
 
-This is the official website for Dobbin IP Law P.C., a boutique intellectual property law firm specializing in patents, trademarks, and copyrights.
+This is a Nuxt 3 based website for Dobbin IP Law, converted from the original WordPress site.
 
-## Technologies Used
+## Patent Carousel Maintenance
 
-- [Nuxt 3](https://nuxt.com/) - Vue.js framework
-- [@nuxt/content](https://content.nuxtjs.org/) - Git-based headless CMS
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+The patent carousel on the Prior Work page displays patents from a consolidated data source. Here's how to maintain it:
 
-## Setup
+### Patent Data
 
-Make sure to install the dependencies:
+Patents are stored in `/public/patents.json` with the following structure:
+
+```json
+{
+  "patents": [
+    {
+      "title": "Patent Title",
+      "description": "Patent description text...",
+      "image": "/img/prior-work/image-filename.png",
+      "patentNumber": "X,XXX,XXX",
+      "linkText": "Patent X,XXX,XXX",
+      "order": 1
+    }
+  ]
+}
+```
+
+### Patent Images
+
+Patent images should be stored in `/public/img/prior-work/` directory. The image paths in patents.json should reference this location.
+
+### Adding New Patents
+
+To add a new patent:
+1. Add its image to `/public/img/prior-work/`
+2. Add an entry to the patents array in `/public/patents.json`
+3. Make sure to set the "order" property to control its position in the carousel
+
+### Image Fallback System
+
+The carousel has a robust fallback system:
+- It first tries to load the primary image specified in the patent data
+- If that fails, it looks for any specified fallback image
+- If that fails, it uses a default image based on patent number
+- As a last resort, it displays a placeholder with an error message
+
+## Development
 
 ```bash
-# npm
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Start development server
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
 ```
 
-## Production
-
-Build the application for production:
+## Deployment
 
 ```bash
-# npm
+# Build for production
 npm run build
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
+# Deploy
+npm run deploy
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-## Content Management
-
-This website uses @nuxt/content to manage content. All content is stored in Markdown files in the `content` directory.
-
-### Adding New Content
-
-To add new content:
-
-1. Create a new `.md` file in the `content` directory
-2. Add frontmatter (metadata) at the top of the file
-3. Write your content in Markdown format
-
-Example:
-
-```md
----
-title: 'My New Page'
-description: 'Description of my new page'
----
-
-## Content Header
-
-This is the content of my new page.
-```
-
-### Editing Existing Content
-
-To edit existing content, simply modify the corresponding `.md` file in the `content` directory.
-
-## License
-
-All rights reserved.
