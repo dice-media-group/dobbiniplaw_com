@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { queryContent } from '#imports';
 
 // Fallback data in case content fetching fails
 const fallbackPatents = [
