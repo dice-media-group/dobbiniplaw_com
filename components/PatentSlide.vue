@@ -8,7 +8,7 @@
       <!-- Slide image with white background -->
       <div class="md:w-1/2 p-10 bg-white">
         <img 
-          v-if="currentImageSrc"
+          v-if="currentImageSrc && !imageLoadError"
           :src="currentImageSrc" 
           :alt="patent.title" 
           class="max-w-full max-h-96 object-contain patent-image mx-auto"
@@ -20,6 +20,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <p class="text-gray-500">Image not available</p>
+            <p v-if="imageLoadErrorMessage" class="text-xs text-gray-400 mt-1">{{ imageLoadErrorMessage }}</p>
           </div>
         </div>
       </div>
@@ -70,6 +71,8 @@ const props = defineProps({
 // For image handling
 const currentImageSrc = ref('');
 const hasTriedFallback = ref(false);
+const imageLoadError = ref(false);
+const imageLoadErrorMessage = ref('');
 
 // Patent type mappings for Google Patents URLs
 const patentTypeMappings = {
@@ -89,9 +92,29 @@ const patentTypeMappings = {
   '8901588': 'B2'
 };
 
+// Replacement default image for each patent if needed
+const defaultImageMap = {
+  '7271420': '/img/Patent-Diagram.png', // Monolithic LED
+  '6212815': '/img/Patent-Diagram.png', // Magazine Grip
+  '8201489': '/img/Patent-Diagram.png', // Gas System
+  '7574823': '/img/patent-guide-thumbnail.png', // Security Mailbox - special case fallback
+  '8726556': '/img/Patent-Diagram.png',
+  '8819986': '/img/Patent-Diagram.png',
+  '9341429': '/img/Light-Bulb.png', // Work Light - use lightbulb image
+  '8505963': '/img/Patent-Diagram.png',
+  '8689672': '/img/Patent-Diagram.png',
+  '9256158': '/img/Patent-Diagram.png',
+  '8456293': '/img/Patent-Diagram.png',
+  '9074721': '/img/Patent-Diagram.png',
+  '8901588': '/img/Patent-Diagram.png',
+  '8234808': '/img/Patent-Diagram.png'
+};
+
 // Define resetImageState BEFORE it's used in the watch function
 const resetImageState = () => {
   hasTriedFallback.value = false;
+  imageLoadError.value = false;
+  imageLoadErrorMessage.value = '';
   currentImageSrc.value = '';
 };
 
@@ -102,20 +125,54 @@ const tryLoadPrimaryImage = () => {
     return;
   }
   
-  console.log(`Loading primary image for ${props.patent.title}: ${props.patent.image}`);
+  const patentTitle = props.patent.title || 'unknown';
+  console.log(`Loading primary image for ${patentTitle}: ${props.patent.image}`);
+  
+  // Special handling for security mailbox
+  if (props.patent.patentNumber === '7,574,823' || patentTitle.includes('Security Mailbox')) {
+    console.log('Special handling for Security Mailbox patent');
+    // Try a special fallback immediately for this known problematic image
+    tryPatentDefaultImage();
+    return;
+  }
+  
   currentImageSrc.value = props.patent.image;
 };
 
 // Try to load the fallback image if available
 const tryLoadFallbackImage = () => {
   if (!props.patent || !props.patent.fallbackImage) {
-    currentImageSrc.value = '';
+    tryPatentDefaultImage();
     return;
   }
   
   hasTriedFallback.value = true;
   console.log(`Loading fallback image for ${props.patent.title}: ${props.patent.fallbackImage}`);
   currentImageSrc.value = props.patent.fallbackImage;
+};
+
+// Try to load a default image based on patent number
+const tryPatentDefaultImage = () => {
+  if (!props.patent || !props.patent.patentNumber) {
+    imageLoadError.value = true;
+    imageLoadErrorMessage.value = 'No image available for this patent';
+    currentImageSrc.value = '';
+    return;
+  }
+  
+  // Get the clean patent number
+  const patentNum = props.patent.patentNumber.replace(/,|\s/g, '');
+  
+  // Check if we have a default image for this patent
+  if (defaultImageMap[patentNum]) {
+    console.log(`Using default image for ${props.patent.title}: ${defaultImageMap[patentNum]}`);
+    currentImageSrc.value = defaultImageMap[patentNum];
+  } else {
+    // No default image, show placeholder
+    imageLoadError.value = true;
+    imageLoadErrorMessage.value = 'Patent image unavailable';
+    currentImageSrc.value = '';
+  }
 };
 
 // Handle image loading errors
@@ -125,9 +182,14 @@ const handleImageError = () => {
   if (!hasTriedFallback.value && props.patent && props.patent.fallbackImage) {
     // Try the fallback image
     tryLoadFallbackImage();
+  } else if (!imageLoadError.value) {
+    // Try a patent-specific default image
+    tryPatentDefaultImage();
   } else {
     // All attempts failed, show placeholder
     console.log('All image paths failed, showing placeholder');
+    imageLoadError.value = true;
+    imageLoadErrorMessage.value = 'Unable to load any image for this patent';
     currentImageSrc.value = '';
   }
 };
@@ -138,7 +200,7 @@ watch(() => props.patent, (newPatent) => {
     resetImageState();
     tryLoadPrimaryImage();
   } else {
-    currentImageSrc.value = '';
+    resetImageState();
   }
 }, { immediate: true });
 
