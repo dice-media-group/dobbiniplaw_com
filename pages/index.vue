@@ -1,265 +1,237 @@
 <template>
   <div>
-    <!-- Use the reusable hero banner component with title and subtitle -->
-    <HeroBanner 
-      title="Dobbin IP Law P.C." 
-      subtitle="Geoff Dobbin, Patent and Intellectual Law Attorney"
-    >
-      <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We are still open for business and will be using telephonic and video calls. Please call and let's see how we can best help you at (801) 969-6609!</p>
-    </HeroBanner>
-    
-    <!-- Video and Copyright Section -->
-    <section class="py-8">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Video Section -->
-          <div class="bg-gray-100 p-2">
-            <div class="aspect-ratio">
-              <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                title="Dobbin IP Law: Great Insights On How To Find The Best Patent Attorney" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-            </div>
-            <div class="py-2 text-center bg-black text-white text-sm">
-              <p class="font-crimson">LOCAL ATTORNEY INTERVIEW</p>
-              <p class="font-crimson">FINDING A GREAT PATENT ATTORNEY</p>
-            </div>
-          </div>
-          
-          <!-- Copyright Info -->
-          <div class="flex flex-col justify-center items-center text-center">
-            <div>
-              <p class="mb-4 text-gray-700 font-crimson">There are other limitations to copyrights including <span class="text-dobbin-green font-semibold">time shifting!</span></p>
-              
-              <div class="flex justify-center space-x-1 my-6">
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-                <span class="h-2 w-2 rounded-full bg-gray-400"></span>
-              </div>
-              
-              <div class="bg-dobbin-dark-green text-white p-4 w-full max-w-xs mx-auto">
-                <p class="font-bold mb-2 font-crimson">Call Now for a Complementary Strategy Session!</p>
-                <p class="text-xl font-crimson">801-969-6609</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Main Content Section -->
-    <section class="py-8">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mx-auto">
-          <p class="text-lg mb-6 font-crimson">
-            <span class="et-dropcap">Y</span>our work is your baby – whether it is an invention or art. Like any parent you want to protect and nurture your baby and help it grow to its fullest potential. How do you do that? That's where we can help. At Dobbin IP Law, we specialize in obtaining patents to protect your inventions, copyrights to protect your authorship, and trademarks to protect your marketing. Let us help you with these parts of the "parenting" process.
-          </p>
-          
-          <p class="mb-6 font-crimson">
-            When you choose Dobbin IP Law, you will discover that we care about our clients. Whether it is your first invention or your 100th, we know how special it is to you. Your experience will start with a complementary strategy session. During this time, we will talk you through the necessary steps in order to protect your work, whether it is an invention, trademark, or art. Typically, we will even tell you what you should do, because we value honesty. We will work with you one-on-one to meet your needs. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch businesses grow and expand.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- IP Needs Section -->
-    <section class="py-8 bg-dobbin-dark-green">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mx-auto">
-          <h2 class="text-2xl font-bold mb-6 font-crimson text-white">Get help for your intellectual property needs</h2>
-          <p class="mb-6 font-crimson text-white">
-            When you come up with a new idea and put it into tangible form, you need legal protection to safeguard your work from being copied. Intellectual property comes in several forms; the three most common of which include patents, trademarks, and copyrights.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Attorney Bio Section -->
-    <section class="py-8">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="md:col-span-1">
-            <img src="https://placehold.co/300x400?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
-          </div>
-          <div class="md:col-span-2">
-            <p class="mb-4 font-crimson">
-              For over 20 years, Geoff Dobbin has assisted independent inventors and other creators of intellectual property with protecting their "babies." He understands your love invested you to not just dive at the hard work that went into your creation.
-            </p>
-            <p class="mb-4 font-crimson">
-              Although he founded Dobbin IP Law P.C. when he moved to Utah in 2004, Mr. Dobbin has been practicing intellectual property law and representing creators in need of patents, copyrights and trademarks since 1998. 
-            </p>
-            <p class="mb-4 font-crimson">
-              With a degree in physics that gives him a solid scientific background in traditional patent subject matter, Mr. Dobbin is as quick on the uptake and ready grasp new concepts and ideas, no matter how complex.
-            </p>
-            <p class="font-crimson">
-              Mr. Dobbin is a solo practitioner with a strong track record of hard work by prior word. He especially enjoys working with independent inventors and watching businesses grow and expand.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- We Care About Our Clients - Black bg white text section -->
-    <section class="py-12 bg-black">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mx-auto">
-          <h2 class="text-3xl mb-6 font-crimson text-white">We Care About Our Clients</h2>
-          <p class="mb-4 font-crimson text-white leading-relaxed text-lg">
-            When you choose Dobbin IP Law, you will discover that we care about our clients. We will work with you one on one to meet your needs. Additionally, we will tell you as soon as possible whether or not we think your invention is patentable, because we value honesty. Your privacy is also a priority. Everything communicated between client and attorney is considered confidential. Here at Dobbin IP Law, we specialize in working with the little guy. We love to watch business grow and expand.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Three Benefit Columns - Green Sections with UPDATED colors -->
-    <section class="py-0">
-      <div class="grid grid-cols-1 md:grid-cols-3">
-        <!-- Column 1: You Are the Boss - #12352c (dobbin-dark-green is already this color) -->
-        <div class="bg-dobbin-dark-green text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">You Are the Boss</h3>
-          <p class="font-crimson text-white mb-4 leading-relaxed">
-            Tell us what you want done, and we will be responsive to your needs. We will put our experience to good use to ensure the best quality service and outcome possible. We work one-on-one with our clients, starting with a confidential strategy session. We will tell you as soon as possible whether or not we think your invention is patentable. Your privacy is also a priority. Everything communicated between client and attorney is confidential.
-          </p>
-        </div>
-        
-        <!-- Column 2: We Offer Experience & Knowledge - #26473f (new color) -->
-        <div style="background-color: #26473f;" class="text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">We Offer Experience & Knowledge</h3>
-          <p class="font-crimson text-white mb-4 leading-relaxed">
-            After working in intellectual property law for over a decade and a half, we understand the requirements and details necessary for your intellectual property to succeed. With a solid scientific background, Geoffrey Dobbin can grasp a variety of subject matter from the simplest gadgets to lasers and semiconductors. After discussing your invention with you, we will put your application in proper format for submission, and then later use our experience and best efforts to broaden the scope of your patent application.
-          </p>
-        </div>
-        
-        <!-- Column 3: We Are a Small Business Too - #4b6660 (new color) -->
-        <div style="background-color: #4b6660;" class="text-white p-8">
-          <h3 class="text-xl font-crimson font-bold mb-4 text-white text-center">We Are a Small Business Too</h3>
-          <p class="font-crimson text-white mb-4 leading-relaxed">
-            We know what it's like to go through blood, sweat and tears as you experience the ups and downs of business. We also know the joy that comes from success. We have included a number of frequently asked questions on our website. You can find the links in the menu to the left. Please feel free to browse them, as well as the general information about intellectual property we have provided. If your question has not been answered, please feel free to contact us and schedule a complementary strategy session.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Main White Testimonial Section with Arrows -->
-    <section class="bg-white py-16 px-4 md:px-8 relative">
+    <!-- Problem-Solution Narrative Hero Banner -->
+    <section class="bg-dobbin-dark-green py-16 px-4">
       <div class="container mx-auto max-w-6xl">
-        <!-- Navigation Arrows -->
-        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-dobbin-dark-green transition focus:outline-none z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        
-        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-dobbin-dark-green transition focus:outline-none z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        
-        <!-- Testimonial Carousel -->
-        <div class="relative">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-slide active">
-            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
-              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        <div class="bg-opacity-90 p-8 rounded-lg">
+          <!-- Question-based engagement headline -->
+          <h1 class="text-3xl md:text-4xl font-bold text-white font-crimson mb-6 text-center">
+            "Is your innovation properly protected?"
+          </h1>
+          
+          <!-- Value differentiation statement -->
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-white font-crimson">
+            PATENT LAW DOESN'T HAVE TO BE COMPLICATED
+          </h2>
+          
+          <!-- Solution-focused messaging -->
+          <p class="text-lg text-white text-center font-crimson mb-10 max-w-4xl mx-auto">
+            We help inventors and businesses navigate the complex world of intellectual property 
+            with clear, strategic guidance. From patents to trademarks, we make protecting your 
+            ideas straightforward.
+          </p>
+          
+          <!-- Dual conversion paths -->
+          <div class="flex flex-col md:flex-row justify-center gap-6 mb-8">
+            <a href="#" onclick="document.getElementById('scheduleForm').scrollIntoView({behavior: 'smooth'})" 
+               class="bg-white text-dobbin-dark-green font-bold py-3 px-8 rounded-lg text-center transition 
+                      hover:bg-gray-100 transform hover:scale-105 shadow-lg text-lg">
+              SCHEDULE CONSULTATION
+            </a>
+            <a href="#videoOverview" 
+               class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg flex items-center 
+                      justify-center gap-2 transition hover:bg-white hover:bg-opacity-10 transform hover:scale-105 text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              
-              <div class="mb-8 text-dobbin-gray">
-                <p class="font-crimson text-lg italic mb-6">
-                  I am Lee Von Gunten, CEO of Watchdog manufacturing, where we produce and sell Home Security products such as our Watchdog Timers and others. I am pleased and proud to offer this short but sweet testimonial regarding Geoff Dobbin and his team at Dobbin IP Law P.C. This is a voluntary testimonial for Geoff and his company. Geoff did not ask for it.
-                </p>
-                
-                <p class="font-crimson text-lg italic mb-6">
-                  We've been working with Geoff and staff for over 12 years with total confidence in the professionality and completeness of their services at fair costs through all of our patent and trademark work. Geoff has been there for us to help and answer questions and to advise us in all matters of Intellectual Law through several patent applications and trademark listings.
-                </p>
-                
-                <p class="font-crimson text-lg italic mb-8">
-                  Geoff and his staff are tops. I can't recommend them too highly.
-                </p>
-                
-                <p class="font-crimson font-semibold">Thank you,</p>
-                <p class="font-crimson font-bold text-lg">Lee Von Gunten, CEO</p>
-                <p class="font-crimson">Watchdog Manufacturing</p>
+              WATCH VIDEO OVERVIEW
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Social Proof - Client Success Story with YouTube Video -->
+    <section class="py-10 bg-gray-50" id="videoOverview">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <!-- YouTube Video -->
+          <div class="md:w-1/3">
+            <div class="relative rounded-lg shadow-lg overflow-hidden">
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe 
+                  src="https://www.youtube.com/embed/18gFVGE2Za0" 
+                  title="Patent Attorney Geoff Dobbin Explains IP Law" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen 
+                  class="w-full h-full object-cover"
+                ></iframe>
               </div>
             </div>
           </div>
           
-          <!-- Testimonial 2 -->
-          <div class="testimonial-slide hidden">
-            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
-              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              
-              <div class="mb-8 text-dobbin-gray">
-                <p class="font-crimson text-lg italic mb-6">
-                  I've known Geoff Dobbin and have used him as my patent attorney for over 7 years. During that time Geoff has filed multiple patents for me. Before meeting Geoff I consulted other patent attorneys and always came away frustrated that I could not get definite answers to my questions. It was refreshing when on my very first meeting with Geoff he gave me straight answers, explaining even the most complicated Intellectual Property issues in easy to understand language.
-                </p>
-                
-                <p class="font-crimson text-lg italic mb-6">
-                  Geoff has demonstrated utmost integrity while working on my patents and has an extensive knowledge of all aspects of Intellectual Property law. His work is of the highest quality and is delivered in a timely manner. I'm pleased to give Geoff my highest recommendation for your Intellectual Property work.
-                </p>
-                
-                <p class="font-crimson font-bold text-lg">Matthew Prestwich</p>
-                <p class="font-crimson">Ready Holster and Tactical Supply</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Testimonial 3 -->
-          <div class="testimonial-slide hidden">
-            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
-              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              
-              <div class="mb-8 text-dobbin-gray">
-                <p class="font-crimson text-lg italic mb-6">
-                  I have been working with Geoff Dobbin for approximately 8 years in relation to a range of patent, trademark and product licensing matters. I have found Geoff to be a knowledgeable and diligent intellectual property attorney who is also a pleasure to deal with.
-                </p>
-                
-                <p class="font-crimson text-lg italic mb-6">
-                  Geoff was able to provide practical and timely responses to questions I asked and was instrumental in finalizing patents and a trademark for my invention. I would not hesitate in recommending Geoff.
-                </p>
-                
-                <p class="font-crimson font-bold text-lg">Craig Charlton</p>
-                <p class="font-crimson">Lock Jaw Ladder Grip</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Testimonial 4 -->
-          <div class="testimonial-slide hidden">
-            <div class="testimonial-card bg-white rounded-lg shadow-xl p-8 md:w-2/3 max-w-3xl w-full mx-auto">
-              <svg class="w-12 h-12 text-dobbin-dark-green opacity-50 mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              
-              <div class="mb-8 text-dobbin-gray">
-                <p class="font-crimson text-lg italic mb-6">
-                  Geoffrey Dobbin has been my patent attorney for the past six years and I am highly impressed by his ability to understand a wide range of complex technologies and describe them clearly, suggest appropriate strategies for intellectual property, and his adroitness in communicating with the USPTO.
-                </p>
-                
-                <p class="font-crimson font-bold text-lg">Dr. Mark J. Hagmann, CTO</p>
-                <p class="font-crimson">NewPath Research, LLC</p>
-              </div>
+          <!-- Testimonial with specific outcome -->
+          <div class="md:w-2/3">
+            <blockquote class="italic text-gray-700 text-lg font-crimson mb-4">
+              "Geoff helped us secure patents that were essential to our $2M funding round. His clear explanation of complex IP concepts made the process so much easier than I expected."
+            </blockquote>
+            <cite class="block text-dobbin-dark-green font-bold font-crimson">- Lee Von Gunten, CEO of Watchdog Manufacturing</cite>
+            <div class="mt-6">
+              <a href="/testimonials" class="text-dobbin-dark-green font-semibold hover:underline flex items-center gap-1">
+                See what other clients say
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    
+    <!-- How We Make IP Protection Simple -->
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <h2 class="text-3xl font-bold text-center font-crimson text-dobbin-dark-green mb-12">How We Make IP Protection Simple</h2>
         
-        <!-- Testimonial Indicators -->
-        <div class="flex justify-center space-x-2 mt-8">
-          <button class="h-3 w-3 rounded-full bg-dobbin-dark-green" data-slide="0"></button>
-          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="1"></button>
-          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="2"></button>
-          <button class="h-3 w-3 rounded-full bg-gray-300 hover:bg-dobbin-green cursor-pointer transition" data-slide="3"></button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 transition hover:shadow-xl">
+            <div class="flex items-center justify-center w-16 h-16 bg-dobbin-dark-green rounded-full text-white mb-6 mx-auto">
+              <span class="text-2xl font-bold">1</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center font-crimson">Complementary Strategy Session</h3>
+            <p class="text-gray-600 font-crimson">
+              We start with a free strategy session to understand your invention and goals. 
+              You'll leave with clarity on your options, timeline, and costs.
+            </p>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 transition hover:shadow-xl">
+            <div class="flex items-center justify-center w-16 h-16 bg-dobbin-dark-green rounded-full text-white mb-6 mx-auto">
+              <span class="text-2xl font-bold">2</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center font-crimson">Clear, Strategic Path</h3>
+            <p class="text-gray-600 font-crimson">
+              We'll create a straightforward protection plan in plain language, so you understand 
+              exactly what's happening at each stage of the process.
+            </p>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 transition hover:shadow-xl">
+            <div class="flex items-center justify-center w-16 h-16 bg-dobbin-dark-green rounded-full text-white mb-6 mx-auto">
+              <span class="text-2xl font-bold">3</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center font-crimson">Ongoing Partnership</h3>
+            <p class="text-gray-600 font-crimson">
+              We're with you for the long haul. From application to approval and beyond, we're your 
+              IP partner as your business grows.
+            </p>
+          </div>
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="mt-12 text-center">
+          <a href="#scheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
+            Get Started Today
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Geoff Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-1/3">
+            <img src="/img/geoff-dobbin.jpg" alt="Geoff Dobbin" class="rounded-lg shadow-lg mx-auto">
+          </div>
+          
+          <div class="md:w-2/3">
+            <h2 class="text-3xl font-bold mb-6 font-crimson text-dobbin-dark-green">Meet Your Attorney</h2>
+            <p class="text-gray-700 mb-6 font-crimson">
+              For over 20 years, Geoff Dobbin has assisted independent inventors and other creators with 
+              protecting their intellectual property. With a background in physics, he quickly grasps complex 
+              concepts across diverse industries.
+            </p>
+            <p class="text-gray-700 mb-6 font-crimson">
+              Since founding Dobbin IP Law P.C. in 2004, Geoff has focused on making patent law accessible 
+              to independent inventors and small businesses. He believes that clear communication and strategic 
+              guidance are just as important as legal expertise.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 min-w-[180px]">
+                <div class="bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Patents Secured</p>
+                  <p class="font-bold text-dobbin-dark-green">200+</p>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 min-w-[180px]">
+                <div class="bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Years of Experience</p>
+                  <p class="font-bold text-dobbin-dark-green">20+</p>
+                </div>
+              </div>
+            </div>
+            <a href="/about" class="text-dobbin-dark-green font-semibold hover:underline flex items-center gap-1">
+              Learn more about Geoff
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Schedule Form Section -->
+    <section class="py-16 bg-dobbin-dark-green" id="scheduleForm">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-white rounded-lg shadow-xl p-8 md:p-12 max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6 text-center font-crimson text-dobbin-dark-green">
+            Schedule Your Complementary Strategy Session
+          </h2>
+          <p class="text-center text-gray-600 mb-8 font-crimson">
+            Take the first step toward protecting your valuable ideas. 
+            No obligation, just clear guidance on your path forward.
+          </p>
+          
+          <!-- Form goes here - simplified mockup -->
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700 font-medium mb-2">Tell us about your invention or IP needs (optional)</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green"></textarea>
+            </div>
+            <div class="flex justify-center">
+              <button type="submit" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
+                Request My Strategy Session
+              </button>
+            </div>
+          </form>
+          
+          <!-- Alternative Contact -->
+          <div class="mt-8 text-center">
+            <p class="text-gray-600 font-crimson">Or call us directly at:</p>
+            <p class="font-bold text-dobbin-dark-green text-2xl font-crimson">(801) 969-6609</p>
+          </div>
         </div>
       </div>
     </section>
@@ -271,70 +243,15 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import HeroBanner from '../components/HeroBanner.vue';
 import PageCTA from '../components/PageCTA.vue';
 
-// For carousel functionality
-let currentSlide = ref(0);
-const totalSlides = 4;
-
-function showSlide(index) {
-  // Hide all slides
-  document.querySelectorAll('.testimonial-slide').forEach(slide => {
-    slide.classList.add('hidden');
-    slide.classList.remove('active');
-  });
-  
-  // Show the selected slide
-  const slides = document.querySelectorAll('.testimonial-slide');
-  if (slides[index]) {
-    slides[index].classList.remove('hidden');
-    slides[index].classList.add('active');
-  }
-  
-  // Update indicators
-  document.querySelectorAll('[data-slide]').forEach((indicator, i) => {
-    if (i === index) {
-      indicator.classList.remove('bg-gray-300');
-      indicator.classList.add('bg-dobbin-dark-green');
-    } else {
-      indicator.classList.remove('bg-dobbin-dark-green');
-      indicator.classList.add('bg-gray-300');
-    }
-  });
-  
-  currentSlide.value = index;
-}
-
-function nextSlide() {
-  showSlide((currentSlide.value + 1) % totalSlides);
-}
-
-function prevSlide() {
-  showSlide((currentSlide.value - 1 + totalSlides) % totalSlides);
-}
-
-onMounted(() => {
-  // Set up event listeners for indicators
-  document.querySelectorAll('[data-slide]').forEach((indicator, i) => {
-    indicator.addEventListener('click', () => showSlide(i));
-  });
-  
-  // Set up event listeners for next/prev buttons
-  const prevButton = document.querySelector('.absolute.left-4');
-  const nextButton = document.querySelector('.absolute.right-4');
-  
-  if (prevButton) prevButton.addEventListener('click', prevSlide);
-  if (nextButton) nextButton.addEventListener('click', nextSlide);
-  
-  // Initialize the first slide
-  showSlide(0);
-});
-
 useHead({
-  title: 'Dobbin IP Law P.C. | Patent Attorney | Intellectual Property Law',
+  title: 'Dobbin IP Law P.C. | Clear & Strategic Patent Attorney | Utah',
   meta: [
-    { name: 'description', content: 'Dobbin IP Law specializes in obtaining patents to protect your invention, copyrights to protect your authorship, and trademarks to protect your marketing.' }
+    { 
+      name: 'description', 
+      content: 'Navigate IP law with confidence. Dobbin IP Law makes patent, trademark, and copyright protection simple with clear guidance and strategic solutions for inventors and businesses.' 
+    }
   ],
   link: [
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap' }
@@ -343,32 +260,39 @@ useHead({
 </script>
 
 <style>
-/* Testimonial card styles */
-.testimonial-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
+/* Animation for hover effects */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Shadow effects */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.testimonial-slide {
-  transition: opacity 0.5s ease;
+/* YouTube responsive container */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
 }
 
-.testimonial-slide.active {
-  opacity: 1;
-}
-
-.testimonial-slide.hidden {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .testimonial-card:hover {
-    transform: translateY(-5px);
-  }
+.aspect-w-16 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Adjust the max width for desktop */
