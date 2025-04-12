@@ -2,11 +2,20 @@
   <div class="patent-carousel relative">
     <!-- Carousel container with full-width background -->
     <div class="carousel-bg py-20 relative">
+      <!-- Loading state -->
+      <div v-if="isLoading" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
+        <div class="text-center">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-dobbin-dark-green mb-2"></div>
+          <p class="text-dobbin-dark-green font-medium">Loading patents...</p>
+        </div>
+      </div>
+      
       <!-- Navigation arrows - positioned with higher z-index to stay above slides -->
       <button 
         @click="prevSlide" 
         class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Previous slide"
+        v-if="allPatents && allPatents.length > 1"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -17,6 +26,7 @@
         @click="nextSlide" 
         class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Next slide"
+        v-if="allPatents && allPatents.length > 1"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -44,17 +54,25 @@
         </svg>
       </button>
       
+      <!-- Error message if no patents are loaded -->
+      <div v-if="!isLoading && (!allPatents || allPatents.length === 0)" class="container mx-auto px-4 text-center py-8">
+        <p class="text-red-600">No patent data available. Please try refreshing the page.</p>
+        <button @click="refreshPatents" class="mt-4 bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-4 rounded">
+          Refresh Data
+        </button>
+      </div>
+      
       <!-- Carousel content aligned with text container -->
-      <div class="container mx-auto px-4">
+      <div v-if="!isLoading && allPatents && allPatents.length > 0" class="container mx-auto px-4">
         <!-- Removed max-width to match paragraph width -->
         <div class="mx-auto"> 
           <!-- Carousel slide container -->
           <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
-            <!-- Removed transition-group for no animation -->
+            <!-- Slide container -->
             <div class="relative">
               <PatentSlide 
                 v-for="(patent, idx) in allPatents" 
-                :key="patent.title" 
+                :key="patent.title + idx" 
                 :patent="patent" 
                 :isActive="idx === currentIndex"
                 :slideDirection="direction"
@@ -68,7 +86,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import { usePatents } from '~/composables/usePatents';
 import PatentSlide from '~/components/PatentSlide.vue';
 import DebugPanel from '~/components/DebugPanel.vue';
@@ -87,14 +105,23 @@ const direction = ref('right'); // 'right' or 'left'
 const { 
   patents: allPatents, 
   isLoading, 
+  error,
   fromMarkdown,
   fetchPatents,
   refreshPatents
 } = usePatents();
 
+// Watch for errors
+watch(error, (newError) => {
+  if (newError) {
+    queryError.value = newError;
+    console.error('Patent fetch error:', newError);
+  }
+});
+
 // Current slide based on index
 const currentSlide = computed(() => {
-  if (allPatents.value.length > 0) {
+  if (allPatents.value && allPatents.value.length > 0) {
     return allPatents.value[currentIndex.value];
   }
   return null;
@@ -102,7 +129,7 @@ const currentSlide = computed(() => {
 
 // Previous slide navigation with animation direction
 const prevSlide = () => {
-  if (allPatents.value.length > 0) {
+  if (allPatents.value && allPatents.value.length > 0) {
     direction.value = 'left';
     currentIndex.value = (currentIndex.value - 1 + allPatents.value.length) % allPatents.value.length;
   }
@@ -110,7 +137,7 @@ const prevSlide = () => {
 
 // Next slide navigation with animation direction
 const nextSlide = () => {
-  if (allPatents.value.length > 0) {
+  if (allPatents.value && allPatents.value.length > 0) {
     direction.value = 'right';
     currentIndex.value = (currentIndex.value + 1) % allPatents.value.length;
   }
@@ -141,6 +168,23 @@ defineExpose({
 
 let intervalId = null;
 
+// Set up autoplay if enabled
+const setupAutoplay = () => {
+  if (props.autoplay && props.interval > 0 && allPatents.value && allPatents.value.length > 1) {
+    // Clear any existing interval first
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    
+    // Set up new interval
+    intervalId = setInterval(() => {
+      nextSlide();
+    }, props.interval);
+    
+    console.log(`Autoplay enabled with interval: ${props.interval}ms`);
+  }
+};
+
 // Initialize content on mount
 onMounted(async () => {
   console.log('PatentCarousel mounted');
@@ -148,7 +192,17 @@ onMounted(async () => {
   // Fetch patents
   await fetchPatents();
   
-  // Autoplay is disabled - no interval setup
+  // Setup autoplay if enabled
+  if (props.autoplay) {
+    setupAutoplay();
+  }
+});
+
+// Watch for patent data changes to setup autoplay
+watch(allPatents, (newPatents) => {
+  if (newPatents && newPatents.length > 0 && props.autoplay) {
+    setupAutoplay();
+  }
 });
 
 // Clean up interval on component unmount

@@ -1,0 +1,36 @@
+{
+  "patents": [
+    {
+      "title": "Monolithic LED Chip to Emit Multiple Colors",
+      "description": "A light emitting diode chip with red, green and blue light emission regions on a single substrate. The light emission regions may be powered selectively to only emit one color light at a time. Or all three regions may be powered simultaneously so that the LED chip emits white light.",
+      "image": "/img/led-chip.png",
+      "patentNumber": "7,271,420",
+      "linkText": "Patent 7,271,420",
+      "order": 1
+    },
+    {
+      "title": "Magazine Grip",
+      "description": "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine.",
+      "image": "/img/magazine-grip.png",
+      "patentNumber": "6,212,815",
+      "linkText": "Patent 6,212,815",
+      "order": 2
+    },
+    {
+      "title": "Gas System for an Automatic Firearm",
+      "description": "The present invention is a gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to impinge upon and operate the firearm's bolt operating system.",
+      "image": "/img/firearm-gas.png",
+      "patentNumber": "8,201,489",
+      "linkText": "Patent 8,201,489",
+      "order": 3
+    },
+    {
+      "title": "Security Mailbox",
+      "description": "The present invention is a security mailbox utilizing a combination package rest and security panel. A mail slot in the security panel prevents easy access to contents of the mailbox. The present invention may be utilized in situations other than mail delivery where security for contents is desired.",
+      "image": "/img/security-mailbox.png",
+      "patentNumber": "7,574,823",
+      "linkText": "Patent 7,574,823",
+      "order": 4
+    }
+  ]
+}

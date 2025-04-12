@@ -6,9 +6,10 @@
     <!-- Slide image with orange background -->
     <div class="md:w-1/2 p-10 bg-white">
       <img 
-            :src="patent.image" 
+            :src="getImagePath(patent.image)" 
             :alt="patent.title" 
             class="max-w-full max-h-96 object-contain patent-image mx-auto"
+            @error="handleImageError"
           />
     </div>
     
@@ -29,6 +30,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 // Props to receive from parent component
 const props = defineProps({
   patent: {
@@ -45,6 +48,10 @@ const props = defineProps({
   }
 });
 
+// For image fallback handling
+const fallbackSrc = ref('');
+const imageError = ref(false);
+
 /**
  * Patent type mappings (most common types)
  * For patents that don't include B1, B2, etc. in patentNumber
@@ -55,6 +62,50 @@ const patentTypeMappings = {
   '8689672': 'B2',
   '8234808': 'B2',
   '6212815': 'B1',
+};
+
+/**
+ * Handles image loading errors and tries to use fallback paths
+ */
+const handleImageError = (event) => {
+  if (!imageError.value) {
+    imageError.value = true;
+    const originalSrc = event.target.src;
+    console.log(`Image failed to load: ${originalSrc}`);
+    
+    // Try a fallback approach - if in prior-work folder, try direct in img folder and vice versa
+    let newSrc = '';
+    
+    if (originalSrc.includes('/prior-work/')) {
+      // If it was in prior-work/ try direct path
+      const filename = originalSrc.split('/').pop();
+      newSrc = `/img/${filename}`;
+    } else {
+      // If it was direct path, try prior-work/
+      const filename = originalSrc.split('/').pop();
+      newSrc = `/img/prior-work/${filename}`;
+    }
+    
+    console.log(`Trying fallback image: ${newSrc}`);
+    event.target.src = newSrc;
+    fallbackSrc.value = newSrc;
+  }
+};
+
+/**
+ * Gets the appropriate image path with fallback handling
+ */
+const getImagePath = (imagePath) => {
+  if (imageError.value && fallbackSrc.value) {
+    return fallbackSrc.value;
+  }
+  
+  // Ensure the image path has a leading slash
+  if (imagePath && !imagePath.startsWith('/')) {
+    return `/${imagePath}`;
+  }
+  
+  return imagePath;
 };
 
 /**

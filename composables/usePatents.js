@@ -40,21 +40,100 @@ export function usePatents() {
   const fromMarkdown = ref(false);
   const markdownPatents = ref([]);
 
-  // Try direct content API access
+  // Try fetching patent data from multiple possible sources
   const fetchPatentsDirectly = async () => {
     try {
       console.log('Fetching patents directly...');
-      // Try to directly access the content API
       const timestamp = Date.now(); // To bypass cache
-      const response = await fetch(`/_content/query/patents?_params={"where":{"_extension":"md"},"sort":[{"order":1}]}&_hash=${timestamp}`);
-      const data = await response.json();
       
-      console.log('Direct API results:', data);
-      if (data && Array.isArray(data) && data.length > 0) {
-        markdownPatents.value = data;
-        fromMarkdown.value = true;
-        return data;
+      // Try multiple approaches in sequence
+      
+      // 1. First try to get the patents.json file
+      try {
+        console.log('Trying to fetch patents.json...');
+        const jsonResponse = await fetch(`/_content/patents.json?_hash=${timestamp}`);
+        
+        if (jsonResponse.ok) {
+          const jsonData = await jsonResponse.json();
+          console.log('Found patents.json:', jsonData);
+          if (jsonData && jsonData.patents && Array.isArray(jsonData.patents) && jsonData.patents.length > 0) {
+            return jsonData.patents;
+          }
+        }
+      } catch (jsonErr) {
+        console.log('No patents.json found, trying another approach');
       }
+      
+      // 2. Try to query patents directory content
+      try {
+        console.log('Trying to query patents directory...');
+        const dirResponse = await fetch(`/_content/query?_params={"where":{"_path":{"$contains":"patents/"}},"sort":[{"order":1}]}&_hash=${timestamp}`);
+        
+        if (dirResponse.ok) {
+          const dirData = await dirResponse.json();
+          console.log('Patents directory query results:', dirData);
+          
+          if (dirData && Array.isArray(dirData) && dirData.length > 0) {
+            // Process the data to ensure image paths are correct
+            const processedData = dirData.map(patent => {
+              // Process patent data to extract necessary fields from markdown frontmatter
+              return {
+                title: patent.title || '',
+                description: patent.description || '',
+                image: patent.image || '',
+                patentNumber: patent.patentNumber || '',
+                linkText: patent.linkText || `Patent ${patent.patentNumber || ''}`,
+                order: patent.order || 0,
+                _path: patent._path || ''
+              };
+            });
+            
+            // Sort by order if available
+            processedData.sort((a, b) => (a.order || 0) - (b.order || 0));
+            
+            return processedData;
+          }
+        }
+      } catch (dirErr) {
+        console.log('Patents directory query failed, trying another approach');
+      }
+      
+      // 3. As a last resort, try to fetch from a hardcoded list of files
+      try {
+        console.log('Trying to fetch individual patent files...');
+        const fileNames = [
+          '1-monolithic-led-chip',
+          '2-magazine-grip',
+          '3-gas-system',
+          '4-security-mailbox'
+        ];
+        
+        const patentPromises = fileNames.map(async (fileName) => {
+          try {
+            const fileResponse = await fetch(`/_content/patents/${fileName}.md?_hash=${timestamp}`);
+            if (fileResponse.ok) {
+              const fileData = await fileResponse.json();
+              return fileData;
+            }
+          } catch (fileErr) {
+            console.log(`Failed to fetch ${fileName}.md`);
+            return null;
+          }
+        });
+        
+        const patentResults = await Promise.all(patentPromises);
+        const validPatents = patentResults.filter(p => p !== null);
+        
+        if (validPatents.length > 0) {
+          console.log('Successfully fetched individual patent files:', validPatents);
+          return validPatents;
+        }
+      } catch (filesErr) {
+        console.log('Individual files approach failed');
+      }
+      
+      // If we get here, all approaches failed
+      console.log('All content fetch approaches failed, using fallback data');
       return [];
     } catch (err) {
       console.error('Error fetching patents directly:', err);
@@ -75,12 +154,12 @@ export function usePatents() {
       const directResult = await fetchPatentsDirectly();
       
       // Use direct result or fallback
-      if (directResult.length > 0) {
-        console.log('Using direct API results');
+      if (directResult && directResult.length > 0) {
+        console.log('Using direct API results, found', directResult.length, 'patents');
         patents.value = directResult;
         fromMarkdown.value = true;
       } else {
-        console.log('No markdown patents found, using fallback');
+        console.log('No content patents found, using fallback data');
         patents.value = fallbackPatents;
         fromMarkdown.value = false;
       }
@@ -103,8 +182,6 @@ export function usePatents() {
   const listPatentFiles = async () => {
     try {
       console.log('Listing all content files...');
-      // This will attempt to list all available content files but won't work
-      // without queryContent, just keeping for API compatibility
       return [];
     } catch (err) {
       console.error('Error listing content files:', err);
