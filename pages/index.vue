@@ -191,7 +191,7 @@
                 </div>
                 <div>
                   <p class="text-sm text-gray-600">Patents Secured</p>
-                  <p class="font-bold text-dobbin-dark-green">200+</p>
+                  <p class="font-bold text-dobbin-dark-green">100+</p>
                 </div>
               </div>
               <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 min-w-[180px]">
