@@ -1,5 +1,33 @@
 <template>
   <div>
+    <!-- Video Modal -->
+    <div v-if="isVideoModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" @click="closeVideoModal">
+      <div class="relative w-full max-w-4xl mx-auto" @click.stop>
+        <!-- Close button -->
+        <button 
+          @click="closeVideoModal" 
+          class="absolute -top-10 right-0 text-white hover:text-gray-300 focus:outline-none"
+          aria-label="Close video"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        <!-- Video container -->
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe 
+            :src="videoModalSrc" 
+            title="Patent Attorney Geoff Dobbin Explains IP Law" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            class="w-full h-full"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
     <!-- Problem-Solution Narrative Hero Banner -->
     <section class="bg-dobbin-dark-green py-16 px-4">
       <div class="container mx-auto max-w-6xl">
@@ -23,41 +51,42 @@
           
           <!-- Dual conversion paths -->
           <div class="flex flex-col md:flex-row justify-center gap-6 mb-8">
-            <a href="#" onclick="document.getElementById('scheduleForm').scrollIntoView({behavior: 'smooth'})" 
+            <a href="#" @click.prevent="scrollToScheduleForm" 
                class="bg-white text-dobbin-dark-green font-bold py-3 px-8 rounded-lg text-center transition 
                       hover:bg-gray-100 transform hover:scale-105 shadow-lg text-lg">
               SCHEDULE CONSULTATION
             </a>
-            <a href="#videoOverview" 
+            <button @click="openVideoModal" 
                class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg flex items-center 
                       justify-center gap-2 transition hover:bg-white hover:bg-opacity-10 transform hover:scale-105 text-lg">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              WATCH VIDEO OVERVIEW
-            </a>
+              WATCH: TIPS FOR CHOOSING A PATENT ATTORNEY
+            </button>
           </div>
         </div>
       </div>
     </section>
     
-    <!-- Social Proof - Client Success Story with YouTube Video -->
-    <section class="py-10 bg-gray-50" id="videoOverview">
+    <!-- Social Proof - Client Success Story -->
+    <section class="py-10 bg-gray-50">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="flex flex-col md:flex-row gap-6 items-center">
-          <!-- YouTube Video -->
+          <!-- Mini Video Thumbnail -->
           <div class="md:w-1/3">
-            <div class="relative rounded-lg shadow-lg overflow-hidden">
-              <div class="aspect-w-16 aspect-h-9">
-                <iframe 
-                  src="https://www.youtube.com/embed/18gFVGE2Za0" 
-                  title="Patent Attorney Geoff Dobbin Explains IP Law" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen 
-                  class="w-full h-full object-cover"
-                ></iframe>
+            <div class="relative rounded-lg shadow-lg overflow-hidden cursor-pointer" @click="openVideoModal">
+              <img 
+                src="https://img.youtube.com/vi/ljNiDscQ-Vw/maxresdefault.jpg" 
+                alt="Video thumbnail: Tips for Choosing a Patent Attorney" 
+                class="w-full h-auto"
+              >
+              <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-30 transition-opacity">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
             </div>
           </div>
@@ -126,7 +155,7 @@
         
         <!-- CTA Button -->
         <div class="mt-12 text-center">
-          <a href="#scheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
+          <a href="#scheduleForm" @click.prevent="scrollToScheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
             Get Started Today
           </a>
         </div>
@@ -245,6 +274,44 @@
 import { ref, onMounted } from 'vue';
 import PageCTA from '../components/PageCTA.vue';
 
+// Video modal state
+const isVideoModalOpen = ref(false);
+const videoModalSrc = ref('');
+
+// Methods to handle the video modal
+function openVideoModal() {
+  // YouTube embed URL with autoplay parameter
+  videoModalSrc.value = 'https://www.youtube.com/embed/ljNiDscQ-Vw?autoplay=1';
+  isVideoModalOpen.value = true;
+  
+  // Prevent body scrolling when modal is open
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  isVideoModalOpen.value = false;
+  // Reset video src to stop playback
+  videoModalSrc.value = '';
+  
+  // Re-enable body scrolling
+  document.body.style.overflow = '';
+}
+
+// Method to scroll to schedule form
+function scrollToScheduleForm(event) {
+  event.preventDefault();
+  document.getElementById('scheduleForm').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Close modal when Escape key is pressed
+onMounted(() => {
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isVideoModalOpen.value) {
+      closeVideoModal();
+    }
+  });
+});
+
 useHead({
   title: 'Dobbin IP Law P.C. | Clear & Strategic Patent Attorney | Utah',
   meta: [
@@ -293,6 +360,15 @@ a, button {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Modal animation */
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.3s;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
 }
 
 /* Adjust the max width for desktop */
