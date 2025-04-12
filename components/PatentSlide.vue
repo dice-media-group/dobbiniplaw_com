@@ -8,11 +8,20 @@
       <!-- Slide image with orange background -->
       <div class="md:w-1/2 p-10 bg-white">
         <img 
-          :src="getImagePath(patent.image)" 
+          v-if="currentImageSrc"
+          :src="currentImageSrc" 
           :alt="patent.title" 
           class="max-w-full max-h-96 object-contain patent-image mx-auto"
           @error="handleImageError"
         />
+        <div v-else class="flex items-center justify-center h-full">
+          <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p class="text-gray-500">Image not available</p>
+          </div>
+        </div>
       </div>
       
       <!-- Slide content -->
@@ -40,7 +49,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 
 // Props to receive from parent component
 const props = defineProps({
@@ -58,14 +67,12 @@ const props = defineProps({
   }
 });
 
-// For image fallback handling
-const fallbackSrc = ref('');
+// For image handling
 const imageError = ref(false);
+const attemptedPaths = ref([]);
+const currentImageSrc = ref('');
 
-/**
- * Patent type mappings (most common types)
- * For patents that don't include B1, B2, etc. in patentNumber
- */
+// Patent type mappings (most common types)
 const patentTypeMappings = {
   '7271420': 'B2',
   '9341429': 'B2',
@@ -74,52 +81,90 @@ const patentTypeMappings = {
   '6212815': 'B1',
 };
 
-/**
- * Handles image loading errors and tries to use fallback paths
- */
-const handleImageError = (event) => {
-  if (!imageError.value) {
-    imageError.value = true;
-    const originalSrc = event.target.src;
-    console.log(`Image failed to load: ${originalSrc}`);
-    
-    // Try a fallback approach - if in prior-work folder, try direct in img folder and vice versa
-    let newSrc = '';
-    
-    if (originalSrc.includes('/prior-work/')) {
-      // If it was in prior-work/ try direct path
-      const filename = originalSrc.split('/').pop();
-      newSrc = `/img/${filename}`;
-    } else {
-      // If it was direct path, try prior-work/
-      const filename = originalSrc.split('/').pop();
-      newSrc = `/img/prior-work/${filename}`;
-    }
-    
-    console.log(`Trying fallback image: ${newSrc}`);
-    event.target.src = newSrc;
-    fallbackSrc.value = newSrc;
+// Handle image path changes when patent changes
+watch(() => props.patent, (newPatent) => {
+  if (newPatent && newPatent.image) {
+    resetImageHandling();
+    tryLoadImage(getInitialImagePath(newPatent.image));
+  } else {
+    currentImageSrc.value = '';
   }
+}, { immediate: true });
+
+// Reset image handling state
+const resetImageHandling = () => {
+  imageError.value = false;
+  attemptedPaths.value = [];
+  currentImageSrc.value = '';
 };
 
-/**
- * Gets the appropriate image path with fallback handling
- */
-const getImagePath = (imagePath) => {
-  if (!imagePath) {
-    return '/img/Patent-Diagram.png'; // Default image if none provided
-  }
-  
-  if (imageError.value && fallbackSrc.value) {
-    return fallbackSrc.value;
-  }
+// Get the initial image path from the patent
+const getInitialImagePath = (imagePath) => {
+  if (!imagePath) return null;
   
   // Ensure the image path has a leading slash
-  if (imagePath && !imagePath.startsWith('/')) {
+  if (!imagePath.startsWith('/')) {
     return `/${imagePath}`;
   }
   
   return imagePath;
+};
+
+// Try to load an image with the given path
+const tryLoadImage = (path) => {
+  if (!path || attemptedPaths.value.includes(path)) return;
+  
+  console.log(`Trying to load image: ${path}`);
+  attemptedPaths.value.push(path);
+  currentImageSrc.value = path;
+};
+
+/**
+ * Handles image loading errors and tries to use fallback paths
+ */
+const handleImageError = (event) => {
+  console.log(`Image failed to load: ${currentImageSrc.value}`);
+  imageError.value = true;
+  
+  // Try alternative paths
+  let alternativePaths = [];
+  
+  // If original path was in the prior-work directory
+  if (currentImageSrc.value.includes('/prior-work/')) {
+    // Try the direct path
+    const filename = currentImageSrc.value.split('/').pop();
+    alternativePaths.push(`/img/${filename}`);
+  } 
+  // If original path was direct in img
+  else if (currentImageSrc.value.startsWith('/img/') && !currentImageSrc.value.includes('/prior-work/')) {
+    // Try the prior-work directory
+    const filename = currentImageSrc.value.split('/').pop();
+    alternativePaths.push(`/img/prior-work/${filename}`);
+    
+    // Try variations of the filename
+    if (filename.includes('-')) {
+      // If filename has dashes, try without dashes
+      const baseFilename = filename.split('-')[0];
+      alternativePaths.push(`/img/prior-work/${baseFilename}.png`);
+    } else {
+      // If filename doesn't have dashes, try with common suffixes
+      const baseFilename = filename.replace('.png', '');
+      alternativePaths.push(`/img/prior-work/${baseFilename}-1.png`);
+    }
+  }
+  
+  // Try to load each alternative path in sequence
+  for (const path of alternativePaths) {
+    if (!attemptedPaths.value.includes(path)) {
+      console.log(`Trying fallback image: ${path}`);
+      tryLoadImage(path);
+      return; // Exit after trying the first untried path
+    }
+  }
+  
+  // If all paths have been tried, show the placeholder
+  console.log('All image paths failed, showing placeholder');
+  currentImageSrc.value = '';
 };
 
 /**
@@ -153,6 +198,13 @@ const getGooglePatentUrl = (patentNumber) => {
   // Construct the Google Patents URL
   return `https://patents.google.com/patent/${prefix}${formattedNumber}/en`;
 };
+
+onMounted(() => {
+  // Initialize image if patent is available
+  if (props.patent && props.patent.image) {
+    tryLoadImage(getInitialImagePath(props.patent.image));
+  }
+});
 </script>
 
 <style scoped>

@@ -1,6 +1,7 @@
 import { ref } from 'vue';
 
 // Fallback data in case content fetching fails
+// Make sure these image paths match files in /public/img/
 const fallbackPatents = [
   {
     title: "Monolithic LED Chip to Emit Multiple Colors",
@@ -32,6 +33,26 @@ const fallbackPatents = [
   }
 ];
 
+// Map from content file names to image paths
+const contentToImageMap = {
+  '1-monolithic-led-chip': '/img/prior-work/monolitholic-led-chip-1.png',
+  '1-led-chip': '/img/prior-work/led-chip.png',
+  '2-magazine-grip': '/img/prior-work/magazine-grip.png',
+  '3-firearm-gas': '/img/prior-work/firearm-gas.png',
+  '3-gas-system': '/img/prior-work/gas-system-1.png',
+  '4-security-mailbox': '/img/prior-work/security-mailbox.png',
+  '4-quick-change-barrel': '/img/prior-work/Quick-Change-Barrel.png',
+  '5-spring-loaded': '/img/prior-work/Spring-Loaded.png',
+  '6-grip': '/img/prior-work/grip.png',
+  '7-work-light': '/img/prior-work/work-light.png',
+  '8-stroller-passenger': '/img/prior-work/stroller-passenger-1.png',
+  '9-cable-storage': '/img/prior-work/cable-storage-1.png',
+  '10-modular-computer': '/img/prior-work/modular.png',
+  '11-unoccupied-dwelling': '/img/prior-work/Unoccupied-Dwelling.png',
+  '12-digital-support': '/img/prior-work/digital-support-1.png',
+  '13-gan-layer': '/img/prior-work/A1GaN-Layer-1.png'
+};
+
 export function usePatents() {
   // Data refs
   const patents = ref([]);
@@ -39,6 +60,22 @@ export function usePatents() {
   const error = ref(null);
   const fromMarkdown = ref(false);
   const markdownPatents = ref([]);
+
+  // Get an image path based on the content file path
+  const getImagePathFromContentPath = (contentPath) => {
+    if (!contentPath) return null;
+    
+    // Extract the filename without extension
+    const filename = contentPath.split('/').pop().replace('.md', '');
+    
+    // Check if we have a mapping for this filename
+    if (contentToImageMap[filename]) {
+      return contentToImageMap[filename];
+    }
+    
+    // Try to construct a reasonable fallback
+    return `/img/prior-work/${filename.replace(/^\d+-/, '')}.png`;
+  };
 
   // Try fetching patent data from multiple possible sources
   const fetchPatentsDirectly = async () => {
@@ -76,11 +113,23 @@ export function usePatents() {
           if (dirData && Array.isArray(dirData) && dirData.length > 0) {
             // Process the data to ensure image paths are correct
             const processedData = dirData.map(patent => {
+              // Try to get a valid image path
+              let imagePath = patent.image;
+              
+              // If no image or image path doesn't seem valid, try to derive one from the content path
+              if (!imagePath || !imagePath.includes('.png')) {
+                console.log(`No valid image path found for ${patent.title}, trying to derive from content path`);
+                imagePath = getImagePathFromContentPath(patent._path);
+              }
+              
+              // If we have a content-based image path, use it, otherwise keep the original
+              console.log(`Using image path for ${patent.title}: ${imagePath}`);
+              
               // Process patent data to extract necessary fields from markdown frontmatter
               return {
                 title: patent.title || '',
                 description: patent.description || '',
-                image: patent.image || '',
+                image: imagePath || '',
                 patentNumber: patent.patentNumber || '',
                 linkText: patent.linkText || `Patent ${patent.patentNumber || ''}`,
                 order: patent.order || 0,
@@ -99,7 +148,7 @@ export function usePatents() {
       }
       
       // Since we've reached this point, no content API methods worked
-      // Let's use our fallback data directly instead of trying to fetch individual files
+      // Let's use our fallback data directly
       console.log('Content API methods failed, using fallback data');
       return fallbackPatents;
       
