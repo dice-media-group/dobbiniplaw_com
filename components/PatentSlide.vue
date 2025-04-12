@@ -5,7 +5,7 @@
   >
     <!-- Added patent existence check -->
     <template v-if="patent">
-      <!-- Slide image with orange background -->
+      <!-- Slide image with white background -->
       <div class="md:w-1/2 p-10 bg-white">
         <img 
           v-if="currentImageSrc"
@@ -49,13 +49,13 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 // Props to receive from parent component
 const props = defineProps({
   patent: {
     type: Object,
-    default: null // Changed from required to allow null/undefined
+    default: null
   },
   isActive: {
     type: Boolean,
@@ -68,103 +68,78 @@ const props = defineProps({
 });
 
 // For image handling
-const imageError = ref(false);
-const attemptedPaths = ref([]);
 const currentImageSrc = ref('');
+const hasTriedFallback = ref(false);
 
-// Patent type mappings (most common types)
+// Patent type mappings for Google Patents URLs
 const patentTypeMappings = {
   '7271420': 'B2',
   '9341429': 'B2',
   '8689672': 'B2',
   '8234808': 'B2',
   '6212815': 'B1',
+  '8201489': 'B2',
+  '7574823': 'B1',
+  '8726556': 'B2',
+  '8819986': 'B1',
+  '8505963': 'B1',
+  '9256158': 'B2',
+  '8456293': 'B1',
+  '9074721': 'B1',
+  '8901588': 'B2'
 };
 
 // Handle image path changes when patent changes
 watch(() => props.patent, (newPatent) => {
-  if (newPatent && newPatent.image) {
-    resetImageHandling();
-    tryLoadImage(getInitialImagePath(newPatent.image));
+  if (newPatent) {
+    resetImageState();
+    tryLoadPrimaryImage();
   } else {
     currentImageSrc.value = '';
   }
 }, { immediate: true });
 
 // Reset image handling state
-const resetImageHandling = () => {
-  imageError.value = false;
-  attemptedPaths.value = [];
+const resetImageState = () => {
+  hasTriedFallback.value = false;
   currentImageSrc.value = '';
 };
 
-// Get the initial image path from the patent
-const getInitialImagePath = (imagePath) => {
-  if (!imagePath) return null;
-  
-  // Ensure the image path has a leading slash
-  if (!imagePath.startsWith('/')) {
-    return `/${imagePath}`;
+// Try to load the primary image
+const tryLoadPrimaryImage = () => {
+  if (!props.patent || !props.patent.image) {
+    tryLoadFallbackImage();
+    return;
   }
   
-  return imagePath;
+  console.log(`Loading primary image for ${props.patent.title}: ${props.patent.image}`);
+  currentImageSrc.value = props.patent.image;
 };
 
-// Try to load an image with the given path
-const tryLoadImage = (path) => {
-  if (!path || attemptedPaths.value.includes(path)) return;
+// Try to load the fallback image if available
+const tryLoadFallbackImage = () => {
+  if (!props.patent || !props.patent.fallbackImage) {
+    currentImageSrc.value = '';
+    return;
+  }
   
-  console.log(`Trying to load image: ${path}`);
-  attemptedPaths.value.push(path);
-  currentImageSrc.value = path;
+  hasTriedFallback.value = true;
+  console.log(`Loading fallback image for ${props.patent.title}: ${props.patent.fallbackImage}`);
+  currentImageSrc.value = props.patent.fallbackImage;
 };
 
-/**
- * Handles image loading errors and tries to use fallback paths
- */
-const handleImageError = (event) => {
+// Handle image loading errors
+const handleImageError = () => {
   console.log(`Image failed to load: ${currentImageSrc.value}`);
-  imageError.value = true;
   
-  // Try alternative paths
-  let alternativePaths = [];
-  
-  // If original path was in the prior-work directory
-  if (currentImageSrc.value.includes('/prior-work/')) {
-    // Try the direct path
-    const filename = currentImageSrc.value.split('/').pop();
-    alternativePaths.push(`/img/${filename}`);
-  } 
-  // If original path was direct in img
-  else if (currentImageSrc.value.startsWith('/img/') && !currentImageSrc.value.includes('/prior-work/')) {
-    // Try the prior-work directory
-    const filename = currentImageSrc.value.split('/').pop();
-    alternativePaths.push(`/img/prior-work/${filename}`);
-    
-    // Try variations of the filename
-    if (filename.includes('-')) {
-      // If filename has dashes, try without dashes
-      const baseFilename = filename.split('-')[0];
-      alternativePaths.push(`/img/prior-work/${baseFilename}.png`);
-    } else {
-      // If filename doesn't have dashes, try with common suffixes
-      const baseFilename = filename.replace('.png', '');
-      alternativePaths.push(`/img/prior-work/${baseFilename}-1.png`);
-    }
+  if (!hasTriedFallback.value && props.patent && props.patent.fallbackImage) {
+    // Try the fallback image
+    tryLoadFallbackImage();
+  } else {
+    // All attempts failed, show placeholder
+    console.log('All image paths failed, showing placeholder');
+    currentImageSrc.value = '';
   }
-  
-  // Try to load each alternative path in sequence
-  for (const path of alternativePaths) {
-    if (!attemptedPaths.value.includes(path)) {
-      console.log(`Trying fallback image: ${path}`);
-      tryLoadImage(path);
-      return; // Exit after trying the first untried path
-    }
-  }
-  
-  // If all paths have been tried, show the placeholder
-  console.log('All image paths failed, showing placeholder');
-  currentImageSrc.value = '';
 };
 
 /**
@@ -201,8 +176,8 @@ const getGooglePatentUrl = (patentNumber) => {
 
 onMounted(() => {
   // Initialize image if patent is available
-  if (props.patent && props.patent.image) {
-    tryLoadImage(getInitialImagePath(props.patent.image));
+  if (props.patent) {
+    tryLoadPrimaryImage();
   }
 });
 </script>
@@ -221,16 +196,6 @@ onMounted(() => {
 /* Animation for individual elements - disabled for now */
 .patent-image, .patent-title, .patent-description, .patent-button {
   transition: none; /* Disabled transitions */
-}
-
-/* Staggered animation disabled */
-.slide-enter-from .patent-image,
-.slide-enter-from .patent-title,
-.slide-enter-from .patent-description,
-.slide-enter-from .patent-button {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0s;
 }
 
 /* Additional centering and sizing for image */

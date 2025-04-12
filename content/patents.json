@@ -3,7 +3,8 @@
     {
       "title": "Monolithic LED Chip to Emit Multiple Colors",
       "description": "A light emitting diode chip with red, green and blue light emission regions on a single substrate. The light emission regions may be powered selectively to only emit one color light at a time. Or all three regions may be powered simultaneously so that the LED chip emits white light.",
-      "image": "/img/led-chip.png",
+      "image": "/img/prior-work/monolitholic-led-chip-1.png",
+      "fallbackImage": "/img/led-chip.png",
       "patentNumber": "7,271,420",
       "linkText": "Patent 7,271,420",
       "order": 1
@@ -11,7 +12,8 @@
     {
       "title": "Magazine Grip",
       "description": "A magazine grip attachment for ammunition magazines to aid in extraction of magazines from ammunition pouches comprising a sleeve of resilient material molded in the general shape of a magazine yet with a smaller inner circumference than the circumference of a magazine so as to require the band to stretch over the magazine.",
-      "image": "/img/magazine-grip.png",
+      "image": "/img/prior-work/magazine-grip.png",
+      "fallbackImage": "/img/magazine-grip.png",
       "patentNumber": "6,212,815",
       "linkText": "Patent 6,212,815",
       "order": 2
@@ -19,7 +21,8 @@
     {
       "title": "Gas System for an Automatic Firearm",
       "description": "The present invention is a gas system for a firearm comprising a hollow gas tube extending between a forward gas tap in a firearm's barrel and a rearward piston assembly to impinge upon and operate the firearm's bolt operating system.",
-      "image": "/img/firearm-gas.png",
+      "image": "/img/prior-work/gas-system-1.png",
+      "fallbackImage": "/img/firearm-gas.png",
       "patentNumber": "8,201,489",
       "linkText": "Patent 8,201,489",
       "order": 3
@@ -27,10 +30,91 @@
     {
       "title": "Security Mailbox",
       "description": "The present invention is a security mailbox utilizing a combination package rest and security panel. A mail slot in the security panel prevents easy access to contents of the mailbox. The present invention may be utilized in situations other than mail delivery where security for contents is desired.",
-      "image": "/img/security-mailbox.png",
+      "image": "/img/prior-work/security-mailbox.png",
+      "fallbackImage": "/img/security-mailbox.png",
       "patentNumber": "7,574,823",
       "linkText": "Patent 7,574,823",
       "order": 4
+    },
+    {
+      "title": "Spring-Loaded Firearm",
+      "description": "A dual action firearm with a spring-loaded bolt that is initially urged into battery by firing pin spring upon the trigger being pulled. If the round fails to fire, the bolt catches against the sear and holds the firing pin spring in compression until the trigger is released and pulled a second time.",
+      "image": "/img/prior-work/Spring-Loaded.png",
+      "patentNumber": "8,726,556",
+      "linkText": "Patent 8,726,556",
+      "order": 5
+    },
+    {
+      "title": "Firearm Pistol Grip",
+      "description": "A pistol grip assembly for a firearm that includes a grip frame having a reduced rear section and a pair of side panels secured thereto. The grip frame further includes a front portion housing a trigger guard and a magazine well.",
+      "image": "/img/prior-work/grip.png",
+      "patentNumber": "8,819,986",
+      "linkText": "Patent 8,819,986",
+      "order": 6
+    },
+    {
+      "title": "Work Light",
+      "description": "A work light with LED illumination sources mounted in an articulated housing that allows for directing light where needed. The light includes a magnetic mount for attaching to metal surfaces.",
+      "image": "/img/prior-work/work-light.png",
+      "patentNumber": "9,341,429",
+      "linkText": "Patent 9,341,429",
+      "order": 7
+    },
+    {
+      "title": "Stroller Passenger Compartment",
+      "description": "A stroller with a detachable passenger compartment that can be used as a car seat. The stroller includes a folding frame that allows for compact storage and transport.",
+      "image": "/img/prior-work/stroller-passenger-1.png",
+      "patentNumber": "8,505,963",
+      "linkText": "Patent 8,505,963",
+      "order": 8
+    },
+    {
+      "title": "Cable Storage System",
+      "description": "A cable storage system for organizing and storing electrical cables, cords, and wires in a compact and easily accessible manner.",
+      "image": "/img/prior-work/cable-storage-1.png",
+      "patentNumber": "8,689,672",
+      "linkText": "Patent 8,689,672",
+      "order": 9
+    },
+    {
+      "title": "Modular Computer System",
+      "description": "A modular computer system with interchangeable components that allows for easy upgrading and customization without specialized tools.",
+      "image": "/img/prior-work/modular.png",
+      "patentNumber": "9,256,158",
+      "linkText": "Patent 9,256,158",
+      "order": 10
+    },
+    {
+      "title": "Unoccupied Dwelling Protection",
+      "description": "A system for protecting unoccupied dwellings from break-ins and vandalism using a network of sensors and automated security measures.",
+      "image": "/img/prior-work/Unoccupied-Dwelling.png",
+      "patentNumber": "8,456,293",
+      "linkText": "Patent 8,456,293",
+      "order": 11
+    },
+    {
+      "title": "Digital Support Structure",
+      "description": "A digital support structure for electronic devices that provides adjustable viewing angles and integrated cooling capabilities.",
+      "image": "/img/prior-work/digital-support-1.png",
+      "patentNumber": "9,074,721",
+      "linkText": "Patent 9,074,721",
+      "order": 12
+    },
+    {
+      "title": "GaN Layer Structure",
+      "description": "A gallium nitride semiconductor layer structure for high-power electronic devices with improved thermal management and electrical performance.",
+      "image": "/img/prior-work/A1GaN-Layer-1.png",
+      "patentNumber": "8,901,588",
+      "linkText": "Patent 8,901,588",
+      "order": 13
+    },
+    {
+      "title": "Quick-Change Barrel System",
+      "description": "A quick-change barrel system for firearms that allows for rapid replacement of barrels without tools, enabling caliber changes and maintenance in the field.",
+      "image": "/img/prior-work/Quick-Change-Barrel.png",
+      "patentNumber": "8,234,808",
+      "linkText": "Patent 8,234,808",
+      "order": 14
     }
   ]
 }
