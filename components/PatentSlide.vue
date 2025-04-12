@@ -89,17 +89,7 @@ const patentTypeMappings = {
   '8901588': 'B2'
 };
 
-// Handle image path changes when patent changes
-watch(() => props.patent, (newPatent) => {
-  if (newPatent) {
-    resetImageState();
-    tryLoadPrimaryImage();
-  } else {
-    currentImageSrc.value = '';
-  }
-}, { immediate: true });
-
-// Reset image handling state
+// Define resetImageState BEFORE it's used in the watch function
 const resetImageState = () => {
   hasTriedFallback.value = false;
   currentImageSrc.value = '';
@@ -141,6 +131,16 @@ const handleImageError = () => {
     currentImageSrc.value = '';
   }
 };
+
+// Handle image path changes when patent changes
+watch(() => props.patent, (newPatent) => {
+  if (newPatent) {
+    resetImageState();
+    tryLoadPrimaryImage();
+  } else {
+    currentImageSrc.value = '';
+  }
+}, { immediate: true });
 
 /**
  * Formats the patent number to create a Google Patents URL

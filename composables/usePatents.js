@@ -28,8 +28,8 @@ export function usePatents() {
       console.log('Fetching patents from consolidated JSON...');
       const timestamp = Date.now(); // To bypass cache
       
-      // Try to fetch the consolidated patents.json file
-      const jsonResponse = await fetch(`/_content/patents.json?_hash=${timestamp}`);
+      // Try to fetch the patents.json from the public directory
+      const jsonResponse = await fetch(`/patents.json?_t=${timestamp}`);
       
       if (jsonResponse.ok) {
         const jsonData = await jsonResponse.json();
@@ -54,6 +54,8 @@ export function usePatents() {
           console.log(`Loaded ${processedData.length} patents from JSON`);
           return;
         }
+      } else {
+        console.error(`Failed to load patents.json, status: ${jsonResponse.status}`);
       }
       
       // If we get here, the JSON file failed to load
