@@ -97,7 +97,7 @@ const defaultImageMap = {
   '7271420': '/img/Patent-Diagram.png', // Monolithic LED
   '6212815': '/img/Patent-Diagram.png', // Magazine Grip
   '8201489': '/img/Patent-Diagram.png', // Gas System
-  '7574823': '/img/patent-guide-thumbnail.png', // Security Mailbox - special case fallback
+  '7574823': '/img/Patent-Diagram.png', // Security Mailbox - use general diagram
   '8726556': '/img/Patent-Diagram.png',
   '8819986': '/img/Patent-Diagram.png',
   '9341429': '/img/Light-Bulb.png', // Work Light - use lightbulb image
@@ -127,14 +127,6 @@ const tryLoadPrimaryImage = () => {
   
   const patentTitle = props.patent.title || 'unknown';
   console.log(`Loading primary image for ${patentTitle}: ${props.patent.image}`);
-  
-  // Special handling for security mailbox
-  if (props.patent.patentNumber === '7,574,823' || patentTitle.includes('Security Mailbox')) {
-    console.log('Special handling for Security Mailbox patent');
-    // Try a special fallback immediately for this known problematic image
-    tryPatentDefaultImage();
-    return;
-  }
   
   currentImageSrc.value = props.patent.image;
 };
