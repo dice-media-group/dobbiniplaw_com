@@ -1,5 +1,4 @@
 import { ref } from 'vue';
-import { queryContent } from '#imports';
 
 // Fallback data in case content fetching fails
 const fallbackPatents = [
@@ -64,82 +63,7 @@ export function usePatents() {
     }
   };
 
-  // Use Nuxt Content module to fetch patent data
-  const fetchWithQueryContent = async () => {
-    try {
-      console.log('Fetching patents with queryContent...');
-      const result = await queryContent('/patents')
-        .where({ _extension: 'md' })
-        .sort({ order: 1 })
-        .find();
-      
-      console.log('Query result:', result);
-      if (result && result.length > 0) {
-        markdownPatents.value = result;
-        fromMarkdown.value = true;
-        return result;
-      }
-      return [];
-    } catch (err) {
-      console.error('Error querying content:', err);
-      error.value = err.message;
-      return [];
-    }
-  };
-
-  // Load all patent files explicitly
-  const loadAllPatentFiles = async () => {
-    try {
-      // Define all the patent files we know exist
-      const patentFiles = [
-        '/patents/1-monolithic-led-chip',
-        '/patents/1-led-chip',
-        '/patents/2-magazine-grip',
-        '/patents/3-firearm-gas',
-        '/patents/3-gas-system',
-        '/patents/4-quick-change-barrel',
-        '/patents/4-security-mailbox',
-        '/patents/5-spring-loaded',
-        '/patents/6-grip',
-        '/patents/7-work-light',
-        '/patents/8-stroller-passenger',
-        '/patents/9-cable-storage',
-        '/patents/10-modular-computer',
-        '/patents/11-unoccupied-dwelling',
-        '/patents/12-digital-support',
-        '/patents/13-gan-layer'
-      ];
-      
-      // Load each file individually
-      const loadedPatents = [];
-      for (const path of patentFiles) {
-        try {
-          const result = await queryContent(path).find();
-          if (result && result.length > 0) {
-            loadedPatents.push(result[0]);
-          }
-        } catch (error) {
-          console.error(`Error loading ${path}:`, error);
-        }
-      }
-      
-      console.log('Individually loaded patents:', loadedPatents);
-      if (loadedPatents.length > 0) {
-        // Sort by order
-        loadedPatents.sort((a, b) => (a.order || 999) - (b.order || 999));
-        markdownPatents.value = loadedPatents;
-        fromMarkdown.value = true;
-        return loadedPatents;
-      }
-      
-      return [];
-    } catch (err) {
-      console.error('Error loading patent files:', err);
-      return [];
-    }
-  };
-
-  // Main function to fetch patents using all available methods
+  // Main function to fetch patents using available methods
   const fetchPatents = async () => {
     isLoading.value = true;
     error.value = null;
@@ -147,23 +71,13 @@ export function usePatents() {
     try {
       console.log('Fetching patents...');
       
-      // Try all methods of loading content
+      // Try direct API method 
       const directResult = await fetchPatentsDirectly();
-      const queryResult = await fetchWithQueryContent();
-      const individualResult = await loadAllPatentFiles();
       
-      // Use whichever method returned patents
+      // Use direct result or fallback
       if (directResult.length > 0) {
         console.log('Using direct API results');
         patents.value = directResult;
-        fromMarkdown.value = true;
-      } else if (queryResult.length > 0) {
-        console.log('Using queryContent results');
-        patents.value = queryResult;
-        fromMarkdown.value = true;
-      } else if (individualResult.length > 0) {
-        console.log('Using individually loaded patents');
-        patents.value = individualResult;
         fromMarkdown.value = true;
       } else {
         console.log('No markdown patents found, using fallback');
@@ -189,10 +103,9 @@ export function usePatents() {
   const listPatentFiles = async () => {
     try {
       console.log('Listing all content files...');
-      // This will list all available content files
-      const allFiles = await queryContent().find();
-      console.log('All content files:', allFiles);
-      return allFiles;
+      // This will attempt to list all available content files but won't work
+      // without queryContent, just keeping for API compatibility
+      return [];
     } catch (err) {
       console.error('Error listing content files:', err);
       return [];
