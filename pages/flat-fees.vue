@@ -379,8 +379,20 @@
           </div>
         </div>
         
-        <!-- Call to action section -->
-        <PageCTA />
+        <!-- Custom CTA section with consistent text coloring -->
+        <section class="py-8 bg-dobbin-dark-green text-white">
+          <div class="container mx-auto px-4 max-w-6xl">
+            <div class="mx-auto text-center">
+              <h2 class="text-2xl font-bold mb-4 font-crimson text-white">Ready to Protect Your Intellectual Property?</h2>
+              <p class="mb-6 font-crimson text-white">
+                Contact us today to schedule your complementary strategy session and see how we can help protect your inventions, copyrights, and trademarks.
+              </p>
+              <a href="/contact" class="inline-block bg-white text-dobbin-dark-green font-bold py-2 px-8 rounded hover:bg-gray-100 transition font-crimson">
+                Schedule a Strategy Session
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   </div>
@@ -391,7 +403,6 @@ import { ref, nextTick, defineAsyncComponent } from 'vue';
 
 // Lazy load the components for better performance
 const HeroBanner = defineAsyncComponent(() => import('../components/HeroBanner.vue'));
-const PageCTA = defineAsyncComponent(() => import('../components/PageCTA.vue'));
 
 // State to manage which sections are open
 const openSections = ref({
@@ -492,5 +503,10 @@ useHead({
 /* Hide v-cloak elements until Vue is ready */
 [v-cloak] {
   display: none;
+}
+
+/* CTA section enhancements */
+.bg-dobbin-dark-green {
+  background-color: #00461c; /* Dark green color for consistency */
 }
 </style>
