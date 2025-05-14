@@ -41,6 +41,18 @@
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
 
           </p>
+          <form name="contact" netlify>
+            <p>
+              <label>Name <input type="text" name="name" /></label>
+            </p>
+            <p>
+              <label>Email <input type="email" name="email" /></label>
+            </p>
+            <p>
+              <button type="submit">Send</button>
+            </p>
+          </form>
+          <p>--------</p>
             <form name="contact22" method="POST" data-netlify="true">
   <input type="hidden" name="subject" 
   value="New lead from %{formName} (%{submissionId})" />
