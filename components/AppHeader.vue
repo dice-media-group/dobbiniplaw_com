@@ -52,10 +52,12 @@
               <NuxtLink to="/patents" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Patents</NuxtLink>
               <NuxtLink to="/trademarks" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Trademarks</NuxtLink>
               <NuxtLink to="/copyright" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Copyright</NuxtLink>
+              <NuxtLink to="/flat-fees" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Flat Fee Schedule</NuxtLink>
               <NuxtLink to="/helpful-links" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Helpful Links</NuxtLink>
             </div>
           </div>
           <NuxtLink to="/testimonials" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">TESTIMONIALS</NuxtLink>
+          <NuxtLink to="/flat-fees" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">PRICING</NuxtLink>
           <NuxtLink to="/contact" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">SCHEDULE SESSION</NuxtLink>
           <!-- Search button -->
           <button class="py-4 px-3 text-dobbin-gray hover:text-dobbin-bright-green">
@@ -91,11 +93,13 @@
             <NuxtLink to="/patents" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Patents</NuxtLink>
             <NuxtLink to="/trademarks" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Trademarks</NuxtLink>
             <NuxtLink to="/copyright" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Copyright</NuxtLink>
+            <NuxtLink to="/flat-fees" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Flat Fee Schedule</NuxtLink>
             <NuxtLink to="/helpful-links" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Helpful Links</NuxtLink>
           </div>
         </div>
         
         <NuxtLink to="/testimonials" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">TESTIMONIALS</NuxtLink>
+        <NuxtLink to="/flat-fees" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">PRICING</NuxtLink>
         <NuxtLink to="/contact" class="block nav-link py-2 text-dobbin-gray hover:text-dobbin-bright-green font-crimson uppercase text-sm tracking-wider" @click="mobileMenuOpen = false">SCHEDULE STRATEGY SESSION</NuxtLink>
         
         <!-- Mobile search -->
@@ -113,7 +117,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
+
+// Lazy load components for better performance
+const AppLogo = defineAsyncComponent(() => import('./AppLogo.vue'));
 
 const mobileMenuOpen = ref(false);
 </script>

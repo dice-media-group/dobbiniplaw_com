@@ -14,9 +14,9 @@
     <section class="py-8">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <!-- FAQ Button - Positioned on the right -->
+          <!-- FAQ Button - Positioned on the right - IMPROVED CONTRAST -->
           <div class="flex justify-end mb-6">
-            <a href="#faq" class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-2 px-4 rounded-md inline-block text-sm">
+            <a href="#faq" class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-2 px-4 rounded-md inline-block text-sm font-bold shadow-md">
               Click to View Frequently Asked Questions About Patents
             </a>
           </div>
@@ -175,7 +175,7 @@
                 </a>
               </div>
               <div class="text-center">
-                <a href="/Patent.pdf" target="_blank" class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson">
+                <a href="/Patent.pdf" target="_blank" class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson font-bold shadow-md">
                   Download a Patent Guide
                 </a>
               </div>
@@ -186,14 +186,14 @@
               <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green font-crimson">Contact an Experienced Patent Attorney</h3>
               <p class="mb-4 font-crimson">
                 If you have any additional questions regarding patents, please review our Patent FAQs section below, containing answers to many commonly asked questions. Additionally, you can call to 
-                <NuxtLink to="/contact" class="text-dobbin-green hover:text-dobbin-dark-green">schedule your complementary strategy session</NuxtLink> 
+                <NuxtLink to="/contact" class="text-dobbin-bright-green hover:text-dobbin-dark-green font-bold">schedule your complementary strategy session</NuxtLink> 
                 where we can discuss the particulars of your invention and how we can help you.
               </p>
               <p class="mb-6 font-crimson">
                 At Dobbin IP Law, we pride ourselves in being as honest and upfront with our clients as possible. So we will let you know as soon as possible whether or not we think your invention is patentable.
               </p>
               <div class="text-center">
-                <NuxtLink to="/contact" class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson">
+                <NuxtLink to="/contact" class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson font-bold shadow-md">
                   Schedule a Strategy Session
                 </NuxtLink>
               </div>

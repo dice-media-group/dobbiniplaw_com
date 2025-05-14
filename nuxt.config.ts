@@ -87,6 +87,7 @@ export default defineNuxtConfig({
         '/resources',
         '/testimonials',
         '/helpful-links',
+        '/flat-fees',
         '/success',
         '/privacy-policy',
         '/terms-of-service'
@@ -96,7 +97,48 @@ export default defineNuxtConfig({
 
   // Generate static HTML for improved SEO and to ensure forms are detected
   generate: {
-    routes: ['/success']
+    routes: ['/success', '/flat-fees']
+  },
+
+  // Performance optimizations
+  optimization: {
+    splitChunks: {
+      maxSize: 300000,
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.(css|vue)$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
+
+  // Improve build performance
+  vite: {
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-solid-svg-icons'
+      ]
+    },
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'fontawesome': [
+              '@fortawesome/fontawesome-svg-core',
+              '@fortawesome/free-solid-svg-icons',
+              '@fortawesome/vue-fontawesome'
+            ]
+          }
+        }
+      }
+    }
   },
 
   hooks: {
