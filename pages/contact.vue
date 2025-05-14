@@ -32,14 +32,36 @@
           </div>
           
           <!-- Schedule Strategy Session Form -->
-          <h2 class="text-2xl font-bold mb-6 text-dobbin-dark-green font-crimson">Schedule Strategy Session</h2>
-          <form @submit.prevent="submitForm" class="contact-form mb-8">
+          <h2 class="text-2xl font-bold mb-6 text-dobbin-dark-green font-crimson">Schedule a Free 30 Minute Strategy Session</h2>
+          <p class="text-center text-gray-600 mb-8 font-crimson">
+            <span class="font-bold">
+              Protect your valuable ideas with a complimentary 30-minute strategy session.
+            </span>
+            <br />
+              Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
+
+          </p>
+          <form 
+            @submit.prevent="submitForm" 
+            class="contact-form mb-8" 
+            name="contact" 
+            method="POST" 
+            data-netlify="true" 
+            data-netlify-honeypot="bot-field" 
+            action="/success"
+          >
+            <!-- Hidden input for Netlify honeypot (spam protection) -->
+            <input type="hidden" name="bot-field" />
+            <!-- Hidden input for form name -->
+            <input type="hidden" name="form-name" value="contact" />
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <input
                   type="text"
                   placeholder="Name"
                   v-model="form.name"
+                  name="name"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
                 />
@@ -50,6 +72,7 @@
                   type="email"
                   placeholder="Email Address"
                   v-model="form.email"
+                  name="email"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
                 />
@@ -61,6 +84,7 @@
                 type="text"
                 placeholder="Does your question regard patents, trademarks or copyrights?"
                 v-model="form.subject"
+                name="subject"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 required
               />
@@ -70,6 +94,7 @@
               <textarea
                 placeholder="Message"
                 v-model="form.message"
+                name="message"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 rows="5"
                 required
@@ -82,6 +107,7 @@
                 <input
                   type="text"
                   v-model="form.captcha"
+                  name="captcha"
                   class="w-16 px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
                 />
@@ -103,8 +129,7 @@
             <div v-if="formError" class="mt-4 p-3 bg-red-100 text-red-700 font-crimson">
               {{ formError }}
             </div>
-          </form>
-          
+          </form>          
           <!-- Google Maps Embed -->
           <div class="w-full h-80 border border-gray-300">
             <iframe 
