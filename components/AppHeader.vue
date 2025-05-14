@@ -32,10 +32,10 @@
       </div>
     </div>
     
-    <!-- Main navigation -->
+    <!-- Main navigation - Fixed: Removed 'hidden' class -->
     <div class="border-t border-gray-200 bg-white">
       <div class="container mx-auto">
-        <nav class="hidden md:flex justify-center items-center">
+        <nav class="md:flex justify-center items-center">
           <NuxtLink to="/" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">HOME</NuxtLink>
           <NuxtLink to="/about" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">ABOUT US</NuxtLink>
           <NuxtLink to="/prior-work" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">PRIOR WORK</NuxtLink>
@@ -114,7 +114,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import AppLogo from './AppLogo.vue';
 
 const mobileMenuOpen = ref(false);
 </script>
@@ -163,10 +162,24 @@ const mobileMenuOpen = ref(false);
   }
 }
 
+/* Desktop menu improvements */
+@media (min-width: 768px) {
+  nav {
+    display: flex !important; /* Ensure nav is displayed on desktop */
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .logo-link {
     margin: 0 auto;
+  }
+}
+
+/* Fix for mobile display */
+@media (max-width: 767px) {
+  nav {
+    display: none;
   }
 }
 </style>
