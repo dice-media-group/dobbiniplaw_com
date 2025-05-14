@@ -36,6 +36,24 @@ export default defineNuxtConfig({
         
         // Crimson Text font from Google Fonts
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
+      ],
+      // Add the script for form handling
+      script: [
+        {
+          innerHTML: `
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        }
       ]
     }
   },
@@ -51,18 +69,45 @@ export default defineNuxtConfig({
 
   // Generate static site for Netlify
   ssr: true,
-  target: 'static',
-
-  // Generate additional routes that don't exist in pages directory
+  
+  // Static site generation settings
   nitro: {
+    preset: 'netlify',
     prerender: {
+      crawlLinks: true,
       routes: [
+        '/',
+        '/about',
+        '/contact',
+        '/services',
+        '/patents',
+        '/trademarks',
+        '/copyright',
         '/prior-work',
         '/resources',
         '/testimonials',
         '/helpful-links',
-        '/success'
+        '/success',
+        '/privacy-policy',
+        '/terms-of-service'
       ]
+    }
+  },
+
+  // Generate static HTML for improved SEO and to ensure forms are detected
+  generate: {
+    routes: ['/success']
+  },
+
+  hooks: {
+    'nitro:config': (nitroConfig) => {
+      if (nitroConfig.dev) {
+        return
+      }
+      // Improve static rendering
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.ignore = nitroConfig.prerender.ignore || []
+      nitroConfig.prerender.ignore.push(/** any route patterns to ignore **/)
     }
   },
 

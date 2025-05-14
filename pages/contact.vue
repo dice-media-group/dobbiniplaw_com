@@ -5,7 +5,6 @@
     <HeroBanner title="Contact Us">
       <p class="font-crimson text-white"></p>
     </HeroBanner>
-
     
     <!-- Contact Information Section -->
     <section class="py-8">
@@ -41,23 +40,24 @@
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
           </p>
           
+          <!-- Netlify Form with HTML-only implementation -->
           <form 
             name="contact-form" 
             method="POST" 
             data-netlify="true" 
-            data-netlify-honeypot="bot-field" 
-            action="/success"
-            class="contact-form mb-8"
+            netlify-honeypot="bot-field"
           >
-            <!-- These hidden inputs are REQUIRED for Netlify static form detection -->
+            <!-- Hidden fields for Netlify -->
             <input type="hidden" name="form-name" value="contact-form" />
-            <input type="hidden" name="bot-field" />
+            <p class="hidden">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
+                <label class="block mb-1 font-crimson text-gray-700">Your Name</label>
                 <input
                   type="text"
-                  placeholder="Name"
                   name="name"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
@@ -65,9 +65,9 @@
               </div>
               
               <div>
+                <label class="block mb-1 font-crimson text-gray-700">Email Address</label>
                 <input
                   type="email"
-                  placeholder="Email Address"
                   name="email"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
@@ -76,18 +76,19 @@
             </div>
             
             <div class="mb-4">
+              <label class="block mb-1 font-crimson text-gray-700">Subject</label>
               <input
                 type="text"
-                placeholder="Does your question regard patents, trademarks or copyrights?"
                 name="subject"
+                placeholder="Does your question regard patents, trademarks or copyrights?"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 required
               />
             </div>
             
             <div class="mb-4">
+              <label class="block mb-1 font-crimson text-gray-700">Message</label>
               <textarea
-                placeholder="Message"
                 name="message"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 rows="5"
@@ -97,12 +98,13 @@
             
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center">
-                <span class="mr-2 font-crimson">9 + 12 =</span>
+                <label class="mr-2 font-crimson">9 + 12 = </label>
                 <input
                   type="text"
-                  name="captcha"
+                  name="human-check"
                   class="w-16 px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
+                  id="human-check"
                 />
               </div>
               
@@ -113,10 +115,10 @@
                 Submit
               </button>
             </div>
-          </form>          
+          </form>
           
           <!-- Google Maps Embed -->
-          <div class="w-full h-80 border border-gray-300">
+          <div class="w-full h-80 border border-gray-300 mt-8">
             <iframe 
               class="w-full h-full"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6575319155647!2d-111.9405988853505!3d40.73315967932904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f4df3fb976d1%3A0xbf52c6e9c3b8ee52!2s2250%20S%20Redwood%20Rd%20%235%2C%20West%20Valley%20City%2C%20UT%2084119!5e0!3m2!1sen!2sus!4v1681353175281!5m2!1sen!2sus"
@@ -129,7 +131,6 @@
         </div>
       </div>
     </section>
-    
   </div>
 </template>
 
@@ -141,16 +142,15 @@ useHead({
   ]
 })
 
-// Client-side validation for the captcha can be done with this
-// Remove the @submit.prevent so the form submits normally
+// Client-side validation for the human check
 onMounted(() => {
   const form = document.querySelector('form[name="contact-form"]');
   if (form) {
     form.addEventListener('submit', (event) => {
-      const captchaInput = form.querySelector('input[name="captcha"]');
-      if (captchaInput && captchaInput.value !== '21') {
+      const humanCheck = document.getElementById('human-check');
+      if (humanCheck && humanCheck.value !== '21') {
         event.preventDefault();
-        alert('Incorrect captcha answer. Please try again.');
+        alert('Incorrect answer. Please try again.');
       }
     });
   }
@@ -160,5 +160,9 @@ onMounted(() => {
 <style scoped>
 .contact-page {
   max-width: 100%;
+}
+
+.hidden {
+  display: none;
 }
 </style>
