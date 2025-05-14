@@ -8,8 +8,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 class="text-lg font-bold mb-2 font-crimson dobbin-footer">Dobbin IP Law P.C.</h3>
-            <p class="mb-1 font-crimson">2290 E Richmond Rd, Suite 3</p>
-            <p class="mb-1 font-crimson">West Valley City, UT 84106</p>
+            <p class="mb-1 font-crimson">2250 S Redwood Rd, Suite 5</p>
+            <p class="mb-1 font-crimson"> West Valley City, UT 84119</p>
             <p class="mb-1">&nbsp;</p>
             <p class="font-crimson">(801) 969-6609</p>
           </div>
