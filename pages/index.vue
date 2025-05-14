@@ -51,7 +51,7 @@
           
           <!-- Dual conversion paths -->
           <div class="flex flex-col md:flex-row justify-center gap-6 mb-8">
-            <a href="#" @click.prevent="scrollToScheduleForm" 
+            <a href="#scheduleForm" 
                class="bg-white text-dobbin-dark-green font-bold py-3 px-8 rounded-lg text-center transition 
                       hover:bg-gray-100 transform hover:scale-105 shadow-lg text-lg">
               SCHEDULE CONSULTATION
@@ -155,7 +155,7 @@
         
         <!-- CTA Button -->
         <div class="mt-12 text-center">
-          <a href="#scheduleForm" @click.prevent="scrollToScheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
+          <a href="#scheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
             Get Started Today
           </a>
         </div>
@@ -229,16 +229,17 @@
               Protect your valuable ideas with a complimentary 30-minute strategy session.
             </span>
           </p>
-          <p>
+          <p class="text-center text-gray-600 mb-8 font-crimson">
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
           </p>
           
-          <!-- Form goes here - simplified mockup -->
-          <form  class="space-y-6" name=" homepage-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success" netlify>
-            <!-- Hidden input for Netlify honeypot (spam protection) -->
-            <input type="hidden" name="bot-field" />
-            <!-- Hidden input for form name -->
-            <input type="hidden" name="form-name" value="contact" />
+          <!-- Fixed Netlify Form -->
+          <form name="homepage-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+            <!-- Hidden inputs for Netlify -->
+            <input type="hidden" name="form-name" value="homepage-contact" />
+            <p class="hidden">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -263,7 +264,8 @@
                 Request My Strategy Session
               </button>
             </div>
-          </form>          
+          </form>
+          
           <!-- Alternative Contact -->
           <div class="mt-8 text-center">
             <p class="text-gray-600 font-crimson">Or call us directly at:</p>
@@ -303,12 +305,6 @@ function closeVideoModal() {
   
   // Re-enable body scrolling
   document.body.style.overflow = '';
-}
-
-// Method to scroll to schedule form
-function scrollToScheduleForm(event) {
-  event.preventDefault();
-  document.getElementById('scheduleForm').scrollIntoView({ behavior: 'smooth' });
 }
 
 // Close modal when Escape key is pressed
@@ -377,6 +373,11 @@ a, button {
 
 .modal-enter-from, .modal-leave-to {
   opacity: 0;
+}
+
+/* Hide honeypot field */
+.hidden {
+  display: none;
 }
 
 /* Adjust the max width for desktop */
