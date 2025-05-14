@@ -32,7 +32,7 @@
           
           <!-- Schedule Strategy Session Form -->
           <h2 class="text-2xl font-bold mb-6 text-dobbin-dark-green font-crimson">Schedule a Free 30 Minute Strategy Session</h2>
-          <p class="text-center text-gray-600 mb-8 font-crimson">
+          <p class="text-left text-gray-600 mb-8 font-crimson">
             <span class="font-bold">
               Protect your valuable ideas with a complimentary 30-minute strategy session.
             </span>

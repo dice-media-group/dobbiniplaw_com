@@ -229,7 +229,7 @@
               Protect your valuable ideas with a complimentary 30-minute strategy session.
             </span>
           </p>
-          <p class="text-center text-gray-600 mb-8 font-crimson">
+          <p class="text-left text-gray-600 mb-8 font-crimson">
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
           </p>
           
