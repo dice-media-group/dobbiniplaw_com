@@ -19,7 +19,7 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-4">
             <div class="md:col-span-1">
               <div class="mx-2 my-2">
-                <img src="https://placehold.co/250x350?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
+                <img src="/img/geoff-dobbin.jpg" alt="Geoff Dobbin" class="w-full rounded shadow-md">
               </div>
             </div>
             <div class="md:col-span-3">
@@ -81,7 +81,7 @@
               </p>
             </div>
             <div class="md:col-span-1 order-1 md:order-2">
-              <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full">
+              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full"> -->
             </div>
           </div>
         </div>
