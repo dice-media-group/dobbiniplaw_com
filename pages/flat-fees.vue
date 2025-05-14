@@ -504,9 +504,4 @@ useHead({
 [v-cloak] {
   display: none;
 }
-
-/* CTA section enhancements */
-.bg-dobbin-dark-green {
-  background-color: #00461c; /* Dark green color for consistency */
-}
 </style>
