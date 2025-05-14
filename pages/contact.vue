@@ -41,10 +41,47 @@
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
 
           </p>
+            <form
+    name="contact-form"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    id="contact-form"
+  >
+    <!-- Netlify form name hidden input -->
+    <input type="hidden" name="form-name" value="contact-form" />
+
+    <!-- Honeypot field for spam prevention -->
+    <div style="display:none;">
+      <label>
+        Don’t fill this out if you’re human: <input name="bot-field" />
+      </label>
+    </div>
+
+    <!-- Actual form fields -->
+    <div>
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100" />
+    </div>
+    <div>
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100" />
+    </div>
+    <div>
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message" class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 border border-dobbin-dark-green rounded-md transition-colors duration-200 font-crimson">Send</button>
+      <button type="reset">Clear</button>
+    </div>
+  </form>
+  <p>====</p>
+  <!--  -->
           <form 
             @submit.prevent="submitForm" 
             class="contact-form mb-8" 
-            name="contact" 
+            name="contact-page" 
             method="POST" 
             data-netlify="true" 
             data-netlify-honeypot="bot-field" 

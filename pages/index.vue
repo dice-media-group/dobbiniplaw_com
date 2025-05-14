@@ -234,7 +234,7 @@
           </p>
           
           <!-- Form goes here - simplified mockup -->
-          <form class="space-y-6" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success">
+          <form  class="space-y-6" name=" homepage-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/success" netlify>
             <!-- Hidden input for Netlify honeypot (spam protection) -->
             <input type="hidden" name="bot-field" />
             <!-- Hidden input for form name -->
