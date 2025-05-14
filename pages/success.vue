@@ -12,61 +12,34 @@
     <!-- Main content section -->
     <div class="py-12">
       <div class="container mx-auto px-8">
-        <div class="max-w-[1140px] mx-auto terms-content font-crimson">
-          <p>Your message has been sent successfully. We'll get back to you shortly.</p>
-          <a href="/">Return to Home</a>
+        <div class="max-w-[800px] mx-auto text-center font-crimson">
+          <div class="bg-green-50 border border-green-200 rounded-lg p-8 shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            
+            <h2 class="text-2xl font-semibold text-dobbin-dark-green mb-4">Message Received!</h2>
+            
+            <p class="text-lg mb-6">Thank you for contacting Dobbin IP Law. Your message has been successfully submitted. We'll review your inquiry and get back to you as soon as possible.</p>
+            
+            <NuxtLink 
+              to="/" 
+              class="inline-block bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white font-bold py-3 px-6 rounded-md transition-colors duration-200"
+            >
+              Return to Homepage
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
-.bg-dobbin-navy {
-  background-color: #0c1559;
-}
-
-/* Text content styling */
-.terms-content {
-  color: #333;
-  line-height: 1.7;
-}
-
-.terms-content h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.terms-content h3 {
-  color: #000;
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
-.terms-content h4 {
-  font-size: 1.1rem;
-  color: #333;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.terms-content p {
-  margin-bottom: 1.25rem;
-  line-height: 1.8;
-  font-size: 1.05rem;
-}
-
-.terms-content ul {
-  margin-bottom: 1.5rem;
-  list-style-type: disc;
-  padding-left: 2rem;
-}
-
-.terms-content li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-}
-</style>
+<script setup>
+useHead({
+  title: 'Form Submitted | Dobbin IP Law P.C.',
+  meta: [
+    { name: 'description', content: 'Thank you for contacting Dobbin IP Law. Your message has been successfully received.' }
+  ]
+})
+</script>

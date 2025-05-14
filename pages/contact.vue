@@ -39,59 +39,25 @@
             </span>
             <br />
               Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
-
           </p>
-          <form name="contact" netlify>
-            <p>
-              <label>Name <input type="text" name="name" /></label>
-            </p>
-            <p>
-              <label>Email <input type="email" name="email" /></label>
-            </p>
-            <p>
-              <button type="submit">Send</button>
-            </p>
-          </form>
-          <p>--------</p>
-            <form name="contact22" method="POST" data-netlify="true">
-  <input type="hidden" name="subject" 
-  value="New lead from %{formName} (%{submissionId})" />
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-  </p>
-</form>
-
-  <p>====</p>
-  <!--  -->
+          
           <form 
-            @submit.prevent="submitForm" 
-            class="contact-form mb-8" 
-            name="contact-page" 
+            name="contact-form" 
             method="POST" 
             data-netlify="true" 
             data-netlify-honeypot="bot-field" 
             action="/success"
+            class="contact-form mb-8"
           >
-            <!-- Hidden input for Netlify honeypot (spam protection) -->
+            <!-- These hidden inputs are REQUIRED for Netlify static form detection -->
+            <input type="hidden" name="form-name" value="contact-form" />
             <input type="hidden" name="bot-field" />
-            <!-- Hidden input for form name -->
-            <input type="hidden" name="form-name" value="contact" />
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <input
                   type="text"
                   placeholder="Name"
-                  v-model="form.name"
                   name="name"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
@@ -102,7 +68,6 @@
                 <input
                   type="email"
                   placeholder="Email Address"
-                  v-model="form.email"
                   name="email"
                   class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
@@ -114,7 +79,6 @@
               <input
                 type="text"
                 placeholder="Does your question regard patents, trademarks or copyrights?"
-                v-model="form.subject"
                 name="subject"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 required
@@ -124,7 +88,6 @@
             <div class="mb-4">
               <textarea
                 placeholder="Message"
-                v-model="form.message"
                 name="message"
                 class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                 rows="5"
@@ -137,7 +100,6 @@
                 <span class="mr-2 font-crimson">9 + 12 =</span>
                 <input
                   type="text"
-                  v-model="form.captcha"
                   name="captcha"
                   class="w-16 px-3 py-2 border border-gray-300 focus:outline-none focus:border-dobbin-green font-crimson bg-gray-100"
                   required
@@ -147,20 +109,12 @@
               <button
                 type="submit"
                 class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 border border-dobbin-dark-green rounded-md transition-colors duration-200 font-crimson"
-                :disabled="submitting"
               >
                 Submit
               </button>
             </div>
-            
-            <div v-if="formSuccess" class="mt-4 p-3 bg-green-100 text-green-700 font-crimson">
-              Your message has been sent successfully! We'll get back to you shortly.
-            </div>
-            
-            <div v-if="formError" class="mt-4 p-3 bg-red-100 text-red-700 font-crimson">
-              {{ formError }}
-            </div>
           </form>          
+          
           <!-- Google Maps Embed -->
           <div class="w-full h-80 border border-gray-300">
             <iframe 
@@ -187,66 +141,20 @@ useHead({
   ]
 })
 
-const form = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
-  captcha: ''
+// Client-side validation for the captcha can be done with this
+// Remove the @submit.prevent so the form submits normally
+onMounted(() => {
+  const form = document.querySelector('form[name="contact-form"]');
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      const captchaInput = form.querySelector('input[name="captcha"]');
+      if (captchaInput && captchaInput.value !== '21') {
+        event.preventDefault();
+        alert('Incorrect captcha answer. Please try again.');
+      }
+    });
+  }
 });
-
-const submitting = ref(false);
-const formSuccess = ref(false);
-const formError = ref(null);
-const contactFormRef = ref(null);
-
-const scrollToContactForm = () => {
-  const formElement = document.querySelector('.contact-form');
-  if (formElement) {
-    formElement.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-const submitForm = async () => {
-  submitting.value = true;
-  formError.value = null;
-  
-  // Validate captcha
-  if (form.value.captcha !== '21') {
-    formError.value = 'Incorrect captcha answer. Please try again.';
-    submitting.value = false;
-    return;
-  }
-  
-  try {
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // In a real application, you'd make an API call here
-    console.log('Form submitted:', form.value);
-    
-    // Reset form
-    form.value = {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-      captcha: ''
-    };
-    
-    formSuccess.value = true;
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      formSuccess.value = false;
-    }, 5000);
-  } catch (error) {
-    console.error('Form submission error:', error);
-    formError.value = 'There was an error submitting your form. Please try again later.';
-  } finally {
-    submitting.value = false;
-  }
-};
 </script>
 
 <style scoped>

@@ -49,6 +49,10 @@ export default defineNuxtConfig({
     ]
   },
 
+  // Generate static site for Netlify
+  ssr: true,
+  target: 'static',
+
   // Generate additional routes that don't exist in pages directory
   nitro: {
     prerender: {
@@ -56,7 +60,8 @@ export default defineNuxtConfig({
         '/prior-work',
         '/resources',
         '/testimonials',
-        '/helpful-links'
+        '/helpful-links',
+        '/success'
       ]
     }
   },
