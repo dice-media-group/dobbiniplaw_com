@@ -1,0 +1,60 @@
+{
+  "categoryId": "electronics",
+  "patents": [
+    {
+      "id": "US-12270996-B2",
+      "title": "Electronic loupe",
+      "publicationDate": "2025-04-08",
+      "imageCount": 15,
+      "abstract": "An electronic loupe device that provides enhanced magnification capabilities with digital features such as image capture, measurement, and augmented display functionality.",
+      "featured": true,
+      "images": [
+        "/images/patents/US-12270996-B2/fig1.jpg"
+      ]
+    },
+    {
+      "id": "US-12260863-B1",
+      "title": "Method and system for providing assistance for cognitively impaired users by utilizing artificial intelligence",
+      "publicationDate": "2025-03-25",
+      "imageCount": 18,
+      "abstract": "A system utilizing artificial intelligence to provide assistance for cognitively impaired users. The system includes adaptive interfaces and personalized support features.",
+      "featured": false,
+      "images": [
+        "/images/patents/US-12260863-B1/fig1.jpg"
+      ]
+    },
+    {
+      "id": "US-12108227-B2",
+      "title": "System and method for adjusting audio parameters for a user",
+      "publicationDate": "2024-10-01",
+      "imageCount": 12,
+      "abstract": "A system that automatically adjusts audio parameters based on user preferences, environmental conditions, and real-time feedback to provide an optimal listening experience.",
+      "featured": false,
+      "images": [
+        "/images/patents/US-12108227-B2/fig1.jpg"
+      ]
+    },
+    {
+      "id": "US-11926321-B1",
+      "title": "Tracking for traffic lights",
+      "publicationDate": "2024-03-12",
+      "imageCount": 13,
+      "abstract": "A system for tracking and monitoring traffic light status, timing, and patterns to improve traffic flow management and provide data for autonomous vehicle navigation.",
+      "featured": false,
+      "images": [
+        "/images/patents/US-11926321-B1/fig1.jpg"
+      ]
+    },
+    {
+      "id": "US-7271420-B2",
+      "title": "Monolitholic LED chip to emit multiple colors",
+      "publicationDate": "2007-09-18",
+      "imageCount": 7,
+      "abstract": "A light emitting diode chip with red, green and blue light emission regions on a single substrate. The light emission regions may be powered selectively to only emit one color light at a time. Or all three regions may be powered simultaneously so that the LED chip emits white light.",
+      "featured": false,
+      "images": [
+        "/images/patents/US-7271420-B2/fig1.jpg"
+      ]
+    }
+  ]
+}

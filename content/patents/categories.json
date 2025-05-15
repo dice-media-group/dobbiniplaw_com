@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "id": "firearms",
+      "name": "Firearms & Accessories",
+      "description": "Innovative firearm designs, components, and accessories",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "medical",
+      "name": "Medical Devices",
+      "description": "Advanced medical and dental technologies",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics & Technology",
+      "description": "Cutting-edge electronic devices and technology innovations",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "tools",
+      "name": "Tools & Equipment",
+      "description": "Specialized tools and equipment for various applications",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing & Industrial",
+      "description": "Manufacturing processes and industrial innovations",
+      "featured": false,
+      "order": 5
+    }
+  ]
+}
