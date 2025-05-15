@@ -1,73 +1,40 @@
 <template>
-  <div class="patent-browser bg-gray-900 text-white min-h-screen pb-20">
-    <!-- Header -->
-    <header class="flex items-center justify-between p-4 bg-black bg-opacity-40 fixed w-full z-10">
-      <div class="text-2xl font-bold">Dobbin IP Law</div>
-      <div class="flex items-center space-x-4">
-        <div class="relative">
-          <input 
-            v-model="searchQuery"
-            type="text" 
-            placeholder="Search patents..." 
-            class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
-            @input="handleSearch"
-          />
-          <svg class="absolute left-3 top-2.5 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main content -->
-    <div class="pt-16">
-      <!-- Featured Patent Hero -->
-      <patent-hero 
-        v-if="featuredPatent"
-        :patent="featuredPatent"
-        @view-details="openPatentDetails"
-      />
-
-      <!-- Categories with Carousels -->
-      <div class="px-8 py-4 space-y-12">
-        <div v-if="isLoading" class="text-center py-12">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mx-auto"></div>
-          <p class="mt-4">Loading patents...</p>
-        </div>
-        
-        <template v-else>
-          <div v-if="filteredCategories.length === 0 && searchQuery" class="text-center py-12">
-            <p>No patents found matching "{{ searchQuery }}"</p>
-            <button 
-              @click="clearSearch" 
-              class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Clear Search
-            </button>
-          </div>
-          
-          <patent-carousel 
-            v-for="category in filteredCategories" 
-            :key="category.id"
-            :category="category"
-            :patents="getCategoryPatents(category.id)"
-            @patent-selected="openPatentDetails"
-          />
-        </template>
-      </div>
+  <div class="patents-coming-soon text-center py-12">
+    <h1 class="text-3xl font-bold mb-6">Patent Browser Coming Soon</h1>
+    <p class="text-lg mb-8">Our Netflix-style patent browser is under development.</p>
+    <p>Check back soon to explore our extensive patent portfolio in an interactive visual format.</p>
+    
+    <!-- 
+    Uncomment the following to display progress for development purposes
+    <div class="mt-8 text-left max-w-lg mx-auto">
+      <h2 class="text-xl font-semibold mb-4">Development Status:</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>✅ Initial components created</li>
+        <li>✅ Data structure defined</li>
+        <li>⏳ Patent categorization in progress</li>
+        <li>⏳ Image pipeline setup in progress</li>
+        <li>🔜 Integration with Google Patents API</li>
+      </ul>
     </div>
-
-    <!-- Patent Detail Modal -->
-    <patent-detail-modal
-      v-if="selectedPatent"
-      :patent="selectedPatent"
-      :is-open="!!selectedPatent"
-      @close="closePatentDetails"
-    />
+    -->
   </div>
 </template>
 
 <script setup>
+/* 
+ * Netflix-style Patent Browser (in development)
+ * 
+ * The actual implementation is commented out below to prevent build errors
+ * until all dependencies and data are ready.
+ * 
+ * TODO:
+ * 1. Process TrophyWall.pdf data
+ * 2. Set up patent image pipeline
+ * 3. Install missing dependencies
+ * 4. Uncomment the implementation when ready
+ */
+
+/*
 import { ref, computed, onMounted } from 'vue';
 import PatentHero from '~/components/patents/PatentHero.vue';
 import PatentCarousel from '~/components/patents/PatentCarousel.vue';
@@ -141,30 +108,40 @@ onMounted(async () => {
   try {
     isLoading.value = true;
     
-    // Fetch categories
-    const categoriesModule = await import('~/content/patents/categories.json');
-    categories.value = categoriesModule.default.categories;
+    // Fetch categories - this will be implemented when ready
+    // const categoriesModule = await import('~/content/patents/categories.json');
+    // categories.value = categoriesModule.default.categories;
     
+    // Mock data for development
+    categories.value = [
+      { id: 'firearms', name: 'Firearms & Accessories' },
+      { id: 'medical', name: 'Medical Devices' },
+      { id: 'electronics', name: 'Electronics & Technology' }
+    ];
+    
+    // This will be implemented when sample data is ready
     // Fetch patents for each category
-    for (const category of categories.value) {
-      try {
-        const module = await import(`~/content/patents/${category.id}.json`);
-        patentsMap.value[category.id] = module.default.patents;
-      } catch (error) {
-        console.error(`Error loading patents for category ${category.id}:`, error);
-        patentsMap.value[category.id] = [];
-      }
-    }
+    // for (const category of categories.value) {
+    //   try {
+    //     const module = await import(`~/content/patents/${category.id}.json`);
+    //     patentsMap.value[category.id] = module.default.patents;
+    //   } catch (error) {
+    //     console.error(`Error loading patents for category ${category.id}:`, error);
+    //     patentsMap.value[category.id] = [];
+    //   }
+    // }
   } catch (error) {
     console.error('Error loading patent data:', error);
   } finally {
     isLoading.value = false;
   }
 });
+*/
 </script>
 
 <style scoped>
-.patent-browser {
-  min-height: 100vh;
+.patents-coming-soon {
+  padding-top: 100px;
+  min-height: 50vh;
 }
 </style>
