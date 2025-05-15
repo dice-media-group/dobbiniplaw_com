@@ -1,3 +1,5 @@
+// This script is commented out until dependencies are installed and ready to use
+/*
 const fs = require('fs');
 const path = require('path');
 const pdf = require('pdf-parse');
@@ -14,9 +16,6 @@ const categories = {
   other: []
 };
 
-/**
- * Process the TrophyWall PDF to extract patent information
- */
 async function processTrophyWall() {
   try {
     // Read the PDF file
@@ -39,11 +38,6 @@ async function processTrophyWall() {
   }
 }
 
-/**
- * Parse the text content from the PDF to extract patent information
- * @param {string} text - Text content from the PDF
- * @returns {Array} List of parsed patents
- */
 function parsePatentsList(text) {
   const patents = [];
   const lines = text.split('\n');
@@ -76,11 +70,6 @@ function parsePatentsList(text) {
   return patents;
 }
 
-/**
- * Categorize patents based on keywords in their titles
- * @param {Array} patents - List of patents
- * @returns {Object} Patents organized by category
- */
 function categorizePatents(patents) {
   const categorized = Object.keys(categories).reduce((acc, category) => {
     acc[category] = [];
@@ -115,10 +104,6 @@ function categorizePatents(patents) {
   return categorized;
 }
 
-/**
- * Save categorized patent data to JSON files
- * @param {Object} categorizedPatents - Patents organized by category
- */
 function savePatentData(categorizedPatents) {
   // Create directory if it doesn't exist
   const outputDir = path.join(__dirname, '../content/patents');
@@ -170,4 +155,14 @@ function savePatentData(categorizedPatents) {
 }
 
 // Run the process
-processTrophyWall();
+// processTrophyWall();
+*/
+
+// Simple example to be uncommented and used when needed
+function processPatents() {
+  console.log('Patent processing script - ready to be implemented');
+}
+
+module.exports = {
+  processPatents
+};
