@@ -189,10 +189,9 @@
       
       <!-- Scrollable Content -->
       <div class="flex-1 overflow-y-auto bg-gray-900">
-        <!-- Logo and Law Firm Name with Larger Swoosh -->
+        <!-- Logo with Swoosh (removed firm name text) -->
         <div class="flex items-center justify-center py-4 border-b border-gray-800">
-          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-12 mr-3 bg-white rounded-full p-1" /> <!-- Added background and padding -->
-          <span class="text-xl font-bold">Dobbin IP Law</span>
+          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-12 bg-white bg-opacity-50 rounded-full p-1" />
         </div>
         
         <!-- Patent Details with Improved Title Visibility -->
