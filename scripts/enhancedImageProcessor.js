@@ -22,6 +22,8 @@ const readdirAsync = promisify(fs.readdir);
 const mkdirAsync = promisify(fs.mkdir);
 const copyFileAsync = promisify(fs.copyFile);
 const existsAsync = promisify(fs.exists);
+const rmdirAsync = promisify(fs.rmdir);
+const unlinkAsync = promisify(fs.unlink);
 
 /**
  * Class for analyzing and comparing images
@@ -176,20 +178,40 @@ async function extractAbstract(patentId) {
 }
 
 /**
- * Verify if a file exists in the public directory
- * @param {string} patentId - Patent ID with hyphens
- * @param {number} figNum - Figure number
- * @param {string} extension - File extension
- * @param {boolean} isHiRes - Whether to check in the hires directory
- * @returns {Promise<boolean>} True if the file exists
+ * Delete all files in a directory
+ * @param {string} directoryPath - Path to the directory
+ * @returns {Promise<void>}
  */
-async function verifyFileExists(patentId, figNum, extension, isHiRes = false) {
-  const publicPatentDir = path.join(PUBLIC_PATENTS_DIR, patentId);
-  const filePath = isHiRes
-    ? path.join(publicPatentDir, 'hires', `fig${figNum}${extension}`)
-    : path.join(publicPatentDir, `fig${figNum}${extension}`);
+async function cleanDirectory(directoryPath) {
+  if (!fs.existsSync(directoryPath)) {
+    return;
+  }
   
-  return await existsAsync(filePath);
+  const files = await readdirAsync(directoryPath);
+  
+  for (const file of files) {
+    const filePath = path.join(directoryPath, file);
+    const fileStat = await statAsync(filePath);
+    
+    if (fileStat.isDirectory()) {
+      // Recursively clean subdirectory
+      await cleanDirectory(filePath);
+      
+      // Remove empty directory
+      try {
+        await rmdirAsync(filePath);
+      } catch (error) {
+        console.error(`Error removing directory ${filePath}:`, error.message);
+      }
+    } else {
+      // Remove file
+      try {
+        await unlinkAsync(filePath);
+      } catch (error) {
+        console.error(`Error removing file ${filePath}:`, error.message);
+      }
+    }
+  }
 }
 
 /**
@@ -205,11 +227,15 @@ async function processPatentImagesEnhanced(patentId) {
     const patentIdWithHyphens = patentId;
     const formattedId = patentId.replace(/-/g, '');
     
-    // Create directories in public folder
+    // Clean and recreate directories in public folder
     const publicPatentDir = path.join(PUBLIC_PATENTS_DIR, patentIdWithHyphens);
     const publicHiResDir = path.join(publicPatentDir, 'hires');
     
-    if (!fs.existsSync(publicPatentDir)) {
+    // Clean existing directories if they exist
+    console.log(`Cleaning existing directories for ${patentId}...`);
+    if (fs.existsSync(publicPatentDir)) {
+      await cleanDirectory(publicPatentDir);
+    } else {
       await mkdirAsync(publicPatentDir, { recursive: true });
     }
     
@@ -226,32 +252,33 @@ async function processPatentImagesEnhanced(patentId) {
     if (fs.existsSync(CENTRAL_IMAGES_DIR)) {
       const centralFiles = await readdirAsync(CENTRAL_IMAGES_DIR);
       
-      // Extract patent ID from filename for matching
-      const patentIdBase = formattedId.split(/[B-Z]\d+/)[0]; // Extract US12270996 from US12270996B2
+      // Extract patent ID base for matching (without version suffix)
+      const patentIdBase = formattedId.replace(/([A-Z]\d+)$/, ''); // For example, US12260863 from US12260863B1
       console.log(`Looking for images matching base ID: ${patentIdBase}`);
       
       // Find matching images (only include actual image files, exclude duplicates)
       let seenFigureNums = new Set();
-      const patentDateMatch = formattedId.match(/\d{8}/); // Extract date if present in ID
-      const patentDatePart = patentDateMatch ? `-${patentDateMatch[0]}` : '';
       
-      const matchPattern = new RegExp(`^${patentIdBase}${patentDatePart}-D\\d+\\.(png|jpg|jpeg|gif|tiff|webp)$`, 'i');
-      
+      // Match pattern with date component if available
       const matchingCentralImages = centralFiles.filter(filename => {
         // Skip non-image files
         if (!filename.match(/\.(png|jpg|jpeg|gif|tiff|webp)$/i)) return false;
         
-        // Skip files that don't match our patent
-        if (!filename.startsWith(patentIdBase)) return false;
+        // Must match our patent ID base
+        if (!filename.includes(patentIdBase)) return false;
         
         // Skip if not a file
-        if (!fs.statSync(path.join(CENTRAL_IMAGES_DIR, filename)).isFile()) return false;
+        try {
+          if (!fs.statSync(path.join(CENTRAL_IMAGES_DIR, filename)).isFile()) return false;
+        } catch (err) {
+          return false;
+        }
         
         // Extract figure number to check for duplicates
         const figNum = ImageAnalyzer.extractFigureNumber(filename);
         if (figNum === null) return false;
         
-        // Include only if we haven't seen this figure number yet
+        // Only include unique figure numbers
         if (seenFigureNums.has(figNum)) return false;
         
         seenFigureNums.add(figNum);
@@ -276,6 +303,7 @@ async function processPatentImagesEnhanced(patentId) {
     const supportingDir = path.join(LOCAL_PATENT_DIR, `${formattedId}_files`);
     console.log(`Checking supporting directory: ${supportingDir}`);
     
+    let supportingImagesFound = 0;
     let seenSupportingFigureNums = new Set();
     if (fs.existsSync(supportingDir)) {
       const supportingFiles = await readdirAsync(supportingDir);
@@ -286,7 +314,11 @@ async function processPatentImagesEnhanced(patentId) {
         if (!filename.match(/\.(png|jpg|jpeg|gif|tiff|webp)$/i)) return false;
         
         // Skip if not a file
-        if (!fs.statSync(path.join(supportingDir, filename)).isFile()) return false;
+        try {
+          if (!fs.statSync(path.join(supportingDir, filename)).isFile()) return false;
+        } catch (err) {
+          return false;
+        }
         
         // Extract figure number to check for duplicates
         const figNum = ImageAnalyzer.extractFigureNumber(filename);
@@ -302,7 +334,8 @@ async function processPatentImagesEnhanced(patentId) {
         return true;
       });
       
-      console.log(`Found ${supportingImages.length} unique thumbnail images in supporting directory`);
+      supportingImagesFound = supportingImages.length;
+      console.log(`Found ${supportingImagesFound} unique thumbnail images in supporting directory`);
       
       // Add to all images collection
       for (const filename of supportingImages) {
@@ -321,7 +354,9 @@ async function processPatentImagesEnhanced(patentId) {
     // Group images by figure number
     const imagesByFigure = {};
     for (const img of allImages) {
-      const figNum = img.figureNum !== null ? img.figureNum : allImages.indexOf(img);
+      if (img.figureNum === null) continue; // Skip images without figure numbers
+      
+      const figNum = img.figureNum;
       if (!imagesByFigure[figNum]) {
         imagesByFigure[figNum] = [];
       }
@@ -362,7 +397,9 @@ async function processPatentImagesEnhanced(patentId) {
     
     // First process regular images
     for (const img of regularImages) {
-      const figNum = img.figureNum !== null ? img.figureNum : regularImages.indexOf(img);
+      if (img.figureNum === null) continue; // Skip images without figure numbers
+      
+      const figNum = img.figureNum;
       
       // Skip if we already processed this figure
       if (processedFigures.has(figNum)) continue;
@@ -398,7 +435,9 @@ async function processPatentImagesEnhanced(patentId) {
     
     // Now process any high-res images that don't have a regular counterpart
     for (const img of highResImages) {
-      const figNum = img.figureNum !== null ? img.figureNum : highResImages.indexOf(img);
+      if (img.figureNum === null) continue; // Skip images without figure numbers
+      
+      const figNum = img.figureNum;
       
       // Skip if we already processed this figure
       if (processedFigures.has(figNum)) continue;
@@ -431,38 +470,30 @@ async function processPatentImagesEnhanced(patentId) {
       return figNumA - figNumB;
     });
     
-    // ONLY include images that actually exist in the JSON
-    console.log(`Verifying existence of ${imagePaths.length} images...`);
-    const verifiedImagePaths = [];
+    // Log all the actual figures we found
+    console.log(`Generated ${imagePaths.length} image entries for patent ${patentId}`);
     
-    for (const imgPath of imagePaths) {
-      // Extract figure number from caption
-      const figNumMatch = imgPath.caption.match(/Figure (\d+)/);
-      if (!figNumMatch) continue;
+    if (imagePaths.length > 0) {
+      const figureNumbers = imagePaths.map(p => {
+        const match = p.caption.match(/Figure (\d+)/);
+        return match ? match[1] : '';
+      }).join(', ');
       
-      const figNum = parseInt(figNumMatch[1]);
-      const thumbnailExt = path.extname(imgPath.thumbnail);
-      
-      // Check if thumbnail exists or will exist after copying
-      if (fs.existsSync(path.join(process.cwd(), 'public', imgPath.thumbnail.substring(1)))) {
-        verifiedImagePaths.push(imgPath);
-      }
+      console.log(`Figure numbers included: ${figureNumbers}`);
     }
     
-    console.log(`Verified ${verifiedImagePaths.length} actually existing images`);
-    
     // Use placeholders if no images were found
-    if (verifiedImagePaths.length === 0) {
+    if (imagePaths.length === 0) {
       console.log(`No images found for ${patentId}, using placeholder`);
-      verifiedImagePaths.push({
+      imagePaths.push({
         thumbnail: `/images/patents/placeholder.svg`,
         hires: `/images/patents/placeholder.svg`,
         caption: 'No image available'
       });
     }
     
-    // Return the verified image paths with the new format
-    return verifiedImagePaths;
+    // Return the image paths with the new format
+    return imagePaths;
   } catch (error) {
     console.error(`Error processing images for ${patentId}:`, error);
     return [{
