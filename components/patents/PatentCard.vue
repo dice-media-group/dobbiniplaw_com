@@ -6,8 +6,8 @@
     <div class="patent-image h-40 bg-gray-800">
       <img 
         v-if="patent.images && patent.images.length > 0" 
-        :src="patent.images[0]" 
-        :alt="patent.title"
+        :src="getImageSrc(patent.images[0])" 
+        :alt="getImageAlt(patent.images[0])"
         class="w-full h-full object-contain"
       >
       <div v-else class="w-full h-full flex items-center justify-center">
@@ -36,6 +36,26 @@ function formatDate(dateString) {
   if (!dateString) return '';
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function getImageSrc(imageData) {
+  // Handle both old and new image formats
+  if (typeof imageData === 'string') {
+    return imageData; // Old format: string path
+  } else if (imageData && imageData.thumbnail) {
+    return imageData.thumbnail; // New format: object with thumbnail property
+  }
+  return '/images/patents/placeholder.svg';
+}
+
+function getImageAlt(imageData) {
+  // Handle both old and new image formats
+  if (typeof imageData === 'string') {
+    return props.patent.title; // Old format: use patent title
+  } else if (imageData && imageData.caption) {
+    return imageData.caption; // New format: use caption
+  }
+  return props.patent.title;
 }
 </script>
 

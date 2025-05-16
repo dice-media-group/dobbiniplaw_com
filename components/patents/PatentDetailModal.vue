@@ -20,8 +20,8 @@
           <div class="main-image bg-gray-700 rounded overflow-hidden mb-4">
             <img 
               v-if="selectedImage"
-              :src="selectedImage" 
-              :alt="patent.title"
+              :src="getSelectedImageSrc" 
+              :alt="getSelectedImageAlt"
               class="w-full h-auto"
             />
             <div v-else class="h-64 flex items-center justify-center">
@@ -34,12 +34,12 @@
               v-for="(image, index) in patent.images" 
               :key="index"
               class="w-24 h-24 bg-gray-700 rounded overflow-hidden cursor-pointer"
-              :class="{'ring-2 ring-blue-500': selectedImage === image}"
-              @click="selectedImage = image"
+              :class="{'ring-2 ring-blue-500': selectedImageIndex === index}"
+              @click="selectedImageIndex = index"
             >
               <img 
-                :src="image"
-                :alt="`Drawing ${index+1}`"
+                :src="getImageThumbnail(image, index)"
+                :alt="getImageAlt(image, index)"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -91,7 +91,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
   patent: {
@@ -105,11 +105,60 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close']);
-const selectedImage = ref(props.patent?.images?.[0] || null);
+const selectedImageIndex = ref(0);
 
-watch(() => props.patent, (newPatent) => {
-  selectedImage.value = newPatent?.images?.[0] || null;
+const selectedImage = computed(() => {
+  if (!props.patent?.images?.length) return null;
+  return props.patent.images[selectedImageIndex.value] || null;
+});
+
+const getSelectedImageSrc = computed(() => {
+  if (!selectedImage.value) return null;
+  
+  // Handle both old and new image formats
+  if (typeof selectedImage.value === 'string') {
+    return selectedImage.value;
+  } else if (selectedImage.value.hires) {
+    return selectedImage.value.hires; // Use high-res in detail view
+  }
+  return '/images/patents/placeholder.svg';
+});
+
+const getSelectedImageAlt = computed(() => {
+  if (!selectedImage.value) return props.patent.title;
+  
+  // Handle both old and new image formats
+  if (typeof selectedImage.value === 'string') {
+    return props.patent.title;
+  } else if (selectedImage.value.caption) {
+    return selectedImage.value.caption;
+  }
+  return props.patent.title;
+});
+
+watch(() => props.patent, () => {
+  selectedImageIndex.value = 0;
 }, { immediate: true });
+
+function getImageThumbnail(image, index) {
+  // Handle both old and new image formats
+  if (typeof image === 'string') {
+    return image;
+  } else if (image && image.thumbnail) {
+    return image.thumbnail;
+  }
+  return '/images/patents/placeholder.svg';
+}
+
+function getImageAlt(image, index) {
+  // Handle both old and new image formats
+  if (typeof image === 'string') {
+    return `Drawing ${index+1}`;
+  } else if (image && image.caption) {
+    return image.caption;
+  }
+  return `Drawing ${index+1}`;
+}
 
 function close() {
   emit('close');
