@@ -1,63 +1,79 @@
 <template>
   <div class="bg-gray-900 text-white min-h-screen">
-    <!-- Sticky Search Header -->
-    <header ref="searchHeader" class="flex items-center justify-between p-4 bg-black bg-opacity-90 fixed w-full z-20 transition-all duration-300">
-      <div class="text-2xl font-bold">Dobbin IP Law</div>
-      <div class="flex items-center space-x-4">
-        <div class="relative">
-          <input 
-            type="text" 
-            v-model="searchQuery"
-            placeholder="Search patents..." 
-            class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
-          />
-          <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </header>
-
     <!-- Main Scrollable Content Container -->
-    <main class="pt-16"> <!-- Add padding to account for fixed header -->
-      <!-- Featured Patent Hero -->
-      <div v-if="featuredPatent" class="relative h-96 bg-gradient-to-b from-transparent to-gray-900">
-        <div class="absolute inset-0 overflow-hidden">
-          <img 
-            :src="getFeaturedImageSrc" 
-            :alt="featuredPatent.title" 
-            class="w-full h-full object-cover opacity-50"
-          />
-        </div>
-        <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
-          <h1 class="text-4xl font-bold mb-2">{{ featuredPatent.title }}</h1>
-          <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
-          <div class="flex space-x-4">
-            <button 
-              class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
-              @click="selectPatent(featuredPatent)"
-            >
-              <span class="mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    <main>
+      <!-- Featured Patent Hero with Search Header -->
+      <div v-if="featuredPatent" class="relative">
+        <!-- Initially-scrollable Search Header -->
+        <header 
+          ref="searchHeader" 
+          :class="[
+            'flex items-center justify-between p-4 bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
+            isHeaderSticky ? 'fixed top-0' : ''
+          ]"
+        >
+          <div class="text-2xl font-bold">Dobbin IP Law</div>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <input 
+                type="text" 
+                v-model="searchQuery"
+                placeholder="Search patents..." 
+                class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
+              />
+              <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
               </span>
-              View Details
-            </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Image Content -->
+        <div class="h-96 bg-gradient-to-b from-transparent to-gray-900">
+          <div class="absolute inset-0 overflow-hidden" style="top: 0;">
+            <img 
+              :src="getFeaturedImageSrc" 
+              :alt="featuredPatent.title" 
+              class="w-full h-full object-cover opacity-50"
+            />
+          </div>
+          <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
+            <h1 class="text-4xl font-bold mb-2">{{ featuredPatent.title }}</h1>
+            <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
+            <div class="flex space-x-4">
+              <button 
+                class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
+                @click="selectPatent(featuredPatent)"
+              >
+                <span class="mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </span>
+                View Details
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div v-else-if="isLoading" class="relative h-96 flex items-center justify-center bg-gray-800">
+
+      <!-- Loading state -->
+      <div v-else-if="isLoading" class="h-96 flex items-center justify-center bg-gray-800">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
       </div>
-      <div v-else class="relative h-96 flex items-center justify-center bg-gray-800">
+      
+      <!-- No featured patent state -->
+      <div v-else class="h-96 flex items-center justify-center bg-gray-800">
         <p class="text-gray-400 text-xl">No featured patent available</p>
       </div>
+
+      <!-- Spacer to account for fixed header when sticky -->
+      <div v-if="isHeaderSticky" class="h-16"></div>
 
       <!-- Categories with Carousels -->
       <div class="px-4 md:px-8 py-4 space-y-12">
@@ -90,7 +106,7 @@
                   class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
                   @click="selectPatent(patent)"
                 >
-                  <div class="relative h-40" :style="`background-image: url('/gear_swoosh.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #111;`">
+                  <div class="relative h-40" :style="`background-image: url('/img/gear_swoosh.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #111;`">
                     <img 
                       :src="getPatentImageSrc(patent)" 
                       :alt="patent.title" 
@@ -173,26 +189,26 @@
       
       <!-- Scrollable Content -->
       <div class="flex-1 overflow-y-auto bg-gray-900">
-        <!-- Logo and Law Firm Name -->
+        <!-- Logo and Law Firm Name with Larger Swoosh -->
         <div class="flex items-center justify-center py-4 border-b border-gray-800">
-          <img src="/gear_swoosh.svg" alt="Dobbin IP Law" class="h-8 mr-2" />
-          <span class="text-lg font-bold">Dobbin IP Law</span>
+          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-12 mr-3 bg-white rounded-full p-1" /> <!-- Added background and padding -->
+          <span class="text-xl font-bold">Dobbin IP Law</span>
         </div>
         
-        <!-- Patent Details -->
+        <!-- Patent Details with Improved Title Visibility -->
         <div class="p-4">
-          <!-- Title and Year -->
-          <h2 class="text-xl font-bold mb-1">{{ selectedPatent.title }}</h2>
-          <p class="text-gray-400 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
+          <!-- Title and Year - Enhanced Size and Contrast -->
+          <h2 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">{{ selectedPatent.title }}</h2>
+          <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
           
           <!-- Play Button style Google Patents Link -->
           <a 
             :href="`https://patents.google.com/patent/${selectedPatent.id.replace(/-/g, '')}`"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md flex items-center justify-center mb-6 font-bold"
+            class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md flex items-center justify-center mb-6 font-bold text-lg"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
             View on Google Patents
@@ -200,37 +216,37 @@
           
           <!-- Abstract -->
           <div class="mb-6">
-            <h3 class="text-lg font-medium mb-2">Abstract</h3>
-            <p class="text-sm text-gray-300">
+            <h3 class="text-xl font-medium mb-2">Abstract</h3>
+            <p class="text-base text-gray-300">
               {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
             </p>
           </div>
           
-          <!-- Inventor and Assignee Bullets -->
-          <div class="space-y-2 mb-6">
+          <!-- Inventor and Assignee Bullets with Enhanced Visibility -->
+          <div class="space-y-3 mb-6"> <!-- Increased spacing -->
             <div class="flex items-start">
-              <span class="text-dobbin-bright-green mr-2">•</span>
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span> <!-- Larger bullet -->
               <div>
                 <span class="font-medium">Inventor:</span>
                 <span class="text-gray-300 ml-2">{{ selectedPatent.inventors?.join(', ') || 'Not specified' }}</span>
               </div>
             </div>
             <div class="flex items-start">
-              <span class="text-dobbin-bright-green mr-2">•</span>
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
               <div>
                 <span class="font-medium">Assignee:</span>
                 <span class="text-gray-300 ml-2">{{ selectedPatent.assignee || 'Not specified' }}</span>
               </div>
             </div>
             <div class="flex items-start">
-              <span class="text-dobbin-bright-green mr-2">•</span>
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
               <div>
                 <span class="font-medium">Patent ID:</span>
                 <span class="text-gray-300 ml-2">{{ selectedPatent.id }}</span>
               </div>
             </div>
             <div class="flex items-start">
-              <span class="text-dobbin-bright-green mr-2">•</span>
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
               <div>
                 <span class="font-medium">Publication Date:</span>
                 <span class="text-gray-300 ml-2">{{ formatDate(selectedPatent.publicationDate) }}</span>
@@ -268,21 +284,28 @@ const searchQuery = ref('');
 const categoryRefs = reactive({});
 const scrollState = reactive({});
 const searchHeader = ref(null);
-const lastScrollTop = ref(0);
+const isHeaderSticky = ref(false);
+const headerHeight = ref(0);
+const headerTop = ref(0);
 
-// Handle scroll events for sticky header
+// Handle scroll events for header stickiness
 function handleScroll() {
   if (!searchHeader.value) return;
   
-  const st = window.pageYOffset || document.documentElement.scrollTop;
-  if (st > lastScrollTop.value && st > 60) {
-    // Scrolling down
-    searchHeader.value.style.transform = 'translateY(-100%)';
-  } else {
-    // Scrolling up
-    searchHeader.value.style.transform = 'translateY(0)';
+  // Initialize header dimensions if not already set
+  if (headerHeight.value === 0) {
+    headerHeight.value = searchHeader.value.offsetHeight;
+    headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
   }
-  lastScrollTop.value = st <= 0 ? 0 : st;
+  
+  const scrollY = window.scrollY;
+  
+  // Check if we've scrolled past the header's original position
+  if (scrollY > headerTop.value) {
+    isHeaderSticky.value = true;
+  } else {
+    isHeaderSticky.value = false;
+  }
 }
 
 // Computed properties
@@ -570,6 +593,17 @@ async function loadPatentData() {
       // Update scroll buttons on next tick when DOM is ready
       setTimeout(() => updateScrollButtons(category.id), 100);
     }
+    
+    // Initialize header position after patents are loaded
+    nextTick(() => {
+      if (searchHeader.value) {
+        headerHeight.value = searchHeader.value.offsetHeight;
+        headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Force scroll handler to run once to initialize states
+        handleScroll();
+      }
+    });
   }
 }
 
@@ -577,10 +611,19 @@ async function loadPatentData() {
 onMounted(() => {
   loadPatentData();
   window.addEventListener('scroll', handleScroll);
+  
+  // Also handle resize events to recalculate header position
+  window.addEventListener('resize', () => {
+    // Reset dimensions so they'll be recalculated
+    headerHeight.value = 0;
+    headerTop.value = 0;
+    nextTick(() => handleScroll());
+  });
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('resize', handleScroll);
   // Ensure body scrolling is enabled when component is unmounted
   document.body.style.overflow = '';
 });
