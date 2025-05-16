@@ -1,0 +1,275 @@
+{
+  "categoryId": "manufacturing",
+  "patents": [
+    {
+      "id": "US-12243306-B1",
+      "title": "22 one or more threats in crowded areas System and method for",
+      "publicationDate": "2025-03-04",
+      "imagePages": 0,
+      "abstract": "The\n present disclosure relates to a system to proactively detect in real \ntime one or more threats in crowded areas. The present disclosure \npresents a proactive system for real-time threat detection in crowded \nareas. Utilizing a network of imaging sensors and advanced machine \nlearning algorithms, the system identifies suspicious individuals, \nobjects, and behavioral patterns within a predefined area. The system \ndetects potential threats such as individuals on watch lists, suspicious\n objects like unattended bags, and abnormal behaviors indicative of \nsecurity risks, by continuously monitoring and analyzing images and \nvideo feeds. Upon detection, the system promptly notifies authorities, \nproviding detailed information on threat location, suspected \nindividuals, and behavioral analysis. Privacy-preserving measures, \nincluding encryption of facial recognition data, ensure compliance with \nprivacy regulations. The present disclosure offers a scalable, \nefficient, and automated solution to enhance security measures, reduce \nresponse times, and safeguard public safety in dynamic urban \nenvironments.",
+      "featured": true,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig0.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig1.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig2.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig3.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig4.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig5.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig6.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig7.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig8.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig9.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig10.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig11.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig12.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig13.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig14.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig14.png",
+          "caption": "Figure 14"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig15.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig15.png",
+          "caption": "Figure 15"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig16.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig16.png",
+          "caption": "Figure 16"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig17.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig17.png",
+          "caption": "Figure 17"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig18.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig18.png",
+          "caption": "Figure 18"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig19.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig19.png",
+          "caption": "Figure 19"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig20.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig20.png",
+          "caption": "Figure 20"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig21.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig21.png",
+          "caption": "Figure 21"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig22.png",
+          "hires": "/images/patents/US-12243306-B1/hires/fig22.png",
+          "caption": "Figure 22"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig81.png",
+          "hires": "/images/patents/US-12243306-B1/fig81.png",
+          "caption": "Figure 81"
+        },
+        {
+          "thumbnail": "/images/patents/US-12243306-B1/fig82.png",
+          "hires": "/images/patents/US-12243306-B1/fig82.png",
+          "caption": "Figure 82"
+        }
+      ]
+    },
+    {
+      "id": "US-12090381-B2",
+      "title": "11 practice Systems and methods for indicating the existence of",
+      "publicationDate": "2024-09-17",
+      "imagePages": 0,
+      "abstract": "A head target with may\n feature realistic eye targets and a rearward handle for use in martial \narts practices. The handle may be constructed in a manner to also allow \nthe use of a wall mount with a plurality of support spurs to support the\n head target in a realistic posture in a manner to withstand multiple \nblows from the training individual. A mounting plate, upon which the \nwall mount is positioned, aids in a secure mounting to a wall.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig0.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig1.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig2.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig3.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig4.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig5.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig6.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig7.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig8.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig9.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig10.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig11.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig12.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig13.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig14.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig14.png",
+          "caption": "Figure 14"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig15.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig15.png",
+          "caption": "Figure 15"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig16.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig16.png",
+          "caption": "Figure 16"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig17.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig17.png",
+          "caption": "Figure 17"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig18.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig18.png",
+          "caption": "Figure 18"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig19.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig19.png",
+          "caption": "Figure 19"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig20.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig20.png",
+          "caption": "Figure 20"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig21.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig21.png",
+          "caption": "Figure 21"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig22.png",
+          "hires": "/images/patents/US-12090381-B2/hires/fig22.png",
+          "caption": "Figure 22"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig83.png",
+          "hires": "/images/patents/US-12090381-B2/fig83.png",
+          "caption": "Figure 83"
+        },
+        {
+          "thumbnail": "/images/patents/US-12090381-B2/fig84.png",
+          "hires": "/images/patents/US-12090381-B2/fig84.png",
+          "caption": "Figure 84"
+        }
+      ]
+    }
+  ]
+}
