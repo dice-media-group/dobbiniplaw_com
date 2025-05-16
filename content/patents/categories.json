@@ -1,20 +1,68 @@
 {
   "categories": [
     {
+      "id": "firearms",
+      "name": "Firearms & Accessories",
+      "description": "Patents related to firearms",
+      "featured": true,
+      "order": 1,
+      "patentCount": 111
+    },
+    {
+      "id": "medical",
+      "name": "Medical Devices",
+      "description": "Patents related to medical",
+      "featured": true,
+      "order": 2,
+      "patentCount": 13
+    },
+    {
       "id": "electronics",
       "name": "Electronics & Technology",
       "description": "Patents related to electronics",
       "featured": true,
-      "order": 1,
-      "patentCount": 3
+      "order": 3,
+      "patentCount": 59
     },
     {
       "id": "manufacturing",
       "name": "Manufacturing & Industrial",
       "description": "Patents related to manufacturing",
-      "featured": true,
-      "order": 2,
-      "patentCount": 2
+      "featured": false,
+      "order": 4,
+      "patentCount": 31
+    },
+    {
+      "id": "tools",
+      "name": "Tools & Equipment",
+      "description": "Patents related to tools",
+      "featured": false,
+      "order": 5,
+      "patentCount": 18
+    },
+    {
+      "id": "sports",
+      "name": "Sports & Recreation",
+      "description": "Patents related to sports",
+      "featured": false,
+      "order": 6,
+      "patentCount": 1
+    },
+    {
+      "id": "household",
+      "name": "Household & Living",
+      "description": "Patents related to household",
+      "featured": false,
+      "order": 7,
+      "patentCount": 1
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "description": "Patents related to various fields",
+      "featured": false,
+      "order": 8,
+      "patentCount": 21
     }
   ]
 }
