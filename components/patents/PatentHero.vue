@@ -6,15 +6,24 @@
         :src="getHeroImageSrc" 
         :alt="getHeroImageAlt" 
         class="w-full h-full object-cover opacity-50"
+        loading="eager"
       />
       <div v-else class="w-full h-full bg-gray-800"></div>
     </div>
-    <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
-      <h1 class="text-4xl font-bold mb-2 text-white">{{ patent.title }}</h1>
-      <p class="text-gray-300 mb-4">Patent {{ patent.id }} • {{ formatDate(patent.publicationDate) }}</p>
+    <div class="absolute bottom-0 left-0 p-4 md:p-8 w-full md:w-1/2">
+      <h1 class="text-2xl md:text-4xl font-bold mb-2 text-white">{{ patent.title }}</h1>
+      <p class="text-gray-300 mb-2 md:mb-4">Patent {{ patent.id }} • {{ formatDate(patent.publicationDate) }}</p>
+      
+      <!-- Category badge if available -->
+      <div v-if="patent.category" class="mb-4">
+        <span class="inline-block bg-dobbin-green text-white text-xs px-2 py-1 rounded">
+          {{ getCategoryName(patent.category) }}
+        </span>
+      </div>
+      
       <div class="flex space-x-4">
         <button 
-          class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
+          class="bg-white text-black px-4 md:px-6 py-2 rounded flex items-center font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
           @click="$emit('click')"
         >
           <span class="mr-2">
@@ -40,6 +49,22 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['click']);
+
+// Category mappings
+const categoryNames = {
+  'firearms': 'Firearms',
+  'medical': 'Medical',
+  'electronics': 'Electronics',
+  'manufacturing': 'Manufacturing',
+  'tools': 'Tools',
+  'sports': 'Sports',
+  'household': 'Household',
+  'other': 'Other'
+};
+
+function getCategoryName(categoryId) {
+  return categoryNames[categoryId] || categoryId;
+}
 
 // Get the hero image source, handling both old and new image formats
 const getHeroImageSrc = computed(() => {
@@ -85,3 +110,12 @@ function formatDate(dateString) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 </script>
+
+<style scoped>
+@media (max-width: 640px) {
+  .relative.h-96 {
+    height: 70vh;
+    max-height: 400px;
+  }
+}
+</style>
