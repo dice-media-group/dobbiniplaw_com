@@ -191,7 +191,7 @@
       <div class="flex-1 overflow-y-auto bg-gray-900">
         <!-- Logo with Swoosh (removed firm name text) -->
         <div class="flex items-center justify-center py-4 border-b border-gray-800">
-          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-12 bg-white bg-opacity-50 rounded-full p-1" />
+          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-24 w-24 bg-white bg-opacity-50 rounded-full p-2" />
         </div>
         
         <!-- Patent Details with Improved Title Visibility -->
