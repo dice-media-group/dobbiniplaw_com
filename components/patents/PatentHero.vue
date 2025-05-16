@@ -3,8 +3,8 @@
     <div class="absolute inset-0 overflow-hidden">
       <img 
         v-if="patent.images && patent.images.length > 0"
-        :src="patent.images[0]" 
-        :alt="patent.title" 
+        :src="getHeroImageSrc" 
+        :alt="getHeroImageAlt" 
         class="w-full h-full object-cover opacity-50"
       />
       <div v-else class="w-full h-full bg-gray-800"></div>
@@ -15,7 +15,7 @@
       <div class="flex space-x-4">
         <button 
           class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
-          @click="$emit('view-details', patent)"
+          @click="$emit('click')"
         >
           <span class="mr-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,6 +30,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   patent: {
     type: Object,
@@ -37,7 +39,45 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['view-details']);
+const emit = defineEmits(['click']);
+
+// Get the hero image source, handling both old and new image formats
+const getHeroImageSrc = computed(() => {
+  if (!props.patent.images || props.patent.images.length === 0) {
+    return null;
+  }
+
+  const image = props.patent.images[0];
+  
+  // Handle both old and new image formats
+  if (typeof image === 'string') {
+    return image;
+  } else if (image.hires) {
+    return image.hires; // Prefer high-res for hero
+  } else if (image.thumbnail) {
+    return image.thumbnail;
+  }
+  
+  return '/images/patents/placeholder.svg';
+});
+
+// Get the hero image alt text, handling both old and new image formats
+const getHeroImageAlt = computed(() => {
+  if (!props.patent.images || props.patent.images.length === 0) {
+    return props.patent.title;
+  }
+
+  const image = props.patent.images[0];
+  
+  // Handle both old and new image formats
+  if (typeof image === 'string') {
+    return props.patent.title;
+  } else if (image.caption) {
+    return image.caption;
+  }
+  
+  return props.patent.title;
+});
 
 function formatDate(dateString) {
   if (!dateString) return '';
