@@ -145,12 +145,12 @@
 
     <!-- Mobile-Optimized Patent Detail Modal -->
     <div v-if="selectedPatent" class="fixed inset-0 bg-black z-30 overflow-hidden flex flex-col">
-      <!-- Close button -->
+      <!-- Close button - Updated to match theme -->
       <button 
-        class="absolute right-4 top-4 text-gray-400 hover:text-white z-50"
+        class="absolute right-4 top-4 z-50 bg-gray-800 hover:bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors duration-200"
         @click="closePatentDetail"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -189,7 +189,7 @@
       
       <!-- Scrollable Content -->
       <div class="flex-1 overflow-y-auto bg-gray-900">
-        <!-- Logo with Swoosh (removed firm name text) -->
+        <!-- Logo with Swoosh -->
         <div class="flex items-center justify-center py-4 border-b border-gray-800">
           <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-24 w-24 bg-white bg-opacity-50 rounded-full p-2" />
         </div>
