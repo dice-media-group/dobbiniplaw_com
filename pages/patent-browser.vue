@@ -8,26 +8,70 @@
         <header 
           ref="searchHeader" 
           :class="[
-            'flex items-center justify-between p-4 bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
+            'flex flex-col bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
             isHeaderSticky ? 'fixed top-0' : ''
           ]"
         >
-          <div class="text-2xl font-bold">Dobbin IP Law</div>
-          <div class="flex items-center space-x-4">
-            <div class="relative">
-              <input 
-                type="text" 
-                v-model="searchQuery"
-                placeholder="Search patents..." 
-                class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
-              />
-              <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </span>
+          <!-- Top row with logo and search -->
+          <div class="flex items-center justify-between p-4">
+            <div class="text-2xl font-bold">Dobbin IP Law</div>
+            <div class="flex items-center space-x-4">
+              <div class="relative">
+                <input 
+                  type="text" 
+                  v-model="searchQuery"
+                  placeholder="Search patents..." 
+                  class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
+                />
+                <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </span>
+              </div>
             </div>
+          </div>
+          
+          <!-- Bottom row with category buttons -->
+          <div class="flex justify-center px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto">
+            <button 
+              @click="toggleCategory('firearms')"
+              :class="[
+                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs',
+                selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
+              ]"
+            >
+              Firearms
+            </button>
+            <button 
+              @click="toggleCategory('electronics')"
+              :class="[
+                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs',
+                selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
+              ]"
+            >
+              Electronics
+            </button>
+            <button 
+              @click="toggleCategoriesDialog"
+              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs"
+            >
+              Categories
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                class="h-3 w-3 ml-1"
+                :class="{ 'transform rotate-180': showCategoriesDialog }"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
           </div>
         </header>
 
@@ -73,7 +117,7 @@
       </div>
 
       <!-- Spacer to account for fixed header when sticky -->
-      <div v-if="isHeaderSticky" class="h-16"></div>
+      <div v-if="isHeaderSticky" class="h-24"></div>
 
       <!-- Categories with Carousels -->
       <div class="px-4 md:px-8 py-4 space-y-12 text-white">
@@ -82,7 +126,12 @@
         </div>
         
         <template v-else>
-          <div v-for="category in filteredCategories" :key="category.id" class="category-row">
+          <div 
+            v-for="category in displayedCategories" 
+            :key="category.id" 
+            class="category-row" 
+            :data-category-id="category.id"
+          >
             <h2 class="text-xl font-medium mb-4 text-white">{{ category.name }}</h2>
             <div class="relative">
               <button 
@@ -146,6 +195,47 @@
       </div>
     </main>
 
+    <!-- Categories Dialog -->
+    <div 
+      v-if="showCategoriesDialog" 
+      class="fixed inset-0 z-40"
+    >
+      <!-- Backdrop -->
+      <div 
+        class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"
+        @click="showCategoriesDialog = false"
+      ></div>
+      
+      <!-- Dialog Content -->
+      <div class="relative z-50 min-h-screen w-full bg-gradient-to-b from-black to-dobbin-gray">
+        <div class="container mx-auto pt-20 px-6">
+          <h2 class="text-2xl text-white mb-6">Categories</h2>
+          
+          <div class="space-y-6">
+            <button 
+              v-for="category in categories" 
+              :key="category.id" 
+              @click="toggleCategory(category.id)"
+              class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors"
+            >
+              {{ category.name }}
+            </button>
+          </div>
+          
+          <!-- Close Button -->
+          <button 
+            class="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg"
+            @click="showCategoriesDialog = false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile-Optimized Patent Detail Modal -->
     <div v-if="selectedPatent" class="fixed inset-0 bg-black z-30 overflow-hidden flex flex-col">
       <!-- Close button - Updated to match theme -->
@@ -204,25 +294,8 @@
       <!-- Scrollable Content -->
       <div class="flex-1 overflow-y-auto bg-dobbin-gray">
         <!-- Logo with Swoosh - CENTERED SVG GEAR ONLY -->
-        <div class="bg-white py-4 sm:py-6" data-v-a54da7ff="">
-          <div class="container mx-auto px-4 flex justify-center items-center" data-v-a54da7ff="">
-            <a href="/" class="logo-link flex justify-center items-center" data-v-a54da7ff="">
-              <!-- Using the AppLogo component -->
-               <div class="flex justify-center items-center flex-col md:flex-row" data-v-a54da7ff="" data-v-a3b5a2eb="">
-                <div class="logo-container mx-auto" data-v-a3b5a2eb="">
-                  <img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb="">
-                  <svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb="">
-                    <!-- Gear shape -->
-                    <path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path>
-                    <!-- Green swoosh -->
-                    <path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path>
-                  </svg>
-                </div>
-                <!-- Logo text -->
-                 <h1 class="hidden text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0" data-v-a3b5a2eb=""> DOBBIN IP LAW </h1>
-              </div>
-            </a>
-          </div>
+        <div class="flex justify-center items-center my-6">
+          <div class="patent-logo h-32 w-32"></div>
         </div>
         
         <!-- Patent Details with Improved Title Visibility -->
@@ -318,6 +391,25 @@ const isHeaderSticky = ref(false);
 const headerHeight = ref(0);
 const headerTop = ref(0);
 
+// New state variables for category UI
+const selectedCategoryId = ref(null);
+const showCategoriesDialog = ref(false);
+
+// Toggle category selection (select if not selected, deselect if already selected)
+function toggleCategory(categoryId) {
+  if (selectedCategoryId.value === categoryId) {
+    selectedCategoryId.value = null; // Deselect if already selected
+  } else {
+    selectedCategoryId.value = categoryId; // Select the category
+  }
+  showCategoriesDialog.value = false;
+}
+
+// Toggle categories dialog
+function toggleCategoriesDialog() {
+  showCategoriesDialog.value = !showCategoriesDialog.value;
+}
+
 // Handle scroll events for header stickiness
 function handleScroll() {
   if (!searchHeader.value) return;
@@ -338,17 +430,24 @@ function handleScroll() {
   }
 }
 
-// Computed properties
-const filteredCategories = computed(() => {
-  if (!searchQuery.value) {
-    return categories.value;
+// Computed property for displayed categories based on filters
+const displayedCategories = computed(() => {
+  let filtered = categories.value;
+  
+  // Filter by selected category if any
+  if (selectedCategoryId.value) {
+    filtered = filtered.filter(category => category.id === selectedCategoryId.value);
   }
   
-  // Filter categories based on search query
-  return categories.value.filter(category => {
-    const patents = getCategoryPatents(category.id);
-    return patents.length > 0;
-  });
+  // Filter by search query if any
+  if (searchQuery.value) {
+    return filtered.filter(category => {
+      const patents = getCategoryPatents(category.id);
+      return patents.length > 0;
+    });
+  }
+  
+  return filtered;
 });
 
 const featuredPatent = computed(() => {
@@ -579,6 +678,9 @@ async function loadPatentData() {
     const categoriesModule = await import('~/content/patents/categories.json');
     categories.value = categoriesModule.default.categories.sort((a, b) => a.order - b.order);
     
+    // No default selected category - set to null
+    selectedCategoryId.value = null;
+    
     // Fetch patents for each category
     const loadPromises = categories.value.map(async (category) => {
       try {
@@ -689,11 +791,19 @@ onMounted(() => {
     headerTop.value = 0;
     nextTick(() => handleScroll());
   });
+  
+  // Close categories dialog on ESC key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      showCategoriesDialog.value = false;
+    }
+  });
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
   window.removeEventListener('resize', handleScroll);
+  window.removeEventListener('keydown', () => {});
   // Ensure body scrolling is enabled when component is unmounted
   document.body.style.overflow = '';
 });
