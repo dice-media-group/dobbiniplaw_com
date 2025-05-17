@@ -34,49 +34,138 @@
             </div>
           </div>
           
-          <!-- Bottom row with category buttons -->
-          <div class="flex justify-center px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto">
-            <!-- Firearms button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
-              :class="selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click="toggleCategory('firearms')"
-            >
-              Firearms
-            </button>
+          <!-- Bottom row with category buttons - ANIMATED VERSION -->
+          <div class="flex px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto relative h-12">
+            <!-- Initial buttons (shown when no category is selected) - Left aligned -->
+            <transition name="slide-default">
+              <div v-if="!selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+                <!-- Firearms button -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  @click="selectCategory('firearms', 'direct')"
+                >
+                  Firearms
+                </button>
+                
+                <!-- Electronics button -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  @click="selectCategory('electronics', 'direct')"
+                >
+                  Electronics
+                </button>
+                
+                <!-- Categories button -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  @click="toggleCategoriesDialog"
+                >
+                  Categories
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </transition>
             
-            <!-- Electronics button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
-              :class="selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click="toggleCategory('electronics')"
-            >
-              Electronics
-            </button>
+            <!-- Directly selected category buttons (for Firearms and Electronics) - Left aligned -->
+            <transition name="slide-selected">
+              <div v-if="selectedCategoryId && selectionType === 'direct'" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+                <!-- Close/X button -->
+                <button 
+                  type="button"
+                  class="w-10 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center justify-center text-xs cursor-pointer select-none"
+                  @click="closeCategory"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                
+                <!-- Selected category button (green but with white text) -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green"
+                >
+                  {{ getSelectedCategoryName() }}
+                </button>
+                
+                <!-- All Categories button -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  @click="toggleCategoriesDialog"
+                >
+                  All Categories
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </transition>
             
-            <!-- Categories button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
-              @click="toggleCategoriesDialog"
-            >
-              Categories
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                class="h-3 w-3 ml-1"
-                :class="{ 'transform rotate-180': showCategoriesDialog }"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <!-- Dialog selected category buttons (for categories selected from dialog) - Left aligned -->
+            <transition name="slide-selected">
+              <div v-if="selectedCategoryId && selectionType === 'dialog'" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+                <!-- Close/X button -->
+                <button 
+                  type="button"
+                  class="w-10 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center justify-center text-xs cursor-pointer select-none"
+                  @click="closeCategory"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                
+                <!-- Selected category button with dropdown (green but with white text) -->
+                <button 
+                  type="button"
+                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
+                  @click="toggleCategoriesDialog"
+                >
+                  {{ getSelectedCategoryName() }}
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </transition>
           </div>
         </header>
 
@@ -220,7 +309,7 @@
             <button 
               v-for="category in categories" 
               :key="category.id" 
-              @click="toggleCategory(category.id)"
+              @click="selectCategory(category.id, 'dialog')"
               class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors cursor-pointer"
             >
               {{ category.name }}
@@ -398,12 +487,21 @@ const headerTop = ref(0);
 
 // Category UI state variables
 const selectedCategoryId = ref(null);
+const selectionType = ref(null); // 'direct' or 'dialog'
 const showCategoriesDialog = ref(false);
 
 // Add a watcher for selectedCategoryId changes
 watch(selectedCategoryId, (newVal) => {
   console.log('selectedCategoryId changed:', newVal);
 });
+
+// Get the name of the selected category
+function getSelectedCategoryName() {
+  if (!selectedCategoryId.value) return '';
+  
+  const category = categories.value.find(c => c.id === selectedCategoryId.value);
+  return category ? category.name : '';
+}
 
 // Handle search input
 function handleSearchInput(e) {
@@ -412,17 +510,18 @@ function handleSearchInput(e) {
   console.log('Search input:', searchQuery.value);
 }
 
-// Toggle category selection
-function toggleCategory(categoryId) {
-  console.log('toggleCategory called with:', categoryId);
-  
-  if (selectedCategoryId.value === categoryId) {
-    selectedCategoryId.value = null; // Deselect if already selected
-  } else {
-    selectedCategoryId.value = categoryId; // Select the category
-  }
-  
+// Select a category with selection type
+function selectCategory(categoryId, type = 'direct') {
+  console.log('selectCategory called with:', categoryId, type);
+  selectedCategoryId.value = categoryId;
+  selectionType.value = type;
   showCategoriesDialog.value = false;
+}
+
+// Close/clear the selected category
+function closeCategory() {
+  selectedCategoryId.value = null;
+  selectionType.value = null;
 }
 
 // Toggle categories dialog
@@ -700,6 +799,7 @@ async function loadPatentData() {
     
     // No default selected category - set to null
     selectedCategoryId.value = null;
+    selectionType.value = null;
     
     // Fetch patents for each category
     const loadPromises = categories.value.map(async (category) => {
@@ -913,5 +1013,37 @@ input[type="text"] {
   position: relative;
   -webkit-appearance: none;
   appearance: none;
+}
+
+/* Animation styles for default row transitions */
+.slide-default-enter-active,
+.slide-default-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-default-enter-from {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.slide-default-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+/* Animation styles for selected row transitions */
+.slide-selected-enter-active,
+.slide-selected-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-selected-enter-from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide-selected-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
 }
 </style>
