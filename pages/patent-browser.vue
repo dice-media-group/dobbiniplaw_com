@@ -106,13 +106,16 @@
                   class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
                   @click="selectPatent(patent)"
                 >
-                  <div class="relative h-40 patent-default-image">
+                  <div v-if="hasRealImage(patent)" class="relative h-40 bg-black">
                     <img 
                       :src="getPatentImageSrc(patent)" 
                       :alt="patent.title" 
                       class="w-full h-full object-contain"
                       loading="lazy"
                     />
+                  </div>
+                  <div v-else class="relative h-40 patent-default-image">
+                    <!-- Nothing here, the background styles will show the SVG -->
                   </div>
                   <div class="p-3 bg-dobbin-gray">
                     <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
@@ -158,12 +161,15 @@
 
       <!-- Fixed Image Viewer with Hi-Res Image -->
       <div class="w-full bg-black">
-        <div class="w-full aspect-square flex items-center justify-center">
+        <div v-if="hasRealImage(selectedPatent)" class="w-full aspect-square flex items-center justify-center">
           <img 
             :src="getSelectedImageHiRes" 
             :alt="selectedPatent.title"
             class="w-full h-full object-contain"
           />
+        </div>
+        <div v-else class="w-full aspect-square flex items-center justify-center patent-default-image">
+          <!-- Nothing here, the background styles will show the SVG -->
         </div>
         
         <!-- Thumbnail Carousel -->
@@ -181,8 +187,8 @@
               class="w-full h-full object-cover"
             />
           </div>
-          <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-dobbin-gray flex items-center justify-center rounded">
-            <span class="text-xs text-gray-400">No images</span>
+          <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-dobbin-gray flex items-center justify-center rounded patent-default-image-thumbnail">
+            <!-- Nothing here, the background styles will show the SVG -->
           </div>
         </div>
       </div>
@@ -332,61 +338,75 @@ const featuredPatent = computed(() => {
 });
 
 const getFeaturedImageSrc = computed(() => {
-  if (!featuredPatent.value || !featuredPatent.value.images || featuredPatent.value.images.length === 0) {
-    return '/api/placeholder/800/400';
+  if (hasRealImage(featuredPatent.value)) {
+    const image = featuredPatent.value.images[0];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.hires) {
+      return image.hires;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    }
   }
   
-  const image = featuredPatent.value.images[0];
-  
-  // Handle both old and new image formats
-  if (typeof image === 'string') {
-    return image;
-  } else if (image.hires) {
-    return image.hires;
-  } else if (image.thumbnail) {
-    return image.thumbnail;
-  }
-  
-  return '/api/placeholder/800/400';
+  return '/img/gear_swoosh.svg';
 });
 
 const getSelectedImageHiRes = computed(() => {
-  if (!selectedPatent.value?.images?.length) {
-    return '/api/placeholder/600/600';
+  if (hasRealImage(selectedPatent.value)) {
+    const image = selectedPatent.value.images[selectedImageIndex.value];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.hires) {
+      return image.hires;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    }
   }
   
-  const image = selectedPatent.value.images[selectedImageIndex.value];
-  
-  // Handle both old and new image formats
-  if (typeof image === 'string') {
-    return image;
-  } else if (image.hires) {
-    return image.hires;
-  } else if (image.thumbnail) {
-    return image.thumbnail;
-  }
-  
-  return '/api/placeholder/600/600';
+  return '/img/gear_swoosh.svg';
 });
+
+// Check if a patent has actual images (not just placeholders)
+function hasRealImage(patent) {
+  if (!patent || !patent.images || patent.images.length === 0) {
+    return false;
+  }
+  
+  // Check if any image is a placeholder
+  for (const image of patent.images) {
+    if (typeof image === 'string' && image.includes('placeholder')) {
+      return false;
+    } else if (image.thumbnail && image.thumbnail.includes('placeholder')) {
+      return false;
+    } else if (image.hires && image.hires.includes('placeholder')) {
+      return false;
+    }
+  }
+  
+  return true;
+}
 
 // Methods
 function getPatentImageSrc(patent) {
-  if (!patent.images || patent.images.length === 0) {
-    return '/api/placeholder/300/170';
+  if (hasRealImage(patent)) {
+    const image = patent.images[0];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    } else if (image.hires) {
+      return image.hires;
+    }
   }
   
-  const image = patent.images[0];
-  
-  // Handle both old and new image formats
-  if (typeof image === 'string') {
-    return image;
-  } else if (image.thumbnail) {
-    return image.thumbnail;
-  } else if (image.hires) {
-    return image.hires;
-  }
-  
-  return '/api/placeholder/300/170';
+  return '/img/gear_swoosh.svg';
 }
 
 function getImageThumbnail(image) {
@@ -396,7 +416,7 @@ function getImageThumbnail(image) {
   } else if (image && image.thumbnail) {
     return image.thumbnail;
   }
-  return '/api/placeholder/100/100';
+  return '/img/gear_swoosh.svg';
 }
 
 function formatDate(dateString) {
@@ -663,6 +683,15 @@ onUnmounted(() => {
   background-image: url('/img/gear_swoosh.svg');
   background-size: 200% auto; /* Make image 2x wider to show only half */
   background-position: left center; /* Show only the left half (gear part) */
+  background-repeat: no-repeat;
+  background-color: #111;
+}
+
+/* Smaller thumbnail version */
+.patent-default-image-thumbnail {
+  background-image: url('/img/gear_swoosh.svg');
+  background-size: 200% auto;
+  background-position: left center;
   background-repeat: no-repeat;
   background-color: #111;
 }
