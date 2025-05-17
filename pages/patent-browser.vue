@@ -115,7 +115,7 @@
                     />
                   </div>
                   <div class="p-3 bg-dobbin-gray">
-                    <h3 class="text-sm font-medium truncate">{{ patent.title }}</h3>
+                    <h3 class="text-sm font-medium truncate text-white">{{ patent.title }}</h3>
                     <p class="text-xs text-gray-400">{{ patent.id }}</p>
                   </div>
                 </div>
@@ -213,7 +213,7 @@
           
           <!-- Abstract -->
           <div class="mb-6">
-            <h3 class="text-xl font-medium mb-2">Abstract</h3>
+            <h3 class="text-xl font-medium mb-2 text-white">Abstract</h3>
             <p class="text-base text-gray-300">
               {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
             </p>
