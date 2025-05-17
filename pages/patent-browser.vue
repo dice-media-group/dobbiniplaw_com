@@ -2,15 +2,15 @@
   <div class="bg-dobbin-gray text-white min-h-screen">
     <!-- Main Scrollable Content Container -->
     <main>
-      <!-- Featured Patent Hero with Search Header -->
-      <div v-if="featuredPatent" class="relative">
-        <!-- Initially-scrollable Search Header -->
+      <!-- Fixed Header Container - Always present -->
+      <div 
+        ref="headerContainer"
+        class="sticky top-0 z-30 w-full"
+      >
+        <!-- Header Content -->
         <header 
           ref="searchHeader" 
-          :class="[
-            'flex flex-col bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
-            isHeaderSticky ? 'fixed top-0' : ''
-          ]"
+          class="flex flex-col bg-black bg-opacity-90 w-full transition-all duration-200"
         >
           <!-- Top row with logo and search -->
           <div class="flex items-center justify-between p-4">
@@ -34,53 +34,130 @@
             </div>
           </div>
           
-          <!-- Bottom row with category buttons -->
-          <div class="flex justify-center px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto">
-            <!-- Firearms button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
-              :class="selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click="toggleCategory('firearms')"
-            >
-              Firearms
-            </button>
+          <!-- Bottom row with category buttons - ANIMATED VERSION -->
+          <div class="flex px-4 pb-8 space-x-2 md:space-x-4 overflow-x-auto relative h-16">
+            <!-- Initial buttons (shown when no category is selected) - Left aligned -->
+            <transition name="slide-default" mode="out-in">
+              <div v-if="!selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+                <!-- Firearms button -->
+                <button 
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800 flex items-center"
+                  @click="selectCategory('firearms', 'direct', 'Firearms')"
+                >
+                  Firearms
+                </button>
+                
+                <!-- Electronics button -->
+                <button 
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800 flex items-center"
+                  @click="selectCategory('electronics', 'direct', 'Electronics')"
+                >
+                  Electronics
+                </button>
+                
+                <!-- Categories button -->
+                <button 
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  @click="toggleCategoriesDialog"
+                >
+                  Categories
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </transition>
             
-            <!-- Electronics button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
-              :class="selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click="toggleCategory('electronics')"
-            >
-              Electronics
-            </button>
-            
-            <!-- Categories button -->
-            <button 
-              type="button"
-              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
-              @click="toggleCategoriesDialog"
-            >
-              Categories
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                class="h-3 w-3 ml-1"
-                :class="{ 'transform rotate-180': showCategoriesDialog }"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <!-- Selected category buttons - Left aligned (combined direct and dialog) -->
+            <transition name="slide-category" mode="out-in">
+              <div v-if="selectedCategoryId" :key="selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+                <!-- Close/X button -->
+                <button 
+                  type="button"
+                  class="w-10 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center justify-center text-xs cursor-pointer select-none"
+                  @click="closeCategory"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                
+                <!-- Selected category button (green but with white text) -->
+                <button 
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
+                  v-if="selectionType === 'direct'"
+                >
+                  {{ categoryDisplayName }}
+                </button>
+                
+                <!-- Selected category button with dropdown (green but with white text) -->
+                <button 
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
+                  @click="toggleCategoriesDialog"
+                  v-if="selectionType === 'dialog'"
+                >
+                  {{ categoryDisplayName }}
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                
+                <!-- All Categories button - Only shown for direct selections -->
+                <button 
+                  v-if="selectionType === 'direct'"
+                  type="button"
+                  class="px-6 py-1 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  @click="toggleCategoriesDialog"
+                >
+                  All Categories
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="h-3 w-3 ml-1"
+                    :class="{ 'transform rotate-180': showCategoriesDialog }"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </transition>
           </div>
         </header>
+      </div>
 
-        <!-- Hero Image Content -->
+      <!-- Featured Patent Hero -->
+      <div v-if="featuredPatent" class="relative">
         <div class="h-96 bg-gradient-to-b from-transparent to-dobbin-gray">
           <div class="absolute inset-0 overflow-hidden" style="top: 0;">
             <img 
@@ -94,11 +171,11 @@
             <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
             <div class="flex space-x-4">
               <button 
-                class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
+                class="bg-white text-black px-6 py-1 h-10 rounded flex items-center font-medium"
                 @click="selectPatent(featuredPatent)"
               >
                 <span class="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -120,9 +197,6 @@
       <div v-else class="h-96 flex items-center justify-center bg-dobbin-gray">
         <p class="text-gray-400 text-xl">No featured patent available</p>
       </div>
-
-      <!-- Spacer to account for fixed header when sticky -->
-      <div v-if="isHeaderSticky" class="h-24"></div>
 
       <!-- Categories with Carousels -->
       <div class="px-4 md:px-8 py-4 space-y-12 text-white">
@@ -220,7 +294,7 @@
             <button 
               v-for="category in categories" 
               :key="category.id" 
-              @click="toggleCategory(category.id)"
+              @click="selectCategory(category.id, 'dialog', category.name)"
               class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors cursor-pointer"
             >
               {{ category.name }}
@@ -392,12 +466,13 @@ const searchQuery = ref('');
 const categoryRefs = reactive({});
 const scrollState = reactive({});
 const searchHeader = ref(null);
-const isHeaderSticky = ref(false);
-const headerHeight = ref(0);
-const headerTop = ref(0);
+const headerContainer = ref(null);
+const isHeaderSticky = ref(true); // Always true with new implementation
 
 // Category UI state variables
 const selectedCategoryId = ref(null);
+const selectionType = ref(null); // 'direct' or 'dialog'
+const categoryDisplayName = ref(''); // Store the display name separately
 const showCategoriesDialog = ref(false);
 
 // Add a watcher for selectedCategoryId changes
@@ -412,42 +487,35 @@ function handleSearchInput(e) {
   console.log('Search input:', searchQuery.value);
 }
 
-// Toggle category selection
-function toggleCategory(categoryId) {
-  console.log('toggleCategory called with:', categoryId);
+// Select a category with selection type and display name
+function selectCategory(categoryId, type = 'direct', displayName = '') {
+  console.log('selectCategory called with:', categoryId, type, displayName);
   
-  if (selectedCategoryId.value === categoryId) {
-    selectedCategoryId.value = null; // Deselect if already selected
+  // First update the display name to ensure proper animation
+  if (displayName) {
+    categoryDisplayName.value = displayName;
   } else {
-    selectedCategoryId.value = categoryId; // Select the category
+    const category = categories.value.find(c => c.id === categoryId);
+    categoryDisplayName.value = category ? category.name : '';
   }
   
+  // Then update the category ID and selection type
+  selectedCategoryId.value = categoryId;
+  selectionType.value = type;
+  
   showCategoriesDialog.value = false;
+}
+
+// Close/clear the selected category
+function closeCategory() {
+  selectedCategoryId.value = null;
+  selectionType.value = null;
+  categoryDisplayName.value = '';
 }
 
 // Toggle categories dialog
 function toggleCategoriesDialog() {
   showCategoriesDialog.value = !showCategoriesDialog.value;
-}
-
-// Handle scroll events for header stickiness
-function handleScroll() {
-  if (!searchHeader.value) return;
-  
-  // Initialize header dimensions if not already set
-  if (headerHeight.value === 0) {
-    headerHeight.value = searchHeader.value.offsetHeight;
-    headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
-  }
-  
-  const scrollY = window.scrollY;
-  
-  // Check if we've scrolled past the header's original position
-  if (scrollY > headerTop.value) {
-    isHeaderSticky.value = true;
-  } else {
-    isHeaderSticky.value = false;
-  }
 }
 
 // Computed property for displayed categories based on filters
@@ -700,6 +768,8 @@ async function loadPatentData() {
     
     // No default selected category - set to null
     selectedCategoryId.value = null;
+    selectionType.value = null;
+    categoryDisplayName.value = '';
     
     // Fetch patents for each category
     const loadPromises = categories.value.map(async (category) => {
@@ -785,31 +855,19 @@ async function loadPatentData() {
       // Update scroll buttons on next tick when DOM is ready
       setTimeout(() => updateScrollButtons(category.id), 100);
     }
-    
-    // Initialize header position after patents are loaded
-    nextTick(() => {
-      if (searchHeader.value) {
-        headerHeight.value = searchHeader.value.offsetHeight;
-        headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
-        
-        // Force scroll handler to run once to initialize states
-        handleScroll();
-      }
-    });
   }
 }
 
 // Lifecycle hooks
 onMounted(() => {
   loadPatentData();
-  window.addEventListener('scroll', handleScroll);
   
-  // Also handle resize events to recalculate header position
+  // Set up scroll handlers for carousels
   window.addEventListener('resize', () => {
-    // Reset dimensions so they'll be recalculated
-    headerHeight.value = 0;
-    headerTop.value = 0;
-    nextTick(() => handleScroll());
+    // Handle resize for carousel scroll buttons
+    for (const categoryId in categoryRefs) {
+      nextTick(() => updateScrollButtons(categoryId));
+    }
   });
   
   // Close categories dialog on ESC key
@@ -829,8 +887,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-  window.removeEventListener('resize', handleScroll);
+  window.removeEventListener('resize', () => {});
   window.removeEventListener('keydown', () => {});
   // Ensure body scrolling is enabled when component is unmounted
   document.body.style.overflow = '';
@@ -913,5 +970,37 @@ input[type="text"] {
   position: relative;
   -webkit-appearance: none;
   appearance: none;
+}
+
+/* Animation styles for default buttons transitions */
+.slide-default-enter-active,
+.slide-default-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-default-enter-from {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.slide-default-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+/* Animation styles for category transitions */
+.slide-category-enter-active,
+.slide-category-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-category-enter-from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide-category-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
 }
 </style>
