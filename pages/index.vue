@@ -51,7 +51,7 @@
           
           <!-- Dual conversion paths -->
           <div class="flex flex-col md:flex-row justify-center gap-6 mb-8">
-            <a href="#scheduleForm" 
+            <a href="#" @click.prevent="scrollToScheduleForm" 
                class="bg-white text-dobbin-dark-green font-bold py-3 px-8 rounded-lg text-center transition 
                       hover:bg-gray-100 transform hover:scale-105 shadow-lg text-lg">
               SCHEDULE CONSULTATION
@@ -155,7 +155,7 @@
         
         <!-- CTA Button -->
         <div class="mt-12 text-center">
-          <a href="#scheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
+          <a href="#scheduleForm" @click.prevent="scrollToScheduleForm" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
             Get Started Today
           </a>
         </div>
@@ -222,42 +222,32 @@
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="bg-white rounded-lg shadow-xl p-8 md:p-12 max-w-3xl mx-auto">
           <h2 class="text-3xl font-bold mb-6 text-center font-crimson text-dobbin-dark-green">
-            Schedule Your 30 Minute Complementary Strategy Session
+            Schedule Your Complementary Strategy Session
           </h2>
           <p class="text-center text-gray-600 mb-8 font-crimson">
-            <span class="font-bold">
-              Protect your valuable ideas with a complimentary 30-minute strategy session.
-            </span>
-          </p>
-          <p class="text-left text-gray-600 mb-8 font-crimson">
-              Meet with our lawyer, Geoff — in person, by phone, or over Zoom. No obligation, just expert guidance on your best next steps.
+            Take the first step toward protecting your valuable ideas. 
+            No obligation, just clear guidance on your path forward.
           </p>
           
-          <!-- Fixed Netlify Form -->
-          <form name="homepage-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
-            <!-- Hidden inputs for Netlify -->
-            <input type="hidden" name="form-name" value="homepage-contact" />
-            <p class="hidden">
-              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-            </p>
-            
+          <!-- Form goes here - simplified mockup -->
+          <form class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green" required>
+                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
               </div>
               <div>
                 <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green" required>
+                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
               </div>
             </div>
             <div>
               <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green" required>
+              <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green">
             </div>
             <div>
               <label for="message" class="block text-gray-700 font-medium mb-2">Tell us about your invention or IP needs (optional)</label>
-              <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green"></textarea>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dobbin-dark-green focus:border-dobbin-dark-green"></textarea>
             </div>
             <div class="flex justify-center">
               <button type="submit" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg text-lg">
@@ -305,6 +295,12 @@ function closeVideoModal() {
   
   // Re-enable body scrolling
   document.body.style.overflow = '';
+}
+
+// Method to scroll to schedule form
+function scrollToScheduleForm(event) {
+  event.preventDefault();
+  document.getElementById('scheduleForm').scrollIntoView({ behavior: 'smooth' });
 }
 
 // Close modal when Escape key is pressed
@@ -373,11 +369,6 @@ a, button {
 
 .modal-enter-from, .modal-leave-to {
   opacity: 0;
-}
-
-/* Hide honeypot field */
-.hidden {
-  display: none;
 }
 
 /* Adjust the max width for desktop */
