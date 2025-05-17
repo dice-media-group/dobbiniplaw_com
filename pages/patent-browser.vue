@@ -1,208 +1,291 @@
 <template>
-  <div class="bg-gray-900 text-white min-h-screen pb-20">
-    <!-- Header -->
-    <header class="flex items-center justify-between p-4 bg-black bg-opacity-40 fixed w-full z-10">
-      <div class="text-2xl font-bold">Dobbin IP Law</div>
-      <div class="flex items-center space-x-4">
-        <div class="relative">
-          <input 
-            type="text" 
-            v-model="searchQuery"
-            placeholder="Search patents..." 
-            class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
-          />
-          <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
+  <div class="bg-dobbin-gray text-white min-h-screen">
+    <!-- Main Scrollable Content Container -->
+    <main>
+      <!-- Featured Patent Hero with Search Header -->
+      <div v-if="featuredPatent" class="relative">
+        <!-- Initially-scrollable Search Header -->
+        <header 
+          ref="searchHeader" 
+          :class="[
+            'flex items-center justify-between p-4 bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
+            isHeaderSticky ? 'fixed top-0' : ''
+          ]"
+        >
+          <div class="text-2xl font-bold">Dobbin IP Law</div>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <input 
+                type="text" 
+                v-model="searchQuery"
+                placeholder="Search patents..." 
+                class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
+              />
+              <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Image Content -->
+        <div class="h-96 bg-gradient-to-b from-transparent to-dobbin-gray">
+          <div class="absolute inset-0 overflow-hidden" style="top: 0;">
+            <img 
+              :src="getFeaturedImageSrc" 
+              :alt="featuredPatent.title" 
+              class="w-full h-full object-cover opacity-50"
+            />
+          </div>
+          <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
+            <h1 class="text-4xl font-bold mb-2">{{ featuredPatent.title }}</h1>
+            <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
+            <div class="flex space-x-4">
+              <button 
+                class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
+                @click="selectPatent(featuredPatent)"
+              >
+                <span class="mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </span>
+                View Details
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
 
-    <!-- Featured Patent Hero -->
-    <div v-if="featuredPatent" class="relative pt-16 h-96 bg-gradient-to-b from-transparent to-gray-900">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          :src="getFeaturedImageSrc" 
-          :alt="featuredPatent.title" 
-          class="w-full h-full object-cover opacity-50"
-        />
-      </div>
-      <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
-        <h1 class="text-4xl font-bold mb-2">{{ featuredPatent.title }}</h1>
-        <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
-        <div class="flex space-x-4">
-          <button 
-            class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
-            @click="selectPatent(featuredPatent)"
-          >
-            <span class="mr-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-            </span>
-            View Details
-          </button>
-        </div>
-      </div>
-    </div>
-    <div v-else-if="isLoading" class="relative pt-16 h-96 flex items-center justify-center bg-gray-800">
-      <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-    </div>
-    <div v-else class="relative pt-16 h-96 flex items-center justify-center bg-gray-800">
-      <p class="text-gray-400 text-xl">No featured patent available</p>
-    </div>
-
-    <!-- Categories with Carousels -->
-    <div class="px-8 py-4 space-y-12 mt-4">
-      <div v-if="isLoading" class="flex justify-center py-12">
+      <!-- Loading state -->
+      <div v-else-if="isLoading" class="h-96 flex items-center justify-center bg-dobbin-gray">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
       </div>
       
-      <template v-else>
-        <div v-for="category in filteredCategories" :key="category.id" class="category-row">
-          <h2 class="text-xl font-medium mb-4">{{ category.name }}</h2>
-          <div class="relative">
-            <button 
-              v-if="canScrollLeft(category.id)"
-              class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
-              @click="scrollLeft(category.id)"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            
-            <div 
-              :ref="el => { if(el) categoryRefs[category.id] = el }" 
-              class="flex space-x-4 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
-              @scroll="updateScrollButtons(category.id)"
-            >
-              <div 
-                v-for="patent in getCategoryPatents(category.id)" 
-                :key="patent.id" 
-                class="flex-none w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
-                @click="selectPatent(patent)"
+      <!-- No featured patent state -->
+      <div v-else class="h-96 flex items-center justify-center bg-dobbin-gray">
+        <p class="text-gray-400 text-xl">No featured patent available</p>
+      </div>
+
+      <!-- Spacer to account for fixed header when sticky -->
+      <div v-if="isHeaderSticky" class="h-16"></div>
+
+      <!-- Categories with Carousels -->
+      <div class="px-4 md:px-8 py-4 space-y-12 text-white">
+        <div v-if="isLoading" class="flex justify-center py-12">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+        </div>
+        
+        <template v-else>
+          <div v-for="category in filteredCategories" :key="category.id" class="category-row">
+            <h2 class="text-xl font-medium mb-4 text-white">{{ category.name }}</h2>
+            <div class="relative">
+              <button 
+                v-if="canScrollLeft(category.id)"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                @click="scrollLeft(category.id)"
               >
-                <div class="relative h-40">
-                  <img 
-                    :src="getPatentImageSrc(patent)" 
-                    :alt="patent.title" 
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              
+              <div 
+                :ref="el => { if(el) categoryRefs[category.id] = el }" 
+                class="flex space-x-4 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
+                @scroll="updateScrollButtons(category.id)"
+              >
+                <div 
+                  v-for="patent in getCategoryPatents(category.id)" 
+                  :key="patent.id" 
+                  class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                  @click="selectPatent(patent)"
+                >
+                  <div v-if="hasRealImage(patent)" class="relative h-40 bg-black">
+                    <img 
+                      :src="getPatentImageSrc(patent)" 
+                      :alt="patent.title" 
+                      class="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div v-else class="relative h-40 patent-default-image">
+                    <!-- Nothing here, the background styles will show the SVG -->
+                  </div>
+                  <div class="p-3 bg-dobbin-gray">
+                    <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
+                    <p class="text-xs text-gray-400">{{ patent.id }}</p>
+                  </div>
                 </div>
-                <div class="p-3 bg-gray-800">
-                  <h3 class="text-sm font-medium truncate">{{ patent.title }}</h3>
-                  <p class="text-xs text-gray-400">{{ patent.id }}</p>
+                
+                <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-dobbin-gray rounded">
+                  <p class="text-gray-400">No patents found in this category</p>
                 </div>
               </div>
               
-              <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-gray-800 rounded">
-                <p class="text-gray-400">No patents found in this category</p>
-              </div>
+              <button 
+                v-if="canScrollRight(category.id)"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                @click="scrollRight(category.id)"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
-            
-            <button 
-              v-if="canScrollRight(category.id)"
-              class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
-              @click="scrollRight(category.id)"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
           </div>
-        </div>
-      </template>
-    </div>
-
-    <!-- Patent Detail Modal -->
-    <div v-if="selectedPatent" class="fixed inset-0 bg-black bg-opacity-80 z-20 flex items-center justify-center">
-      <div class="bg-gray-800 w-5/6 max-w-4xl rounded-lg overflow-hidden relative max-h-5/6 overflow-y-auto">
-        <button 
-          class="absolute right-4 top-4 text-gray-400 hover:text-white"
-          @click="selectedPatent = null"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        </template>
         
-        <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/2 p-6">
-            <div class="bg-gray-700 rounded overflow-hidden mb-4">
+        <!-- Add padding at the bottom to ensure scrollability -->
+        <div class="pb-16"></div>
+      </div>
+    </main>
+
+    <!-- Mobile-Optimized Patent Detail Modal -->
+    <div v-if="selectedPatent" class="fixed inset-0 bg-black z-30 overflow-hidden flex flex-col">
+      <!-- Close button - Updated to match theme -->
+      <button 
+        class="absolute right-4 top-4 z-50 bg-dobbin-gray hover:bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors duration-200"
+        @click="closePatentDetail"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Fixed Image Viewer with Hi-Res Image -->
+      <div class="w-full bg-black">
+        <div v-if="hasRealImage(selectedPatent)" class="w-full aspect-square flex items-center justify-center">
+          <img 
+            :src="getSelectedImageHiRes" 
+            :alt="selectedPatent.title"
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <div v-else class="w-full aspect-square flex items-center justify-center patent-default-image">
+          <!-- Nothing here, the background styles will show the SVG -->
+        </div>
+        
+        <!-- Thumbnail Carousel -->
+        <div class="flex overflow-x-auto scrollbar-hide p-2 bg-dobbin-gray gap-2">
+          <!-- For each image in the patent -->
+          <div 
+            v-for="(image, index) in selectedPatent.images" 
+            :key="index" 
+            class="flex-none w-16 h-16 rounded overflow-hidden"
+            :class="{'ring-2 ring-dobbin-bright-green': selectedImageIndex === index}"
+            @click="selectImage(index)"
+          >
+            <!-- Display the image if it's a real image -->
+            <div v-if="isRealImage(image)" class="w-full h-full bg-black">
               <img 
-                :src="getPatentImageSrc(selectedPatent)" 
-                :alt="selectedPatent.title"
-                class="w-full h-auto"
+                :src="getImageThumbnail(image)" 
+                :alt="`Drawing ${index+1}`"
+                class="w-full h-full object-contain"
               />
             </div>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <!-- Patent drawing thumbnails -->
-              <div 
-                v-for="(image, index) in selectedPatent.images" 
-                :key="index" 
-                class="w-24 h-24 bg-gray-700 rounded overflow-hidden cursor-pointer"
-                @click="selectImage(index)"
-              >
-                <img 
-                  :src="getImageThumbnail(image)" 
-                  :alt="`Drawing ${index+1}`"
-                  class="w-full h-full object-cover"
-                />
+            <!-- Otherwise display the gear SVG -->
+            <div v-else class="w-full h-full patent-default-image-thumbnail"></div>
+          </div>
+
+          <!-- When no images are available -->
+          <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-dobbin-gray flex items-center justify-center rounded patent-default-image-thumbnail">
+            <!-- Nothing here, the background styles will show the SVG -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scrollable Content -->
+      <div class="flex-1 overflow-y-auto bg-dobbin-gray">
+        <!-- Logo with Swoosh - CENTERED SVG GEAR ONLY -->
+        <div class="bg-white py-4 sm:py-6" data-v-a54da7ff="">
+          <div class="container mx-auto px-4 flex justify-center items-center" data-v-a54da7ff="">
+            <a href="/" class="logo-link flex justify-center items-center" data-v-a54da7ff="">
+              <!-- Using the AppLogo component -->
+               <div class="flex justify-center items-center flex-col md:flex-row" data-v-a54da7ff="" data-v-a3b5a2eb="">
+                <div class="logo-container mx-auto" data-v-a3b5a2eb="">
+                  <img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb="">
+                  <svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb="">
+                    <!-- Gear shape -->
+                    <path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path>
+                    <!-- Green swoosh -->
+                    <path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path>
+                  </svg>
+                </div>
+                <!-- Logo text -->
+                 <h1 class="hidden text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0" data-v-a3b5a2eb=""> DOBBIN IP LAW </h1>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Patent Details with Improved Title Visibility -->
+        <div class="p-4">
+          <!-- Title and Year - Enhanced Size and Contrast -->
+          <h2 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">{{ selectedPatent.title }}</h2>
+          <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
+          
+          <!-- Play Button style Google Patents Link -->
+          <a 
+            :href="`https://patents.google.com/patent/${selectedPatent.id.replace(/-/g, '')}`"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md flex items-center justify-center mb-6 font-bold text-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            View on Google Patents
+          </a>
+          
+          <!-- Abstract -->
+          <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-white">Abstract</h3>
+            <p class="text-base text-gray-300">
+              {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
+            </p>
+          </div>
+          
+          <!-- Inventor and Assignee Bullets with Enhanced Visibility -->
+          <div class="space-y-3 mb-6"> <!-- Increased spacing -->
+            <div class="flex items-start">
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span> <!-- Larger bullet -->
+              <div>
+                <span class="font-medium">Inventor:</span>
+                <span class="text-gray-300 ml-2">{{ selectedPatent.inventors?.join(', ') || 'Not specified' }}</span>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+              <div>
+                <span class="font-medium">Assignee:</span>
+                <span class="text-gray-300 ml-2">{{ selectedPatent.assignee || 'Not specified' }}</span>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+              <div>
+                <span class="font-medium">Patent ID:</span>
+                <span class="text-gray-300 ml-2">{{ selectedPatent.id }}</span>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+              <div>
+                <span class="font-medium">Publication Date:</span>
+                <span class="text-gray-300 ml-2">{{ formatDate(selectedPatent.publicationDate) }}</span>
               </div>
             </div>
           </div>
           
-          <div class="md:w-1/2 p-6">
-            <h2 class="text-2xl font-bold mb-2">{{ selectedPatent.title }}</h2>
-            <p class="text-gray-300 mb-4">Patent {{ selectedPatent.id }}</p>
-            <p class="text-gray-300 mb-4">Published: {{ formatDate(selectedPatent.publicationDate) }}</p>
-            
-            <div class="bg-gray-700 p-4 rounded mb-4">
-              <h3 class="text-lg font-medium mb-2">Abstract</h3>
-              <p class="text-sm text-gray-300">
-                {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
-              </p>
-            </div>
-            
-            <div class="space-y-3">
-              <h3 class="text-lg font-medium">Details</h3>
-              <div class="flex justify-between text-sm">
-                <span class="text-gray-400">Inventor</span>
-                <span>{{ selectedPatent.inventors?.join(', ') || 'Not specified' }}</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-gray-400">Assignee</span>
-                <span>{{ selectedPatent.assignee || 'Not specified' }}</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-gray-400">Classification</span>
-                <span>{{ selectedPatent.classification || 'Not specified' }}</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-gray-400">Image Pages</span>
-                <span>{{ selectedPatent.imagePages || selectedPatent.images?.length || 'Not specified' }}</span>
-              </div>
-            </div>
-            
-            <div class="mt-6">
-              <a 
-                :href="`https://patents.google.com/patent/${selectedPatent.id.replace(/-/g, '')}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-blue-400 hover:underline text-sm flex items-center"
-              >
-                View on Google Patents →
-              </a>
-            </div>
-          </div>
+          <!-- Additional patent information can be added here -->
+          <div class="pb-8"></div>
         </div>
       </div>
     </div>
@@ -210,7 +293,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { useHead } from '#app';
 
 // SEO metadata
@@ -230,6 +313,30 @@ const isLoading = ref(true);
 const searchQuery = ref('');
 const categoryRefs = reactive({});
 const scrollState = reactive({});
+const searchHeader = ref(null);
+const isHeaderSticky = ref(false);
+const headerHeight = ref(0);
+const headerTop = ref(0);
+
+// Handle scroll events for header stickiness
+function handleScroll() {
+  if (!searchHeader.value) return;
+  
+  // Initialize header dimensions if not already set
+  if (headerHeight.value === 0) {
+    headerHeight.value = searchHeader.value.offsetHeight;
+    headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
+  }
+  
+  const scrollY = window.scrollY;
+  
+  // Check if we've scrolled past the header's original position
+  if (scrollY > headerTop.value) {
+    isHeaderSticky.value = true;
+  } else {
+    isHeaderSticky.value = false;
+  }
+}
 
 // Computed properties
 const filteredCategories = computed(() => {
@@ -258,42 +365,101 @@ const featuredPatent = computed(() => {
 });
 
 const getFeaturedImageSrc = computed(() => {
-  if (!featuredPatent.value || !featuredPatent.value.images || featuredPatent.value.images.length === 0) {
-    return '/api/placeholder/800/400';
+  if (hasRealImage(featuredPatent.value)) {
+    const image = featuredPatent.value.images[0];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.hires) {
+      return image.hires;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    }
   }
   
-  const image = featuredPatent.value.images[0];
-  
-  // Handle both old and new image formats
-  if (typeof image === 'string') {
-    return image;
-  } else if (image.hires) {
-    return image.hires;
-  } else if (image.thumbnail) {
-    return image.thumbnail;
-  }
-  
-  return '/api/placeholder/800/400';
+  return '/img/gear_only.svg';
 });
+
+const getSelectedImageHiRes = computed(() => {
+  if (hasRealImage(selectedPatent.value)) {
+    const image = selectedPatent.value.images[selectedImageIndex.value];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.hires) {
+      return image.hires;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    }
+  }
+  
+  return '/img/gear_only.svg';
+});
+
+// Check if a patent has actual images (not just placeholders)
+function hasRealImage(patent) {
+  if (!patent || !patent.images || patent.images.length === 0) {
+    return false;
+  }
+  
+  // Check if any image is a placeholder
+  for (const image of patent.images) {
+    if (typeof image === 'string' && image.includes('placeholder')) {
+      return false;
+    } else if (image.thumbnail && image.thumbnail.includes('placeholder')) {
+      return false;
+    } else if (image.hires && image.hires.includes('placeholder')) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+// Check if an individual image is a real image (not a placeholder)
+function isRealImage(image) {
+  if (!image) {
+    return false;
+  }
+  
+  if (typeof image === 'string' && image.includes('placeholder')) {
+    return false;
+  } else if (image.thumbnail && image.thumbnail.includes('placeholder')) {
+    return false;
+  } else if (image.hires && image.hires.includes('placeholder')) {
+    return false;
+  }
+  
+  // Check if it's a valid image path
+  if (typeof image === 'string' && image.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  } else if (image.thumbnail && image.thumbnail.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  } else if (image.hires && image.hires.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  }
+  
+  return false;
+}
 
 // Methods
 function getPatentImageSrc(patent) {
-  if (!patent.images || patent.images.length === 0) {
-    return '/api/placeholder/300/170';
+  if (hasRealImage(patent)) {
+    const image = patent.images[0];
+    
+    // Handle both old and new image formats
+    if (typeof image === 'string') {
+      return image;
+    } else if (image.thumbnail) {
+      return image.thumbnail;
+    } else if (image.hires) {
+      return image.hires;
+    }
   }
   
-  const image = patent.images[0];
-  
-  // Handle both old and new image formats
-  if (typeof image === 'string') {
-    return image;
-  } else if (image.thumbnail) {
-    return image.thumbnail;
-  } else if (image.hires) {
-    return image.hires;
-  }
-  
-  return '/api/placeholder/300/170';
+  return '/img/gear_only.svg';
 }
 
 function getImageThumbnail(image) {
@@ -303,13 +469,19 @@ function getImageThumbnail(image) {
   } else if (image && image.thumbnail) {
     return image.thumbnail;
   }
-  return '/api/placeholder/100/100';
+  return '/img/gear_only.svg';
 }
 
 function formatDate(dateString) {
   if (!dateString) return '';
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function getPatentYear(dateString) {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.getFullYear().toString();
 }
 
 function getCategoryPatents(categoryId) {
@@ -330,6 +502,24 @@ function getCategoryPatents(categoryId) {
 function selectPatent(patent) {
   selectedPatent.value = patent;
   selectedImageIndex.value = 0;
+  
+  // Prevent body scrolling when modal is open
+  document.body.style.overflow = 'hidden';
+  
+  // Reset scroll position of the modal content
+  nextTick(() => {
+    const modalContent = document.querySelector('.overflow-y-auto');
+    if (modalContent) {
+      modalContent.scrollTop = 0;
+    }
+  });
+}
+
+function closePatentDetail() {
+  selectedPatent.value = null;
+  
+  // Re-enable body scrolling
+  document.body.style.overflow = '';
 }
 
 function selectImage(index) {
@@ -473,12 +663,39 @@ async function loadPatentData() {
       // Update scroll buttons on next tick when DOM is ready
       setTimeout(() => updateScrollButtons(category.id), 100);
     }
+    
+    // Initialize header position after patents are loaded
+    nextTick(() => {
+      if (searchHeader.value) {
+        headerHeight.value = searchHeader.value.offsetHeight;
+        headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Force scroll handler to run once to initialize states
+        handleScroll();
+      }
+    });
   }
 }
 
 // Lifecycle hooks
 onMounted(() => {
   loadPatentData();
+  window.addEventListener('scroll', handleScroll);
+  
+  // Also handle resize events to recalculate header position
+  window.addEventListener('resize', () => {
+    // Reset dimensions so they'll be recalculated
+    headerHeight.value = 0;
+    headerTop.value = 0;
+    nextTick(() => handleScroll());
+  });
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('resize', handleScroll);
+  // Ensure body scrolling is enabled when component is unmounted
+  document.body.style.overflow = '';
 });
 </script>
 
@@ -492,5 +709,51 @@ onMounted(() => {
 }
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+/* Ensure images fit properly */
+.object-contain {
+  object-fit: contain;
+}
+
+/* Transitions for header */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Custom 2-line truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Patent default image styling using gear_only.svg with correct viewBox and centering it */
+.patent-default-image {
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
+  background-color: #111;
+}
+
+/* Smaller thumbnail version */
+.patent-default-image-thumbnail {
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
+  background-color: #111;
+}
+
+/* Special patent logo class for the modal */
+.patent-logo {
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
 }
 </style>
