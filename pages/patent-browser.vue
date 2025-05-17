@@ -35,9 +35,9 @@
           </div>
           
           <!-- Bottom row with category buttons - ANIMATED VERSION -->
-          <div class="flex px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto relative h-12">
+          <div class="flex px-4 pb-6 space-x-2 md:space-x-4 overflow-x-auto relative h-16">
             <!-- Initial buttons (shown when no category is selected) - Left aligned -->
-            <transition name="slide-default">
+            <transition name="slide-default" mode="out-in">
               <div v-if="!selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
                 <!-- Firearms button -->
                 <button 
@@ -81,9 +81,9 @@
               </div>
             </transition>
             
-            <!-- Directly selected category buttons (for Firearms and Electronics) - Left aligned -->
-            <transition name="slide-selected">
-              <div v-if="selectedCategoryId && selectionType === 'direct'" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
+            <!-- Selected category buttons - Left aligned (combined direct and dialog) -->
+            <transition name="slide-category" mode="out-in">
+              <div v-if="selectedCategoryId" :key="selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
                 <!-- Close/X button -->
                 <button 
                   type="button"
@@ -100,17 +100,19 @@
                 <button 
                   type="button"
                   class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green"
+                  v-if="selectionType === 'direct'"
                 >
                   {{ categoryDisplayName }}
                 </button>
                 
-                <!-- All Categories button -->
+                <!-- Selected category button with dropdown (green but with white text) -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
                   @click="toggleCategoriesDialog"
+                  v-if="selectionType === 'dialog'"
                 >
-                  All Categories
+                  {{ categoryDisplayName }}
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
@@ -125,31 +127,15 @@
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
-              </div>
-            </transition>
-            
-            <!-- Dialog selected category buttons (for categories selected from dialog) - Left aligned -->
-            <transition name="slide-selected">
-              <div v-if="selectedCategoryId && selectionType === 'dialog'" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
-                <!-- Close/X button -->
-                <button 
-                  type="button"
-                  class="w-10 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center justify-center text-xs cursor-pointer select-none"
-                  @click="closeCategory"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
                 
-                <!-- Selected category button with dropdown (green but with white text) -->
+                <!-- All Categories button - Only shown for direct selections -->
                 <button 
+                  v-if="selectionType === 'direct'"
                   type="button"
-                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
+                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
                   @click="toggleCategoriesDialog"
                 >
-                  {{ categoryDisplayName }}
+                  All Categories
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
@@ -504,16 +490,18 @@ function handleSearchInput(e) {
 // Select a category with selection type and display name
 function selectCategory(categoryId, type = 'direct', displayName = '') {
   console.log('selectCategory called with:', categoryId, type, displayName);
-  selectedCategoryId.value = categoryId;
-  selectionType.value = type;
   
-  // Set the display name if provided, otherwise get it from the categories
+  // First update the display name to ensure proper animation
   if (displayName) {
     categoryDisplayName.value = displayName;
   } else {
     const category = categories.value.find(c => c.id === categoryId);
     categoryDisplayName.value = category ? category.name : '';
   }
+  
+  // Then update the category ID and selection type
+  selectedCategoryId.value = categoryId;
+  selectionType.value = type;
   
   showCategoriesDialog.value = false;
 }
@@ -984,7 +972,7 @@ input[type="text"] {
   appearance: none;
 }
 
-/* Animation styles for default row transitions */
+/* Animation styles for default buttons transitions */
 .slide-default-enter-active,
 .slide-default-leave-active {
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -1000,19 +988,19 @@ input[type="text"] {
   opacity: 0;
 }
 
-/* Animation styles for selected row transitions */
-.slide-selected-enter-active,
-.slide-selected-leave-active {
+/* Animation styles for category transitions */
+.slide-category-enter-active,
+.slide-category-leave-active {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.slide-selected-enter-from {
+.slide-category-enter-from {
   transform: translateY(20px);
   opacity: 0;
 }
 
-.slide-selected-leave-to {
-  transform: translateY(20px);
+.slide-category-leave-to {
+  transform: translateX(-20px);
   opacity: 0;
 }
 </style>
