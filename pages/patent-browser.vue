@@ -43,7 +43,7 @@
                 <button 
                   type="button"
                   class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
-                  @click="selectCategory('firearms', 'direct')"
+                  @click="selectCategory('firearms', 'direct', 'Firearms')"
                 >
                   Firearms
                 </button>
@@ -52,7 +52,7 @@
                 <button 
                   type="button"
                   class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
-                  @click="selectCategory('electronics', 'direct')"
+                  @click="selectCategory('electronics', 'direct', 'Electronics')"
                 >
                   Electronics
                 </button>
@@ -101,7 +101,7 @@
                   type="button"
                   class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green"
                 >
-                  {{ getSelectedCategoryName() }}
+                  {{ categoryDisplayName }}
                 </button>
                 
                 <!-- All Categories button -->
@@ -149,7 +149,7 @@
                   class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
                   @click="toggleCategoriesDialog"
                 >
-                  {{ getSelectedCategoryName() }}
+                  {{ categoryDisplayName }}
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
@@ -308,7 +308,7 @@
             <button 
               v-for="category in categories" 
               :key="category.id" 
-              @click="selectCategory(category.id, 'dialog')"
+              @click="selectCategory(category.id, 'dialog', category.name)"
               class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors cursor-pointer"
             >
               {{ category.name }}
@@ -486,20 +486,13 @@ const isHeaderSticky = ref(true); // Always true with new implementation
 // Category UI state variables
 const selectedCategoryId = ref(null);
 const selectionType = ref(null); // 'direct' or 'dialog'
+const categoryDisplayName = ref(''); // Store the display name separately
 const showCategoriesDialog = ref(false);
 
 // Add a watcher for selectedCategoryId changes
 watch(selectedCategoryId, (newVal) => {
   console.log('selectedCategoryId changed:', newVal);
 });
-
-// Get the name of the selected category
-function getSelectedCategoryName() {
-  if (!selectedCategoryId.value) return '';
-  
-  const category = categories.value.find(c => c.id === selectedCategoryId.value);
-  return category ? category.name : '';
-}
 
 // Handle search input
 function handleSearchInput(e) {
@@ -508,11 +501,20 @@ function handleSearchInput(e) {
   console.log('Search input:', searchQuery.value);
 }
 
-// Select a category with selection type
-function selectCategory(categoryId, type = 'direct') {
-  console.log('selectCategory called with:', categoryId, type);
+// Select a category with selection type and display name
+function selectCategory(categoryId, type = 'direct', displayName = '') {
+  console.log('selectCategory called with:', categoryId, type, displayName);
   selectedCategoryId.value = categoryId;
   selectionType.value = type;
+  
+  // Set the display name if provided, otherwise get it from the categories
+  if (displayName) {
+    categoryDisplayName.value = displayName;
+  } else {
+    const category = categories.value.find(c => c.id === categoryId);
+    categoryDisplayName.value = category ? category.name : '';
+  }
+  
   showCategoriesDialog.value = false;
 }
 
@@ -520,6 +522,7 @@ function selectCategory(categoryId, type = 'direct') {
 function closeCategory() {
   selectedCategoryId.value = null;
   selectionType.value = null;
+  categoryDisplayName.value = '';
 }
 
 // Toggle categories dialog
@@ -778,6 +781,7 @@ async function loadPatentData() {
     // No default selected category - set to null
     selectedCategoryId.value = null;
     selectionType.value = null;
+    categoryDisplayName.value = '';
     
     // Fetch patents for each category
     const loadPromises = categories.value.map(async (category) => {
