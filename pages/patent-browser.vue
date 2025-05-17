@@ -115,7 +115,7 @@
                     />
                   </div>
                   <div class="p-3 bg-dobbin-gray">
-                    <h3 class="text-sm font-medium truncate text-white">{{ patent.title }}</h3>
+                    <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
                     <p class="text-xs text-gray-400">{{ patent.id }}</p>
                   </div>
                 </div>
@@ -648,5 +648,13 @@ onUnmounted(() => {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+/* Custom 2-line truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>
