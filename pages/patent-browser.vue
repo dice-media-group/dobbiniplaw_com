@@ -35,14 +35,14 @@
           </div>
           
           <!-- Bottom row with category buttons - ANIMATED VERSION -->
-          <div class="flex px-4 pb-6 space-x-2 md:space-x-4 overflow-x-auto relative h-16">
+          <div class="flex px-4 pb-8 space-x-2 md:space-x-4 overflow-x-auto relative h-16">
             <!-- Initial buttons (shown when no category is selected) - Left aligned -->
             <transition name="slide-default" mode="out-in">
               <div v-if="!selectedCategoryId" class="absolute inset-0 flex justify-start space-x-2 md:space-x-4 pl-4">
                 <!-- Firearms button -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  class="px-6 py-1 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
                   @click="selectCategory('firearms', 'direct', 'Firearms')"
                 >
                   Firearms
@@ -51,7 +51,7 @@
                 <!-- Electronics button -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  class="px-6 py-1 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
                   @click="selectCategory('electronics', 'direct', 'Electronics')"
                 >
                   Electronics
@@ -60,7 +60,7 @@
                 <!-- Categories button -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  class="px-6 py-1 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
                   @click="toggleCategoriesDialog"
                 >
                   Categories
@@ -99,7 +99,7 @@
                 <!-- Selected category button (green but with white text) -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
                   v-if="selectionType === 'direct'"
                 >
                   {{ categoryDisplayName }}
@@ -108,7 +108,7 @@
                 <!-- Selected category button with dropdown (green but with white text) -->
                 <button 
                   type="button"
-                  class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-dobbin-bright-green text-white border-dobbin-bright-green flex items-center"
                   @click="toggleCategoriesDialog"
                   v-if="selectionType === 'dialog'"
                 >
@@ -132,7 +132,7 @@
                 <button 
                   v-if="selectionType === 'direct'"
                   type="button"
-                  class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  class="px-6 py-1 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
                   @click="toggleCategoriesDialog"
                 >
                   All Categories
@@ -171,11 +171,11 @@
             <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
             <div class="flex space-x-4">
               <button 
-                class="bg-white text-black px-6 py-2 rounded flex items-center font-medium"
+                class="bg-white text-black px-6 py-1 h-10 rounded flex items-center font-medium"
                 @click="selectPatent(featuredPatent)"
               >
                 <span class="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
