@@ -36,26 +36,29 @@
           <!-- Bottom row with category buttons -->
           <div class="flex justify-center px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto">
             <button 
-              @click="toggleCategory('firearms')"
+              @click.stop.prevent="toggleCategory('firearms')"
+              type="button"
               :class="[
-                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs',
+                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer',
                 selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
               ]"
             >
               Firearms
             </button>
             <button 
-              @click="toggleCategory('electronics')"
+              @click.stop.prevent="toggleCategory('electronics')"
+              type="button"
               :class="[
-                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs',
+                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer',
                 selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
               ]"
             >
               Electronics
             </button>
             <button 
-              @click="toggleCategoriesDialog"
-              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs"
+              @click.stop.prevent="toggleCategoriesDialog" 
+              type="button"
+              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer"
             >
               Categories
               <svg 
@@ -215,7 +218,7 @@
             <button 
               v-for="category in categories" 
               :key="category.id" 
-              @click="toggleCategory(category.id)"
+              @click.stop.prevent="toggleCategory(category.id)"
               class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors"
             >
               {{ category.name }}
@@ -225,7 +228,7 @@
           <!-- Close Button -->
           <button 
             class="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg"
-            @click="showCategoriesDialog = false"
+            @click.stop.prevent="showCategoriesDialog = false"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -366,7 +369,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, reactive, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import { useHead } from '#app';
 
 // SEO metadata
@@ -395,18 +398,34 @@ const headerTop = ref(0);
 const selectedCategoryId = ref(null);
 const showCategoriesDialog = ref(false);
 
+// Add a watcher for debugging
+watch(selectedCategoryId, (newVal) => {
+  console.log('selectedCategoryId changed:', newVal);
+});
+
 // Toggle category selection (select if not selected, deselect if already selected)
 function toggleCategory(categoryId) {
+  console.log('toggleCategory called with:', categoryId);
+  console.log('Current selectedCategoryId:', selectedCategoryId.value);
+  
   if (selectedCategoryId.value === categoryId) {
     selectedCategoryId.value = null; // Deselect if already selected
   } else {
     selectedCategoryId.value = categoryId; // Select the category
   }
+  
+  console.log('New selectedCategoryId:', selectedCategoryId.value);
   showCategoriesDialog.value = false;
+  
+  // Force a UI update
+  nextTick(() => {
+    console.log('After nextTick - displayedCategories:', displayedCategories.value.map(cat => cat.id));
+  });
 }
 
 // Toggle categories dialog
 function toggleCategoriesDialog() {
+  console.log('toggleCategoriesDialog called');
   showCategoriesDialog.value = !showCategoriesDialog.value;
 }
 
@@ -865,5 +884,12 @@ onUnmounted(() => {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 31px 31px; /* Match the viewBox dimensions */
+}
+
+/* Ensure buttons are explicitly clickable, especially on mobile */
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  touch-action: manipulation;
 }
 </style>
