@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 text-white min-h-screen">
+  <div class="bg-dobbin-gray text-white min-h-screen">
     <!-- Main Scrollable Content Container -->
     <main>
       <!-- Featured Patent Hero with Search Header -->
@@ -32,7 +32,7 @@
         </header>
 
         <!-- Hero Image Content -->
-        <div class="h-96 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="h-96 bg-gradient-to-b from-transparent to-dobbin-gray">
           <div class="absolute inset-0 overflow-hidden" style="top: 0;">
             <img 
               :src="getFeaturedImageSrc" 
@@ -63,12 +63,12 @@
       </div>
 
       <!-- Loading state -->
-      <div v-else-if="isLoading" class="h-96 flex items-center justify-center bg-gray-800">
+      <div v-else-if="isLoading" class="h-96 flex items-center justify-center bg-dobbin-gray">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
       </div>
       
       <!-- No featured patent state -->
-      <div v-else class="h-96 flex items-center justify-center bg-gray-800">
+      <div v-else class="h-96 flex items-center justify-center bg-dobbin-gray">
         <p class="text-gray-400 text-xl">No featured patent available</p>
       </div>
 
@@ -76,14 +76,14 @@
       <div v-if="isHeaderSticky" class="h-16"></div>
 
       <!-- Categories with Carousels -->
-      <div class="px-4 md:px-8 py-4 space-y-12">
+      <div class="px-4 md:px-8 py-4 space-y-12 text-white">
         <div v-if="isLoading" class="flex justify-center py-12">
           <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
         </div>
         
         <template v-else>
           <div v-for="category in filteredCategories" :key="category.id" class="category-row">
-            <h2 class="text-xl font-medium mb-4">{{ category.name }}</h2>
+            <h2 class="text-xl font-medium mb-4 text-white">{{ category.name }}</h2>
             <div class="relative">
               <button 
                 v-if="canScrollLeft(category.id)"
@@ -114,13 +114,13 @@
                       loading="lazy"
                     />
                   </div>
-                  <div class="p-3 bg-gray-800">
+                  <div class="p-3 bg-dobbin-gray">
                     <h3 class="text-sm font-medium truncate">{{ patent.title }}</h3>
                     <p class="text-xs text-gray-400">{{ patent.id }}</p>
                   </div>
                 </div>
                 
-                <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-gray-800 rounded">
+                <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-dobbin-gray rounded">
                   <p class="text-gray-400">No patents found in this category</p>
                 </div>
               </div>
@@ -147,7 +147,7 @@
     <div v-if="selectedPatent" class="fixed inset-0 bg-black z-30 overflow-hidden flex flex-col">
       <!-- Close button - Updated to match theme -->
       <button 
-        class="absolute right-4 top-4 z-50 bg-gray-800 hover:bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors duration-200"
+        class="absolute right-4 top-4 z-50 bg-dobbin-gray hover:bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors duration-200"
         @click="closePatentDetail"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
@@ -167,7 +167,7 @@
         </div>
         
         <!-- Thumbnail Carousel -->
-        <div class="flex overflow-x-auto scrollbar-hide p-2 bg-gray-900 gap-2">
+        <div class="flex overflow-x-auto scrollbar-hide p-2 bg-dobbin-gray gap-2">
           <div 
             v-for="(image, index) in selectedPatent.images" 
             :key="index" 
@@ -181,18 +181,16 @@
               class="w-full h-full object-cover"
             />
           </div>
-          <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-gray-800 flex items-center justify-center rounded">
+          <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-dobbin-gray flex items-center justify-center rounded">
             <span class="text-xs text-gray-400">No images</span>
           </div>
         </div>
       </div>
       
       <!-- Scrollable Content -->
-      <div class="flex-1 overflow-y-auto bg-gray-900">
+      <div class="flex-1 overflow-y-auto bg-dobbin-gray">
         <!-- Logo with Swoosh -->
-        <div class="flex items-center justify-center py-4 border-b border-gray-800">
-          <img src="/img/gear_swoosh.svg" alt="Dobbin IP Law" class="h-24 w-24 bg-white bg-opacity-50 rounded-full p-2" />
-        </div>
+<div class="logo-container mx-auto" data-v-a3b5a2eb=""><img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb=""><svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb=""><!-- Gear shape --><path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path><!-- Green swoosh --><path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path></svg></div>
         
         <!-- Patent Details with Improved Title Visibility -->
         <div class="p-4">
