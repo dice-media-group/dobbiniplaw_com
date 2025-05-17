@@ -2,15 +2,15 @@
   <div class="bg-dobbin-gray text-white min-h-screen">
     <!-- Main Scrollable Content Container -->
     <main>
-      <!-- Featured Patent Hero with Search Header -->
-      <div v-if="featuredPatent" class="relative">
-        <!-- Initially-scrollable Search Header -->
+      <!-- Fixed Header Container - Always present -->
+      <div 
+        ref="headerContainer"
+        class="sticky top-0 z-30 w-full"
+      >
+        <!-- Header Content -->
         <header 
           ref="searchHeader" 
-          :class="[
-            'flex flex-col bg-black bg-opacity-90 z-20 transition-all duration-300 w-full',
-            isHeaderSticky ? 'fixed top-0' : ''
-          ]"
+          class="flex flex-col bg-black bg-opacity-90 w-full transition-all duration-200"
         >
           <!-- Top row with logo and search -->
           <div class="flex items-center justify-between p-4">
@@ -168,8 +168,10 @@
             </transition>
           </div>
         </header>
+      </div>
 
-        <!-- Hero Image Content -->
+      <!-- Featured Patent Hero -->
+      <div v-if="featuredPatent" class="relative">
         <div class="h-96 bg-gradient-to-b from-transparent to-dobbin-gray">
           <div class="absolute inset-0 overflow-hidden" style="top: 0;">
             <img 
@@ -209,9 +211,6 @@
       <div v-else class="h-96 flex items-center justify-center bg-dobbin-gray">
         <p class="text-gray-400 text-xl">No featured patent available</p>
       </div>
-
-      <!-- Spacer to account for fixed header when sticky -->
-      <div v-if="isHeaderSticky" class="h-24"></div>
 
       <!-- Categories with Carousels -->
       <div class="px-4 md:px-8 py-4 space-y-12 text-white">
@@ -481,9 +480,8 @@ const searchQuery = ref('');
 const categoryRefs = reactive({});
 const scrollState = reactive({});
 const searchHeader = ref(null);
-const isHeaderSticky = ref(false);
-const headerHeight = ref(0);
-const headerTop = ref(0);
+const headerContainer = ref(null);
+const isHeaderSticky = ref(true); // Always true with new implementation
 
 // Category UI state variables
 const selectedCategoryId = ref(null);
@@ -527,26 +525,6 @@ function closeCategory() {
 // Toggle categories dialog
 function toggleCategoriesDialog() {
   showCategoriesDialog.value = !showCategoriesDialog.value;
-}
-
-// Handle scroll events for header stickiness
-function handleScroll() {
-  if (!searchHeader.value) return;
-  
-  // Initialize header dimensions if not already set
-  if (headerHeight.value === 0) {
-    headerHeight.value = searchHeader.value.offsetHeight;
-    headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
-  }
-  
-  const scrollY = window.scrollY;
-  
-  // Check if we've scrolled past the header's original position
-  if (scrollY > headerTop.value) {
-    isHeaderSticky.value = true;
-  } else {
-    isHeaderSticky.value = false;
-  }
 }
 
 // Computed property for displayed categories based on filters
@@ -885,31 +863,19 @@ async function loadPatentData() {
       // Update scroll buttons on next tick when DOM is ready
       setTimeout(() => updateScrollButtons(category.id), 100);
     }
-    
-    // Initialize header position after patents are loaded
-    nextTick(() => {
-      if (searchHeader.value) {
-        headerHeight.value = searchHeader.value.offsetHeight;
-        headerTop.value = searchHeader.value.getBoundingClientRect().top + window.pageYOffset;
-        
-        // Force scroll handler to run once to initialize states
-        handleScroll();
-      }
-    });
   }
 }
 
 // Lifecycle hooks
 onMounted(() => {
   loadPatentData();
-  window.addEventListener('scroll', handleScroll);
   
-  // Also handle resize events to recalculate header position
+  // Set up scroll handlers for carousels
   window.addEventListener('resize', () => {
-    // Reset dimensions so they'll be recalculated
-    headerHeight.value = 0;
-    headerTop.value = 0;
-    nextTick(() => handleScroll());
+    // Handle resize for carousel scroll buttons
+    for (const categoryId in categoryRefs) {
+      nextTick(() => updateScrollButtons(categoryId));
+    }
   });
   
   // Close categories dialog on ESC key
@@ -929,8 +895,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-  window.removeEventListener('resize', handleScroll);
+  window.removeEventListener('resize', () => {});
   window.removeEventListener('keydown', () => {});
   // Ensure body scrolling is enabled when component is unmounted
   document.body.style.overflow = '';
