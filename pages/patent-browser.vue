@@ -106,7 +106,7 @@
                   class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
                   @click="selectPatent(patent)"
                 >
-                  <div class="relative h-40" :style="`background-image: url('/img/gear_swoosh.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #111;`">
+                  <div class="relative h-40 patent-default-image">
                     <img 
                       :src="getPatentImageSrc(patent)" 
                       :alt="patent.title" 
@@ -656,5 +656,14 @@ onUnmounted(() => {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Patent default image styling to show only the gear (left half) of the SVG */
+.patent-default-image {
+  background-image: url('/img/gear_swoosh.svg');
+  background-size: 200% auto; /* Make image 2x wider to show only half */
+  background-position: left center; /* Show only the left half (gear part) */
+  background-repeat: no-repeat;
+  background-color: #111;
 }
 </style>
