@@ -22,6 +22,7 @@
                   v-model="searchQuery"
                   placeholder="Search patents..." 
                   class="bg-black bg-opacity-50 px-4 py-2 rounded text-sm w-48 pl-10"
+                  @input="handleSearchInput"
                 />
                 <span class="absolute left-3 top-2.5 h-4 w-4 text-gray-400">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
@@ -40,7 +41,7 @@
               type="button"
               class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
               :class="selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click.stop.prevent="toggleCategory('firearms')"
+              @click="toggleCategory('firearms')"
             >
               Firearms
             </button>
@@ -50,7 +51,7 @@
               type="button"
               class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
               :class="selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
-              @click.stop.prevent="toggleCategory('electronics')"
+              @click="toggleCategory('electronics')"
             >
               Electronics
             </button>
@@ -59,7 +60,7 @@
             <button 
               type="button"
               class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
-              @click.stop.prevent="toggleCategoriesDialog"
+              @click="toggleCategoriesDialog"
             >
               Categories
               <svg 
@@ -219,7 +220,7 @@
             <button 
               v-for="category in categories" 
               :key="category.id" 
-              @click.stop.prevent="toggleCategory(category.id)"
+              @click="toggleCategory(category.id)"
               class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors cursor-pointer"
             >
               {{ category.name }}
@@ -229,7 +230,7 @@
           <!-- Close Button -->
           <button 
             class="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg"
-            @click.stop.prevent="showCategoriesDialog = false"
+            @click="showCategoriesDialog = false"
             type="button"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
@@ -406,10 +407,16 @@ watch(selectedCategoryId, (newVal) => {
   console.log('selectedCategoryId changed:', newVal);
 });
 
+// Handle search input
+function handleSearchInput(e) {
+  // Make sure the search input is working properly 
+  // and doesn't get prevented by .stop.prevent modifiers
+  console.log('Search input:', searchQuery.value);
+}
+
 // Toggle category selection
 function toggleCategory(categoryId) {
   console.log('toggleCategory called with:', categoryId);
-  console.log('Current selectedCategoryId:', selectedCategoryId.value);
   
   if (selectedCategoryId.value === categoryId) {
     selectedCategoryId.value = null; // Deselect if already selected
@@ -417,18 +424,11 @@ function toggleCategory(categoryId) {
     selectedCategoryId.value = categoryId; // Select the category
   }
   
-  console.log('New selectedCategoryId:', selectedCategoryId.value);
   showCategoriesDialog.value = false;
-  
-  // Force a UI update
-  nextTick(() => {
-    console.log('After nextTick - displayedCategories:', displayedCategories.value.map(cat => cat.id));
-  });
 }
 
 // Toggle categories dialog
 function toggleCategoriesDialog() {
-  console.log('toggleCategoriesDialog called');
   showCategoriesDialog.value = !showCategoriesDialog.value;
 }
 
@@ -820,6 +820,14 @@ onMounted(() => {
       showCategoriesDialog.value = false;
     }
   });
+
+  // Add focus handler to search input to make sure it works properly
+  const searchInput = document.querySelector('input[type="text"]');
+  if (searchInput) {
+    searchInput.addEventListener('focus', () => {
+      console.log('Search input focused');
+    });
+  }
 });
 
 onUnmounted(() => {
@@ -899,5 +907,13 @@ onUnmounted(() => {
 /* Add active styling for better mobile feedback */
 .cursor-pointer:active, button:active {
   opacity: 0.7;
+}
+
+/* Make sure the search input is properly accessible and does not have any issues */
+input[type="text"] {
+  z-index: 1;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
 }
 </style>
