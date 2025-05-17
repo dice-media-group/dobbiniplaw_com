@@ -42,7 +42,7 @@
                 <!-- Firearms button -->
                 <button 
                   type="button"
-                  class="px-6 py-1 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800 flex items-center"
                   @click="selectCategory('firearms', 'direct', 'Firearms')"
                 >
                   Firearms
@@ -51,7 +51,7 @@
                 <!-- Electronics button -->
                 <button 
                   type="button"
-                  class="px-6 py-1 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800"
+                  class="px-6 py-1 h-10 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none bg-transparent text-white border-gray-600 hover:bg-gray-800 flex items-center"
                   @click="selectCategory('electronics', 'direct', 'Electronics')"
                 >
                   Electronics
@@ -60,7 +60,7 @@
                 <!-- Categories button -->
                 <button 
                   type="button"
-                  class="px-6 py-1 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+                  class="px-6 py-1 h-10 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
                   @click="toggleCategoriesDialog"
                 >
                   Categories
