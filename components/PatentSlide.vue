@@ -6,12 +6,12 @@
     <!-- Added patent existence check -->
     <template v-if="patent">
       <!-- Slide image with white background -->
-      <div class="md:w-1/2 p-10 bg-white">
+      <div class="md:w-1/2 p-6 md:p-10 bg-white">
         <img 
           v-if="currentImageSrc && !imageLoadError"
           :src="currentImageSrc" 
           :alt="patent.title" 
-          class="max-w-full max-h-96 object-contain patent-image mx-auto"
+          class="max-w-full max-h-64 md:max-h-80 object-contain patent-image mx-auto"
           @error="handleImageError"
         />
         <div v-else class="flex items-center justify-center h-full">
@@ -26,9 +26,9 @@
       </div>
       
       <!-- Slide content -->
-      <div class="md:w-1/2 p-10 bg-white">
-        <h3 class="text-2xl font-bold mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
-        <p class="mb-8 text-gray-700 patent-description">{{ patent.description }}</p>
+      <div class="md:w-1/2 p-6 md:p-10 bg-white">
+        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-dobbin-dark-green patent-title">{{ patent.title }}</h3>
+        <p class="mb-6 md:mb-8 text-sm md:text-base text-gray-700 patent-description">{{ patent.description }}</p>
         <a 
           :href="getGooglePatentUrl(patent.patentNumber)"
           class="inline-block bg-dobbin-green hover:bg-dobbin-dark-green text-white font-bold py-2 px-6 patent-button"
@@ -239,24 +239,29 @@ onMounted(() => {
 <style scoped>
 /* Ensure slide has proper positioning for animation */
 .patent-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+  position: relative; /* Changed from absolute to relative */
+  width: 100%;
+  box-sizing: border-box;
+  height: auto; /* Auto height instead of 100% */
+  min-height: 300px; /* Minimum height to avoid layout shifts */
 }
 
-/* Animation for individual elements - disabled for now */
-.patent-image, .patent-title, .patent-description, .patent-button {
-  transition: none; /* Disabled transitions */
-}
-
-/* Additional centering and sizing for image */
+/* Responsive image sizing */
 .patent-image {
   display: block;
   margin: 0 auto;
-  max-height: 350px;
+  max-height: 250px;
   width: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .patent-slide {
+    min-height: auto; /* Allow content to determine height on mobile */
+  }
+  
+  .patent-image {
+    max-height: 180px; /* Smaller image on mobile */
+  }
 }
 </style>

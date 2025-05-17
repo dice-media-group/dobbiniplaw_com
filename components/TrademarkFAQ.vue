@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- FAQ Section Header -->
-    <section class="py-8 bg-dobbin-dark-green text-white">
+    <section class="py-8 bg-dobbin-dark-green">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl font-bold font-crimson" id="faq">Frequently Asked Questions About Trademarks</h2>
+          <h2 class="text-2xl font-bold font-crimson text-white text-opacity-100" id="faq">Frequently Asked Questions About Trademarks</h2>
         </div>
       </div>
     </section>
@@ -38,11 +38,11 @@
             </div>
           </div>
           
-          <!-- View More FAQs Button -->
+          <!-- View More FAQs Button - IMPROVED CONTRAST -->
           <div class="text-center">
             <button 
               @click="toggleMoreFAQs" 
-              class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-2 px-6 rounded-md inline-block font-crimson"
+              class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-2 px-6 rounded-md inline-block font-crimson font-bold shadow-md"
             >
               {{ showMoreFAQs ? 'Show Fewer FAQs' : 'View More FAQs' }}
             </button>
