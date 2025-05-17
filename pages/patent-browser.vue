@@ -35,30 +35,31 @@
           
           <!-- Bottom row with category buttons -->
           <div class="flex justify-center px-4 pb-4 space-x-2 md:space-x-4 overflow-x-auto">
+            <!-- Firearms button -->
             <button 
-              @click.stop.prevent="toggleCategory('firearms')"
               type="button"
-              :class="[
-                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer',
-                selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
-              ]"
+              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
+              :class="selectedCategoryId === 'firearms' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
+              @click.stop.prevent="toggleCategory('firearms')"
             >
               Firearms
             </button>
+            
+            <!-- Electronics button -->
             <button 
-              @click.stop.prevent="toggleCategory('electronics')"
               type="button"
-              :class="[
-                'px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer',
-                selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'
-              ]"
+              class="px-6 py-2 rounded-full border transition-colors whitespace-nowrap text-xs cursor-pointer select-none"
+              :class="selectedCategoryId === 'electronics' ? 'bg-dobbin-bright-green text-black border-dobbin-bright-green' : 'bg-transparent text-white border-gray-600 hover:bg-gray-800'"
+              @click.stop.prevent="toggleCategory('electronics')"
             >
               Electronics
             </button>
+            
+            <!-- Categories button -->
             <button 
-              @click.stop.prevent="toggleCategoriesDialog" 
               type="button"
-              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer"
+              class="px-6 py-2 rounded-full border border-gray-600 transition-colors bg-transparent text-white hover:bg-gray-800 flex items-center whitespace-nowrap text-xs cursor-pointer select-none"
+              @click.stop.prevent="toggleCategoriesDialog"
             >
               Categories
               <svg 
@@ -219,7 +220,7 @@
               v-for="category in categories" 
               :key="category.id" 
               @click.stop.prevent="toggleCategory(category.id)"
-              class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors"
+              class="w-full text-left py-4 border-b border-gray-700 text-xl text-white hover:text-dobbin-bright-green transition-colors cursor-pointer"
             >
               {{ category.name }}
             </button>
@@ -229,6 +230,7 @@
           <button 
             class="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg"
             @click.stop.prevent="showCategoriesDialog = false"
+            type="button"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -245,6 +247,7 @@
       <button 
         class="absolute right-4 top-4 z-50 bg-dobbin-gray hover:bg-dobbin-dark-green rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors duration-200"
         @click="closePatentDetail"
+        type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -394,16 +397,16 @@ const isHeaderSticky = ref(false);
 const headerHeight = ref(0);
 const headerTop = ref(0);
 
-// New state variables for category UI
+// Category UI state variables
 const selectedCategoryId = ref(null);
 const showCategoriesDialog = ref(false);
 
-// Add a watcher for debugging
+// Add a watcher for selectedCategoryId changes
 watch(selectedCategoryId, (newVal) => {
   console.log('selectedCategoryId changed:', newVal);
 });
 
-// Toggle category selection (select if not selected, deselect if already selected)
+// Toggle category selection
 function toggleCategory(categoryId) {
   console.log('toggleCategory called with:', categoryId);
   console.log('Current selectedCategoryId:', selectedCategoryId.value);
@@ -887,9 +890,14 @@ onUnmounted(() => {
 }
 
 /* Ensure buttons are explicitly clickable, especially on mobile */
-button {
+.cursor-pointer, button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
   touch-action: manipulation;
+}
+
+/* Add active styling for better mobile feedback */
+.cursor-pointer:active, button:active {
+  opacity: 0.7;
 }
 </style>
