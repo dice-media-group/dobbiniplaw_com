@@ -1,7 +1,7 @@
 <template>
   <div class="patent-carousel relative">
     <!-- Carousel container with full-width background -->
-    <div class="carousel-bg py-12 md:py-16 relative">
+    <div class="carousel-bg py-20 relative">
       <!-- Loading state -->
       <div v-if="isLoading" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
         <div class="text-center">
@@ -13,22 +13,22 @@
       <!-- Navigation arrows - positioned with higher z-index to stay above slides -->
       <button 
         @click="prevSlide" 
-        class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-2 md:p-3 rounded-full"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Previous slide"
         v-if="hasValidPatents && allPatents.length > 1"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       
       <button 
         @click="nextSlide" 
-        class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-2 md:p-3 rounded-full"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-dobbin-dark-green hover:bg-dobbin-green text-white p-3 rounded-full"
         aria-label="Next slide"
         v-if="hasValidPatents && allPatents.length > 1"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -63,12 +63,12 @@
       
       <!-- Carousel content aligned with text container -->
       <div v-if="!isLoading && hasValidPatents" class="container mx-auto px-4">
-        <!-- Constrained width container -->
-        <div class="mx-auto max-w-4xl"> 
+        <!-- Removed max-width to match paragraph width -->
+        <div class="mx-auto"> 
           <!-- Carousel slide container -->
-          <div class="slide-container bg-white shadow-lg rounded-lg overflow-hidden">
-            <!-- Slide container with proper sizing -->
-            <div class="relative w-full carousel-slides-wrapper">
+          <div class="slide-container bg-white shadow-lg rounded overflow-hidden">
+            <!-- Slide container -->
+            <div class="relative">
               <PatentSlide 
                 v-for="(patent, idx) in allPatents" 
                 :key="'patent-' + idx" 
@@ -228,9 +228,12 @@ onUnmounted(() => {
   background-repeat: no-repeat;
   background-color: #e5ede8; /* Light green color as fallback and overlay tint */
   background-blend-mode: overlay; /* Blend the image with the background color */
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden; /* Prevent horizontal overflow */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 /* Ensure the background has a green tint */
@@ -245,47 +248,21 @@ onUnmounted(() => {
   z-index: -1;
 }
 
-/* Responsive slide container */
+/* Fixed height container for slides to prevent layout shifts */
 .slide-container {
   position: relative;
+  min-height: 550px;
+}
+
+/* Animations disabled */
+.slide-enter-active,
+.slide-leave-active,
+.slide-enter-from,
+.slide-leave-to {
+  transition: none;
+  position: absolute;
   width: 100%;
-  height: auto;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden; /* Prevent horizontal overflow */
-}
-
-/* Wrapper for slides with height management */
-.carousel-slides-wrapper {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 300px; /* Minimum height to maintain consistency */
-}
-
-/* Add media queries for better mobile/desktop handling */
-@media (max-width: 768px) {
-  .carousel-bg {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  
-  .carousel-slides-wrapper {
-    min-height: auto; /* Let content determine height on mobile */
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-  /* Tablet adjustments */
-  .carousel-slides-wrapper {
-    min-height: 400px;
-  }
-}
-
-@media (min-width: 1024px) {
-  /* Desktop adjustments */
-  .carousel-slides-wrapper {
-    min-height: 450px;
-  }
+  transform: none;
+  opacity: 1;
 }
 </style>
