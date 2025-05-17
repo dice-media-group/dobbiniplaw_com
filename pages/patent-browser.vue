@@ -174,6 +174,7 @@
         
         <!-- Thumbnail Carousel -->
         <div class="flex overflow-x-auto scrollbar-hide p-2 bg-dobbin-gray gap-2">
+          <!-- For each image in the patent -->
           <div 
             v-for="(image, index) in selectedPatent.images" 
             :key="index" 
@@ -181,12 +182,19 @@
             :class="{'ring-2 ring-dobbin-bright-green': selectedImageIndex === index}"
             @click="selectImage(index)"
           >
-            <img 
-              :src="getImageThumbnail(image)" 
-              :alt="`Drawing ${index+1}`"
-              class="w-full h-full object-cover"
-            />
+            <!-- Display the image if it's a real image -->
+            <div v-if="isRealImage(image)" class="w-full h-full bg-black">
+              <img 
+                :src="getImageThumbnail(image)" 
+                :alt="`Drawing ${index+1}`"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <!-- Otherwise display the gear SVG -->
+            <div v-else class="w-full h-full patent-default-image-thumbnail"></div>
           </div>
+
+          <!-- When no images are available -->
           <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-dobbin-gray flex items-center justify-center rounded patent-default-image-thumbnail">
             <!-- Nothing here, the background styles will show the SVG -->
           </div>
@@ -195,8 +203,27 @@
       
       <!-- Scrollable Content -->
       <div class="flex-1 overflow-y-auto bg-dobbin-gray">
-        <!-- Logo with Swoosh -->
-<div class="logo-container mx-auto" data-v-a3b5a2eb=""><img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb=""><svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb=""><!-- Gear shape --><path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path><!-- Green swoosh --><path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path></svg></div>
+        <!-- Logo with Swoosh - CENTERED SVG GEAR ONLY -->
+        <div class="bg-white py-4 sm:py-6" data-v-a54da7ff="">
+          <div class="container mx-auto px-4 flex justify-center items-center" data-v-a54da7ff="">
+            <a href="/" class="logo-link flex justify-center items-center" data-v-a54da7ff="">
+              <!-- Using the AppLogo component -->
+               <div class="flex justify-center items-center flex-col md:flex-row" data-v-a54da7ff="" data-v-a3b5a2eb="">
+                <div class="logo-container mx-auto" data-v-a3b5a2eb="">
+                  <img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb="">
+                  <svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb="">
+                    <!-- Gear shape -->
+                    <path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path>
+                    <!-- Green swoosh -->
+                    <path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path>
+                  </svg>
+                </div>
+                <!-- Logo text -->
+                 <h1 class="hidden text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0" data-v-a3b5a2eb=""> DOBBIN IP LAW </h1>
+              </div>
+            </a>
+          </div>
+        </div>
         
         <!-- Patent Details with Improved Title Visibility -->
         <div class="p-4">
@@ -351,7 +378,7 @@ const getFeaturedImageSrc = computed(() => {
     }
   }
   
-  return '/img/gear_swoosh.svg';
+  return '/img/gear_only.svg';
 });
 
 const getSelectedImageHiRes = computed(() => {
@@ -368,7 +395,7 @@ const getSelectedImageHiRes = computed(() => {
     }
   }
   
-  return '/img/gear_swoosh.svg';
+  return '/img/gear_only.svg';
 });
 
 // Check if a patent has actual images (not just placeholders)
@@ -391,6 +418,32 @@ function hasRealImage(patent) {
   return true;
 }
 
+// Check if an individual image is a real image (not a placeholder)
+function isRealImage(image) {
+  if (!image) {
+    return false;
+  }
+  
+  if (typeof image === 'string' && image.includes('placeholder')) {
+    return false;
+  } else if (image.thumbnail && image.thumbnail.includes('placeholder')) {
+    return false;
+  } else if (image.hires && image.hires.includes('placeholder')) {
+    return false;
+  }
+  
+  // Check if it's a valid image path
+  if (typeof image === 'string' && image.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  } else if (image.thumbnail && image.thumbnail.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  } else if (image.hires && image.hires.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+    return true;
+  }
+  
+  return false;
+}
+
 // Methods
 function getPatentImageSrc(patent) {
   if (hasRealImage(patent)) {
@@ -406,7 +459,7 @@ function getPatentImageSrc(patent) {
     }
   }
   
-  return '/img/gear_swoosh.svg';
+  return '/img/gear_only.svg';
 }
 
 function getImageThumbnail(image) {
@@ -416,7 +469,7 @@ function getImageThumbnail(image) {
   } else if (image && image.thumbnail) {
     return image.thumbnail;
   }
-  return '/img/gear_swoosh.svg';
+  return '/img/gear_only.svg';
 }
 
 function formatDate(dateString) {
@@ -678,21 +731,29 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
-/* Patent default image styling to show only the gear (left half) of the SVG */
+/* Patent default image styling using gear_only.svg with correct viewBox and centering it */
 .patent-default-image {
-  background-image: url('/img/gear_swoosh.svg');
-  background-size: 200% auto; /* Make image 2x wider to show only half */
-  background-position: left center; /* Show only the left half (gear part) */
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
   background-color: #111;
 }
 
 /* Smaller thumbnail version */
 .patent-default-image-thumbnail {
-  background-image: url('/img/gear_swoosh.svg');
-  background-size: 200% auto;
-  background-position: left center;
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
   background-color: #111;
+}
+
+/* Special patent logo class for the modal */
+.patent-logo {
+  background-image: url('/img/gear_only.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 31px 31px; /* Match the viewBox dimensions */
 }
 </style>
