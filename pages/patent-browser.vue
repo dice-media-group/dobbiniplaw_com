@@ -323,8 +323,8 @@
 
       <!-- Netflix-style dialog container -->
       <div class="fixed inset-0 sm:inset-6 flex items-center justify-center">
-        <!-- Modal content container -->
-        <div class="w-full h-full sm:h-[90vh] max-w-6xl mx-auto bg-gray-900 overflow-hidden flex flex-col sm:rounded-lg shadow-2xl patent-modal-container">
+        <!-- Modal content container - Changed bg-gray-900 to bg-dobbin-gray to match the listing section -->
+        <div class="w-full h-full sm:h-[90vh] max-w-6xl mx-auto bg-dobbin-gray overflow-hidden flex flex-col sm:rounded-lg shadow-2xl patent-modal-container">
           <!-- Close button - Positioned at top-right corner of the dialog -->
           <button 
             class="absolute right-3 top-3 z-50 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-200"
@@ -387,8 +387,8 @@
             <!-- Logo Section - Enhanced for responsiveness and proper centering -->
             <div class="bg-white py-4 sm:py-6" data-v-a54da7ff=""><div class="container mx-auto px-4 flex justify-center items-center" data-v-a54da7ff=""><a href="/" class="logo-link flex justify-center items-center" data-v-a54da7ff=""><!-- Using the AppLogo component --><div class="flex justify-center items-center flex-col md:flex-row" data-v-a54da7ff="" data-v-a3b5a2eb=""><div class="logo-container mx-auto" data-v-a3b5a2eb=""><img src="/img/SideBySide.jpg" alt="Dobbin IP Law Logo" class="logo-image max-h-32 w-auto object-contain mx-auto" data-v-a3b5a2eb=""><svg class="hidden h-32 w-32 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-a3b5a2eb=""><!-- Gear shape --><path d="M50,15c-19.33,0-35,15.67-35,35s15.67,35,35,35s35-15.67,35-35S69.33,15,50,15z M77.38,58.37c-0.46,1.87-1.13,3.65-1.96,5.33l6.37,8.97l-8.57,8.57l-8.97-6.37c-1.68,0.84-3.46,1.5-5.33,1.96L55.7,85h-12.1l-3.23-8.17c-1.87-0.46-3.65-1.13-5.33-1.96l-8.97,6.37l-8.57-8.57l6.37-8.97c-0.84-1.68-1.5-3.46-1.96-5.33L13.74,55.7v-12.1l8.17-3.23c0.46-1.87,1.13-3.65,1.96-5.33l-6.37-8.97l8.57-8.57l8.97,6.37c1.68-0.84,3.46-1.5,5.33-1.96L43.6,13h12.1l3.23,8.17c1.87,0.46,3.65,1.13,5.33,1.96l8.97-6.37l8.57,8.57l-6.37,8.97c0.84,1.68,1.5,3.46,1.96,5.33l8.17,3.23v12.1L77.38,58.37z" fill="#12352c" data-v-a3b5a2eb=""></path><!-- Green swoosh --><path d="M55,30c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C70,36.72,63.28,30,55,30z" fill="#009245" data-v-a3b5a2eb=""></path></svg></div><!-- Logo text --><h1 class="hidden text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0" data-v-a3b5a2eb=""> DOBBIN IP LAW </h1></div></a></div></div>
             
-            <!-- Patent Details -->
-            <div class="p-4 sm:p-6 bg-gray-900 text-white">
+            <!-- Patent Details - Changed bg-gray-900 to bg-dobbin-gray -->
+            <div class="p-4 sm:p-6 bg-dobbin-gray text-white">
               <!-- Title and Year (Removed line-clamp-2 from here to show full title) -->
               <h2 class="text-2xl md:text-3xl font-bold mb-2 leading-tight text-gray-300">{{ selectedPatent.title }}</h2>
               <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
