@@ -353,8 +353,8 @@
               </div>
             </div>
             
-            <!-- Thumbnail Carousel -->
-            <div class="flex overflow-x-auto scrollbar-hide p-3 bg-gray-800 gap-3">
+            <!-- Thumbnail Carousel - Changed bg-gray-800 to bg-dobbin-gray -->
+            <div class="flex overflow-x-auto scrollbar-hide p-3 bg-dobbin-gray gap-3">
               <!-- For each image in the patent -->
               <div 
                 v-for="(image, index) in selectedPatent.images" 
