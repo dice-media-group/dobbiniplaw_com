@@ -317,13 +317,11 @@
     </div>
 
     <!-- Netflix-Style Patent Detail Modal -->
-    <div v-if="selectedPatent" class="fixed inset-0 z-30 overflow-y-auto">
-      <!-- Darkened/blurred backdrop -->
-      <div class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"></div>
-
-      <!-- Netflix-style dialog (full width on mobile, constrained width on tablets and up) -->
-      <div class="relative w-full h-full p-0 sm:p-6 flex flex-col">
-        <div class="max-w-full sm:max-w-6xl w-full mx-auto my-2 sm:my-8 overflow-hidden sm:rounded-lg bg-gray-900 flex flex-col shadow-2xl">
+    <div v-if="selectedPatent" class="fixed inset-0 z-30 bg-black bg-opacity-80 backdrop-blur-sm">
+      <!-- Modal Container -->
+      <div class="w-full h-full flex flex-col items-center pt-6 pb-16 overflow-y-auto patent-modal">
+        <!-- Content Container -->
+        <div class="w-full max-w-6xl mx-auto bg-gray-900 rounded-lg overflow-hidden shadow-2xl">
           <!-- Close button - Positioned at top-right corner of the dialog -->
           <button 
             class="absolute right-3 top-3 z-50 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-200"
@@ -701,7 +699,10 @@ function selectPatent(patent) {
   
   // Reset scroll position of the modal content
   nextTick(() => {
-    window.scrollTo(0, 0);
+    const patentModal = document.querySelector('.patent-modal');
+    if (patentModal) {
+      patentModal.scrollTop = 0;
+    }
   });
 }
 
@@ -1011,6 +1012,25 @@ input[type="text"] {
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* Patent Modal */
+.patent-modal {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.2);
+}
+
+.patent-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.patent-modal::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.patent-modal::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
 /* Patent image container styles for better image display */
