@@ -389,7 +389,7 @@
             
             <!-- Patent Details -->
             <div class="p-4 sm:p-6 bg-gray-900 text-white">
-              <!-- Title and Year -->
+              <!-- Title and Year (Removed line-clamp-2 from here to show full title) -->
               <h2 class="text-2xl md:text-3xl font-bold mb-2 leading-tight text-gray-300">{{ selectedPatent.title }}</h2>
               <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
               
