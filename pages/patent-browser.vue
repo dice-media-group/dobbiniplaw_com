@@ -317,13 +317,13 @@
     </div>
 
     <!-- Netflix-Style Patent Detail Modal -->
-    <div v-if="selectedPatent" class="fixed inset-0 z-30 overflow-hidden">
+    <div v-if="selectedPatent" class="fixed inset-0 z-30 overflow-y-auto">
       <!-- Darkened/blurred backdrop -->
       <div class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"></div>
 
       <!-- Netflix-style dialog (full width on mobile, constrained width on tablets and up) -->
-      <div class="relative w-full h-full flex items-center justify-center p-0 sm:p-6">
-        <div class="max-w-full sm:max-w-4xl w-full h-full sm:h-auto overflow-hidden sm:rounded-lg bg-gray-900 flex flex-col shadow-2xl">
+      <div class="relative w-full h-full p-0 sm:p-6 flex flex-col">
+        <div class="max-w-full sm:max-w-6xl w-full mx-auto my-2 sm:my-8 overflow-hidden sm:rounded-lg bg-gray-900 flex flex-col shadow-2xl">
           <!-- Close button - Positioned at top-right corner of the dialog -->
           <button 
             class="absolute right-3 top-3 z-50 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-200"
@@ -336,29 +336,29 @@
             </svg>
           </button>
             
-          <!-- Main patent image header section -->
+          <!-- Main patent image header section with auto-sizing container -->
           <div class="w-full bg-black">
-            <!-- Main image -->
-            <div class="relative w-full aspect-video sm:aspect-auto sm:h-80 flex items-center justify-center">
-              <div v-if="hasRealImage(selectedPatent)" class="w-full h-full">
+            <!-- Auto-sizing container for image display -->
+            <div class="patent-image-container">
+              <div v-if="hasRealImage(selectedPatent)" class="flex items-center justify-center">
                 <img 
-                  :src="getSelectedImageHiRes" 
+                  :src="getFullSizeImage" 
                   :alt="selectedPatent.title"
-                  class="w-full h-full object-contain"
+                  class="patent-full-image"
                 />
               </div>
-              <div v-else class="w-full h-full patent-default-image">
+              <div v-else class="w-full h-64 patent-default-image">
                 <!-- Background styles will show the SVG -->
               </div>
             </div>
             
             <!-- Thumbnail Carousel -->
-            <div class="flex overflow-x-auto scrollbar-hide p-2 bg-gray-800 gap-2">
+            <div class="flex overflow-x-auto scrollbar-hide p-3 bg-gray-800 gap-3">
               <!-- For each image in the patent -->
               <div 
                 v-for="(image, index) in selectedPatent.images" 
                 :key="index" 
-                class="flex-none w-16 h-16 rounded overflow-hidden"
+                class="flex-none w-24 h-24 rounded overflow-hidden"
                 :class="{'ring-2 ring-dobbin-bright-green': selectedImageIndex === index}"
                 @click="selectImage(index)"
               >
@@ -375,76 +375,73 @@
               </div>
 
               <!-- When no images are available -->
-              <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-16 h-16 bg-gray-700 flex items-center justify-center rounded patent-default-image-thumbnail">
+              <div v-if="!selectedPatent.images || selectedPatent.images.length === 0" class="flex-none w-24 h-24 bg-gray-700 flex items-center justify-center rounded patent-default-image-thumbnail">
                 <!-- Background styles will show the SVG -->
               </div>
             </div>
           </div>
           
-          <!-- Scrollable Content Section -->
-          <div class="flex-1 overflow-y-auto bg-gray-900 text-white">
-            <!-- Patent Details -->
-            <div class="p-4 sm:p-6">
-              <!-- Title and Year -->
-              <h2 class="text-2xl md:text-3xl font-bold mb-2 leading-tight">{{ selectedPatent.title }}</h2>
-              <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
-              
-              <!-- Google Patents Link Button -->
-              <a 
-                :href="`https://patents.google.com/patent/${selectedPatent.id.replace(/-/g, '')}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full mb-6 bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-4 rounded-md flex items-center justify-center font-bold text-base transition-colors duration-200"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                View on Google Patents
-              </a>
-              
-              <!-- Abstract Section -->
-              <div class="mb-6">
-                <h3 class="text-xl font-medium mb-2">Abstract</h3>
-                <p class="text-base text-gray-300">
-                  {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
-                </p>
-              </div>
-              
-              <!-- Details Section -->
-              <div class="space-y-3 mb-6"> 
-                <div class="flex items-start">
-                  <span class="text-dobbin-bright-green text-lg mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Inventor:</span>
-                    <span class="text-gray-300 ml-2">{{ selectedPatent.inventors?.join(', ') || 'Not specified' }}</span>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <span class="text-dobbin-bright-green text-lg mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Assignee:</span>
-                    <span class="text-gray-300 ml-2">{{ selectedPatent.assignee || 'Not specified' }}</span>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <span class="text-dobbin-bright-green text-lg mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Patent ID:</span>
-                    <span class="text-gray-300 ml-2">{{ selectedPatent.id }}</span>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <span class="text-dobbin-bright-green text-lg mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Publication Date:</span>
-                    <span class="text-gray-300 ml-2">{{ formatDate(selectedPatent.publicationDate) }}</span>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Bottom padding for scrolling -->
-              <div class="pb-8"></div>
+          <!-- Patent Details -->
+          <div class="p-4 sm:p-6 bg-gray-900 text-white">
+            <!-- Title and Year -->
+            <h2 class="text-2xl md:text-3xl font-bold mb-2 leading-tight">{{ selectedPatent.title }}</h2>
+            <p class="text-lg text-gray-300 mb-4">{{ getPatentYear(selectedPatent.publicationDate) }}</p>
+            
+            <!-- Google Patents Link Button -->
+            <a 
+              :href="`https://patents.google.com/patent/${selectedPatent.id.replace(/-/g, '')}`"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full mb-6 bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white py-3 px-4 rounded-md flex items-center justify-center font-bold text-base transition-colors duration-200"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              View on Google Patents
+            </a>
+            
+            <!-- Abstract Section -->
+            <div class="mb-6">
+              <h3 class="text-xl font-medium mb-2">Abstract</h3>
+              <p class="text-base text-gray-300">
+                {{ selectedPatent.abstract || 'This patent describes a novel approach to technology in its field. The invention provides significant improvements in efficiency and usability compared to prior art solutions.' }}
+              </p>
             </div>
+            
+            <!-- Details Section -->
+            <div class="space-y-3 mb-6"> 
+              <div class="flex items-start">
+                <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+                <div>
+                  <span class="font-medium">Inventor:</span>
+                  <span class="text-gray-300 ml-2">{{ selectedPatent.inventors?.join(', ') || 'Not specified' }}</span>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+                <div>
+                  <span class="font-medium">Assignee:</span>
+                  <span class="text-gray-300 ml-2">{{ selectedPatent.assignee || 'Not specified' }}</span>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+                <div>
+                  <span class="font-medium">Patent ID:</span>
+                  <span class="text-gray-300 ml-2">{{ selectedPatent.id }}</span>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-dobbin-bright-green text-lg mr-2">•</span>
+                <div>
+                  <span class="font-medium">Publication Date:</span>
+                  <span class="text-gray-300 ml-2">{{ formatDate(selectedPatent.publicationDate) }}</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Bottom padding for scrolling -->
+            <div class="pb-8"></div>
           </div>
         </div>
       </div>
@@ -576,15 +573,16 @@ const getFeaturedImageSrc = computed(() => {
   return '/img/gear_only.svg';
 });
 
-const getSelectedImageHiRes = computed(() => {
-  if (hasRealImage(selectedPatent.value)) {
+// New computed property specifically for the full-sized image in the modal
+const getFullSizeImage = computed(() => {
+  if (hasRealImage(selectedPatent.value) && selectedPatent.value.images[selectedImageIndex.value]) {
     const image = selectedPatent.value.images[selectedImageIndex.value];
     
-    // Handle both old and new image formats
-    if (typeof image === 'string') {
-      return image;
-    } else if (image.hires) {
+    // Always prefer high-resolution images
+    if (typeof image === 'object' && image.hires) {
       return image.hires;
+    } else if (typeof image === 'string') {
+      return image;
     } else if (image.thumbnail) {
       return image.thumbnail;
     }
@@ -703,10 +701,7 @@ function selectPatent(patent) {
   
   // Reset scroll position of the modal content
   nextTick(() => {
-    const modalContent = document.querySelector('.overflow-y-auto');
-    if (modalContent) {
-      modalContent.scrollTop = 0;
-    }
+    window.scrollTo(0, 0);
   });
 }
 
@@ -1016,5 +1011,25 @@ input[type="text"] {
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* Patent image container styles for better image display */
+.patent-image-container {
+  min-height: 300px;
+  max-height: 70vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+  padding: 1rem;
+}
+
+.patent-full-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  display: block;
 }
 </style>
