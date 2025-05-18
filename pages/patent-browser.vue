@@ -156,33 +156,66 @@
         </header>
       </div>
 
-      <!-- Featured Patent Hero -->
-      <div v-if="featuredPatent" class="relative">
-        <div class="h-96 bg-gradient-to-b from-transparent to-dobbin-gray">
-          <div class="absolute inset-0 overflow-hidden" style="top: 0;">
-            <img 
-              :src="getFeaturedImageSrc" 
-              :alt="featuredPatent.title" 
-              class="w-full h-full object-cover opacity-50"
-            />
-          </div>
-          <div class="absolute bottom-0 left-0 p-8 w-full md:w-1/2">
-            <h1 class="text-4xl font-bold mb-2">{{ featuredPatent.title }}</h1>
-            <p class="text-gray-300 mb-4">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
-            <div class="flex space-x-4">
-              <button 
-                class="bg-white text-black px-6 py-1 h-10 rounded flex items-center font-medium"
-                @click="selectPatent(featuredPatent)"
-              >
-                <span class="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                  </svg>
-                </span>
-                View Details
-              </button>
+      <!-- Enhanced Featured Patent with Card-like Appearance -->
+      <div v-if="featuredPatent" class="px-4 py-2 md:px-8 md:py-6 bg-gradient-to-b from-black to-dobbin-gray">
+        <!-- Card-like container with frame effect -->
+        <div class="featured-patent-card relative overflow-hidden rounded-xl shadow-2xl">
+          <!-- Main image and content container -->
+          <div class="relative h-[420px] overflow-hidden">
+            <!-- Background image with overlay gradients -->
+            <div class="absolute inset-0">
+              <img 
+                :src="getFeaturedImageSrc" 
+                :alt="featuredPatent.title" 
+                class="w-full h-full object-cover opacity-50"
+              />
+              <!-- Gradient overlays for better text readability and card-like appearance -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+              
+              <!-- Card edge highlight effect -->
+              <div class="absolute inset-0 pointer-events-none card-highlight-border"></div>
+            </div>
+            
+            <!-- Featured content -->
+            <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full md:w-2/3 z-10">
+              <!-- Featured badge -->
+              <div class="mb-4">
+                <span class="bg-dobbin-bright-green text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold shadow-md">Featured Patent</span>
+              </div>
+              
+              <!-- Patent details -->
+              <h1 class="text-3xl md:text-5xl font-bold mb-2 leading-tight text-white patent-title-glow">{{ featuredPatent.title }}</h1>
+              <p class="text-lg text-gray-200 mb-3">Patent {{ featuredPatent.id }} • {{ formatDate(featuredPatent.publicationDate) }}</p>
+              
+              <!-- Brief abstract if available -->
+              <p v-if="featuredPatent.abstract" class="text-gray-300 mb-4 max-w-xl line-clamp-2">
+                {{ featuredPatent.abstract }}
+              </p>
+              
+              <!-- Action buttons with enhanced styling -->
+              <div class="flex space-x-4 pt-2">
+                <button 
+                  class="bg-dobbin-bright-green hover:bg-dobbin-dark-green text-white px-8 py-3 rounded-md flex items-center font-bold text-base transition-colors duration-200 shadow-lg"
+                  @click="selectPatent(featuredPatent)"
+                >
+                  <span class="mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </span>
+                  View Details
+                </button>
+                
+                <a 
+                  :href="`https://patents.google.com/patent/${featuredPatent.id.replace(/-/g, '')}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="border border-gray-300 text-white px-6 py-3 rounded-md flex items-center font-bold text-base transition-opacity duration-200 hover:bg-white/10 shadow-lg"
+                >
+                  Google Patents
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -963,6 +996,29 @@ onUnmounted(() => {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 31px 31px; /* Match the viewBox dimensions */
+}
+
+/* Featured Patent Card Styling */
+.featured-patent-card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.featured-patent-card:hover {
+  transform: scale(1.01);
+}
+
+/* Card border highlight effect */
+.card-highlight-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: inherit;
+}
+
+/* Title glow effect */
+.patent-title-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Ensure buttons are explicitly clickable, especially on mobile */
