@@ -7,9 +7,10 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue';
+// Import useRouter from '#app' instead of 'vue'
 import { onMounted, onUnmounted } from 'vue';
 
+// Use the Nuxt way to get the router
 const router = useRouter();
 const { $scrollToTop } = useNuxtApp();
 

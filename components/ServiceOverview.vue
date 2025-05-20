@@ -129,8 +129,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue';
-
+// Use Nuxt's built-in composables instead of importing from Vue
 const router = useRouter();
 const { $scrollToTop } = useNuxtApp();
 
@@ -169,21 +168,6 @@ function handleNavigation(path, event) {
   
   // Schedule scroll to top with various delays
   forceScrollToTop();
-  
-  // OPTION 2: Take complete control (commented out for now - uncomment if Option 1 fails)
-  /*
-  // Prevent default link behavior
-  event.preventDefault();
-  
-  // First, force scroll to top immediately
-  forceScrollToTop();
-  
-  // Then use router to navigate
-  router.push(path).then(() => {
-    // After navigation completes, force scroll again
-    forceScrollToTop();
-  });
-  */
 }
 </script>
 
