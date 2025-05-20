@@ -1,0 +1,170 @@
+{
+  "subcategories": {
+    "firearms": [
+      {
+        "id": "rifles",
+        "name": "Rifles & Long Guns",
+        "keywords": ["rifle", "shotgun", "gunstock", "barrel", "stock", "tang", "firearm chassis", "bullpup"]
+      },
+      {
+        "id": "pistols",
+        "name": "Pistols & Handguns",
+        "keywords": ["pistol", "revolver", "handgrip", "concealable", "pistol-style", "gun holster"]
+      },
+      {
+        "id": "magazines",
+        "name": "Magazines & Ammunition",
+        "keywords": ["magazine", "ammunition", "floor plate", "follower", "rimmed", "bullet"]
+      },
+      {
+        "id": "sights",
+        "name": "Sights & Optics",
+        "keywords": ["sight", "reticule", "loupe", "eyepiece", "forward mounted gun sight"]
+      },
+      {
+        "id": "accessories",
+        "name": "Accessories & Components",
+        "keywords": ["sling", "trigger", "bolt", "charging handle", "handguard", "hand guard", "grip", "rail", "clamp", "stabilization", "stabilizer"]
+      }
+    ],
+    "electronics": [
+      {
+        "id": "sensors",
+        "name": "Sensors & Detection",
+        "keywords": ["sensor", "detect", "frequency", "tracking", "microscopy", "comb"]
+      },
+      {
+        "id": "lighting",
+        "name": "Lighting & Displays",
+        "keywords": ["light", "led", "lighting", "display", "illuminat", "lamp"]
+      },
+      {
+        "id": "audio",
+        "name": "Audio Systems",
+        "keywords": ["audio", "sound", "speaker", "parameter", "adjusting audio"]
+      },
+      {
+        "id": "circuits",
+        "name": "Circuits & Power",
+        "keywords": ["circuit", "chip", "semiconductor", "power", "electronic", "diode", "transistor"]
+      },
+      {
+        "id": "ai",
+        "name": "AI & Software",
+        "keywords": ["intelligence", "artifical intelligence", "ai", "cognitive", "software", "algorithm"]
+      }
+    ],
+    "medical": [
+      {
+        "id": "dental",
+        "name": "Dental Equipment",
+        "keywords": ["dental", "teeth", "oral", "suction", "bleaching", "endodontic"]
+      },
+      {
+        "id": "therapy",
+        "name": "Therapeutic Devices",
+        "keywords": ["therap", "massage", "recovery", "treatment"]
+      },
+      {
+        "id": "sanitization",
+        "name": "Sanitization & Cleaning",
+        "keywords": ["uv", "disinfection", "clean", "decontamination", "steriliz", "sanitiz"]
+      },
+      {
+        "id": "surgical",
+        "name": "Surgical Tools",
+        "keywords": ["surgical", "dilation", "expand", "plug"]
+      }
+    ],
+    "manufacturing": [
+      {
+        "id": "materials",
+        "name": "Advanced Materials",
+        "keywords": ["composite", "material", "wood-plastic", "polyvinyl", "plastic", "pvc"]
+      },
+      {
+        "id": "construction",
+        "name": "Construction Methods",
+        "keywords": ["construction", "building", "framing", "steel", "structural", "trim", "siding"]
+      },
+      {
+        "id": "assembly",
+        "name": "Assembly Systems",
+        "keywords": ["assembly", "system", "apparatus", "industrial", "factory"]
+      },
+      {
+        "id": "processing",
+        "name": "Processing & Recycling",
+        "keywords": ["process", "asphalt", "mix", "recycl", "production"]
+      }
+    ],
+    "tools": [
+      {
+        "id": "hand-tools",
+        "name": "Hand Tools",
+        "keywords": ["tool", "wrench", "screwdriver", "hammer", "cutting", "clamp"]
+      },
+      {
+        "id": "measuring",
+        "name": "Measurement Tools",
+        "keywords": ["measuring", "measure", "gauge", "calibration", "template"]
+      },
+      {
+        "id": "storage",
+        "name": "Storage & Organization",
+        "keywords": ["storage", "rack", "bin", "organizer", "holder", "dispenser"]
+      },
+      {
+        "id": "lighting",
+        "name": "Work Lighting",
+        "keywords": ["work light", "lighting", "convertible", "positionable"]
+      }
+    ],
+    "sports": [
+      {
+        "id": "fitness",
+        "name": "Fitness Equipment",
+        "keywords": ["fitness", "exercise", "workout", "gym", "training", "strength"]
+      },
+      {
+        "id": "winter-sports",
+        "name": "Winter Sports",
+        "keywords": ["skate", "ice skate", "ski", "snowboard", "blade"]
+      },
+      {
+        "id": "games",
+        "name": "Sporting Games",
+        "keywords": ["dice", "game", "sport", "ball", "recreation"]
+      },
+      {
+        "id": "martial-arts",
+        "name": "Martial Arts",
+        "keywords": ["martial", "arts", "target", "practice"]
+      }
+    ],
+    "household": [
+      {
+        "id": "furniture",
+        "name": "Furniture & Fixtures",
+        "keywords": ["furniture", "fixture", "home", "chair", "table", "storage"]
+      },
+      {
+        "id": "kitchen",
+        "name": "Kitchen & Bath",
+        "keywords": ["kitchen", "bathroom", "toilet", "sink", "appliance"]
+      },
+      {
+        "id": "utility",
+        "name": "Utility & Organization",
+        "keywords": ["utility", "organization", "storage", "cleaning", "maintenance"]
+      }
+    ],
+    "other": [
+      {
+        "id": "misc",
+        "name": "Miscellaneous",
+        "keywords": []
+      }
+    ]
+  }
+}
