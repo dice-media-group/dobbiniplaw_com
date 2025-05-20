@@ -162,6 +162,9 @@
       </div>
     </section>
     
+    <!-- Service Overview Component - NEW SECTION -->
+    <ServiceOverview />
+    
     <!-- About Geoff Section -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4 max-w-6xl">
@@ -283,6 +286,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import PageCTA from '../components/PageCTA.vue';
+import ServiceOverview from '../components/ServiceOverview.vue';
 
 // Video modal state
 const isVideoModalOpen = ref(false);
