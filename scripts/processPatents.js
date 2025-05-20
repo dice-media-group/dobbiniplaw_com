@@ -140,12 +140,85 @@ function categorizePatents(patents) {
   return categorized;
 }
 
+/**
+ * Categorize patents into subcategories based on keywords
+ * @param {Object} categorizedPatents - Object with patents already grouped by main category
+ * @param {Object} subcategories - Object with subcategory definitions
+ * @returns {Object} Object with patents categorized by subcategories within main categories
+ */
+function categorizePatentsIntoSubcategories(categorizedPatents, subcategories) {
+  const result = {};
+  
+  // For each main category
+  for (const [categoryId, patents] of Object.entries(categorizedPatents)) {
+    result[categoryId] = {
+      subcategories: {},
+      patents: [] // Keep all patents at the main category level too
+    };
+    
+    // Create subcategory containers
+    if (subcategories[categoryId]) {
+      subcategories[categoryId].forEach(sub => {
+        result[categoryId].subcategories[sub.id] = [];
+      });
+    }
+    
+    // Add patents to corresponding subcategories
+    for (const patent of patents) {
+      // Add to main category list
+      result[categoryId].patents.push(patent);
+      
+      // Find matching subcategories
+      if (subcategories[categoryId]) {
+        let matched = false;
+        const lowerTitle = patent.title.toLowerCase();
+        
+        for (const subcategory of subcategories[categoryId]) {
+          for (const keyword of subcategory.keywords) {
+            if (lowerTitle.includes(keyword.toLowerCase())) {
+              // Add to subcategory
+              result[categoryId].subcategories[subcategory.id].push(patent);
+              matched = true;
+              break;
+            }
+          }
+          
+          if (matched) break;
+        }
+        
+        // If no match, add to the first subcategory (or 'misc' for 'other' category)
+        if (!matched) {
+          const firstSubId = categoryId === 'other' ? 'misc' : subcategories[categoryId][0].id;
+          result[categoryId].subcategories[firstSubId].push(patent);
+        }
+      }
+    }
+  }
+  
+  return result;
+}
+
 // Function to save categorized patent data to JSON files
 function savePatentData(categorizedPatents) {
   // Create directory if it doesn't exist
   const outputDir = path.join(__dirname, '../content/patents');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
+  }
+  
+  // Load subcategories
+  let subcategoryDefs;
+  try {
+    const subcatPath = path.join(outputDir, 'subcategories.json');
+    if (fs.existsSync(subcatPath)) {
+      subcategoryDefs = JSON.parse(fs.readFileSync(subcatPath, 'utf8')).subcategories;
+    } else {
+      // If subcategories.json doesn't exist yet, we'll just skip subcategorization
+      subcategoryDefs = {};
+    }
+  } catch (error) {
+    console.error('Error loading subcategories:', error);
+    subcategoryDefs = {};
   }
   
   // Create categories.json with proper structure
@@ -176,6 +249,12 @@ function savePatentData(categorizedPatents) {
   
   console.log(`Created categories.json with ${categories.length} categories`);
   
+  // Categorize patents into subcategories if subcategory definitions exist
+  let subcategorizedPatents = {};
+  if (Object.keys(subcategoryDefs).length > 0) {
+    subcategorizedPatents = categorizePatentsIntoSubcategories(categorizedPatents, subcategoryDefs);
+  }
+  
   // Create a JSON file for each category
   for (const [category, patents] of Object.entries(categorizedPatents)) {
     if (patents.length === 0) continue;
@@ -185,29 +264,35 @@ function savePatentData(categorizedPatents) {
       new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime()
     );
     
+    // Prepare subcategories data if available
+    let subcategoriesData = null;
+    if (subcategorizedPatents[category]) {
+      subcategoriesData = {};
+      
+      // Transform subcategory objects to arrays with metadata
+      for (const [subId, subPatents] of Object.entries(subcategorizedPatents[category].subcategories)) {
+        // Find subcategory definition
+        const subDef = subcategoryDefs[category]?.find(s => s.id === subId);
+        if (subDef && subPatents.length > 0) {
+          subcategoriesData[subId] = {
+            id: subId,
+            name: subDef.name,
+            patentCount: subPatents.length,
+            patents: subPatents.map(cleanPatent)
+          };
+        }
+      }
+    }
+    
     const categoryData = {
       categoryId: category,
-      patents: patents.map(patent => {
-        // Create a clean patent object without any duplicate properties
-        const cleanPatent = {
-          id: patent.id,
-          title: patent.title,
-          publicationDate: patent.publicationDate,
-          imagePages: patent.imagePages,
-          abstract: patent.abstract || "To be fetched from Google Patents",
-          featured: false
-        };
-        
-        // Only add images if they exist and weren't already added
-        if (patent.images && Array.isArray(patent.images)) {
-          cleanPatent.images = patent.images;
-        } else {
-          cleanPatent.images = [`/images/patents/${patent.id}/fig1.jpg`];
-        }
-        
-        return cleanPatent;
-      })
+      patents: patents.map(cleanPatent)
     };
+    
+    // Add subcategories if available
+    if (subcategoriesData && Object.keys(subcategoriesData).length > 0) {
+      categoryData.subcategories = subcategoriesData;
+    }
     
     // Mark first (newest) patent as featured
     if (categoryData.patents.length > 0) {
@@ -219,7 +304,30 @@ function savePatentData(categorizedPatents) {
       JSON.stringify(categoryData, null, 2)
     );
     
-    console.log(`Created ${category}.json with ${patents.length} patents`);
+    console.log(`Created ${category}.json with ${patents.length} patents` + 
+      (subcategoriesData ? ` and ${Object.keys(subcategoriesData).length} subcategories` : ''));
+  }
+  
+  // Helper function to clean patent objects
+  function cleanPatent(patent) {
+    // Create a clean patent object without any duplicate properties
+    const cleanPatent = {
+      id: patent.id,
+      title: patent.title,
+      publicationDate: patent.publicationDate,
+      imagePages: patent.imagePages,
+      abstract: patent.abstract || "To be fetched from Google Patents",
+      featured: false
+    };
+    
+    // Only add images if they exist and weren't already added
+    if (patent.images && Array.isArray(patent.images)) {
+      cleanPatent.images = patent.images;
+    } else {
+      cleanPatent.images = [`/images/patents/${patent.id}/fig1.jpg`];
+    }
+    
+    return cleanPatent;
   }
   
   // Create an all-patents.json with all patents across categories
@@ -232,24 +340,7 @@ function savePatentData(categorizedPatents) {
   Object.values(categorizedPatents).forEach(categoryPatents => {
     categoryPatents.forEach(patent => {
       if (!addedPatentIds.has(patent.id)) {
-        // Create a clean patent object without duplicates
-        const cleanPatent = {
-          id: patent.id,
-          title: patent.title,
-          publicationDate: patent.publicationDate,
-          imagePages: patent.imagePages,
-          abstract: patent.abstract || "To be fetched from Google Patents",
-          featured: false
-        };
-        
-        // Only add images if they exist
-        if (patent.images && Array.isArray(patent.images)) {
-          cleanPatent.images = patent.images;
-        } else {
-          cleanPatent.images = [`/images/patents/${patent.id}/fig1.jpg`];
-        }
-        
-        allPatents.push(cleanPatent);
+        allPatents.push(cleanPatent(patent));
         addedPatentIds.add(patent.id);
       }
     });
@@ -349,5 +440,6 @@ export default {
   processTrophyWall,
   parsePatentsList,
   categorizePatents,
+  categorizePatentsIntoSubcategories,
   savePatentData
 };

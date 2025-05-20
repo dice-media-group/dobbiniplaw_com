@@ -245,72 +245,146 @@
         </div>
         
         <template v-else>
-          <div 
-            v-for="category in displayedCategories" 
-            :key="category.id" 
-            class="category-row" 
-            :data-category-id="category.id"
-          >
-            <h2 class="text-xl font-medium mb-4 text-white">{{ category.name }}</h2>
-            <div class="relative">
-              <button 
-                v-if="canScrollLeft(category.id)"
-                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
-                @click="scrollLeft(category.id)"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-              </button>
-              
-              <div 
-                :ref="el => { if(el) categoryRefs[category.id] = el }" 
-                class="flex space-x-4 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
-                @scroll="updateScrollButtons(category.id)"
-              >
-                <div 
-                  v-for="patent in getCategoryPatents(category.id)" 
-                  :key="patent.id" 
-                  class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
-                  @click="selectPatent(patent)"
+          <!-- When no category is selected, show all categories -->
+          <template v-if="!selectedCategoryId">
+            <div 
+              v-for="category in displayedCategories" 
+              :key="category.id" 
+              class="category-row" 
+              :data-category-id="category.id"
+            >
+              <h2 class="text-xl font-medium mb-4 text-white">{{ category.name }}</h2>
+              <div class="relative">
+                <button 
+                  v-if="canScrollLeft(category.id)"
+                  class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                  @click="scrollLeft(category.id)"
                 >
-                  <div v-if="hasRealImage(patent)" class="relative h-40 bg-black">
-                    <img 
-                      :src="getPatentImageSrc(patent)" 
-                      :alt="patent.title" 
-                      class="w-full h-full object-contain"
-                      loading="lazy"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                
+                <div 
+                  :ref="el => { if(el) categoryRefs[category.id] = el }" 
+                  class="flex space-x-4 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
+                  @scroll="updateScrollButtons(category.id)"
+                >
+                  <div 
+                    v-for="patent in getCategoryPatents(category.id)" 
+                    :key="patent.id" 
+                    class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                    @click="selectPatent(patent)"
+                  >
+                    <div v-if="hasRealImage(patent)" class="relative h-40 bg-black">
+                      <img 
+                        :src="getPatentImageSrc(patent)" 
+                        :alt="patent.title" 
+                        class="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div v-else class="relative h-40 patent-default-image">
+                      <!-- Nothing here, the background styles will show the SVG -->
+                    </div>
+                    <div class="p-3 bg-dobbin-gray">
+                      <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
+                      <p class="text-xs text-gray-400">{{ patent.id }}</p>
+                    </div>
                   </div>
-                  <div v-else class="relative h-40 patent-default-image">
-                    <!-- Nothing here, the background styles will show the SVG -->
-                  </div>
-                  <div class="p-3 bg-dobbin-gray">
-                    <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
-                    <p class="text-xs text-gray-400">{{ patent.id }}</p>
+                  
+                  <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-dobbin-gray rounded">
+                    <p class="text-gray-400">No patents found in this category</p>
                   </div>
                 </div>
                 
-                <div v-if="getCategoryPatents(category.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-dobbin-gray rounded">
-                  <p class="text-gray-400">No patents found in this category</p>
-                </div>
+                <button 
+                  v-if="canScrollRight(category.id)"
+                  class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                  @click="scrollRight(category.id)"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
               </div>
-              
-              <button 
-                v-if="canScrollRight(category.id)"
-                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
-                @click="scrollRight(category.id)"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
             </div>
-          </div>
+          </template>
+          
+          <!-- When a category is selected, show its subcategories -->
+          <template v-else>
+            <div 
+              v-for="subcategory in displayedSubcategories" 
+              :key="`${selectedCategoryId}-${subcategory.id}`" 
+              class="subcategory-row" 
+              :data-subcategory-id="`${selectedCategoryId}-${subcategory.id}`"
+            >
+              <h2 class="text-xl font-medium mb-4 text-white">{{ subcategory.name }}</h2>
+              <div class="relative">
+                <button 
+                  v-if="canScrollLeft(`${selectedCategoryId}-${subcategory.id}`)"
+                  class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                  @click="scrollLeft(`${selectedCategoryId}-${subcategory.id}`)"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                
+                <div 
+                  :ref="el => { if(el) categoryRefs[`${selectedCategoryId}-${subcategory.id}`] = el }" 
+                  class="flex space-x-4 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
+                  @scroll="updateScrollButtons(`${selectedCategoryId}-${subcategory.id}`)"
+                >
+                  <div 
+                    v-for="patent in getSubcategoryPatents(selectedCategoryId, subcategory.id)" 
+                    :key="patent.id" 
+                    class="flex-none w-36 md:w-72 rounded overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                    @click="selectPatent(patent)"
+                  >
+                    <div v-if="hasRealImage(patent)" class="relative h-40 bg-black">
+                      <img 
+                        :src="getPatentImageSrc(patent)" 
+                        :alt="patent.title" 
+                        class="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div v-else class="relative h-40 patent-default-image">
+                      <!-- Nothing here, the background styles will show the SVG -->
+                    </div>
+                    <div class="p-3 bg-dobbin-gray">
+                      <h3 class="text-sm font-medium text-white line-clamp-2 h-10">{{ patent.title }}</h3>
+                      <p class="text-xs text-gray-400">{{ patent.id }}</p>
+                    </div>
+                  </div>
+                  
+                  <div v-if="getSubcategoryPatents(selectedCategoryId, subcategory.id).length === 0" class="flex-none w-full flex items-center justify-center h-40 bg-dobbin-gray rounded">
+                    <p class="text-gray-400">No patents found in this subcategory</p>
+                  </div>
+                </div>
+                
+                <button 
+                  v-if="canScrollRight(`${selectedCategoryId}-${subcategory.id}`)"
+                  class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-1 rounded-full z-10"
+                  @click="scrollRight(`${selectedCategoryId}-${subcategory.id}`)"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <!-- If no subcategories are displayed (e.g., due to search) -->
+            <div v-if="displayedSubcategories.length === 0" class="flex justify-center py-12">
+              <p class="text-gray-400">No patents found matching your search criteria</p>
+            </div>
+          </template>
+          
+          <!-- Add padding at the bottom to ensure scrollability -->
+          <div class="pb-16"></div>
         </template>
-        
-        <!-- Add padding at the bottom to ensure scrollability -->
-        <div class="pb-16"></div>
       </div>
     </main>
 
@@ -511,6 +585,7 @@ useHead({
 // State variables
 const categories = ref([]);
 const patentsMap = ref({});
+const subcategoriesMap = ref({}); // Store subcategories data
 const selectedPatent = ref(null);
 const selectedImageIndex = ref(0);
 const isLoading = ref(true);
@@ -556,6 +631,21 @@ function selectCategory(categoryId, type = 'direct', displayName = '') {
   selectionType.value = type;
   
   showCategoriesDialog.value = false;
+  
+  // Initialize scroll state for all subcategories
+  if (categoryId && subcategoriesMap.value[categoryId]) {
+    nextTick(() => {
+      Object.keys(subcategoriesMap.value[categoryId]).forEach(subcategoryId => {
+        const containerId = `${categoryId}-${subcategoryId}`;
+        if (!scrollState[containerId]) {
+          scrollState[containerId] = { canScrollLeft: false, canScrollRight: true };
+        }
+        
+        // Update scroll buttons on next tick when DOM is ready
+        setTimeout(() => updateScrollButtons(containerId), 100);
+      });
+    });
+  }
 }
 
 // Close/clear the selected category
@@ -588,6 +678,27 @@ const displayedCategories = computed(() => {
   }
   
   return filtered;
+});
+
+// Computed property to get subcategories for the selected category
+const displayedSubcategories = computed(() => {
+  if (!selectedCategoryId.value || !subcategoriesMap.value[selectedCategoryId.value]) {
+    return [];
+  }
+  
+  const subcategories = subcategoriesMap.value[selectedCategoryId.value];
+  return Object.keys(subcategories).map(subId => ({
+    id: subId,
+    name: subcategories[subId].name,
+    patentCount: subcategories[subId].patents.length
+  })).filter(sub => {
+    // If there's a search query, filter subcategories with matching patents
+    if (searchQuery.value) {
+      const patents = getSubcategoryPatents(selectedCategoryId.value, sub.id);
+      return patents.length > 0;
+    }
+    return true;
+  });
 });
 
 const featuredPatent = computed(() => {
@@ -724,8 +835,30 @@ function getPatentYear(dateString) {
   return date.getFullYear().toString();
 }
 
+// Get patents for a specific category
 function getCategoryPatents(categoryId) {
   let patents = patentsMap.value[categoryId] || [];
+  
+  if (searchQuery.value) {
+    const query = searchQuery.value.toLowerCase();
+    return patents.filter(patent => 
+      patent.title.toLowerCase().includes(query) ||
+      patent.id.toLowerCase().includes(query) ||
+      (patent.abstract && patent.abstract.toLowerCase().includes(query))
+    );
+  }
+  
+  return patents;
+}
+
+// Get patents for a specific subcategory
+function getSubcategoryPatents(categoryId, subcategoryId) {
+  if (!subcategoriesMap.value[categoryId] || 
+      !subcategoriesMap.value[categoryId][subcategoryId]) {
+    return [];
+  }
+  
+  let patents = subcategoriesMap.value[categoryId][subcategoryId].patents || [];
   
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
@@ -766,48 +899,48 @@ function selectImage(index) {
   selectedImageIndex.value = index;
 }
 
-function canScrollLeft(categoryId) {
-  return scrollState[categoryId]?.canScrollLeft || false;
+function canScrollLeft(containerId) {
+  return scrollState[containerId]?.canScrollLeft || false;
 }
 
-function canScrollRight(categoryId) {
-  return scrollState[categoryId]?.canScrollRight || true;
+function canScrollRight(containerId) {
+  return scrollState[containerId]?.canScrollRight || true;
 }
 
-function updateScrollButtons(categoryId) {
-  if (!categoryRefs[categoryId]) return;
+function updateScrollButtons(containerId) {
+  if (!categoryRefs[containerId]) return;
   
-  const container = categoryRefs[categoryId];
+  const container = categoryRefs[containerId];
   const { scrollLeft, scrollWidth, clientWidth } = container;
   
-  if (!scrollState[categoryId]) {
-    scrollState[categoryId] = { canScrollLeft: false, canScrollRight: true };
+  if (!scrollState[containerId]) {
+    scrollState[containerId] = { canScrollLeft: false, canScrollRight: true };
   }
   
-  scrollState[categoryId].canScrollLeft = scrollLeft > 0;
-  scrollState[categoryId].canScrollRight = scrollLeft < scrollWidth - clientWidth - 10;
+  scrollState[containerId].canScrollLeft = scrollLeft > 0;
+  scrollState[containerId].canScrollRight = scrollLeft < scrollWidth - clientWidth - 10;
 }
 
-function scrollLeft(categoryId) {
-  const container = categoryRefs[categoryId];
+function scrollLeft(containerId) {
+  const container = categoryRefs[containerId];
   if (!container) return;
   
   const scrollAmount = Math.min(container.clientWidth * 0.8, 300);
   container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   
   // Update scroll buttons after animation
-  setTimeout(() => updateScrollButtons(categoryId), 500);
+  setTimeout(() => updateScrollButtons(containerId), 500);
 }
 
-function scrollRight(categoryId) {
-  const container = categoryRefs[categoryId];
+function scrollRight(containerId) {
+  const container = categoryRefs[containerId];
   if (!container) return;
   
   const scrollAmount = Math.min(container.clientWidth * 0.8, 300);
   container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   
   // Update scroll buttons after animation
-  setTimeout(() => updateScrollButtons(categoryId), 500);
+  setTimeout(() => updateScrollButtons(containerId), 500);
 }
 
 // Data loading function
@@ -829,7 +962,14 @@ async function loadPatentData() {
       try {
         // Try to import the category-specific JSON file
         const module = await import(`~/content/patents/${category.id}.json`);
+        
+        // Store patents for this category
         patentsMap.value[category.id] = module.default.patents || [];
+        
+        // Store subcategories for this category if available
+        if (module.default.subcategories) {
+          subcategoriesMap.value[category.id] = module.default.subcategories;
+        }
         
         // Tag each patent with its category
         patentsMap.value[category.id].forEach(patent => {
@@ -918,8 +1058,8 @@ onMounted(() => {
   // Set up scroll handlers for carousels
   window.addEventListener('resize', () => {
     // Handle resize for carousel scroll buttons
-    for (const categoryId in categoryRefs) {
-      nextTick(() => updateScrollButtons(categoryId));
+    for (const containerId in categoryRefs) {
+      nextTick(() => updateScrollButtons(containerId));
     }
   });
   
