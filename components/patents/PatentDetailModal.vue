@@ -22,17 +22,81 @@
         <!-- Main patent image header section with auto-sizing container -->
         <div class="w-full bg-black patent-image-section">
           <!-- Auto-sizing container for image display -->
-          <div class="patent-image-container">
-            <div v-if="hasRealImage" class="flex items-center justify-center">
-              <img 
-                :src="getFullSizeImage" 
-                :alt="patent.title"
-                class="patent-full-image"
-              />
+          <div class="patent-image-container relative">
+            <!-- Image display with adaptive sizing and zoom controls -->
+            <div v-if="hasRealImage" class="flex items-center justify-center h-full w-full relative">
+              <div 
+                class="overflow-hidden relative flex-grow flex items-center justify-center"
+                @wheel.prevent="handleZoomWheel"
+              >
+                <img 
+                  :src="getFullSizeImage" 
+                  :alt="patent.title"
+                  :style="`transform: scale(${zoomLevel}); transform-origin: center;`"
+                  class="patent-full-image transition-transform duration-200"
+                  :class="{ 'object-cover max-w-full max-h-none': fitToWidth, 'object-contain max-h-[55vh] max-w-none': !fitToWidth }"
+                />
+              </div>
+              
+              <!-- Zoom controls -->
+              <div class="absolute bottom-4 left-4 flex space-x-2 z-10">
+                <button 
+                  @click="zoomOut" 
+                  class="bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full transition-colors"
+                  :disabled="zoomLevel <= 1"
+                  :class="{'opacity-50': zoomLevel <= 1}"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button 
+                  @click="resetZoom" 
+                  class="bg-black bg-opacity-60 hover:bg-opacity-80 px-3 py-2 rounded-full transition-colors text-white text-xs"
+                >
+                  {{ Math.round(zoomLevel * 100) }}%
+                </button>
+                <button 
+                  @click="zoomIn" 
+                  class="bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full transition-colors"
+                  :disabled="zoomLevel >= 3"
+                  :class="{'opacity-50': zoomLevel >= 3}"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+              </div>
             </div>
             <div v-else class="w-full h-64 patent-default-image">
               <!-- Background styles will show the SVG -->
             </div>
+            
+            <!-- Fit to width toggle button -->
+            <button 
+              @click="toggleFitMode" 
+              class="absolute bottom-4 right-14 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full transition-colors"
+              v-if="hasRealImage"
+              :title="fitToWidth ? 'Show entire image' : 'Fit to width'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="3" y1="15" x2="21" y2="15"></line>
+              </svg>
+            </button>
+            
+            <!-- Fullscreen button -->
+            <button 
+              @click="toggleFullscreen" 
+              class="absolute bottom-4 right-4 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full transition-colors"
+              v-if="hasRealImage"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+              </svg>
+            </button>
           </div>
           
           <!-- Thumbnail Carousel -->
@@ -43,7 +107,7 @@
               :key="index" 
               class="flex-none w-24 h-24 rounded overflow-hidden"
               :class="{'ring-2 ring-dobbin-bright-green': selectedImageIndex === index}"
-              @click="selectedImageIndex = index"
+              @click="selectThumbnail(index)"
             >
               <!-- Display the image if it's a real image -->
               <div v-if="isRealImage(image)" class="w-full h-full bg-black">
@@ -131,11 +195,29 @@
         </div>
       </div>
     </div>
+    
+    <!-- Fullscreen modal -->
+    <div v-if="isFullscreen" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
+      <button 
+        @click="isFullscreen = false" 
+        class="absolute right-4 top-4 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full w-10 h-10 flex items-center justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img 
+        :src="getFullSizeImage" 
+        :alt="patent.title"
+        class="max-w-[90%] max-h-[90vh] object-contain"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
   patent: {
@@ -146,6 +228,55 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 const selectedImageIndex = ref(0);
+const isFullscreen = ref(false);
+const zoomLevel = ref(1);
+const fitToWidth = ref(true); // Default to fit to width mode
+
+// Reset zoom when changing images
+watch(selectedImageIndex, () => {
+  resetZoom();
+});
+
+// Zoom functions
+function zoomIn() {
+  if (zoomLevel.value < 3) {
+    zoomLevel.value = Math.min(3, zoomLevel.value + 0.25);
+  }
+}
+
+function zoomOut() {
+  if (zoomLevel.value > 1) {
+    zoomLevel.value = Math.max(1, zoomLevel.value - 0.25);
+  }
+}
+
+function resetZoom() {
+  zoomLevel.value = 1;
+}
+
+function handleZoomWheel(event) {
+  if (event.deltaY < 0 && zoomLevel.value < 3) {
+    zoomIn();
+  } else if (event.deltaY > 0 && zoomLevel.value > 1) {
+    zoomOut();
+  }
+}
+
+function toggleFullscreen() {
+  isFullscreen.value = !isFullscreen.value;
+}
+
+function toggleFitMode() {
+  fitToWidth.value = !fitToWidth.value;
+  // Reset zoom when toggling fit mode
+  resetZoom();
+}
+
+function selectThumbnail(index) {
+  selectedImageIndex.value = index;
+  // Reset zoom and fit mode when selecting a new image
+  resetZoom();
+}
 
 // Computed property for checking if the patent has real images
 const hasRealImage = computed(() => {
@@ -286,8 +417,9 @@ function getImageThumbnail(image) {
 
 /* Patent image container styles for better image display */
 .patent-image-container {
-  min-height: 250px;
-  max-height: 45vh;
+  min-height: 300px;
+  height: 55vh; /* Increase height allocation */
+  max-height: 65vh; /* Allow more vertical space */
   width: 100%;
   display: flex;
   align-items: center;
@@ -298,9 +430,8 @@ function getImageThumbnail(image) {
 }
 
 .patent-full-image {
-  max-width: 100%;
-  max-height: 40vh;
-  object-fit: contain;
+  min-height: 250px; /* Ensure minimum size */
+  min-width: 250px; /* Ensure minimum size */
   display: block;
 }
 
@@ -330,12 +461,13 @@ function getImageThumbnail(image) {
   }
   
   .patent-image-container {
-    min-height: 300px;
-    max-height: 40vh;
+    min-height: 350px;
+    height: 55vh;
   }
   
   .patent-full-image {
-    max-height: 35vh;
+    min-height: 300px;
+    min-width: 300px;
   }
   
   .patent-details-scroll {
