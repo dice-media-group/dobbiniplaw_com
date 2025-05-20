@@ -20,7 +20,19 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
+  // Router configuration
+  router: {
+    options: {
+      // Disable Vue Router's own scroll behavior
+      scrollBehavior: () => false
+    }
+  },
+
   app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    },
     head: {
       title: 'Dobbin IP Law P.C. | Protecting Your Work',
       meta: [
@@ -49,6 +61,22 @@ export default defineNuxtConfig({
                   });
                 }
               });
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        },
+        // Add a custom script for fixing scroll behavior
+        {
+          innerHTML: `
+            // Force scroll to top on page load
+            window.addEventListener('load', function() {
+              window.scrollTo(0, 0);
+            });
+            
+            // Helper function to force scroll to top
+            window.forceScrollToTop = function() {
+              window.scrollTo(0, 0);
             }
           `,
           type: 'text/javascript',
