@@ -1,5 +1,9 @@
 // plugins/scroll-behavior.js
 export default defineNuxtPlugin(nuxtApp => {
+  // Track when a navigation is in progress
+  let navigationInProgress = false;
+
+  // Function to scroll to top that respects render lifecycle
   const scrollToTop = () => {
     // First try using window.scrollTo
     window.scrollTo(0, 0);
@@ -9,17 +13,36 @@ export default defineNuxtPlugin(nuxtApp => {
     document.body.scrollTop = 0;
   };
 
-  // Force scroll on page changes
+  // Apply scroll AFTER the page is fully rendered
   nuxtApp.hook('page:finish', () => {
-    // Use multiple timings for reliability
-    scrollToTop(); // Immediate
-    setTimeout(scrollToTop, 0); // Next tick
-    setTimeout(scrollToTop, 50); // Short delay
-    setTimeout(scrollToTop, 100); // Longer delay
+    // Mark navigation as complete
+    navigationInProgress = false;
+    
+    // Wait for render cycle to complete
+    setTimeout(() => {
+      scrollToTop();
+    }, 10);
+  });
+  
+  // Mark when navigation starts
+  nuxtApp.hook('page:start', () => {
+    navigationInProgress = true;
+  });
+  
+  // Specially handle "app:mounted" for initial page load
+  nuxtApp.hook('app:mounted', () => {
+    // First time the app is mounted, scroll to top
+    setTimeout(scrollToTop, 50);
+  });
 
-    // Try to use the global function if available
-    if (window.forceScrollToTop) {
-      window.forceScrollToTop();
+  // Additional Vue hook for after a page component is mounted
+  nuxtApp.vueApp.mixin({
+    mounted() {
+      // Only do this for page components, not all components
+      if (this.$route && navigationInProgress) {
+        // Wait a bit longer to ensure all child components are rendered
+        setTimeout(scrollToTop, 100);
+      }
     }
   });
 
@@ -27,11 +50,15 @@ export default defineNuxtPlugin(nuxtApp => {
   return {
     provide: {
       scrollToTop: () => {
-        scrollToTop();
-        // Multiple timers for reliability
-        setTimeout(scrollToTop, 0);
+        // First, check if we're in a navigation
+        if (navigationInProgress) {
+          // If we're navigating, we'll let the page:finish hook handle it
+          return;
+        }
+        
+        // If not in navigation, do the scroll with a slight delay
+        // to ensure any component updates are complete
         setTimeout(scrollToTop, 50);
-        setTimeout(scrollToTop, 100);
       }
     }
   };

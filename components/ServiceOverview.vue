@@ -23,17 +23,16 @@
             Patents grant exclusive rights to make, use, or sell your invention. Consider this when you've created something innovative with functional applications.
           </p>
           <div class="flex justify-center">
-            <!-- Direct href with hard-coded path for maximum compatibility -->
-            <a 
-              href="/patents" 
+            <!-- Use NuxtLink for better navigation within Nuxt apps -->
+            <NuxtLink 
+              to="/patents" 
               class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1"
-              @click="handleNavigation('/patents', $event)"
             >
               Learn more about patent protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </NuxtLink>
           </div>
         </div>
         
@@ -52,16 +51,15 @@
             Trademarks protect your brand identity and prevent customer confusion. Essential for businesses looking to build and protect their reputation and brand recognition.
           </p>
           <div class="flex justify-center">
-            <a 
-              href="/trademarks" 
+            <NuxtLink 
+              to="/trademarks" 
               class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1"
-              @click="handleNavigation('/trademarks', $event)"
             >
               Learn more about trademark protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </NuxtLink>
           </div>
         </div>
         
@@ -80,16 +78,15 @@
             Copyrights protect the expression of ideas (not the ideas themselves). Registration provides stronger protection for creators and artists against unauthorized copying.
           </p>
           <div class="flex justify-center">
-            <a 
-              href="/copyright" 
+            <NuxtLink 
+              to="/copyright" 
               class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1"
-              @click="handleNavigation('/copyright', $event)"
             >
               Learn more about copyright protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -101,74 +98,33 @@
           Many innovations require multiple forms of protection. For example, a new product might need both a patent (for its functionality) and a trademark (for its brand name). We can help you develop a comprehensive strategy.
         </p>
         <div class="flex justify-center">
-          <a 
-            href="/contact" 
+          <NuxtLink 
+            to="/contact" 
             class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg"
-            @click="handleNavigation('/contact', $event)"
           >
             Schedule a Free Strategy Session
-          </a>
+          </NuxtLink>
         </div>
       </div>
       
       <!-- See Pricing -->
       <div class="mt-8 text-center">
-        <a 
-          href="/flat-fees" 
+        <NuxtLink 
+          to="/flat-fees" 
           class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1 justify-center"
-          @click="handleNavigation('/flat-fees', $event)"
         >
           View our transparent flat fee pricing
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-// Use Nuxt's built-in composables instead of importing from Vue
-const router = useRouter();
-const { $scrollToTop } = useNuxtApp();
-
-// Extremely aggressive forcing scroll to top
-function forceScrollToTop() {
-  // Direct methods
-  window.scrollTo(0, 0);
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
-  
-  // Use plugin method if available
-  if ($scrollToTop) {
-    $scrollToTop();
-  }
-  
-  // Use global function if available
-  if (window.forceScrollToTop) {
-    window.forceScrollToTop();
-  }
-  
-  // Multiple setTimeout with different delays for reliability
-  setTimeout(() => window.scrollTo(0, 0), 0);
-  setTimeout(() => window.scrollTo(0, 0), 50);
-  setTimeout(() => window.scrollTo(0, 0), 100);
-  setTimeout(() => window.scrollTo(0, 0), 200);
-  setTimeout(() => window.scrollTo(0, 0), 500);
-}
-
-// Custom navigation handler
-function handleNavigation(path, event) {
-  // Prevent default if desired - two options:
-  
-  // OPTION 1: Let the browser handle navigation but force scroll (more compatible)
-  // Continue with default navigation, but set flag and force scroll
-  window.shouldScrollAfterNavigation = true;
-  
-  // Schedule scroll to top with various delays
-  forceScrollToTop();
-}
+// No custom navigation handlers needed - let Nuxt handle it with proper lifecycle hooks
 </script>
 
 <style scoped>
