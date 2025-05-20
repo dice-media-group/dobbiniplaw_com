@@ -19,7 +19,7 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-4">
             <div class="md:col-span-1">
               <div class="mx-2 my-2">
-                <img src="https://placehold.co/250x350?text=Geoff+Dobbin" alt="Geoff Dobbin" class="w-full">
+                <img src="/img/geoff-dobbin.jpg" alt="Geoff Dobbin" class="w-full rounded shadow-md">
               </div>
             </div>
             <div class="md:col-span-3">
@@ -65,8 +65,8 @@
             </div>
           </div>
           
-          <!-- Shaylyn Section -->
-          <h2 class="text-xl font-crimson text-dobbin-dark-green border-b border-gray-200 pb-1 mb-1">Shaylyn</h2>
+          <!-- Paralegal Section -->
+          <h2 class="text-xl font-crimson text-dobbin-dark-green border-b border-gray-200 pb-1 mb-1">Chris</h2>
           <p class="mb-4 italic text-sm font-crimson text-dobbin-gray">
             Paralegal
           </p>
@@ -74,14 +74,15 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div class="md:col-span-3 order-2 md:order-1">
               <p class="mb-3 font-crimson text-dobbin-gray">
-                Shaylyn has been working at Dobbin IP Law since 2012. When she first started, she worked as Geoff's office and personal assistant. Seven years later, she is now working as our intellectual property paralegal. She spends most of her time keeping track of the docket, communicating with clients, and helping Geoff with legal filings. She is also a notary and is primarily responsible for keeping the office running as smoothly as possible.
+                Chris is Dobbin IP Law’s Certified Paralegal (CP®) and Notary Public, and he assists Mr. Dobbin with legal research, document drafting, coordinating with clients on various patents, trademarks, and copyright matters, and in general helps keep the office running. Outside of the office, Chris enjoys volunteering with youth, the outdoors, film photography, and board games.
               </p>
               <p class="font-crimson text-dobbin-gray">
-                She is currently attending Salt Lake Community College to receive her AAS in paralegal studies. When she is not working or busy with school, she enjoys sitting down to read a good book, dancing, and going on hikes.
+                CP® is a registered trademark owned by the National Association of Legal Assistants, Inc. and is used with authorization.
               </p>
             </div>
             <div class="md:col-span-1 order-1 md:order-2">
-              <img src="https://placehold.co/300x300?text=Shaylyn" alt="Shaylyn" class="w-full">
+              <!-- Chris' profile image goes here when we recieve it -->
+              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full"> -->
             </div>
           </div>
         </div>

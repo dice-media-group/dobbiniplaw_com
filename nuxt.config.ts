@@ -20,7 +20,19 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
+  // Router configuration
+  router: {
+    options: {
+      // Disable Vue Router's own scroll behavior
+      scrollBehavior: () => false
+    }
+  },
+
   app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    },
     head: {
       title: 'Dobbin IP Law P.C. | Protecting Your Work',
       meta: [
@@ -36,6 +48,40 @@ export default defineNuxtConfig({
         
         // Crimson Text font from Google Fonts
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
+      ],
+      // Add the script for form handling
+      script: [
+        {
+          innerHTML: `
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        },
+        // Add a custom script for fixing scroll behavior
+        {
+          innerHTML: `
+            // Force scroll to top on page load
+            window.addEventListener('load', function() {
+              window.scrollTo(0, 0);
+            });
+            
+            // Helper function to force scroll to top
+            window.forceScrollToTop = function() {
+              window.scrollTo(0, 0);
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        }
       ]
     }
   },
@@ -49,15 +95,89 @@ export default defineNuxtConfig({
     ]
   },
 
-  // Generate additional routes that don't exist in pages directory
+  // Generate static site for Netlify
+  ssr: true,
+  
+  // Static site generation settings
   nitro: {
+    preset: 'netlify',
     prerender: {
+      crawlLinks: true,
       routes: [
+        '/',
+        '/about',
+        '/contact',
+        '/services',
+        '/patents',
+        '/trademarks',
+        '/copyright',
         '/prior-work',
         '/resources',
         '/testimonials',
-        '/helpful-links'
+        '/helpful-links',
+        '/flat-fees',
+        '/success',
+        '/privacy-policy',
+        '/terms-of-service'
       ]
+    }
+  },
+
+  // Generate static HTML for improved SEO and to ensure forms are detected
+  generate: {
+    routes: ['/success', '/flat-fees']
+  },
+
+  // Performance optimizations
+  optimization: {
+    splitChunks: {
+      maxSize: 300000,
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.(css|vue)$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
+
+  // Improve build performance
+  vite: {
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-solid-svg-icons'
+      ]
+    },
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'fontawesome': [
+              '@fortawesome/fontawesome-svg-core',
+              '@fortawesome/free-solid-svg-icons',
+              '@fortawesome/vue-fontawesome'
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  hooks: {
+    'nitro:config': (nitroConfig) => {
+      if (nitroConfig.dev) {
+        return
+      }
+      // Improve static rendering
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.ignore = nitroConfig.prerender.ignore || []
+      nitroConfig.prerender.ignore.push(/** any route patterns to ignore **/)
     }
   },
 
