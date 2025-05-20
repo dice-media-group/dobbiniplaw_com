@@ -23,12 +23,12 @@
             Patents grant exclusive rights to make, use, or sell your invention. Consider this when you've created something innovative with functional applications.
           </p>
           <div class="flex justify-center">
-            <NuxtLink to="/patents" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
+            <a href="#" @click.prevent="navigateTo('/patents')" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
               Learn more about patent protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </NuxtLink>
+            </a>
           </div>
         </div>
         
@@ -47,12 +47,12 @@
             Trademarks protect your brand identity and prevent customer confusion. Essential for businesses looking to build and protect their reputation and brand recognition.
           </p>
           <div class="flex justify-center">
-            <NuxtLink to="/trademarks" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
+            <a href="#" @click.prevent="navigateTo('/trademarks')" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
               Learn more about trademark protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </NuxtLink>
+            </a>
           </div>
         </div>
         
@@ -71,12 +71,12 @@
             Copyrights protect the expression of ideas (not the ideas themselves). Registration provides stronger protection for creators and artists against unauthorized copying.
           </p>
           <div class="flex justify-center">
-            <NuxtLink to="/copyright" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
+            <a href="#" @click.prevent="navigateTo('/copyright')" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1">
               Learn more about copyright protection
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-            </NuxtLink>
+            </a>
           </div>
         </div>
       </div>
@@ -88,27 +88,40 @@
           Many innovations require multiple forms of protection. For example, a new product might need both a patent (for its functionality) and a trademark (for its brand name). We can help you develop a comprehensive strategy.
         </p>
         <div class="flex justify-center">
-          <NuxtLink to="/contact" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg">
+          <a href="#" @click.prevent="navigateTo('/contact')" class="bg-dobbin-dark-green text-white font-bold py-3 px-8 rounded-lg inline-block transition hover:bg-opacity-90 transform hover:scale-105 shadow-lg">
             Schedule a Free Strategy Session
-          </NuxtLink>
+          </a>
         </div>
       </div>
       
       <!-- See Pricing -->
       <div class="mt-8 text-center">
-        <NuxtLink to="/flat-fees" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1 justify-center">
+        <a href="#" @click.prevent="navigateTo('/flat-fees')" class="text-dobbin-dark-green hover:text-dobbin-bright-green font-semibold flex items-center gap-1 justify-center">
           View our transparent flat fee pricing
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-        </NuxtLink>
+        </a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-// No special logic needed for this simple component
+import { useRouter, inject } from 'vue';
+
+const router = useRouter();
+const scrollToTop = inject('scrollToTop', () => window.scrollTo(0, 0));
+
+const navigateTo = (path) => {
+  // First, change the route
+  router.push(path);
+  
+  // Then, ensure we scroll to top with a slight delay to allow page transition
+  setTimeout(() => {
+    scrollToTop();
+  }, 50);
+};
 </script>
 
 <style scoped>
