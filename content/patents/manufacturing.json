@@ -3,7 +3,7 @@
   "patents": [
     {
       "id": "US-12243306-B1",
-      "title": "22 one or more threats in crowded areas System and method for",
+      "title": "one or more threats in crowded areas System and method for",
       "publicationDate": "2025-03-04",
       "imagePages": 0,
       "abstract": "The\n present disclosure relates to a system to proactively detect in real \ntime one or more threats in crowded areas. The present disclosure \npresents a proactive system for real-time threat detection in crowded \nareas. Utilizing a network of imaging sensors and advanced machine \nlearning algorithms, the system identifies suspicious individuals, \nobjects, and behavioral patterns within a predefined area. The system \ndetects potential threats such as individuals on watch lists, suspicious\n objects like unattended bags, and abnormal behaviors indicative of \nsecurity risks, by continuously monitoring and analyzing images and \nvideo feeds. Upon detection, the system promptly notifies authorities, \nproviding detailed information on threat location, suspected \nindividuals, and behavioral analysis. Privacy-preserving measures, \nincluding encryption of facial recognition data, ensure compliance with \nprivacy regulations. The present disclosure offers a scalable, \nefficient, and automated solution to enhance security measures, reduce \nresponse times, and safeguard public safety in dynamic urban \nenvironments.",
@@ -40,7 +40,7 @@
     },
     {
       "id": "US-12090381-B2",
-      "title": "11 practice Systems and methods for indicating the existence of",
+      "title": "practice Systems and methods for indicating the existence of",
       "publicationDate": "2024-09-17",
       "imagePages": 0,
       "abstract": "A head target with may\n feature realistic eye targets and a rearward handle for use in martial \narts practices. The handle may be constructed in a manner to also allow \nthe use of a wall mount with a plurality of support spurs to support the\n head target in a realistic posture in a manner to withstand multiple \nblows from the training individual. A mounting plate, upon which the \nwall mount is positioned, aids in a secure mounting to a wall.",
@@ -84,17 +84,1996 @@
       ],
       "inventors": [],
       "assignee": "Individual"
+    },
+    {
+      "id": "US-12094235-B2",
+      "title": "identifying and tagging 9 individuals present in an image System and method for",
+      "publicationDate": "2024-09-17",
+      "imagePages": 0,
+      "abstract": "A system and a method \nfor identifying and tagging individuals present in an image are \ndisclosed. The method comprises detecting a second device present in \nproximity of a first device, for establishing a connection. The \nconnection may be established while the first device enters in a camera \nmode. Immediately after the first device captured an image, the first \ndevice may receive identity information of individuals from the second \ndevice. The identity information of individuals may comprise at least \none of images and personal details of the individuals. Based on the \nreceived identity information, the first device may identify the \nindividuals present in the image. The identified individuals present in \nthe image may be tagged using their corresponding identities. Such \ntagging information may be stored in metadata of the image for a later \nusage.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-12094235-B2/fig0.png",
+          "hires": "/images/patents/US-12094235-B2/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-12094235-B2/fig1.png",
+          "hires": "/images/patents/US-12094235-B2/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-12094235-B2/fig2.png",
+          "hires": "/images/patents/US-12094235-B2/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-12094235-B2/fig3.png",
+          "hires": "/images/patents/US-12094235-B2/hires/fig3.png",
+          "caption": "Figure 3"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-11967167-B1",
+      "title": "identifying and tagging 8 individuals present in an image System and method for",
+      "publicationDate": "2024-04-23",
+      "imagePages": 0,
+      "abstract": "A\n system and a method for identifying and tagging individuals present in \nan image are disclosed. The method comprises detecting a second device \npresent in proximity of a first device, for establishing a connection. \nThe connection may be established while the first device enters in a \ncamera mode. Immediately after the first device captured an image, the \nfirst device may receive identity information of individual from the \nsecond device. The identity information of individuals may comprise at \nleast one of images and personal details of the individual. Based on the\n received identity information, the first device may identify the \nindividual present in the image. The identified individuals present in \nthe image may be tagged using their corresponding identities. Such \ntagging information may be stored in metadata of the image for a later \nusage.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-11967167-B1/fig0.png",
+          "hires": "/images/patents/US-11967167-B1/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-11967167-B1/fig1.png",
+          "hires": "/images/patents/US-11967167-B1/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-11967167-B1/fig2.png",
+          "hires": "/images/patents/US-11967167-B1/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-11967167-B1/fig3.png",
+          "hires": "/images/patents/US-11967167-B1/hires/fig3.png",
+          "caption": "Figure 3"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-11495137-B2",
+      "title": "apparatus",
+      "publicationDate": "2022-11-08",
+      "imagePages": 0,
+      "abstract": "A\n method of teaching keyboard instruments involves placing semi-permanent\n plates on specific keys of the keyboard, providing tactile stimulation \nwhich will develop muscle memory and confidence in playing correct \nnotes. Different textures and colors may be employed to help \ndifferentiate plates and associated keys from others. Placement of \nplates on keys is to be determined by the instructor in consideration of\n the student's needs. Placement may be made on one or multiple keys, \nwhich may include an entire middle octave. Texturing may be a subtle as \nBraille characters or more bold designs and individual shapes of the \nplates may be flat or may be shaped to facilitate hand posture. Colors \nmay be associated with specific notes on the grand staff to provide a \nvisual aid. Finger adornments may also be used to aid in color \ncorrespondence. Plates may be held onto piano keys by utilizing either \nwet or dry adhesives.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig0.png",
+          "hires": "/images/patents/US-11495137-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig1.png",
+          "hires": "/images/patents/US-11495137-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig2.png",
+          "hires": "/images/patents/US-11495137-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig3.png",
+          "hires": "/images/patents/US-11495137-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig4.png",
+          "hires": "/images/patents/US-11495137-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig5.png",
+          "hires": "/images/patents/US-11495137-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig6.png",
+          "hires": "/images/patents/US-11495137-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig7.png",
+          "hires": "/images/patents/US-11495137-B2/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig8.png",
+          "hires": "/images/patents/US-11495137-B2/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig9.png",
+          "hires": "/images/patents/US-11495137-B2/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig10.png",
+          "hires": "/images/patents/US-11495137-B2/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig11.png",
+          "hires": "/images/patents/US-11495137-B2/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-11495137-B2/fig12.png",
+          "hires": "/images/patents/US-11495137-B2/fig12.png",
+          "caption": "Figure 12"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-11350581-B2",
+      "title": "Pollinating machine 20",
+      "publicationDate": "2022-06-07",
+      "imagePages": 0,
+      "abstract": "A pollination machine \n(10) with improved cross-pollination abilities may feature a plurality \nof pollen recirculation chambers with an air circulation manifold (130A,\n 131A, 133A, etc.) connecting them in a manner that air in one chamber \n(30A), together with associated pollen, is removed from the one chamber \nand redirected to a second (30B), and so on until air is returned to the\n first (30A). The chambers' initial roller entrances (118) will serve to\n trip blossoms and release both pistol and pollen but a current in the \nair circulation manifold contains and will deposit foreign pollen grains\n on the plants' stigmas before they are inundated by the blossoms' own \npollen. The air current also collects the plants' pollen and carries it \nto other chambers so that other plants will be cross-pollinated.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig0.png",
+          "hires": "/images/patents/US-11350581-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig1.png",
+          "hires": "/images/patents/US-11350581-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig2.png",
+          "hires": "/images/patents/US-11350581-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig3.png",
+          "hires": "/images/patents/US-11350581-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig4.png",
+          "hires": "/images/patents/US-11350581-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig5.png",
+          "hires": "/images/patents/US-11350581-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig6.png",
+          "hires": "/images/patents/US-11350581-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig7.png",
+          "hires": "/images/patents/US-11350581-B2/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig8.png",
+          "hires": "/images/patents/US-11350581-B2/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig9.png",
+          "hires": "/images/patents/US-11350581-B2/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig10.png",
+          "hires": "/images/patents/US-11350581-B2/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig11.png",
+          "hires": "/images/patents/US-11350581-B2/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig12.png",
+          "hires": "/images/patents/US-11350581-B2/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig13.png",
+          "hires": "/images/patents/US-11350581-B2/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-11350581-B2/fig14.png",
+          "hires": "/images/patents/US-11350581-B2/fig14.png",
+          "caption": "Figure 14"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10533834-B2",
+      "title": "apparatus Ice skate blade bending",
+      "publicationDate": "2020-01-14",
+      "imagePages": 0,
+      "abstract": "A blade measuring \napparatus (21) to measure the radius and bend of skate blades along the \nlongitudinal plane of the skate blade runner features a one-piece frame \n(1), thermally non-conductive handles (5), and adjustable, replaceable, \nand interchangeable magnetic force application components (9, 10) and \nassemblies.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig0.png",
+          "hires": "/images/patents/US-10533834-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig1.png",
+          "hires": "/images/patents/US-10533834-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig2.png",
+          "hires": "/images/patents/US-10533834-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig3.png",
+          "hires": "/images/patents/US-10533834-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig4.png",
+          "hires": "/images/patents/US-10533834-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig5.png",
+          "hires": "/images/patents/US-10533834-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10533834-B2/fig6.png",
+          "hires": "/images/patents/US-10533834-B2/fig6.png",
+          "caption": "Figure 6"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Mayflower Industries LLC"
+    },
+    {
+      "id": "US-D872779-S",
+      "title": "apparatus",
+      "publicationDate": "2020-01-14",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of an ice skate blade bending apparatus.\n       FIG. 2 is an exploded front perspective view thereof.\n       FIG. 3 is a front view thereof.\n       FIG. 4 is a front perspective view thereof.\n       FIG. 5 is another front perspective view thereof; with the lever arm in an alternate position.\n       FIG. 6 is a rear perspective view thereof.\n       FIG. 7 is a rear view thereof.\n       FIG. 8 is another rear perspective view thereof.\n       FIG. 9 is a top view thereof.\n       FIG. 10 is a side view thereof; and,\n       FIG. 11 is the other side view thereof.\n      The\n broken lines showing parts of a speed skate blade are for the purposes \nof showing environmental structure and form no part of the claimed \ndesign.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Mayflower Inductries LLC"
+    },
+    {
+      "id": "US-10456903-B2",
+      "title": "modification system Launch canister to simulate",
+      "publicationDate": "2019-10-29",
+      "imagePages": 0,
+      "abstract": "Tool\n grips and handles may be enhanced by the addition of modular inserts \nwhich compensate for two voids in the human hand. A first insert may \nfill a void in the palm of the hand while a second may fill one by the \nfingers. By filling the voids, a more natural, relaxed, and customizable\n grip may be achieved for almost any handle. Use of a plurality of \ninserts allows for customization according to hand size while the size \nof the inserts also accounts for the size, dimensions, and axes of the \nhandle and tool in general. Meniscus-shaped inserts may be stacked on \none another for optimum effect.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig0.png",
+          "hires": "/images/patents/US-10456903-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig1.png",
+          "hires": "/images/patents/US-10456903-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig2.png",
+          "hires": "/images/patents/US-10456903-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig3.png",
+          "hires": "/images/patents/US-10456903-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig4.png",
+          "hires": "/images/patents/US-10456903-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10456903-B2/fig5.png",
+          "hires": "/images/patents/US-10456903-B2/fig5.png",
+          "caption": "Figure 5"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10316884-B2",
+      "title": "method",
+      "publicationDate": "2019-06-11",
+      "imagePages": 0,
+      "abstract": "An\n algorithm analyzes the motion of an object to determine if a switch \nneeds to be activated or deactivated. Accelerometers measure forces \nexerted upon an object to determine orientation in pitch, roll, and yaw \naxes, and to determine motion of the object. When threshold conditions \nfor these orientations and movements are measured, the method combines \ntaking moving averages of pitch, roll, and yaw, and additionally \naccumulating an integral of yaw to determine if an activation or \ndeactivation condition is met. Should an integral condition not be \nconstantly met while the moving average conditions are being determined,\n the yaw integral counter resets and the whole process must begin again.\n This method balances most unintentional activation conditions with \nactivation latency. Another methodology tracks the motion of a wrist \nflick, similar to casting a fishing line, using acceleration and \ndeceleration parameters.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig0.png",
+          "hires": "/images/patents/US-10316884-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig1.png",
+          "hires": "/images/patents/US-10316884-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig2.png",
+          "hires": "/images/patents/US-10316884-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig3.png",
+          "hires": "/images/patents/US-10316884-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig4.png",
+          "hires": "/images/patents/US-10316884-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig5.png",
+          "hires": "/images/patents/US-10316884-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig6.png",
+          "hires": "/images/patents/US-10316884-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig7.png",
+          "hires": "/images/patents/US-10316884-B2/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig8.png",
+          "hires": "/images/patents/US-10316884-B2/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig9.png",
+          "hires": "/images/patents/US-10316884-B2/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig10.png",
+          "hires": "/images/patents/US-10316884-B2/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig11.png",
+          "hires": "/images/patents/US-10316884-B2/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig12.png",
+          "hires": "/images/patents/US-10316884-B2/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig13.png",
+          "hires": "/images/patents/US-10316884-B2/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig14.png",
+          "hires": "/images/patents/US-10316884-B2/fig14.png",
+          "caption": "Figure 14"
+        },
+        {
+          "thumbnail": "/images/patents/US-10316884-B2/fig15.png",
+          "hires": "/images/patents/US-10316884-B2/fig15.png",
+          "caption": "Figure 15"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-D845793-S",
+      "title": "apparatus",
+      "publicationDate": "2019-04-16",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1\n is a perspective view of the front of a fully assembled skate blade \nmeasuring apparatus in accordance with an embodiment of the invention.\n       FIG. 2 is a front elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 3 is a rear elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 4 is a left elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 5 is a right elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 6 is a top view of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention; and,\n       FIG. 7 is a bottom view of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n      The broken lines in FIGS. 1 and 6 depict screw heads which are illustrative of environment and not intended to form a part of the claimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Mayflower Inductries LLC"
+    },
+    {
+      "id": "US-D843128-S",
+      "title": "Glove dispenser 13 Non-segmented composite",
+      "publicationDate": "2019-03-19",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of a glove dispenser showing my new design.\n       FIG. 2\n is front elevation of the glove dispenser, with the front cover and \nadvertising stand portions removed to show aspects of the design that \nmay not be apparent in the other views.\n       FIG. 3 is a rear elevation of the glove dispenser thereof.\n       FIG. 4 is a side elevation of the glove dispenser thereof, the opposite side being identical\n       FIG. 5 is a bottom plan view of the glove dispenser thereof.\n       FIG. 6 is a top plan view of the glove dispenser thereof.\n       FIG. 7 is a front, left and top perspective view of the glove dispenser thereof.\n       FIG. 8 is a rear, left and top perspective view of the glove dispenser thereof.\n       FIG. 9 is a front, left, and bottom perspective view of the glove dispenser thereof.\n       FIG. 10 is a front, left and top perspective view of the glove dispenser of FIG. 7, showing the first stage of assembly and installation of the advertising stand.\n       FIG. 11 is a front, left and top perspective view of the glove dispenser, showing installation of the front cover; and,\n       FIG. 12 is front elevation of the glove dispenser, with the front cover installed and advertising stand removed.\n      The dashed lines in FIGS. 10 and 11 represent paper inserts and are intended to illustrate environment and are not intended to form a part of the claimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10114054-B1",
+      "title": "apparatus",
+      "publicationDate": "2018-10-30",
+      "imagePages": 0,
+      "abstract": "A sensor to measure \ndielectric constant of a medium may have a transmission line acting as a\n probe, and electronic circuit, and cable filter providing to reduce \nsensitivity of the sensor to cable parameters and influences. The sensor\n circuit may use a periodic signal generator to produce a carrier wave, \nwhich stimulates the transmission line, through a complex network \ncoupling element. The complex impedance network forms a voltage divider \nwith the transmission line, wherein the output of the voltage divider \nmay be demodulated with an AM demodulator, such as a thermally \ncompensated peak detector. This demodulated signal would be related to \nthe characteristic impedance of the transmission line, and thus to the \ndielectric constant of the material surrounding the partially inserted \ntransmission line probe. The demodulated signal may be offset, scaled, \nand linearized with a microcontroller containing signal processing \nroutines, linearizing equations, stored calibration constants and look \nup tables.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10114054-B1/fig0.png",
+          "hires": "/images/patents/US-10114054-B1/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10114054-B1/fig1.png",
+          "hires": "/images/patents/US-10114054-B1/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10114054-B1/fig2.png",
+          "hires": "/images/patents/US-10114054-B1/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10114054-B1/fig3.png",
+          "hires": "/images/patents/US-10114054-B1/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10114054-B1/fig10114054.png",
+          "hires": "/images/patents/US-10114054-B1/fig10114054.png",
+          "caption": "Figure 10114054"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10050428-B2",
+      "title": "Cord management clip 9 Trim components for lapboard siding that are co-extruded from",
+      "publicationDate": "2018-08-14",
+      "imagePages": 0,
+      "abstract": "A clip is used to \nmanage cords. The clip features a containment sleeve with a portion \nthereof being open, thereby forming a gap for passage into the sleeve, \nand extending outward as two opposing flanges. A cord is passed through \nthe gap so as to reside in the sleeve and the flanges are used to \ninterface with a rigid wire found in the environment of the cord. The \nclip has particular use in wire-constructed merchandizers and other such\n structures and for managing cords to provide power for lighting and \nother display enhancement devices.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig0.png",
+          "hires": "/images/patents/US-10050428-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig1.png",
+          "hires": "/images/patents/US-10050428-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig2.png",
+          "hires": "/images/patents/US-10050428-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig3.png",
+          "hires": "/images/patents/US-10050428-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig4.png",
+          "hires": "/images/patents/US-10050428-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig5.png",
+          "hires": "/images/patents/US-10050428-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10050428-B2/fig6.png",
+          "hires": "/images/patents/US-10050428-B2/fig6.png",
+          "caption": "Figure 6"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10036160-B2",
+      "title": "framing",
+      "publicationDate": "2018-07-31",
+      "imagePages": 0,
+      "abstract": "The\n present invention is a framing system for resolving vertical and \nhorizontal movements in light gage, cold formed, steel stud framing. It \nutilizes at least one corner hinge and a plurality of pivoting stud \nclips (one for each stud) that accommodate for the deflection of a \nbuilding as it encounters environmental changes. Additional hinges may \nbe placed axially, along the wall and at the top and bottom of the \ncorner for increased flexibility. Two embodiments of stud pivot clips, \none utilizing direct attachment and arcuate slots, the other utilizing a\n pivotable connection plate, are disclosed; as are two hinge \nembodiments.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig0.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig1.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig2.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig3.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig4.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig5.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig6.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-10036160-B2/fig7.png",
+          "hires": "/images/patents/US-10036160-B2/hires/fig7.png",
+          "caption": "Figure 7"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-10011995-B2",
+      "title": "apparatus Waterproof side trim system for",
+      "publicationDate": "2018-07-03",
+      "imagePages": 0,
+      "abstract": "A\n system for providing siding to a building is disclosed. The system \nutilizes components which have their own brackets with attachment \nflanges in order to connect directly to an exterior wall of the \nbuilding. The brackets contain their own integrated water control \nsystems, which co-act with those of other components to control and \ndirect water into vertical channels and out from behind the siding \nsystem. These flanges double as self-contained flashing. In all the \nsystem presents a roof-to-foundation siding system that is \nself-contained and fully transitional from one piece to another.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig0.png",
+          "hires": "/images/patents/US-10011995-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig1.png",
+          "hires": "/images/patents/US-10011995-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig2.png",
+          "hires": "/images/patents/US-10011995-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig3.png",
+          "hires": "/images/patents/US-10011995-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig4.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig5.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig6.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig7.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig8.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig9.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig10.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig11.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig12.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig13.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig14.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig14.png",
+          "caption": "Figure 14"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig15.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig15.png",
+          "caption": "Figure 15"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig16.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig16.png",
+          "caption": "Figure 16"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig17.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig17.png",
+          "caption": "Figure 17"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig18.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig18.png",
+          "caption": "Figure 18"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig19.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig19.png",
+          "caption": "Figure 19"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig20.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig20.png",
+          "caption": "Figure 20"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig21.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig21.png",
+          "caption": "Figure 21"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig22.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig22.png",
+          "caption": "Figure 22"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig23.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig23.png",
+          "caption": "Figure 23"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig24.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig24.png",
+          "caption": "Figure 24"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig25.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig25.png",
+          "caption": "Figure 25"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig26.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig26.png",
+          "caption": "Figure 26"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig27.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig27.png",
+          "caption": "Figure 27"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig28.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig28.png",
+          "caption": "Figure 28"
+        },
+        {
+          "thumbnail": "/images/patents/US-10011995-B2/fig29.png",
+          "hires": "/images/patents/US-10011995-B2/hires/fig29.png",
+          "caption": "Figure 29"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-9945545-B2",
+      "title": "Clip 11 Apparatus and algorithm for",
+      "publicationDate": "2018-04-17",
+      "imagePages": 0,
+      "abstract": "A\n clip for attaching a device, such as a lighting strip, to an underlying\n wire structure, such as a merchandizer shelf or peg, may present at \nleast one spring bar as a part of a main clip body. These spring bars \nshould each have a portion thicker than a remainder than the spring bar \nso as to increase a range of sizes of the device may be accommodated by \nthe clip. The thicker portions should interact with a top surface of the\n device to force the spring bars to provide a counter pressure to the \ndevice and secure it to the structure. Legs depending from the clip body\n may feature cut-outs to interface securely with the underlying wire \nstructure. Said cut-out may be made to accommodate different sizes of \nwire.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig0.png",
+          "hires": "/images/patents/US-9945545-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig1.png",
+          "hires": "/images/patents/US-9945545-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig2.png",
+          "hires": "/images/patents/US-9945545-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig3.png",
+          "hires": "/images/patents/US-9945545-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig4.png",
+          "hires": "/images/patents/US-9945545-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig5.png",
+          "hires": "/images/patents/US-9945545-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig6.png",
+          "hires": "/images/patents/US-9945545-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-9945545-B2/fig7.png",
+          "hires": "/images/patents/US-9945545-B2/fig7.png",
+          "caption": "Figure 7"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-D811032-S",
+      "title": "Dipstick wiper 6 Electrode control methodology",
+      "publicationDate": "2018-02-20",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dipstick wiper.\n       FIG. 2 is a right elevation of the dipstick wiper.\n       FIG. 3 is a left elevation of the dipstick wiper.\n       FIG. 4 is a rear elevation of the dipstick wiper.\n       FIG. 5 is a front elevation of the dipstick wiper.\n       FIG. 6 is a bottom plan view of the dipstick wiper.\n       FIG. 7 is a top plan view of the dipstick wiper; and,\n       FIG. 8 is an alternate perspective view of the dipstick wiper.\n      The\n broken lines in figures depict unclaimed attachment structure and are \nillustrative of environment and not intended to form a part of the \nclaimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "RUNION, PHILIP"
+    },
+    {
+      "id": "US-D779227-S",
+      "title": "Dog waste bag dispenser 10 Hot (or warm) mix asphalt plants capability of producing up to 100",
+      "publicationDate": "2017-02-21",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dog waste bag dispenser.\n       FIG. 2 is a front elevation thereof.\n       FIG. 3 is a right elevation thereof.\n       FIG. 4 is a rear elevation thereof.\n       FIG. 5 is a left elevation thereof.\n       FIG. 6 is a top plan view thereof.\n       FIG. 7 is a bottom plan view thereof.\n       FIG. 8 is an alternate perspective view thereof.\n       FIG. 9 is an alternate perspective view thereof; and,\n       FIG. 10 is an alternate perspective view thereof.\n      The\n broken line showing of parts of the drawings is included for the \npurpose of illustrating use and environment and forms no part of the \nclaimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-D778083-S",
+      "title": "Dog waste bag dispenser 10 Framing system for steel stud",
+      "publicationDate": "2017-02-07",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dog waste bag dispenser.\n       FIG. 2 is a front elevation thereof.\n       FIG. 3 is a right elevation thereof.\n       FIG. 4 is a rear elevation thereof.\n       FIG. 5 is a left elevation thereof.\n       FIG. 6 is a top plan view thereof.\n       FIG. 7 is a bottom plan view thereof.\n       FIG. 8 is an alternate perspective view thereof.\n       FIG. 9 is an alternate perspective view thereof; and,\n       FIG. 10 is an alternate perspective view thereof.\n      The\n broken line showing of parts of the drawings is included for the \npurpose of illustrating use and environment and forms no part of the \nclaimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-9534371-B2",
+      "title": "framing Framing system for steel stud",
+      "publicationDate": "2017-01-03",
+      "imagePages": 0,
+      "abstract": "The\n present invention is a framing system for resolving vertical and \nhorizontal movements in light gage, cold formed, steel stud framing. It \nutilizes at least one corner hinge and a plurality of pivoting stud \nclips (one for each stud) that accommodate for the deflection of a \nbuilding as it encounters environmental changes. Additional hinges may \nbe placed axially, along the wall and at the top and bottom of the \ncorner for increased flexibility. Two embodiments of stud pivot clips, \none utilizing direct attachment and arcuate slots, the other utilizing a\n pivotable connection plate, are disclosed; as are two hinge \nembodiments.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig0.png",
+          "hires": "/images/patents/US-9534371-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig1.png",
+          "hires": "/images/patents/US-9534371-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig2.png",
+          "hires": "/images/patents/US-9534371-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig3.png",
+          "hires": "/images/patents/US-9534371-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig4.png",
+          "hires": "/images/patents/US-9534371-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig5.png",
+          "hires": "/images/patents/US-9534371-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig6.png",
+          "hires": "/images/patents/US-9534371-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-9534371-B2/fig7.png",
+          "hires": "/images/patents/US-9534371-B2/fig7.png",
+          "caption": "Figure 7"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-9468804-B2",
+      "title": "Push-up bar assembly 18",
+      "publicationDate": "2016-10-18",
+      "imagePages": 0,
+      "abstract": "The\n present invention is a gimbled push-up bar assembly mounted upon a \nrotatable hinge, thereby providing instability in three dimensions for \nwhich a user will have to compensate in use. The bar may be locked into \ntwo dimensions by the use of a lock pin, or may freely move in all three\n dimensions. Handgrips are provided which are bent downwards to provide \nguards for a user's hands when in the free-motion configuration. The bar\n itself is removable from the hinge and stand assembly and may be used \nas a stable push-up bar assembly, resting on the guards.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig0.png",
+          "hires": "/images/patents/US-9468804-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig1.png",
+          "hires": "/images/patents/US-9468804-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig2.png",
+          "hires": "/images/patents/US-9468804-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig3.png",
+          "hires": "/images/patents/US-9468804-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig4.png",
+          "hires": "/images/patents/US-9468804-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig5.png",
+          "hires": "/images/patents/US-9468804-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig6.png",
+          "hires": "/images/patents/US-9468804-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig7.png",
+          "hires": "/images/patents/US-9468804-B2/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig8.png",
+          "hires": "/images/patents/US-9468804-B2/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig9.png",
+          "hires": "/images/patents/US-9468804-B2/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig10.png",
+          "hires": "/images/patents/US-9468804-B2/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig11.png",
+          "hires": "/images/patents/US-9468804-B2/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig12.png",
+          "hires": "/images/patents/US-9468804-B2/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig13.png",
+          "hires": "/images/patents/US-9468804-B2/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-9468804-B2/fig14.png",
+          "hires": "/images/patents/US-9468804-B2/fig14.png",
+          "caption": "Figure 14"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-8567120-B2",
+      "title": "Modular plant support structure 9 Locking jack for a window well",
+      "publicationDate": "2013-10-29",
+      "imagePages": 0,
+      "abstract": "The \npresent invention is a modular support for vine plants and tomato \nplants. It comprises a solid, cylindrical base with holes to accept \nposts and associate tier rings. A cover may also be provided to \ntransform the base into a miniature hot house. Notches may be formed in \nthe rim of the base to accommodate irrigation systems and stake ends may\n be provided for the posts to allow immediate securement of the posts to\n the ground rather than the base. The solid base contains water, mulch \nand other beneficial compounds for the plants and helps block the spread\n of weeds immediately around the plant. As the plant grows, additional \ntiers may be added to the support to increase its size. The parts are \npreferably made of a durable plastic so as to support larger plants and \nincrease longevity of the support.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-8567120-B2/fig0.png",
+          "hires": "/images/patents/US-8567120-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-8567120-B2/fig1.png",
+          "hires": "/images/patents/US-8567120-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-8567120-B2/fig2.png",
+          "hires": "/images/patents/US-8567120-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-8567120-B2/fig4.png",
+          "hires": "/images/patents/US-8567120-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-8567120-B2/fig5.png",
+          "hires": "/images/patents/US-8567120-B2/fig5.png",
+          "caption": "Figure 5"
+        }
+      ],
+      "inventors": [],
+      "assignee": "DAVIS CHRIS D MR"
+    },
+    {
+      "id": "US-8484882-B2",
+      "title": "illumination apparatus",
+      "publicationDate": "2013-07-16",
+      "imagePages": 0,
+      "abstract": "The \npresent invention is a rail mounted back-up sight with at least one, but\n preferred two, illumination apparatuses mounted thereon. The back-up \nsight features a sight housing that is configured to selectively \nalternate between a stowed and a spring-biased deployed position. Any \ntype of illumination apparatus may be used, but the preferred apparatus \nis a flashlight, mounted upon wither side of a sight base. Either a \nfront or a rear sight may be utilized as could different types of \nillumination apparatuses.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig0.png",
+          "hires": "/images/patents/US-8484882-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig1.png",
+          "hires": "/images/patents/US-8484882-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig2.png",
+          "hires": "/images/patents/US-8484882-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig3.png",
+          "hires": "/images/patents/US-8484882-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig4.png",
+          "hires": "/images/patents/US-8484882-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig5.png",
+          "hires": "/images/patents/US-8484882-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-8484882-B2/fig6.png",
+          "hires": "/images/patents/US-8484882-B2/fig6.png",
+          "caption": "Figure 6"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Magpul Industries Corp"
+    },
+    {
+      "id": "US-D662430-S",
+      "title": "probes Gas system for an automatic",
+      "publicationDate": "2012-06-26",
+      "imagePages": 0,
+      "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the calibration fixture for current probes.\n       FIG. 2 is a side elevation of the calibration fixture for current probes of FIG. 1.\n       FIG. 3 is a top plan view of the calibration fixture for current probes of FIG. 1.\n       FIG. 4 is a bottom plan view of the calibration fixture for current probes of FIG. 1.\n       FIG. 5 is a perspective view of the calibration fixture for current probes of FIG. 1, having the upper cover removed; and,\n       FIG. 6 is a sectional view of the calibration fixture for current probes of FIG. 3, taken along line 3-3.\n      The broken lines in FIGS. 1 and 3 depict optional connection structure and the broken lines of FIG. 6 depict unseen internal structure and are illustrative of environment and not intended to form a part of the claimed design.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-8029007-B2",
+      "title": "Stroller passenger assembly 21",
+      "publicationDate": "2011-10-04",
+      "imagePages": 0,
+      "abstract": "The \npresent invention is a passenger assembly for a stroller and is \nadaptable to almost any stroller and is capable of practice in numerous \nembodiments. The preferred embodiment features a chassis mounted \nplatform with adjustable mounting arms. A mounting mechanism is located \nat the terminus of each arm and is attachable and removable from the \nstroller frame with the passenger assembly. A number of potential \nmounting mechanisms are disclosed. An extension handle is provided to \nallow users greater control of the stroller from a distance further than\n normal, as the assembly occupies the position proximate the stroller, \nwhere the user ordinarily stands. Modules are capable of addition to the\n assembly, such as a seat or basket, or a stow strap for securement of \nthe assembly when not in use.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig0.png",
+          "hires": "/images/patents/US-8029007-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig1.png",
+          "hires": "/images/patents/US-8029007-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig2.png",
+          "hires": "/images/patents/US-8029007-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig3.png",
+          "hires": "/images/patents/US-8029007-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig4.png",
+          "hires": "/images/patents/US-8029007-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig5.png",
+          "hires": "/images/patents/US-8029007-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig6.png",
+          "hires": "/images/patents/US-8029007-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig7.png",
+          "hires": "/images/patents/US-8029007-B2/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig8.png",
+          "hires": "/images/patents/US-8029007-B2/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig9.png",
+          "hires": "/images/patents/US-8029007-B2/fig9.png",
+          "caption": "Figure 9"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig10.png",
+          "hires": "/images/patents/US-8029007-B2/fig10.png",
+          "caption": "Figure 10"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig11.png",
+          "hires": "/images/patents/US-8029007-B2/fig11.png",
+          "caption": "Figure 11"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig12.png",
+          "hires": "/images/patents/US-8029007-B2/fig12.png",
+          "caption": "Figure 12"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig13.png",
+          "hires": "/images/patents/US-8029007-B2/fig13.png",
+          "caption": "Figure 13"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig14.png",
+          "hires": "/images/patents/US-8029007-B2/fig14.png",
+          "caption": "Figure 14"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig15.png",
+          "hires": "/images/patents/US-8029007-B2/fig15.png",
+          "caption": "Figure 15"
+        },
+        {
+          "thumbnail": "/images/patents/US-8029007-B2/fig16.png",
+          "hires": "/images/patents/US-8029007-B2/fig16.png",
+          "caption": "Figure 16"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-7619328-B2",
+      "title": "power system Method for noninvasive determination of a distribution of",
+      "publicationDate": "2009-11-17",
+      "imagePages": 0,
+      "abstract": "The \npresent invention relates to a system for coupling a vertically oriented\n electrical device to a wall utilizing an existing electrical recess for\n support and power. The system electrically couples the device to an \nexisting power system while providing a mechanical coupling for support.\n In addition, the system provides for vertical adjustments while \nmaintaining the electrical and mechanical coupling. The system generally\n includes a recess coupling module, a vertical support receptacle, an \nelectrical power system, and at least one electrical device. The \nvertical support receptacle is coupled to the recess coupling module in a\n substantially perpendicular manner. The electrical power system is \nelectrically coupled to the electrical system disposed in the existing \npower recess and distributed across the vertical support receptacle. The\n at least one electrical device is adjustably coupled to the vertical \nsupport receptacle such that it is both mechanically supported and \nelectrically powered.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig0.png",
+          "hires": "/images/patents/US-7619328-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig1.png",
+          "hires": "/images/patents/US-7619328-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig2.png",
+          "hires": "/images/patents/US-7619328-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig3.png",
+          "hires": "/images/patents/US-7619328-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig4.png",
+          "hires": "/images/patents/US-7619328-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig5.png",
+          "hires": "/images/patents/US-7619328-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig6.png",
+          "hires": "/images/patents/US-7619328-B2/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-7619328-B2/fig7.png",
+          "hires": "/images/patents/US-7619328-B2/fig7.png",
+          "caption": "Figure 7"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Jupiter IP LLC"
+    },
+    {
+      "id": "US-7613578-B2",
+      "title": "electrical current and apparatus for the same",
+      "publicationDate": "2009-11-03",
+      "imagePages": 0,
+      "abstract": "A method \nof non-invasive determination of electrical current distribution is \ndisclosed. The method utilizes mathematical calculations on data \nobtained by a probe with non-uniformly wound detection coil. While \nnon-uniform, the coil winding is specific according to a known and \ndetermined function, such as a sinusoidal variation. As a further \nmethod, the probe may rotate about an area of interest and the data then\n may be subjected to a Fourier analysis for further refined results. \nMultiple coils may be used in the probe, each with a different coil \nfunction which could include one uniform coil. Also disclosed is a \nmethod for making the coils necessary in the practice of the method.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig0.png",
+          "hires": "/images/patents/US-7613578-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig1.png",
+          "hires": "/images/patents/US-7613578-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig2.png",
+          "hires": "/images/patents/US-7613578-B2/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig3.png",
+          "hires": "/images/patents/US-7613578-B2/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig4.png",
+          "hires": "/images/patents/US-7613578-B2/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig5.png",
+          "hires": "/images/patents/US-7613578-B2/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-7613578-B2/fig6.png",
+          "hires": "/images/patents/US-7613578-B2/fig6.png",
+          "caption": "Figure 6"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Individual"
+    },
+    {
+      "id": "US-D564927-S",
+      "title": "Component for alarm system 3",
+      "publicationDate": "2008-03-25",
+      "imagePages": 0,
+      "abstract": "HTML file not found for US-D564927-S",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "HTML file not found for US-D564927-S"
+    },
+    {
+      "id": "US-7271420-B2",
+      "title": "multiple colors Method for detecting forensic",
+      "publicationDate": "2007-09-18",
+      "imagePages": 0,
+      "abstract": "A light \nemitting diode chip with red, green and blue light emission regions on a\n single substrate. The light emission regions may be powered selectively\n to only emit one color light at a time. Or all three regions may be \npowered simultaneously so that the LED chip emits white light.",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-7271420-B2/fig0.png",
+          "hires": "/images/patents/US-7271420-B2/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-7271420-B2/fig1.png",
+          "hires": "/images/patents/US-7271420-B2/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-7271420-B2/fig2.png",
+          "hires": "/images/patents/US-7271420-B2/fig2.png",
+          "caption": "Figure 2"
+        }
+      ],
+      "inventors": [],
+      "assignee": "Epistar Corp"
+    },
+    {
+      "id": "US-6725594-B2",
+      "title": "systems",
+      "publicationDate": "2004-04-27",
+      "imagePages": 0,
+      "abstract": "HTML file not found for US-6725594-B2",
+      "featured": false,
+      "images": [
+        {
+          "thumbnail": "/images/patents/placeholder.svg",
+          "hires": "/images/patents/placeholder.svg",
+          "caption": "No image available"
+        }
+      ],
+      "inventors": [],
+      "assignee": "HTML file not found for US-6725594-B2"
     }
   ],
   "subcategories": {
+    "materials": {
+      "id": "materials",
+      "name": "Materials",
+      "patentCount": 6,
+      "patents": [
+        {
+          "id": "US-11350581-B2",
+          "title": "Pollinating machine 20",
+          "publicationDate": "2022-06-07",
+          "imagePages": 0,
+          "abstract": "A pollination machine \n(10) with improved cross-pollination abilities may feature a plurality \nof pollen recirculation chambers with an air circulation manifold (130A,\n 131A, 133A, etc.) connecting them in a manner that air in one chamber \n(30A), together with associated pollen, is removed from the one chamber \nand redirected to a second (30B), and so on until air is returned to the\n first (30A). The chambers' initial roller entrances (118) will serve to\n trip blossoms and release both pistol and pollen but a current in the \nair circulation manifold contains and will deposit foreign pollen grains\n on the plants' stigmas before they are inundated by the blossoms' own \npollen. The air current also collects the plants' pollen and carries it \nto other chambers so that other plants will be cross-pollinated.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig0.png",
+              "hires": "/images/patents/US-11350581-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig1.png",
+              "hires": "/images/patents/US-11350581-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig2.png",
+              "hires": "/images/patents/US-11350581-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig3.png",
+              "hires": "/images/patents/US-11350581-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig4.png",
+              "hires": "/images/patents/US-11350581-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig5.png",
+              "hires": "/images/patents/US-11350581-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig6.png",
+              "hires": "/images/patents/US-11350581-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig7.png",
+              "hires": "/images/patents/US-11350581-B2/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig8.png",
+              "hires": "/images/patents/US-11350581-B2/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig9.png",
+              "hires": "/images/patents/US-11350581-B2/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig10.png",
+              "hires": "/images/patents/US-11350581-B2/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig11.png",
+              "hires": "/images/patents/US-11350581-B2/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig12.png",
+              "hires": "/images/patents/US-11350581-B2/fig12.png",
+              "caption": "Figure 12"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig13.png",
+              "hires": "/images/patents/US-11350581-B2/fig13.png",
+              "caption": "Figure 13"
+            },
+            {
+              "thumbnail": "/images/patents/US-11350581-B2/fig14.png",
+              "hires": "/images/patents/US-11350581-B2/fig14.png",
+              "caption": "Figure 14"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-10316884-B2",
+          "title": "method",
+          "publicationDate": "2019-06-11",
+          "imagePages": 0,
+          "abstract": "An\n algorithm analyzes the motion of an object to determine if a switch \nneeds to be activated or deactivated. Accelerometers measure forces \nexerted upon an object to determine orientation in pitch, roll, and yaw \naxes, and to determine motion of the object. When threshold conditions \nfor these orientations and movements are measured, the method combines \ntaking moving averages of pitch, roll, and yaw, and additionally \naccumulating an integral of yaw to determine if an activation or \ndeactivation condition is met. Should an integral condition not be \nconstantly met while the moving average conditions are being determined,\n the yaw integral counter resets and the whole process must begin again.\n This method balances most unintentional activation conditions with \nactivation latency. Another methodology tracks the motion of a wrist \nflick, similar to casting a fishing line, using acceleration and \ndeceleration parameters.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig0.png",
+              "hires": "/images/patents/US-10316884-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig1.png",
+              "hires": "/images/patents/US-10316884-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig2.png",
+              "hires": "/images/patents/US-10316884-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig3.png",
+              "hires": "/images/patents/US-10316884-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig4.png",
+              "hires": "/images/patents/US-10316884-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig5.png",
+              "hires": "/images/patents/US-10316884-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig6.png",
+              "hires": "/images/patents/US-10316884-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig7.png",
+              "hires": "/images/patents/US-10316884-B2/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig8.png",
+              "hires": "/images/patents/US-10316884-B2/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig9.png",
+              "hires": "/images/patents/US-10316884-B2/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig10.png",
+              "hires": "/images/patents/US-10316884-B2/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig11.png",
+              "hires": "/images/patents/US-10316884-B2/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig12.png",
+              "hires": "/images/patents/US-10316884-B2/fig12.png",
+              "caption": "Figure 12"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig13.png",
+              "hires": "/images/patents/US-10316884-B2/fig13.png",
+              "caption": "Figure 13"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig14.png",
+              "hires": "/images/patents/US-10316884-B2/fig14.png",
+              "caption": "Figure 14"
+            },
+            {
+              "thumbnail": "/images/patents/US-10316884-B2/fig15.png",
+              "hires": "/images/patents/US-10316884-B2/fig15.png",
+              "caption": "Figure 15"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-D843128-S",
+          "title": "Glove dispenser 13 Non-segmented composite",
+          "publicationDate": "2019-03-19",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of a glove dispenser showing my new design.\n       FIG. 2\n is front elevation of the glove dispenser, with the front cover and \nadvertising stand portions removed to show aspects of the design that \nmay not be apparent in the other views.\n       FIG. 3 is a rear elevation of the glove dispenser thereof.\n       FIG. 4 is a side elevation of the glove dispenser thereof, the opposite side being identical\n       FIG. 5 is a bottom plan view of the glove dispenser thereof.\n       FIG. 6 is a top plan view of the glove dispenser thereof.\n       FIG. 7 is a front, left and top perspective view of the glove dispenser thereof.\n       FIG. 8 is a rear, left and top perspective view of the glove dispenser thereof.\n       FIG. 9 is a front, left, and bottom perspective view of the glove dispenser thereof.\n       FIG. 10 is a front, left and top perspective view of the glove dispenser of FIG. 7, showing the first stage of assembly and installation of the advertising stand.\n       FIG. 11 is a front, left and top perspective view of the glove dispenser, showing installation of the front cover; and,\n       FIG. 12 is front elevation of the glove dispenser, with the front cover installed and advertising stand removed.\n      The dashed lines in FIGS. 10 and 11 represent paper inserts and are intended to illustrate environment and are not intended to form a part of the claimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-D811032-S",
+          "title": "Dipstick wiper 6 Electrode control methodology",
+          "publicationDate": "2018-02-20",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dipstick wiper.\n       FIG. 2 is a right elevation of the dipstick wiper.\n       FIG. 3 is a left elevation of the dipstick wiper.\n       FIG. 4 is a rear elevation of the dipstick wiper.\n       FIG. 5 is a front elevation of the dipstick wiper.\n       FIG. 6 is a bottom plan view of the dipstick wiper.\n       FIG. 7 is a top plan view of the dipstick wiper; and,\n       FIG. 8 is an alternate perspective view of the dipstick wiper.\n      The\n broken lines in figures depict unclaimed attachment structure and are \nillustrative of environment and not intended to form a part of the \nclaimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "RUNION, PHILIP"
+        },
+        {
+          "id": "US-8567120-B2",
+          "title": "Modular plant support structure 9 Locking jack for a window well",
+          "publicationDate": "2013-10-29",
+          "imagePages": 0,
+          "abstract": "The \npresent invention is a modular support for vine plants and tomato \nplants. It comprises a solid, cylindrical base with holes to accept \nposts and associate tier rings. A cover may also be provided to \ntransform the base into a miniature hot house. Notches may be formed in \nthe rim of the base to accommodate irrigation systems and stake ends may\n be provided for the posts to allow immediate securement of the posts to\n the ground rather than the base. The solid base contains water, mulch \nand other beneficial compounds for the plants and helps block the spread\n of weeds immediately around the plant. As the plant grows, additional \ntiers may be added to the support to increase its size. The parts are \npreferably made of a durable plastic so as to support larger plants and \nincrease longevity of the support.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-8567120-B2/fig0.png",
+              "hires": "/images/patents/US-8567120-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-8567120-B2/fig1.png",
+              "hires": "/images/patents/US-8567120-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-8567120-B2/fig2.png",
+              "hires": "/images/patents/US-8567120-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-8567120-B2/fig4.png",
+              "hires": "/images/patents/US-8567120-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-8567120-B2/fig5.png",
+              "hires": "/images/patents/US-8567120-B2/fig5.png",
+              "caption": "Figure 5"
+            }
+          ],
+          "inventors": [],
+          "assignee": "DAVIS CHRIS D MR"
+        },
+        {
+          "id": "US-7271420-B2",
+          "title": "multiple colors Method for detecting forensic",
+          "publicationDate": "2007-09-18",
+          "imagePages": 0,
+          "abstract": "A light \nemitting diode chip with red, green and blue light emission regions on a\n single substrate. The light emission regions may be powered selectively\n to only emit one color light at a time. Or all three regions may be \npowered simultaneously so that the LED chip emits white light.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-7271420-B2/fig0.png",
+              "hires": "/images/patents/US-7271420-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-7271420-B2/fig1.png",
+              "hires": "/images/patents/US-7271420-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-7271420-B2/fig2.png",
+              "hires": "/images/patents/US-7271420-B2/fig2.png",
+              "caption": "Figure 2"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Epistar Corp"
+        }
+      ]
+    },
+    "construction": {
+      "id": "construction",
+      "name": "Construction",
+      "patentCount": 5,
+      "patents": [
+        {
+          "id": "US-10050428-B2",
+          "title": "Cord management clip 9 Trim components for lapboard siding that are co-extruded from",
+          "publicationDate": "2018-08-14",
+          "imagePages": 0,
+          "abstract": "A clip is used to \nmanage cords. The clip features a containment sleeve with a portion \nthereof being open, thereby forming a gap for passage into the sleeve, \nand extending outward as two opposing flanges. A cord is passed through \nthe gap so as to reside in the sleeve and the flanges are used to \ninterface with a rigid wire found in the environment of the cord. The \nclip has particular use in wire-constructed merchandizers and other such\n structures and for managing cords to provide power for lighting and \nother display enhancement devices.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig0.png",
+              "hires": "/images/patents/US-10050428-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig1.png",
+              "hires": "/images/patents/US-10050428-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig2.png",
+              "hires": "/images/patents/US-10050428-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig3.png",
+              "hires": "/images/patents/US-10050428-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig4.png",
+              "hires": "/images/patents/US-10050428-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig5.png",
+              "hires": "/images/patents/US-10050428-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10050428-B2/fig6.png",
+              "hires": "/images/patents/US-10050428-B2/fig6.png",
+              "caption": "Figure 6"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-10011995-B2",
+          "title": "apparatus Waterproof side trim system for",
+          "publicationDate": "2018-07-03",
+          "imagePages": 0,
+          "abstract": "A\n system for providing siding to a building is disclosed. The system \nutilizes components which have their own brackets with attachment \nflanges in order to connect directly to an exterior wall of the \nbuilding. The brackets contain their own integrated water control \nsystems, which co-act with those of other components to control and \ndirect water into vertical channels and out from behind the siding \nsystem. These flanges double as self-contained flashing. In all the \nsystem presents a roof-to-foundation siding system that is \nself-contained and fully transitional from one piece to another.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig0.png",
+              "hires": "/images/patents/US-10011995-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig1.png",
+              "hires": "/images/patents/US-10011995-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig2.png",
+              "hires": "/images/patents/US-10011995-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig3.png",
+              "hires": "/images/patents/US-10011995-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig4.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig5.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig6.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig7.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig8.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig9.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig10.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig11.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig12.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig12.png",
+              "caption": "Figure 12"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig13.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig13.png",
+              "caption": "Figure 13"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig14.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig14.png",
+              "caption": "Figure 14"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig15.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig15.png",
+              "caption": "Figure 15"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig16.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig16.png",
+              "caption": "Figure 16"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig17.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig17.png",
+              "caption": "Figure 17"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig18.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig18.png",
+              "caption": "Figure 18"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig19.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig19.png",
+              "caption": "Figure 19"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig20.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig20.png",
+              "caption": "Figure 20"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig21.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig21.png",
+              "caption": "Figure 21"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig22.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig22.png",
+              "caption": "Figure 22"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig23.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig23.png",
+              "caption": "Figure 23"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig24.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig24.png",
+              "caption": "Figure 24"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig25.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig25.png",
+              "caption": "Figure 25"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig26.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig26.png",
+              "caption": "Figure 26"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig27.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig27.png",
+              "caption": "Figure 27"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig28.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig28.png",
+              "caption": "Figure 28"
+            },
+            {
+              "thumbnail": "/images/patents/US-10011995-B2/fig29.png",
+              "hires": "/images/patents/US-10011995-B2/hires/fig29.png",
+              "caption": "Figure 29"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-D778083-S",
+          "title": "Dog waste bag dispenser 10 Framing system for steel stud",
+          "publicationDate": "2017-02-07",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dog waste bag dispenser.\n       FIG. 2 is a front elevation thereof.\n       FIG. 3 is a right elevation thereof.\n       FIG. 4 is a rear elevation thereof.\n       FIG. 5 is a left elevation thereof.\n       FIG. 6 is a top plan view thereof.\n       FIG. 7 is a bottom plan view thereof.\n       FIG. 8 is an alternate perspective view thereof.\n       FIG. 9 is an alternate perspective view thereof; and,\n       FIG. 10 is an alternate perspective view thereof.\n      The\n broken line showing of parts of the drawings is included for the \npurpose of illustrating use and environment and forms no part of the \nclaimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-9534371-B2",
+          "title": "framing Framing system for steel stud",
+          "publicationDate": "2017-01-03",
+          "imagePages": 0,
+          "abstract": "The\n present invention is a framing system for resolving vertical and \nhorizontal movements in light gage, cold formed, steel stud framing. It \nutilizes at least one corner hinge and a plurality of pivoting stud \nclips (one for each stud) that accommodate for the deflection of a \nbuilding as it encounters environmental changes. Additional hinges may \nbe placed axially, along the wall and at the top and bottom of the \ncorner for increased flexibility. Two embodiments of stud pivot clips, \none utilizing direct attachment and arcuate slots, the other utilizing a\n pivotable connection plate, are disclosed; as are two hinge \nembodiments.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig0.png",
+              "hires": "/images/patents/US-9534371-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig1.png",
+              "hires": "/images/patents/US-9534371-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig2.png",
+              "hires": "/images/patents/US-9534371-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig3.png",
+              "hires": "/images/patents/US-9534371-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig4.png",
+              "hires": "/images/patents/US-9534371-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig5.png",
+              "hires": "/images/patents/US-9534371-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig6.png",
+              "hires": "/images/patents/US-9534371-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-9534371-B2/fig7.png",
+              "hires": "/images/patents/US-9534371-B2/fig7.png",
+              "caption": "Figure 7"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-10036160-B2",
+          "title": "framing",
+          "publicationDate": "2018-07-31",
+          "imagePages": 0,
+          "abstract": "The\n present invention is a framing system for resolving vertical and \nhorizontal movements in light gage, cold formed, steel stud framing. It \nutilizes at least one corner hinge and a plurality of pivoting stud \nclips (one for each stud) that accommodate for the deflection of a \nbuilding as it encounters environmental changes. Additional hinges may \nbe placed axially, along the wall and at the top and bottom of the \ncorner for increased flexibility. Two embodiments of stud pivot clips, \none utilizing direct attachment and arcuate slots, the other utilizing a\n pivotable connection plate, are disclosed; as are two hinge \nembodiments.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig0.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig1.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig2.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig3.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig4.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig5.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig6.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-10036160-B2/fig7.png",
+              "hires": "/images/patents/US-10036160-B2/hires/fig7.png",
+              "caption": "Figure 7"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        }
+      ]
+    },
     "assembly": {
       "id": "assembly",
       "name": "Assembly",
-      "patentCount": 2,
+      "patentCount": 19,
       "patents": [
         {
           "id": "US-12243306-B1",
-          "title": "22 one or more threats in crowded areas System and method for",
+          "title": "one or more threats in crowded areas System and method for",
           "publicationDate": "2025-03-04",
           "imagePages": 0,
           "abstract": "The\n present disclosure relates to a system to proactively detect in real \ntime one or more threats in crowded areas. The present disclosure \npresents a proactive system for real-time threat detection in crowded \nareas. Utilizing a network of imaging sensors and advanced machine \nlearning algorithms, the system identifies suspicious individuals, \nobjects, and behavioral patterns within a predefined area. The system \ndetects potential threats such as individuals on watch lists, suspicious\n objects like unattended bags, and abnormal behaviors indicative of \nsecurity risks, by continuously monitoring and analyzing images and \nvideo feeds. Upon detection, the system promptly notifies authorities, \nproviding detailed information on threat location, suspected \nindividuals, and behavioral analysis. Privacy-preserving measures, \nincluding encryption of facial recognition data, ensure compliance with \nprivacy regulations. The present disclosure offers a scalable, \nefficient, and automated solution to enhance security measures, reduce \nresponse times, and safeguard public safety in dynamic urban \nenvironments.",
@@ -131,7 +2110,7 @@
         },
         {
           "id": "US-12090381-B2",
-          "title": "11 practice Systems and methods for indicating the existence of",
+          "title": "practice Systems and methods for indicating the existence of",
           "publicationDate": "2024-09-17",
           "imagePages": 0,
           "abstract": "A head target with may\n feature realistic eye targets and a rearward handle for use in martial \narts practices. The handle may be constructed in a manner to also allow \nthe use of a wall mount with a plurality of support spurs to support the\n head target in a realistic posture in a manner to withstand multiple \nblows from the training individual. A mounting plate, upon which the \nwall mount is positioned, aids in a secure mounting to a wall.",
@@ -171,6 +2150,764 @@
               "thumbnail": "/images/patents/US-12090381-B2/fig6.png",
               "hires": "/images/patents/US-12090381-B2/hires/fig6.png",
               "caption": "Figure 6"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-11967167-B1",
+          "title": "identifying and tagging 8 individuals present in an image System and method for",
+          "publicationDate": "2024-04-23",
+          "imagePages": 0,
+          "abstract": "A\n system and a method for identifying and tagging individuals present in \nan image are disclosed. The method comprises detecting a second device \npresent in proximity of a first device, for establishing a connection. \nThe connection may be established while the first device enters in a \ncamera mode. Immediately after the first device captured an image, the \nfirst device may receive identity information of individual from the \nsecond device. The identity information of individuals may comprise at \nleast one of images and personal details of the individual. Based on the\n received identity information, the first device may identify the \nindividual present in the image. The identified individuals present in \nthe image may be tagged using their corresponding identities. Such \ntagging information may be stored in metadata of the image for a later \nusage.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-11967167-B1/fig0.png",
+              "hires": "/images/patents/US-11967167-B1/hires/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-11967167-B1/fig1.png",
+              "hires": "/images/patents/US-11967167-B1/hires/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-11967167-B1/fig2.png",
+              "hires": "/images/patents/US-11967167-B1/hires/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-11967167-B1/fig3.png",
+              "hires": "/images/patents/US-11967167-B1/hires/fig3.png",
+              "caption": "Figure 3"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-12094235-B2",
+          "title": "identifying and tagging 9 individuals present in an image System and method for",
+          "publicationDate": "2024-09-17",
+          "imagePages": 0,
+          "abstract": "A system and a method \nfor identifying and tagging individuals present in an image are \ndisclosed. The method comprises detecting a second device present in \nproximity of a first device, for establishing a connection. The \nconnection may be established while the first device enters in a camera \nmode. Immediately after the first device captured an image, the first \ndevice may receive identity information of individuals from the second \ndevice. The identity information of individuals may comprise at least \none of images and personal details of the individuals. Based on the \nreceived identity information, the first device may identify the \nindividuals present in the image. The identified individuals present in \nthe image may be tagged using their corresponding identities. Such \ntagging information may be stored in metadata of the image for a later \nusage.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-12094235-B2/fig0.png",
+              "hires": "/images/patents/US-12094235-B2/hires/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-12094235-B2/fig1.png",
+              "hires": "/images/patents/US-12094235-B2/hires/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-12094235-B2/fig2.png",
+              "hires": "/images/patents/US-12094235-B2/hires/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-12094235-B2/fig3.png",
+              "hires": "/images/patents/US-12094235-B2/hires/fig3.png",
+              "caption": "Figure 3"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-11495137-B2",
+          "title": "apparatus",
+          "publicationDate": "2022-11-08",
+          "imagePages": 0,
+          "abstract": "A\n method of teaching keyboard instruments involves placing semi-permanent\n plates on specific keys of the keyboard, providing tactile stimulation \nwhich will develop muscle memory and confidence in playing correct \nnotes. Different textures and colors may be employed to help \ndifferentiate plates and associated keys from others. Placement of \nplates on keys is to be determined by the instructor in consideration of\n the student's needs. Placement may be made on one or multiple keys, \nwhich may include an entire middle octave. Texturing may be a subtle as \nBraille characters or more bold designs and individual shapes of the \nplates may be flat or may be shaped to facilitate hand posture. Colors \nmay be associated with specific notes on the grand staff to provide a \nvisual aid. Finger adornments may also be used to aid in color \ncorrespondence. Plates may be held onto piano keys by utilizing either \nwet or dry adhesives.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig0.png",
+              "hires": "/images/patents/US-11495137-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig1.png",
+              "hires": "/images/patents/US-11495137-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig2.png",
+              "hires": "/images/patents/US-11495137-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig3.png",
+              "hires": "/images/patents/US-11495137-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig4.png",
+              "hires": "/images/patents/US-11495137-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig5.png",
+              "hires": "/images/patents/US-11495137-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig6.png",
+              "hires": "/images/patents/US-11495137-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig7.png",
+              "hires": "/images/patents/US-11495137-B2/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig8.png",
+              "hires": "/images/patents/US-11495137-B2/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig9.png",
+              "hires": "/images/patents/US-11495137-B2/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig10.png",
+              "hires": "/images/patents/US-11495137-B2/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig11.png",
+              "hires": "/images/patents/US-11495137-B2/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-11495137-B2/fig12.png",
+              "hires": "/images/patents/US-11495137-B2/fig12.png",
+              "caption": "Figure 12"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-10533834-B2",
+          "title": "apparatus Ice skate blade bending",
+          "publicationDate": "2020-01-14",
+          "imagePages": 0,
+          "abstract": "A blade measuring \napparatus (21) to measure the radius and bend of skate blades along the \nlongitudinal plane of the skate blade runner features a one-piece frame \n(1), thermally non-conductive handles (5), and adjustable, replaceable, \nand interchangeable magnetic force application components (9, 10) and \nassemblies.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig0.png",
+              "hires": "/images/patents/US-10533834-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig1.png",
+              "hires": "/images/patents/US-10533834-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig2.png",
+              "hires": "/images/patents/US-10533834-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig3.png",
+              "hires": "/images/patents/US-10533834-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig4.png",
+              "hires": "/images/patents/US-10533834-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig5.png",
+              "hires": "/images/patents/US-10533834-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10533834-B2/fig6.png",
+              "hires": "/images/patents/US-10533834-B2/fig6.png",
+              "caption": "Figure 6"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Mayflower Industries LLC"
+        },
+        {
+          "id": "US-D872779-S",
+          "title": "apparatus",
+          "publicationDate": "2020-01-14",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of an ice skate blade bending apparatus.\n       FIG. 2 is an exploded front perspective view thereof.\n       FIG. 3 is a front view thereof.\n       FIG. 4 is a front perspective view thereof.\n       FIG. 5 is another front perspective view thereof; with the lever arm in an alternate position.\n       FIG. 6 is a rear perspective view thereof.\n       FIG. 7 is a rear view thereof.\n       FIG. 8 is another rear perspective view thereof.\n       FIG. 9 is a top view thereof.\n       FIG. 10 is a side view thereof; and,\n       FIG. 11 is the other side view thereof.\n      The\n broken lines showing parts of a speed skate blade are for the purposes \nof showing environmental structure and form no part of the claimed \ndesign.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Mayflower Inductries LLC"
+        },
+        {
+          "id": "US-10456903-B2",
+          "title": "modification system Launch canister to simulate",
+          "publicationDate": "2019-10-29",
+          "imagePages": 0,
+          "abstract": "Tool\n grips and handles may be enhanced by the addition of modular inserts \nwhich compensate for two voids in the human hand. A first insert may \nfill a void in the palm of the hand while a second may fill one by the \nfingers. By filling the voids, a more natural, relaxed, and customizable\n grip may be achieved for almost any handle. Use of a plurality of \ninserts allows for customization according to hand size while the size \nof the inserts also accounts for the size, dimensions, and axes of the \nhandle and tool in general. Meniscus-shaped inserts may be stacked on \none another for optimum effect.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig0.png",
+              "hires": "/images/patents/US-10456903-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig1.png",
+              "hires": "/images/patents/US-10456903-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig2.png",
+              "hires": "/images/patents/US-10456903-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig3.png",
+              "hires": "/images/patents/US-10456903-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig4.png",
+              "hires": "/images/patents/US-10456903-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10456903-B2/fig5.png",
+              "hires": "/images/patents/US-10456903-B2/fig5.png",
+              "caption": "Figure 5"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-D845793-S",
+          "title": "apparatus",
+          "publicationDate": "2019-04-16",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1\n is a perspective view of the front of a fully assembled skate blade \nmeasuring apparatus in accordance with an embodiment of the invention.\n       FIG. 2 is a front elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 3 is a rear elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 4 is a left elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 5 is a right elevation of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n       FIG. 6 is a top view of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention; and,\n       FIG. 7 is a bottom view of a fully assembled skate blade measuring apparatus in accordance with an embodiment of the invention.\n      The broken lines in FIGS. 1 and 6 depict screw heads which are illustrative of environment and not intended to form a part of the claimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Mayflower Inductries LLC"
+        },
+        {
+          "id": "US-10114054-B1",
+          "title": "apparatus",
+          "publicationDate": "2018-10-30",
+          "imagePages": 0,
+          "abstract": "A sensor to measure \ndielectric constant of a medium may have a transmission line acting as a\n probe, and electronic circuit, and cable filter providing to reduce \nsensitivity of the sensor to cable parameters and influences. The sensor\n circuit may use a periodic signal generator to produce a carrier wave, \nwhich stimulates the transmission line, through a complex network \ncoupling element. The complex impedance network forms a voltage divider \nwith the transmission line, wherein the output of the voltage divider \nmay be demodulated with an AM demodulator, such as a thermally \ncompensated peak detector. This demodulated signal would be related to \nthe characteristic impedance of the transmission line, and thus to the \ndielectric constant of the material surrounding the partially inserted \ntransmission line probe. The demodulated signal may be offset, scaled, \nand linearized with a microcontroller containing signal processing \nroutines, linearizing equations, stored calibration constants and look \nup tables.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10114054-B1/fig0.png",
+              "hires": "/images/patents/US-10114054-B1/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10114054-B1/fig1.png",
+              "hires": "/images/patents/US-10114054-B1/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10114054-B1/fig2.png",
+              "hires": "/images/patents/US-10114054-B1/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10114054-B1/fig3.png",
+              "hires": "/images/patents/US-10114054-B1/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10114054-B1/fig10114054.png",
+              "hires": "/images/patents/US-10114054-B1/fig10114054.png",
+              "caption": "Figure 10114054"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-9945545-B2",
+          "title": "Clip 11 Apparatus and algorithm for",
+          "publicationDate": "2018-04-17",
+          "imagePages": 0,
+          "abstract": "A\n clip for attaching a device, such as a lighting strip, to an underlying\n wire structure, such as a merchandizer shelf or peg, may present at \nleast one spring bar as a part of a main clip body. These spring bars \nshould each have a portion thicker than a remainder than the spring bar \nso as to increase a range of sizes of the device may be accommodated by \nthe clip. The thicker portions should interact with a top surface of the\n device to force the spring bars to provide a counter pressure to the \ndevice and secure it to the structure. Legs depending from the clip body\n may feature cut-outs to interface securely with the underlying wire \nstructure. Said cut-out may be made to accommodate different sizes of \nwire.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig0.png",
+              "hires": "/images/patents/US-9945545-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig1.png",
+              "hires": "/images/patents/US-9945545-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig2.png",
+              "hires": "/images/patents/US-9945545-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig3.png",
+              "hires": "/images/patents/US-9945545-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig4.png",
+              "hires": "/images/patents/US-9945545-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig5.png",
+              "hires": "/images/patents/US-9945545-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig6.png",
+              "hires": "/images/patents/US-9945545-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-9945545-B2/fig7.png",
+              "hires": "/images/patents/US-9945545-B2/fig7.png",
+              "caption": "Figure 7"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-9468804-B2",
+          "title": "Push-up bar assembly 18",
+          "publicationDate": "2016-10-18",
+          "imagePages": 0,
+          "abstract": "The\n present invention is a gimbled push-up bar assembly mounted upon a \nrotatable hinge, thereby providing instability in three dimensions for \nwhich a user will have to compensate in use. The bar may be locked into \ntwo dimensions by the use of a lock pin, or may freely move in all three\n dimensions. Handgrips are provided which are bent downwards to provide \nguards for a user's hands when in the free-motion configuration. The bar\n itself is removable from the hinge and stand assembly and may be used \nas a stable push-up bar assembly, resting on the guards.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig0.png",
+              "hires": "/images/patents/US-9468804-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig1.png",
+              "hires": "/images/patents/US-9468804-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig2.png",
+              "hires": "/images/patents/US-9468804-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig3.png",
+              "hires": "/images/patents/US-9468804-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig4.png",
+              "hires": "/images/patents/US-9468804-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig5.png",
+              "hires": "/images/patents/US-9468804-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig6.png",
+              "hires": "/images/patents/US-9468804-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig7.png",
+              "hires": "/images/patents/US-9468804-B2/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig8.png",
+              "hires": "/images/patents/US-9468804-B2/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig9.png",
+              "hires": "/images/patents/US-9468804-B2/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig10.png",
+              "hires": "/images/patents/US-9468804-B2/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig11.png",
+              "hires": "/images/patents/US-9468804-B2/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig12.png",
+              "hires": "/images/patents/US-9468804-B2/fig12.png",
+              "caption": "Figure 12"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig13.png",
+              "hires": "/images/patents/US-9468804-B2/fig13.png",
+              "caption": "Figure 13"
+            },
+            {
+              "thumbnail": "/images/patents/US-9468804-B2/fig14.png",
+              "hires": "/images/patents/US-9468804-B2/fig14.png",
+              "caption": "Figure 14"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-8484882-B2",
+          "title": "illumination apparatus",
+          "publicationDate": "2013-07-16",
+          "imagePages": 0,
+          "abstract": "The \npresent invention is a rail mounted back-up sight with at least one, but\n preferred two, illumination apparatuses mounted thereon. The back-up \nsight features a sight housing that is configured to selectively \nalternate between a stowed and a spring-biased deployed position. Any \ntype of illumination apparatus may be used, but the preferred apparatus \nis a flashlight, mounted upon wither side of a sight base. Either a \nfront or a rear sight may be utilized as could different types of \nillumination apparatuses.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig0.png",
+              "hires": "/images/patents/US-8484882-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig1.png",
+              "hires": "/images/patents/US-8484882-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig2.png",
+              "hires": "/images/patents/US-8484882-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig3.png",
+              "hires": "/images/patents/US-8484882-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig4.png",
+              "hires": "/images/patents/US-8484882-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig5.png",
+              "hires": "/images/patents/US-8484882-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-8484882-B2/fig6.png",
+              "hires": "/images/patents/US-8484882-B2/fig6.png",
+              "caption": "Figure 6"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Magpul Industries Corp"
+        },
+        {
+          "id": "US-D662430-S",
+          "title": "probes Gas system for an automatic",
+          "publicationDate": "2012-06-26",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the calibration fixture for current probes.\n       FIG. 2 is a side elevation of the calibration fixture for current probes of FIG. 1.\n       FIG. 3 is a top plan view of the calibration fixture for current probes of FIG. 1.\n       FIG. 4 is a bottom plan view of the calibration fixture for current probes of FIG. 1.\n       FIG. 5 is a perspective view of the calibration fixture for current probes of FIG. 1, having the upper cover removed; and,\n       FIG. 6 is a sectional view of the calibration fixture for current probes of FIG. 3, taken along line 3-3.\n      The broken lines in FIGS. 1 and 3 depict optional connection structure and the broken lines of FIG. 6 depict unseen internal structure and are illustrative of environment and not intended to form a part of the claimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-8029007-B2",
+          "title": "Stroller passenger assembly 21",
+          "publicationDate": "2011-10-04",
+          "imagePages": 0,
+          "abstract": "The \npresent invention is a passenger assembly for a stroller and is \nadaptable to almost any stroller and is capable of practice in numerous \nembodiments. The preferred embodiment features a chassis mounted \nplatform with adjustable mounting arms. A mounting mechanism is located \nat the terminus of each arm and is attachable and removable from the \nstroller frame with the passenger assembly. A number of potential \nmounting mechanisms are disclosed. An extension handle is provided to \nallow users greater control of the stroller from a distance further than\n normal, as the assembly occupies the position proximate the stroller, \nwhere the user ordinarily stands. Modules are capable of addition to the\n assembly, such as a seat or basket, or a stow strap for securement of \nthe assembly when not in use.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig0.png",
+              "hires": "/images/patents/US-8029007-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig1.png",
+              "hires": "/images/patents/US-8029007-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig2.png",
+              "hires": "/images/patents/US-8029007-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig3.png",
+              "hires": "/images/patents/US-8029007-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig4.png",
+              "hires": "/images/patents/US-8029007-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig5.png",
+              "hires": "/images/patents/US-8029007-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig6.png",
+              "hires": "/images/patents/US-8029007-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig7.png",
+              "hires": "/images/patents/US-8029007-B2/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig8.png",
+              "hires": "/images/patents/US-8029007-B2/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig9.png",
+              "hires": "/images/patents/US-8029007-B2/fig9.png",
+              "caption": "Figure 9"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig10.png",
+              "hires": "/images/patents/US-8029007-B2/fig10.png",
+              "caption": "Figure 10"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig11.png",
+              "hires": "/images/patents/US-8029007-B2/fig11.png",
+              "caption": "Figure 11"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig12.png",
+              "hires": "/images/patents/US-8029007-B2/fig12.png",
+              "caption": "Figure 12"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig13.png",
+              "hires": "/images/patents/US-8029007-B2/fig13.png",
+              "caption": "Figure 13"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig14.png",
+              "hires": "/images/patents/US-8029007-B2/fig14.png",
+              "caption": "Figure 14"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig15.png",
+              "hires": "/images/patents/US-8029007-B2/fig15.png",
+              "caption": "Figure 15"
+            },
+            {
+              "thumbnail": "/images/patents/US-8029007-B2/fig16.png",
+              "hires": "/images/patents/US-8029007-B2/fig16.png",
+              "caption": "Figure 16"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-7619328-B2",
+          "title": "power system Method for noninvasive determination of a distribution of",
+          "publicationDate": "2009-11-17",
+          "imagePages": 0,
+          "abstract": "The \npresent invention relates to a system for coupling a vertically oriented\n electrical device to a wall utilizing an existing electrical recess for\n support and power. The system electrically couples the device to an \nexisting power system while providing a mechanical coupling for support.\n In addition, the system provides for vertical adjustments while \nmaintaining the electrical and mechanical coupling. The system generally\n includes a recess coupling module, a vertical support receptacle, an \nelectrical power system, and at least one electrical device. The \nvertical support receptacle is coupled to the recess coupling module in a\n substantially perpendicular manner. The electrical power system is \nelectrically coupled to the electrical system disposed in the existing \npower recess and distributed across the vertical support receptacle. The\n at least one electrical device is adjustably coupled to the vertical \nsupport receptacle such that it is both mechanically supported and \nelectrically powered.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig0.png",
+              "hires": "/images/patents/US-7619328-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig1.png",
+              "hires": "/images/patents/US-7619328-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig2.png",
+              "hires": "/images/patents/US-7619328-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig3.png",
+              "hires": "/images/patents/US-7619328-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig4.png",
+              "hires": "/images/patents/US-7619328-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig5.png",
+              "hires": "/images/patents/US-7619328-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig6.png",
+              "hires": "/images/patents/US-7619328-B2/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-7619328-B2/fig7.png",
+              "hires": "/images/patents/US-7619328-B2/fig7.png",
+              "caption": "Figure 7"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Jupiter IP LLC"
+        },
+        {
+          "id": "US-7613578-B2",
+          "title": "electrical current and apparatus for the same",
+          "publicationDate": "2009-11-03",
+          "imagePages": 0,
+          "abstract": "A method \nof non-invasive determination of electrical current distribution is \ndisclosed. The method utilizes mathematical calculations on data \nobtained by a probe with non-uniformly wound detection coil. While \nnon-uniform, the coil winding is specific according to a known and \ndetermined function, such as a sinusoidal variation. As a further \nmethod, the probe may rotate about an area of interest and the data then\n may be subjected to a Fourier analysis for further refined results. \nMultiple coils may be used in the probe, each with a different coil \nfunction which could include one uniform coil. Also disclosed is a \nmethod for making the coils necessary in the practice of the method.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig0.png",
+              "hires": "/images/patents/US-7613578-B2/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig1.png",
+              "hires": "/images/patents/US-7613578-B2/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig2.png",
+              "hires": "/images/patents/US-7613578-B2/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig3.png",
+              "hires": "/images/patents/US-7613578-B2/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig4.png",
+              "hires": "/images/patents/US-7613578-B2/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig5.png",
+              "hires": "/images/patents/US-7613578-B2/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-7613578-B2/fig6.png",
+              "hires": "/images/patents/US-7613578-B2/fig6.png",
+              "caption": "Figure 6"
+            }
+          ],
+          "inventors": [],
+          "assignee": "Individual"
+        },
+        {
+          "id": "US-D564927-S",
+          "title": "Component for alarm system 3",
+          "publicationDate": "2008-03-25",
+          "imagePages": 0,
+          "abstract": "HTML file not found for US-D564927-S",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "HTML file not found for US-D564927-S"
+        },
+        {
+          "id": "US-6725594-B2",
+          "title": "systems",
+          "publicationDate": "2004-04-27",
+          "imagePages": 0,
+          "abstract": "HTML file not found for US-6725594-B2",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
+            }
+          ],
+          "inventors": [],
+          "assignee": "HTML file not found for US-6725594-B2"
+        }
+      ]
+    },
+    "processing": {
+      "id": "processing",
+      "name": "Processing",
+      "patentCount": 1,
+      "patents": [
+        {
+          "id": "US-D779227-S",
+          "title": "Dog waste bag dispenser 10 Hot (or warm) mix asphalt plants capability of producing up to 100",
+          "publicationDate": "2017-02-21",
+          "imagePages": 0,
+          "abstract": "Description\n              \n                translated from \n              \n            \n            \n\n\n  \n\n\n\n  \n    \n    \n       FIG. 1 is a perspective view of the dog waste bag dispenser.\n       FIG. 2 is a front elevation thereof.\n       FIG. 3 is a right elevation thereof.\n       FIG. 4 is a rear elevation thereof.\n       FIG. 5 is a left elevation thereof.\n       FIG. 6 is a top plan view thereof.\n       FIG. 7 is a bottom plan view thereof.\n       FIG. 8 is an alternate perspective view thereof.\n       FIG. 9 is an alternate perspective view thereof; and,\n       FIG. 10 is an alternate perspective view thereof.\n      The\n broken line showing of parts of the drawings is included for the \npurpose of illustrating use and environment and forms no part of the \nclaimed design.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/placeholder.svg",
+              "hires": "/images/patents/placeholder.svg",
+              "caption": "No image available"
             }
           ],
           "inventors": [],
