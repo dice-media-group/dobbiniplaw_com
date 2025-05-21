@@ -14,13 +14,15 @@
           "hires": "/images/patents/placeholder.svg",
           "caption": "No image available"
         }
-      ]
+      ],
+      "inventors": [],
+      "assignee": "HTML file not found for US-6434874-B1"
     }
   ],
   "subcategories": {
     "games": {
       "id": "games",
-      "name": "Sporting Games",
+      "name": "Games",
       "patentCount": 1,
       "patents": [
         {
@@ -36,7 +38,9 @@
               "hires": "/images/patents/placeholder.svg",
               "caption": "No image available"
             }
-          ]
+          ],
+          "inventors": [],
+          "assignee": "HTML file not found for US-6434874-B1"
         }
       ]
     }

@@ -14,7 +14,9 @@
           "hires": "/images/patents/placeholder.svg",
           "caption": "No image available"
         }
-      ]
+      ],
+      "inventors": [],
+      "assignee": "HTML file not found for US-12246105-B2"
     },
     {
       "id": "US-12076202-B2",
@@ -49,7 +51,11 @@
           "hires": "/images/patents/US-12076202-B2/fig4.png",
           "caption": "Figure 4"
         }
-      ]
+      ],
+      "inventors": [
+        "Densen B. Cao"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11896729-B2",
@@ -79,7 +85,11 @@
           "hires": "/images/patents/US-11896729-B2/fig3.png",
           "caption": "Figure 3"
         }
-      ]
+      ],
+      "inventors": [
+        "Densen Cao"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11826445-B2",
@@ -119,7 +129,11 @@
           "hires": "/images/patents/US-11826445-B2/fig6.png",
           "caption": "Figure 6"
         }
-      ]
+      ],
+      "inventors": [
+        "Steven D. Jensen"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11826444-B2",
@@ -159,7 +173,11 @@
           "hires": "/images/patents/US-11826444-B2/fig6.png",
           "caption": "Figure 6"
         }
-      ]
+      ],
+      "inventors": [
+        "Steven D. Jensen"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11793617-B2",
@@ -194,7 +212,11 @@
           "hires": "/images/patents/US-11793617-B2/fig4.png",
           "caption": "Figure 4"
         }
-      ]
+      ],
+      "inventors": [
+        "Densen B. Cao"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11622835-B1",
@@ -219,7 +241,11 @@
           "hires": "/images/patents/US-11622835-B1/fig2.png",
           "caption": "Figure 2"
         }
-      ]
+      ],
+      "inventors": [
+        "Steven D. Jensen"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11219582-B2",
@@ -259,11 +285,15 @@
           "hires": "/images/patents/US-11219582-B2/fig6.png",
           "caption": "Figure 6"
         }
-      ]
+      ],
+      "inventors": [
+        "Steven D. Jensen"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-11033945-B2",
-      "title": "19 apparatus Operatory lights and",
+      "title": "apparatus Operatory lights and",
       "publicationDate": "2021-06-15",
       "imagePages": 0,
       "abstract": "A skate blade bending apparatus (35) may feature a unitary body (1) with a securement structure (10, 15) which holds a skate blade on its side, parallel to the ground, and a means for exerting downward force (8) on the side of the skate blade. The securement structure may feature movable anvils 15 which will change the imparted radius of curvature imparted upon the blade. Indicia (29) may be utilized to position said anvils (15) to ensure the process is repeatable on different blades. A handle (14) used with the means for exerting downward force (8) may be adjustable. The means for exerting downward force (8) and anvils (15) may be interchangeable with other shapes of similar structures for greater versatility.",
@@ -329,7 +359,11 @@
           "hires": "/images/patents/US-11033945-B2/fig11.png",
           "caption": "Figure 11"
         }
-      ]
+      ],
+      "inventors": [
+        "Thomas Di Nardo"
+      ],
+      "assignee": "Mayflower Industries LLC"
     },
     {
       "id": "US-11022296-B2",
@@ -409,11 +443,15 @@
           "hires": "/images/patents/US-11022296-B2/fig13.png",
           "caption": "Figure 13"
         }
-      ]
+      ],
+      "inventors": [
+        "Zhaohui Lin"
+      ],
+      "assignee": "Cao Group Inc"
     },
     {
       "id": "US-10932986-B2",
-      "title": "18 recovery device",
+      "title": "recovery device",
       "publicationDate": "2021-03-02",
       "imagePages": 0,
       "abstract": "A portable massage \ntable and recovery device features a support table and independent \nmassage head mounted within a slot in said support table. Both massage \nhead and support table are supported upon the ground and the support \ntable is capable of independent rolling motion in-line with the massage \nhead. The massage head has varying levels of resistance and an \narticulable massage structure. Side rolling wheels may be used to \nmaintain the in-line relationship of the massage head and support table.",
@@ -489,7 +527,11 @@
           "hires": "/images/patents/US-10932986-B2/fig13.png",
           "caption": "Figure 13"
         }
-      ]
+      ],
+      "inventors": [
+        "Dustin J Bouch"
+      ],
+      "assignee": "Individual"
     },
     {
       "id": "US-10695259-B2",
@@ -599,7 +641,11 @@
           "hires": "/images/patents/US-10695259-B2/fig19.png",
           "caption": "Figure 19"
         }
-      ]
+      ],
+      "inventors": [
+        "Dustin J Bouch"
+      ],
+      "assignee": "Individual"
     },
     {
       "id": "US-8961554-B2",
@@ -639,13 +685,17 @@
           "hires": "/images/patents/US-8961554-B2/fig5.png",
           "caption": "Figure 5"
         }
-      ]
+      ],
+      "inventors": [
+        "Seth J. Bettis"
+      ],
+      "assignee": "Individual"
     }
   ],
   "subcategories": {
     "dental": {
       "id": "dental",
-      "name": "Dental Equipment",
+      "name": "Dental",
       "patentCount": 7,
       "patents": [
         {
@@ -681,7 +731,11 @@
               "hires": "/images/patents/US-11793617-B2/fig4.png",
               "caption": "Figure 4"
             }
-          ]
+          ],
+          "inventors": [
+            "Densen B. Cao"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-12076202-B2",
@@ -716,7 +770,11 @@
               "hires": "/images/patents/US-12076202-B2/fig4.png",
               "caption": "Figure 4"
             }
-          ]
+          ],
+          "inventors": [
+            "Densen B. Cao"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-11622835-B1",
@@ -741,7 +799,11 @@
               "hires": "/images/patents/US-11622835-B1/fig2.png",
               "caption": "Figure 2"
             }
-          ]
+          ],
+          "inventors": [
+            "Steven D. Jensen"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-11219582-B2",
@@ -781,7 +843,11 @@
               "hires": "/images/patents/US-11219582-B2/fig6.png",
               "caption": "Figure 6"
             }
-          ]
+          ],
+          "inventors": [
+            "Steven D. Jensen"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-11826445-B2",
@@ -821,7 +887,11 @@
               "hires": "/images/patents/US-11826445-B2/fig6.png",
               "caption": "Figure 6"
             }
-          ]
+          ],
+          "inventors": [
+            "Steven D. Jensen"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-11826444-B2",
@@ -861,11 +931,15 @@
               "hires": "/images/patents/US-11826444-B2/fig6.png",
               "caption": "Figure 6"
             }
-          ]
+          ],
+          "inventors": [
+            "Steven D. Jensen"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-11033945-B2",
-          "title": "19 apparatus Operatory lights and",
+          "title": "apparatus Operatory lights and",
           "publicationDate": "2021-06-15",
           "imagePages": 0,
           "abstract": "A skate blade bending apparatus (35) may feature a unitary body (1) with a securement structure (10, 15) which holds a skate blade on its side, parallel to the ground, and a means for exerting downward force (8) on the side of the skate blade. The securement structure may feature movable anvils 15 which will change the imparted radius of curvature imparted upon the blade. Indicia (29) may be utilized to position said anvils (15) to ensure the process is repeatable on different blades. A handle (14) used with the means for exerting downward force (8) may be adjustable. The means for exerting downward force (8) and anvils (15) may be interchangeable with other shapes of similar structures for greater versatility.",
@@ -931,13 +1005,17 @@
               "hires": "/images/patents/US-11033945-B2/fig11.png",
               "caption": "Figure 11"
             }
-          ]
+          ],
+          "inventors": [
+            "Thomas Di Nardo"
+          ],
+          "assignee": "Mayflower Industries LLC"
         }
       ]
     },
     "therapy": {
       "id": "therapy",
-      "name": "Therapeutic Devices",
+      "name": "Therapy",
       "patentCount": 3,
       "patents": [
         {
@@ -1018,11 +1096,15 @@
               "hires": "/images/patents/US-11022296-B2/fig13.png",
               "caption": "Figure 13"
             }
-          ]
+          ],
+          "inventors": [
+            "Zhaohui Lin"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-10932986-B2",
-          "title": "18 recovery device",
+          "title": "recovery device",
           "publicationDate": "2021-03-02",
           "imagePages": 0,
           "abstract": "A portable massage \ntable and recovery device features a support table and independent \nmassage head mounted within a slot in said support table. Both massage \nhead and support table are supported upon the ground and the support \ntable is capable of independent rolling motion in-line with the massage \nhead. The massage head has varying levels of resistance and an \narticulable massage structure. Side rolling wheels may be used to \nmaintain the in-line relationship of the massage head and support table.",
@@ -1098,7 +1180,11 @@
               "hires": "/images/patents/US-10932986-B2/fig13.png",
               "caption": "Figure 13"
             }
-          ]
+          ],
+          "inventors": [
+            "Dustin J Bouch"
+          ],
+          "assignee": "Individual"
         },
         {
           "id": "US-10695259-B2",
@@ -1208,13 +1294,17 @@
               "hires": "/images/patents/US-10695259-B2/fig19.png",
               "caption": "Figure 19"
             }
-          ]
+          ],
+          "inventors": [
+            "Dustin J Bouch"
+          ],
+          "assignee": "Individual"
         }
       ]
     },
     "sanitization": {
       "id": "sanitization",
-      "name": "Sanitization & Cleaning",
+      "name": "Sanitization",
       "patentCount": 2,
       "patents": [
         {
@@ -1245,7 +1335,11 @@
               "hires": "/images/patents/US-11896729-B2/fig3.png",
               "caption": "Figure 3"
             }
-          ]
+          ],
+          "inventors": [
+            "Densen Cao"
+          ],
+          "assignee": "Cao Group Inc"
         },
         {
           "id": "US-12246105-B2",
@@ -1260,13 +1354,15 @@
               "hires": "/images/patents/placeholder.svg",
               "caption": "No image available"
             }
-          ]
+          ],
+          "inventors": [],
+          "assignee": "HTML file not found for US-12246105-B2"
         }
       ]
     },
     "surgical": {
       "id": "surgical",
-      "name": "Surgical Tools",
+      "name": "Surgical",
       "patentCount": 1,
       "patents": [
         {
@@ -1307,7 +1403,11 @@
               "hires": "/images/patents/US-8961554-B2/fig5.png",
               "caption": "Figure 5"
             }
-          ]
+          ],
+          "inventors": [
+            "Seth J. Bettis"
+          ],
+          "assignee": "Individual"
         }
       ]
     }

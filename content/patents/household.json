@@ -3,7 +3,7 @@
   "patents": [
     {
       "id": "US-10023078-B2",
-      "title": "15 safety seat Temperature compensated transmission line based liquid",
+      "title": "safety seat Temperature compensated transmission line based liquid",
       "publicationDate": "2018-07-17",
       "imagePages": 0,
       "abstract": "The invention provides\n a seatbelt threader device with a sheath receiving at least one or both\n of the lap and shoulder straps of a seatbelt therein, and a male \ncomponent of a seatbelt buckle at a distal end thereof, so that the male\n component can be inserted through the slot of the child safety seat.",
@@ -59,18 +59,22 @@
           "hires": "/images/patents/US-10023078-B2/fig9.png",
           "caption": "Figure 9"
         }
-      ]
+      ],
+      "inventors": [
+        "Matthew A. Kitt"
+      ],
+      "assignee": "Individual"
     }
   ],
   "subcategories": {
     "furniture": {
       "id": "furniture",
-      "name": "Furniture & Fixtures",
+      "name": "Furniture",
       "patentCount": 1,
       "patents": [
         {
           "id": "US-10023078-B2",
-          "title": "15 safety seat Temperature compensated transmission line based liquid",
+          "title": "safety seat Temperature compensated transmission line based liquid",
           "publicationDate": "2018-07-17",
           "imagePages": 0,
           "abstract": "The invention provides\n a seatbelt threader device with a sheath receiving at least one or both\n of the lap and shoulder straps of a seatbelt therein, and a male \ncomponent of a seatbelt buckle at a distal end thereof, so that the male\n component can be inserted through the slot of the child safety seat.",
@@ -126,7 +130,11 @@
               "hires": "/images/patents/US-10023078-B2/fig9.png",
               "caption": "Figure 9"
             }
-          ]
+          ],
+          "inventors": [
+            "Matthew A. Kitt"
+          ],
+          "assignee": "Individual"
         }
       ]
     }
