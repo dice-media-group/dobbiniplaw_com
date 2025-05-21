@@ -180,39 +180,160 @@ export class MetadataExtractor {
     console.log('Extracting inventors');
     const inventors = [];
     
-    // Look for a.link with href starting with "/?inventor="
-    $('a.link[href^="/?inventor="]').each(function() {
-      const inventor = $(this).text().trim();
-      if (inventor) {
-        inventors.push(inventor);
-        console.log(`Found inventor: ${inventor}`);
+    // Debug information - print all 'dt' and 'th' elements to see available labels
+    console.log('Available labels in document:');
+    $('dt, th').each(function() {
+      const labelText = $(this).text().trim();
+      if (labelText) {
+        console.log(`  - Label: "${labelText}"`);
       }
     });
     
-    // Alternative method if no inventors found
+    // Method 1: Look for the Google Patents structure - find lines with "Inventor :" format
+    // These are often in <dl> lists with dt/dd pairs
+    $('dl').each(function() {
+      $(this).find('dt').each(function() {
+        const label = $(this).text().trim();
+        if (label === 'Inventor' || label === 'Inventors') {
+          console.log(`Found inventor label: "${label}"`);
+          const ddElement = $(this).next('dd');
+          if (ddElement.length > 0) {
+            const inventorText = ddElement.text().trim();
+            console.log(`Found inventor text: "${inventorText}"`);
+            if (inventorText) {
+              const names = inventorText.split(/[,;]/).map(name => name.trim());
+              names.forEach(name => {
+                if (name && !inventors.includes(name)) {
+                  inventors.push(name);
+                  console.log(`Added inventor from dt/dd: ${name}`);
+                }
+              });
+            }
+          }
+        }
+      });
+    });
+    
+    // Method 2: Look for table structures - often used in newer Google Patents pages
+    $('table, .table').each(function() {
+      $(this).find('tr').each(function() {
+        const thElement = $(this).find('th, .th').first();
+        const tdElement = $(this).find('td, .td').first();
+        
+        if (thElement.length > 0 && tdElement.length > 0) {
+          const label = thElement.text().trim();
+          if (label === 'Inventor' || label === 'Inventors') {
+            console.log(`Found inventor label in table: "${label}"`);
+            const inventorText = tdElement.text().trim();
+            console.log(`Found inventor text in table: "${inventorText}"`);
+            if (inventorText) {
+              const names = inventorText.split(/[,;]/).map(name => name.trim());
+              names.forEach(name => {
+                if (name && !inventors.includes(name)) {
+                  inventors.push(name);
+                  console.log(`Added inventor from table: ${name}`);
+                }
+              });
+            }
+          }
+        }
+      });
+    });
+    
+    // Method 3: Look for 'Info' section structure used in some Google Patents pages
+    $('.info, section#info').each(function() {
+      const infoText = $(this).text();
+      const inventorMatch = infoText.match(/Inventor[s]?\s*:\s*([^:]+?)(?=\n|$|:|Assignee)/i);
+      if (inventorMatch && inventorMatch[1]) {
+        console.log(`Found inventor section text: "${inventorMatch[1].trim()}"`);
+        const names = inventorMatch[1].trim().split(/[,;]/).map(name => name.trim());
+        names.forEach(name => {
+          if (name && !inventors.includes(name)) {
+            inventors.push(name);
+            console.log(`Added inventor from info section: ${name}`);
+          }
+        });
+      }
+    });
+    
+    // Method 4: Search for inventor links - common in Google Patents
+    $('a[href*="inventor"]').each(function() {
+      const inventorName = $(this).text().trim();
+      if (inventorName && !inventors.includes(inventorName)) {
+        inventors.push(inventorName);
+        console.log(`Added inventor from inventor link: ${inventorName}`);
+      }
+    });
+    
+    // Method 5: Generic text search - Look for "Inventor: Name" pattern in entire document
     if (inventors.length === 0) {
-      console.log('Trying alternative methods to find inventors');
-      
-      // Try looking for inventor section or label
-      $('section').each(function() {
+      const fullText = $('body').text();
+      // Using a more flexible pattern that looks for "Inventor:" or "Inventors:" followed by text
+      // up to another label (like "Assignee:") or end of line
+      const inventorPattern = /Inventor[s]?\s*:\s*([^:]+?)(?=\n|$|:|Assignee|Priority|Application|Publication)/i;
+      const match = fullText.match(inventorPattern);
+      if (match && match[1]) {
+        console.log(`Found inventor using text pattern: "${match[1].trim()}"`);
+        const names = match[1].trim().split(/[,;]/).map(name => name.trim());
+        names.forEach(name => {
+          if (name && !inventors.includes(name)) {
+            inventors.push(name);
+            console.log(`Added inventor from text pattern: ${name}`);
+          }
+        });
+      }
+    }
+    
+    // Method 6: Last resort - create a simpler pattern just looking for 'Inventor' followed by a name
+    if (inventors.length === 0) {
+      $('.info, section#info, section').each(function() {
         const text = $(this).text();
         if (text.includes('Inventor:') || text.includes('Inventors:')) {
-          const inventorText = text.split(/Inventor[s]?:/)[1]?.trim();
-          if (inventorText) {
-            // Split by commas or semicolons if multiple inventors
-            const inventorNames = inventorText.split(/[,;]/).map(name => name.trim());
-            inventorNames.forEach(name => {
-              if (name && !name.includes('Assignee')) {
-                inventors.push(name);
-                console.log(`Found inventor using section text: ${name}`);
+          // Extract content after "Inventor:" or "Inventors:"
+          const lines = text.split('\n');
+          for (let i = 0; i < lines.length; i++) {
+            if (lines[i].includes('Inventor:') || lines[i].includes('Inventors:')) {
+              // Try to extract from the same line
+              let inventorLine = lines[i].split(/Inventor[s]?:/)[1]?.trim();
+              
+              // If empty, try the next line
+              if (!inventorLine && i < lines.length - 1) {
+                inventorLine = lines[i + 1].trim();
               }
-            });
+              
+              if (inventorLine) {
+                // Stop at known section markers or punctuation
+                inventorLine = inventorLine.split(/Authority:|Priority|Filing date|Publication|Assignee|:/)[0].trim();
+                console.log(`Found inventor line: "${inventorLine}"`);
+                
+                const names = inventorLine.split(/[,;]/).map(name => name.trim());
+                names.forEach(name => {
+                  if (name && !inventors.includes(name)) {
+                    inventors.push(name);
+                    console.log(`Added inventor from line search: ${name}`);
+                  }
+                });
+                break;
+              }
+            }
           }
         }
       });
     }
     
-    return inventors;
+    // Clean up any inventors with parenthetical text
+    const cleanedInventors = inventors.map(inventor => 
+      inventor.replace(/\([^)]*\)/g, '').trim() // Remove parenthetical content
+    );
+    
+    // Log results
+    if (cleanedInventors.length > 0) {
+      console.log(`Found ${cleanedInventors.length} inventors: ${cleanedInventors.join(', ')}`);
+    } else {
+      console.log(`No inventors found for ${patentId}`);
+    }
+    
+    return cleanedInventors;
   }
 
   /**
@@ -225,56 +346,101 @@ export class MetadataExtractor {
     console.log('Extracting assignee');
     let assignee = '';
     
-    // Look for span with "Current Assignee" text
-    const assigneeWarning = $('span.tooltip-hint#assigneeWarning:contains("Current Assignee")');
-    if (assigneeWarning.length > 0) {
-      console.log('Found assignee warning span');
+    // Google Patents Format: Look for "Current Assignee" or "Original Assignee" in the info section
+    // This is the most common case for Google Patents HTML
+    $('dt, .th').each(function() {
+      let labelText = $(this).text().trim();
       
-      // Try different approaches to find the assignee element based on common HTML structures
-      
-      // First try: check the next element or sibling
-      let assigneeElement = assigneeWarning.parent().next();
-      if (assigneeElement.length > 0 && assigneeElement.text().trim()) {
-        assignee = assigneeElement.text().trim();
-        console.log(`Found assignee in next element: ${assignee}`);
-      } 
-      // Second try: look for links near the assignee warning
-      else {
-        const nearbyLink = assigneeWarning.parent().parent().find('a.link').first();
-        if (nearbyLink.length > 0) {
-          assignee = nearbyLink.text().trim();
-          console.log(`Found assignee in nearby link: ${assignee}`);
+      // We prioritize Current Assignee, but fall back to Original Assignee
+      if (labelText.includes('Current Assignee') || 
+          (!assignee && labelText.includes('Original Assignee'))) {
+        
+        const assigneeElement = $(this).next('dd, .td');
+        if (assigneeElement.length > 0) {
+          const text = assigneeElement.text().trim();
+          // Remove any explanatory text that might be in parentheses
+          const cleanedText = text.replace(/\([^)]*\)/g, '').trim();
+          
+          if (cleanedText) {
+            assignee = cleanedText;
+            console.log(`Found assignee using Google Patents format: ${assignee}`);
+            
+            // If we found a Current Assignee, we can stop searching
+            if (labelText.includes('Current Assignee')) {
+              return false; // Break the each loop
+            }
+          }
         }
-        // Third try: look in nearby spans
+      }
+    });
+    
+    // Look for span with "Current Assignee" text (older method)
+    if (!assignee) {
+      const assigneeWarning = $('span.tooltip-hint#assigneeWarning:contains("Current Assignee")');
+      if (assigneeWarning.length > 0) {
+        console.log('Found assignee warning span');
+        
+        // Try different approaches to find the assignee element based on common HTML structures
+        
+        // First try: check the next element or sibling
+        let assigneeElement = assigneeWarning.parent().next();
+        if (assigneeElement.length > 0 && assigneeElement.text().trim()) {
+          assignee = assigneeElement.text().trim();
+          console.log(`Found assignee in next element: ${assignee}`);
+        } 
+        // Second try: look for links near the assignee warning
         else {
-          const nearbySpan = assigneeWarning.parent().parent().find('span:not(.tooltip-hint)').first();
-          if (nearbySpan.length > 0) {
-            assignee = nearbySpan.text().trim();
-            console.log(`Found assignee in nearby span: ${assignee}`);
-          } else {
-            assignee = `Assignee not found for ${patentId}`;
+          const nearbyLink = assigneeWarning.parent().parent().find('a.link').first();
+          if (nearbyLink.length > 0) {
+            assignee = nearbyLink.text().trim();
+            console.log(`Found assignee in nearby link: ${assignee}`);
+          }
+          // Third try: look in nearby spans
+          else {
+            const nearbySpan = assigneeWarning.parent().parent().find('span:not(.tooltip-hint)').first();
+            if (nearbySpan.length > 0) {
+              assignee = nearbySpan.text().trim();
+              console.log(`Found assignee in nearby span: ${assignee}`);
+            }
           }
         }
       }
-    } else {
-      console.log('No assignee warning span found, trying alternative methods');
+    }
+    
+    // Alternative method - look for text patterns
+    if (!assignee) {
+      console.log('Trying alternative methods to find assignee');
       
-      // Alternative method: look for text containing "Assignee" or "Assigned to"
-      $('section').each(function() {
-        const text = $(this).text();
-        if (text.includes('Assignee:') || text.includes('Assigned to:')) {
-          const assigneeText = text.split(/Assignee:|Assigned to:/)[1]?.trim().split('\n')[0].trim();
-          if (assigneeText) {
-            assignee = assigneeText;
-            console.log(`Found assignee using section text: ${assignee}`);
-            return false; // break the each loop
-          }
-        }
-      });
+      // Look for patterns like "Assignee : Name" in any part of the document
+      const assigneePattern = /(?:Current\s+|Original\s+)?Assignee[\s]*:[\s]*([^:]+?)(?:\n|$|:)/i;
+      const fullText = $('body').text();
+      const assigneeMatch = fullText.match(assigneePattern);
       
+      if (assigneeMatch && assigneeMatch[1]) {
+        assignee = assigneeMatch[1].trim();
+        // Remove any explanatory text that might be in parentheses
+        assignee = assignee.replace(/\([^)]*\)/g, '').trim();
+        console.log(`Found assignee using text pattern: ${assignee}`);
+      }
+      
+      // Look for text containing "Assignee" or "Assigned to"
       if (!assignee) {
-        assignee = `Assignee not found for ${patentId}`;
+        $('section').each(function() {
+          const text = $(this).text();
+          if (text.includes('Assignee:') || text.includes('Assigned to:')) {
+            const assigneeText = text.split(/Assignee:|Assigned to:/)[1]?.trim().split('\n')[0].trim();
+            if (assigneeText) {
+              assignee = assigneeText;
+              console.log(`Found assignee using section text: ${assignee}`);
+              return false; // break the each loop
+            }
+          }
+        });
       }
+    }
+    
+    if (!assignee) {
+      assignee = `Assignee not found for ${patentId}`;
     }
     
     return assignee;

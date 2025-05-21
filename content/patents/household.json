@@ -60,7 +60,9 @@
           "caption": "Figure 9"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Matthew A. Kitt"
+      ],
       "assignee": "Individual"
     }
   ],
@@ -129,7 +131,9 @@
               "caption": "Figure 9"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Matthew A. Kitt"
+          ],
           "assignee": "Individual"
         }
       ]

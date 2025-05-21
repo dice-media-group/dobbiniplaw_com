@@ -15,7 +15,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "L. Shane Edwards"
+      ],
       "assignee": "Individual"
     },
     {
@@ -82,7 +84,9 @@
           "caption": "Figure 10"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Eric L. Wimmer"
+      ],
       "assignee": "Individual"
     },
     {
@@ -129,7 +133,9 @@
           "caption": "Figure 6"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Junayet Khandoker"
+      ],
       "assignee": "Individual"
     },
     {
@@ -146,7 +152,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Matthew Prestwich"
+      ],
       "assignee": "Individual"
     },
     {
@@ -198,7 +206,9 @@
           "caption": "Figure 7"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Owen F. Read"
+      ],
       "assignee": "Individual"
     },
     {
@@ -240,7 +250,9 @@
           "caption": "Figure 5"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Benjamin R. Partridge"
+      ],
       "assignee": "Individual"
     },
     {
@@ -257,7 +269,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Steven A. DeMore"
+      ],
       "assignee": "Individual"
     },
     {
@@ -274,7 +288,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Steven A. DeMore"
+      ],
       "assignee": "Individual"
     },
     {
@@ -291,7 +307,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Reinaldo Pena"
+      ],
       "assignee": "Individual"
     },
     {
@@ -308,7 +326,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Brian F. Abbott"
+      ],
       "assignee": "Individual"
     },
     {
@@ -325,7 +345,9 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Brian F. Abbott"
+      ],
       "assignee": "Individual"
     },
     {
@@ -352,7 +374,9 @@
           "caption": "Figure 2"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Richard M. Fitzpatrick"
+      ],
       "assignee": "Magpul Industries Corp"
     },
     {
@@ -399,7 +423,9 @@
           "caption": "Figure 6"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Michael T. Mayberry"
+      ],
       "assignee": "Magpul Industries Corp"
     },
     {
@@ -436,7 +462,9 @@
           "caption": "Figure 4"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Richard M. Fitzpatrick"
+      ],
       "assignee": "Magpul Industries Corp"
     },
     {
@@ -453,7 +481,10 @@
           "caption": "No image available"
         }
       ],
-      "inventors": [],
+      "inventors": [
+        "Theodore R. Espiritu",
+        "Jr."
+      ],
       "assignee": "Aureus Product Innovations Inc"
     },
     {
@@ -558,7 +589,9 @@
               "caption": "Figure 6"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Junayet Khandoker"
+          ],
           "assignee": "Individual"
         },
         {
@@ -610,7 +643,9 @@
               "caption": "Figure 7"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Owen F. Read"
+          ],
           "assignee": "Individual"
         },
         {
@@ -627,7 +662,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Steven A. DeMore"
+          ],
           "assignee": "Individual"
         },
         {
@@ -644,7 +681,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Steven A. DeMore"
+          ],
           "assignee": "Individual"
         },
         {
@@ -671,7 +710,9 @@
               "caption": "Figure 2"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Richard M. Fitzpatrick"
+          ],
           "assignee": "Magpul Industries Corp"
         },
         {
@@ -718,7 +759,9 @@
               "caption": "Figure 6"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Michael T. Mayberry"
+          ],
           "assignee": "Magpul Industries Corp"
         },
         {
@@ -776,7 +819,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Matthew Prestwich"
+          ],
           "assignee": "Individual"
         },
         {
@@ -818,7 +863,9 @@
               "caption": "Figure 5"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Benjamin R. Partridge"
+          ],
           "assignee": "Individual"
         },
         {
@@ -855,7 +902,9 @@
               "caption": "Figure 4"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Richard M. Fitzpatrick"
+          ],
           "assignee": "Magpul Industries Corp"
         }
       ]
@@ -879,7 +928,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "L. Shane Edwards"
+          ],
           "assignee": "Individual"
         },
         {
@@ -946,7 +997,9 @@
               "caption": "Figure 10"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Eric L. Wimmer"
+          ],
           "assignee": "Individual"
         },
         {
@@ -963,7 +1016,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Reinaldo Pena"
+          ],
           "assignee": "Individual"
         },
         {
@@ -980,7 +1035,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Brian F. Abbott"
+          ],
           "assignee": "Individual"
         },
         {
@@ -997,7 +1054,9 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Brian F. Abbott"
+          ],
           "assignee": "Individual"
         },
         {
@@ -1014,7 +1073,10 @@
               "caption": "No image available"
             }
           ],
-          "inventors": [],
+          "inventors": [
+            "Theodore R. Espiritu",
+            "Jr."
+          ],
           "assignee": "Aureus Product Innovations Inc"
         },
         {
