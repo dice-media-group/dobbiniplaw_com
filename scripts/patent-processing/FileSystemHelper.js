@@ -86,31 +86,69 @@ export class FileSystemHelper {
   }
 
   /**
+   * Format patent ID for file search with variant handling
+   * @param {string} patentId - Patent ID with hyphens
+   * @returns {Array<string>} Array of possible formatted IDs
+   */
+  formatPatentIdForFileSearch(patentId) {
+    // Basic format - remove hyphens
+    const baseFormattedId = patentId.replace(/-/g, '');
+    
+    // Create array of possible formats
+    const possibleFormats = [baseFormattedId];
+    
+    // For design patents (with 'D' and ending with 'S'), also try with 'S1' suffix
+    if (patentId.includes('-D') && patentId.endsWith('-S')) {
+      const designVariant = baseFormattedId.replace(/S$/, 'S1');
+      possibleFormats.push(designVariant);
+    }
+    
+    // For utility patents ending with 'B1' or 'B2', also try with alternate suffix
+    if (patentId.endsWith('-B1')) {
+      const alternateB = baseFormattedId.replace(/B1$/, 'B2');
+      possibleFormats.push(alternateB);
+    } else if (patentId.endsWith('-B2')) {
+      const alternateB = baseFormattedId.replace(/B2$/, 'B1');
+      possibleFormats.push(alternateB);
+    }
+    
+    return possibleFormats;
+  }
+
+  /**
    * Find the HTML file for a patent
    * @param {string} patentId - Patent ID with hyphens
    * @returns {Promise<{path: string, exists: boolean}>} Object with path and exists flag
    */
   async findPatentHtmlFile(patentId) {
-    const formattedId = patentId.replace(/-/g, '');
+    // Get all possible formatted IDs
+    const possibleIds = this.formatPatentIdForFileSearch(patentId);
     
-    // Search in main directory first
-    let htmlPath = path.join(this.config.LOCAL_PATENT_DIR, `${formattedId}.html`);
-    let exists = await existsAsync(htmlPath);
+    // First try main directory with all possible formats
+    for (const formattedId of possibleIds) {
+      const htmlPath = path.join(this.config.LOCAL_PATENT_DIR, `${formattedId}.html`);
+      if (await existsAsync(htmlPath)) {
+        return { path: htmlPath, exists: true };
+      }
+    }
     
     // If not found, search in subdirectories
-    if (!exists) {
-      const subdirs = await this.findPatentSubdirectories();
-      for (const dir of subdirs) {
+    const subdirs = await this.findPatentSubdirectories();
+    for (const dir of subdirs) {
+      for (const formattedId of possibleIds) {
         const subHtmlPath = path.join(dir, `${formattedId}.html`);
         if (await existsAsync(subHtmlPath)) {
-          htmlPath = subHtmlPath;
-          exists = true;
-          break;
+          return { path: subHtmlPath, exists: true };
         }
       }
     }
     
-    return { path: htmlPath, exists };
+    // If still not found, log the issue and return not exists
+    console.warn(`HTML file not found for ${patentId} (tried formats: ${possibleIds.join(', ')})`);
+    return { 
+      path: path.join(this.config.LOCAL_PATENT_DIR, `${possibleIds[0]}.html`),
+      exists: false 
+    };
   }
 
   /**
