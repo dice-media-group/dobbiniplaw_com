@@ -86,33 +86,67 @@ export class FileSystemHelper {
   }
 
   /**
-   * Format patent ID for file search with variant handling
+   * Format patent ID for file search with variant handling using regex
    * @param {string} patentId - Patent ID with hyphens
    * @returns {Array<string>} Array of possible formatted IDs
    */
   formatPatentIdForFileSearch(patentId) {
     // Basic format - remove hyphens
     const baseFormattedId = patentId.replace(/-/g, '');
-    
-    // Create array of possible formats
     const possibleFormats = [baseFormattedId];
     
-    // For design patents (with 'D' and ending with 'S'), also try with 'S1' suffix
-    if (patentId.includes('-D') && patentId.endsWith('-S')) {
-      const designVariant = baseFormattedId.replace(/S$/, 'S1');
-      possibleFormats.push(designVariant);
+    // Design patent pattern: D + digits + S
+    const designPatternRegex = /D(\d+)S$/i;
+    const designMatch = baseFormattedId.match(designPatternRegex);
+    
+    if (designMatch) {
+      console.log(`Found design patent pattern in ${patentId} (base: ${baseFormattedId})`);
+      // Extract the digit part
+      const digitPart = designMatch[1];
+      
+      // Add common variants (S1, S2)
+      for (let i = 1; i <= 3; i++) {
+        const designVariant = `USD${digitPart}S${i}`;
+        possibleFormats.push(designVariant);
+        console.log(`Added design patent variant: ${designVariant}`);
+      }
     }
     
-    // For utility patents ending with 'B1' or 'B2', also try with alternate suffix
-    if (patentId.endsWith('-B1')) {
-      const alternateB = baseFormattedId.replace(/B1$/, 'B2');
-      possibleFormats.push(alternateB);
-    } else if (patentId.endsWith('-B2')) {
-      const alternateB = baseFormattedId.replace(/B2$/, 'B1');
-      possibleFormats.push(alternateB);
+    // Utility patent pattern: ends with B1 or B2
+    if (baseFormattedId.match(/B[12]$/i)) {
+      console.log(`Found utility patent pattern in ${patentId} (base: ${baseFormattedId})`);
+      
+      // Try both B1 and B2 variants
+      if (baseFormattedId.match(/B1$/i)) {
+        const alternateB = baseFormattedId.replace(/B1$/i, 'B2');
+        possibleFormats.push(alternateB);
+        console.log(`Added utility patent variant: ${alternateB}`);
+      } else if (baseFormattedId.match(/B2$/i)) {
+        const alternateB = baseFormattedId.replace(/B2$/i, 'B1');
+        possibleFormats.push(alternateB);
+        console.log(`Added utility patent variant: ${alternateB}`);
+      }
     }
     
+    console.log(`Generated ${possibleFormats.length} format(s) for ${patentId}: ${possibleFormats.join(', ')}`);
     return possibleFormats;
+  }
+
+  /**
+   * Try to find HTML file in a directory using all possible formats
+   * @param {string} directory - Directory to search in
+   * @param {Array<string>} possibleIds - Array of possible formatted IDs
+   * @returns {Promise<{path: string, exists: boolean}>} Result with path and exists flag
+   */
+  async tryFindHtmlInDirectory(directory, possibleIds) {
+    for (const formattedId of possibleIds) {
+      const htmlPath = path.join(directory, `${formattedId}.html`);
+      if (await existsAsync(htmlPath)) {
+        console.log(`Found HTML file for format ${formattedId} at ${htmlPath}`);
+        return { path: htmlPath, exists: true };
+      }
+    }
+    return null;
   }
 
   /**
@@ -125,30 +159,66 @@ export class FileSystemHelper {
     const possibleIds = this.formatPatentIdForFileSearch(patentId);
     
     // First try main directory with all possible formats
-    for (const formattedId of possibleIds) {
-      const htmlPath = path.join(this.config.LOCAL_PATENT_DIR, `${formattedId}.html`);
-      if (await existsAsync(htmlPath)) {
-        return { path: htmlPath, exists: true };
-      }
+    const mainDirResult = await this.tryFindHtmlInDirectory(this.config.LOCAL_PATENT_DIR, possibleIds);
+    if (mainDirResult) {
+      return mainDirResult;
     }
     
     // If not found, search in subdirectories
     const subdirs = await this.findPatentSubdirectories();
     for (const dir of subdirs) {
-      for (const formattedId of possibleIds) {
-        const subHtmlPath = path.join(dir, `${formattedId}.html`);
-        if (await existsAsync(subHtmlPath)) {
-          return { path: subHtmlPath, exists: true };
-        }
+      const subDirResult = await this.tryFindHtmlInDirectory(dir, possibleIds);
+      if (subDirResult) {
+        return subDirResult;
       }
     }
     
     // If still not found, log the issue and return not exists
     console.warn(`HTML file not found for ${patentId} (tried formats: ${possibleIds.join(', ')})`);
+    
+    // Check if any files in subdirectories have similar names
+    await this.searchForSimilarFiles(patentId, possibleIds);
+    
     return { 
       path: path.join(this.config.LOCAL_PATENT_DIR, `${possibleIds[0]}.html`),
       exists: false 
     };
+  }
+
+  /**
+   * Search for similar HTML files to help diagnose issues
+   * @param {string} patentId - Original patent ID
+   * @param {Array<string>} triedFormats - Formats already tried
+   * @returns {Promise<void>}
+   */
+  async searchForSimilarFiles(patentId, triedFormats) {
+    try {
+      const baseId = patentId.replace(/-/g, '').replace(/[BS][0-9]*$/i, '');
+      const regex = new RegExp(`^${baseId}.*\\.html$`, 'i');
+      
+      console.log(`Searching for similar files matching pattern: ${regex}`);
+      
+      // Check main directory
+      const mainDirFiles = await this.readDirectory(this.config.LOCAL_PATENT_DIR);
+      const mainMatches = mainDirFiles.filter(file => regex.test(file));
+      
+      if (mainMatches.length > 0) {
+        console.log(`Found similar files in main directory: ${mainMatches.join(', ')}`);
+      }
+      
+      // Check subdirectories
+      const subdirs = await this.findPatentSubdirectories();
+      for (const dir of subdirs) {
+        const subDirFiles = await this.readDirectory(dir);
+        const subMatches = subDirFiles.filter(file => regex.test(file));
+        
+        if (subMatches.length > 0) {
+          console.log(`Found similar files in ${path.basename(dir)}: ${subMatches.join(', ')}`);
+        }
+      }
+    } catch (error) {
+      console.error(`Error searching for similar files: ${error.message}`);
+    }
   }
 
   /**
