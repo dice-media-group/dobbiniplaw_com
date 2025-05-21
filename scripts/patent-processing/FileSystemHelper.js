@@ -110,6 +110,16 @@ export class FileSystemHelper {
         possibleFormats.push(designVariant);
         console.log(`Added design patent variant: ${designVariant}`);
       }
+      
+      // Add variants with lowercase 's' instead of 'S'
+      possibleFormats.push(`USD${digitPart}s`);
+      possibleFormats.push(`USD${digitPart}s1`);
+      
+      // Add variants with different casing
+      possibleFormats.push(`usd${digitPart}S`);
+      possibleFormats.push(`usd${digitPart}S1`);
+      possibleFormats.push(`usd${digitPart}s`);
+      possibleFormats.push(`usd${digitPart}s1`);
     }
     
     // Utility patent pattern: ends with B1 or B2
@@ -150,11 +160,36 @@ export class FileSystemHelper {
   }
 
   /**
+   * Find HTML files by globbing pattern in directory
+   * @param {string} directory - Directory to search in
+   * @param {string} pattern - Glob pattern (simplified regex)
+   * @returns {Promise<Array<string>>} Array of matching file paths
+   */
+  async findFilesByPattern(directory, pattern) {
+    try {
+      const files = await readdirAsync(directory);
+      const regex = new RegExp(pattern, 'i');
+      return files.filter(file => regex.test(file)).map(file => path.join(directory, file));
+    } catch (error) {
+      console.error(`Error searching for files in ${directory}: ${error.message}`);
+      return [];
+    }
+  }
+
+  /**
    * Find the HTML file for a patent
    * @param {string} patentId - Patent ID with hyphens
    * @returns {Promise<{path: string, exists: boolean}>} Object with path and exists flag
    */
   async findPatentHtmlFile(patentId) {
+    // Special handling for US-D882015-S (troubleshooting)
+    if (patentId === 'US-D882015-S') {
+      const found = await this.findSpecificDesignPatent(patentId);
+      if (found) {
+        return found;
+      }
+    }
+    
     // Get all possible formatted IDs
     const possibleIds = this.formatPatentIdForFileSearch(patentId);
     
@@ -186,6 +221,79 @@ export class FileSystemHelper {
   }
 
   /**
+   * Special handling to find the troublesome US-D882015-S patent
+   * @param {string} patentId - Patent ID (US-D882015-S)
+   * @returns {Promise<{path: string, exists: boolean}|null>} Result or null if not found
+   */
+  async findSpecificDesignPatent(patentId) {
+    console.log(`🔍 Special handling for troublesome patent: ${patentId}`);
+    
+    // Extract core components
+    const matches = patentId.match(/US-D(\d+)-S/);
+    if (!matches) return null;
+    
+    const digitPart = matches[1]; // 882015
+    
+    // Define various patterns to try
+    const patterns = [
+      // Standard formats
+      `USD${digitPart}S.html`,
+      `USD${digitPart}S1.html`,
+      // Special formats
+      `US-D${digitPart}-S.html`,
+      `US-D${digitPart}-S1.html`,
+      // More general pattern to find ANY file containing the digit part
+      `.*${digitPart}.*\\.html`
+    ];
+    
+    console.log(`Trying specialized patterns for ${patentId}: ${patterns.join(', ')}`);
+    
+    // Helper to log all HTML files in a directory
+    const logAllHtmlFiles = async (dir) => {
+      try {
+        const allFiles = await readdirAsync(dir);
+        const htmlFiles = allFiles.filter(f => f.endsWith('.html'));
+        if (htmlFiles.length > 0) {
+          console.log(`All HTML files in ${path.basename(dir)}: ${htmlFiles.join(', ')}`);
+        }
+      } catch (error) {
+        console.error(`Error listing HTML files in ${dir}: ${error.message}`);
+      }
+    };
+    
+    // Exhaustive search through all directories
+    // First check main directory
+    console.log(`Searching main directory for US-D${digitPart}-S files`);
+    await logAllHtmlFiles(this.config.LOCAL_PATENT_DIR);
+    
+    for (const pattern of patterns) {
+      const mainMatches = await this.findFilesByPattern(this.config.LOCAL_PATENT_DIR, pattern);
+      if (mainMatches.length > 0) {
+        console.log(`🎯 Found matches in main directory using pattern ${pattern}: ${mainMatches.join(', ')}`);
+        return { path: mainMatches[0], exists: true };
+      }
+    }
+    
+    // Then check all subdirectories
+    const subdirs = await this.findPatentSubdirectories();
+    for (const dir of subdirs) {
+      console.log(`Searching subdirectory ${path.basename(dir)} for US-D${digitPart}-S files`);
+      await logAllHtmlFiles(dir);
+      
+      for (const pattern of patterns) {
+        const subMatches = await this.findFilesByPattern(dir, pattern);
+        if (subMatches.length > 0) {
+          console.log(`🎯 Found matches in ${path.basename(dir)} using pattern ${pattern}: ${subMatches.join(', ')}`);
+          return { path: subMatches[0], exists: true };
+        }
+      }
+    }
+    
+    console.log(`❌ Special handling failed to find any matches for ${patentId}`);
+    return null;
+  }
+
+  /**
    * Search for similar HTML files to help diagnose issues
    * @param {string} patentId - Original patent ID
    * @param {Array<string>} triedFormats - Formats already tried
@@ -193,8 +301,22 @@ export class FileSystemHelper {
    */
   async searchForSimilarFiles(patentId, triedFormats) {
     try {
-      const baseId = patentId.replace(/-/g, '').replace(/[BS][0-9]*$/i, '');
-      const regex = new RegExp(`^${baseId}.*\\.html$`, 'i');
+      // Extract the core part of the ID (remove prefixes, suffixes)
+      let baseId;
+      
+      // For design patents, extract just the digit part
+      if (patentId.includes('-D') && patentId.endsWith('-S')) {
+        const matches = patentId.match(/US-D(\d+)-S/);
+        if (matches) {
+          baseId = matches[1]; // Just the digits
+        } else {
+          baseId = patentId.replace(/-/g, '').replace(/[BS][0-9]*$/i, '');
+        }
+      } else {
+        baseId = patentId.replace(/-/g, '').replace(/[BS][0-9]*$/i, '');
+      }
+      
+      const regex = new RegExp(`.*${baseId}.*\\.html$`, 'i');
       
       console.log(`Searching for similar files matching pattern: ${regex}`);
       
