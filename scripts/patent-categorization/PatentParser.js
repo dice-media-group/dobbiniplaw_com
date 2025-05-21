@@ -3,6 +3,20 @@
 
 export class PatentParser {
   /**
+   * Clean title by removing leading item numbers
+   * @param {string} title - Original patent title
+   * @returns {string} Cleaned patent title
+   */
+  cleanTitle(title) {
+    // Remove numbers followed by period at beginning (e.g., "1. Patent Title")
+    return title.replace(/^\d+\.\s*/, '')
+      // Also remove item numbering patterns like "(1)" at beginning
+      .replace(/^\(\d+\)\s*/, '')
+      // Also remove isolated numbers at the beginning
+      .replace(/^\d+\s+/, '');
+  }
+
+  /**
    * Parse patent list from the extracted text
    * @param {string} text - Extracted text from PDF
    * @returns {Array} Array of patent objects
@@ -35,7 +49,7 @@ export class PatentParser {
           index: parseInt(index),
           id: docId,
           publicationDate: date,
-          title: title.trim(),
+          title: this.cleanTitle(title.trim()), // Clean the title
           imagePages: parseInt(imagePages)
         };
         

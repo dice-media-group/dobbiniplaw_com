@@ -59,6 +59,20 @@ export class PatentCategorizer {
   }
 
   /**
+   * Clean title by removing leading item numbers
+   * @param {string} title - Original patent title
+   * @returns {string} Cleaned patent title
+   */
+  cleanTitle(title) {
+    // Remove numbers followed by period at beginning (e.g., "1. Patent Title")
+    return title.replace(/^\d+\.\s*/, '')
+      // Also remove item numbering patterns like "(1)" at beginning
+      .replace(/^\(\d+\)\s*/, '')
+      // Also remove isolated numbers at the beginning
+      .replace(/^\d+\s+/, '');
+  }
+
+  /**
    * Clean patent object for JSON output
    * @param {Object} patent - Patent object
    * @returns {Object} Cleaned patent object
@@ -67,7 +81,7 @@ export class PatentCategorizer {
     // Create a clean patent object without any duplicate properties
     const cleanPatent = {
       id: patent.id,
-      title: patent.title,
+      title: this.cleanTitle(patent.title), // Clean the title
       publicationDate: patent.publicationDate,
       imagePages: patent.imagePages,
       abstract: patent.abstract || "To be fetched from Google Patents",
