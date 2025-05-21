@@ -153,11 +153,11 @@ class ImageAnalyzer {
 }
 
 /**
- * Extract abstract from HTML file
+ * Extract patent details including abstract, inventors, and assignee
  * @param {string} patentId - Patent ID with hyphens
- * @returns {Promise<string>} Abstract text
+ * @returns {Promise<Object>} Object containing abstract, inventors, and assignee
  */
-async function extractAbstract(patentId) {
+async function extractPatentDetails(patentId) {
   try {
     const formattedId = patentId.replace(/-/g, '');
     
@@ -179,7 +179,11 @@ async function extractAbstract(patentId) {
     }
     
     if (!exists) {
-      return `HTML file not found for ${patentId}`;
+      return {
+        abstract: `HTML file not found for ${patentId}`,
+        inventors: [],
+        assignee: `HTML file not found for ${patentId}`
+      };
     }
     
     // Read the HTML file
@@ -188,43 +192,83 @@ async function extractAbstract(patentId) {
     // Parse the HTML
     const $ = cheerio.load(htmlContent);
     
-    // Try different selectors that might contain the abstract
+    // Extract the abstract (using existing logic)
     let abstract = '';
-    
-    // Try 'section#text abstract div.abstract'
     const abstractDiv = $('section#text abstract div.abstract');
     if (abstractDiv.length > 0) {
       abstract = abstractDiv.text().trim();
-    } 
-    // Try 'abstract .abstract'
-    else {
-      const altAbstractElem = $('abstract .abstract');
-      if (altAbstractElem.length > 0) {
-        abstract = altAbstractElem.text().trim();
+    } else if ($('abstract .abstract').length > 0) {
+      abstract = $('abstract .abstract').text().trim();
+    } else if ($('.abstract').length > 0) {
+      abstract = $('.abstract').text().trim();
+    } else if ($('section[itemprop="abstract"]').length > 0) {
+      abstract = $('section[itemprop="abstract"]').text().trim();
+    } else {
+      abstract = `Abstract not found for ${patentId}`;
+    }
+    
+    // Extract inventors - as per instructions, look for a.link with href starting with "/?inventor="
+    const inventors = [];
+    $('a.link[href^="/?inventor="]').each(function() {
+      const inventor = $(this).text().trim();
+      if (inventor) inventors.push(inventor);
+    });
+    
+    // Extract assignee - as per instructions, look after span with "Current Assignee" text
+    let assignee = '';
+    const assigneeWarning = $('span.tooltip-hint#assigneeWarning:contains("Current Assignee")');
+    if (assigneeWarning.length > 0) {
+      // Try different approaches to find the assignee element based on common HTML structures
+      // The exact structure might vary, so we try several approaches
+      
+      // First try: check the next element or sibling
+      let assigneeElement = assigneeWarning.parent().next();
+      if (assigneeElement.length > 0 && assigneeElement.text().trim()) {
+        assignee = assigneeElement.text().trim();
       } 
-      // Try '.abstract'
+      // Second try: look for links near the assignee warning
       else {
-        const anyAbstractElem = $('.abstract');
-        if (anyAbstractElem.length > 0) {
-          abstract = anyAbstractElem.text().trim();
+        const nearbyLink = assigneeWarning.parent().parent().find('a.link').first();
+        if (nearbyLink.length > 0) {
+          assignee = nearbyLink.text().trim();
         }
-        // Try 'section[itemprop="abstract"]'
+        // Third try: look in nearby spans
         else {
-          const itempropAbstract = $('section[itemprop="abstract"]');
-          if (itempropAbstract.length > 0) {
-            abstract = itempropAbstract.text().trim();
+          const nearbySpan = assigneeWarning.parent().parent().find('span:not(.tooltip-hint)').first();
+          if (nearbySpan.length > 0) {
+            assignee = nearbySpan.text().trim();
           } else {
-            abstract = `Abstract not found for ${patentId}`;
+            assignee = `Assignee not found for ${patentId}`;
           }
         }
       }
+    } else {
+      assignee = `Assignee not found for ${patentId}`;
     }
     
-    return abstract;
+    return {
+      abstract,
+      inventors,
+      assignee
+    };
   } catch (error) {
-    console.error(`Error extracting abstract for ${patentId}:`, error.message);
-    return `Error extracting abstract for ${patentId}: ${error.message}`;
+    console.error(`Error extracting details for ${patentId}:`, error.message);
+    return {
+      abstract: `Error extracting details for ${patentId}: ${error.message}`,
+      inventors: [],
+      assignee: `Error extracting details for ${patentId}: ${error.message}`
+    };
   }
+}
+
+/**
+ * Extract abstract from HTML file (maintained for backward compatibility)
+ * @param {string} patentId - Patent ID with hyphens
+ * @returns {Promise<string>} Abstract text
+ */
+async function extractAbstract(patentId) {
+  const details = await extractPatentDetails(patentId);
+  return details.abstract;
 }
 
 /**
@@ -643,13 +687,15 @@ async function enhancePatentsWithImages(patents) {
       // Process patent images (now returns an array of image objects)
       const images = await processPatentImagesEnhanced(patent.id);
       
-      // Fetch abstract
-      const abstract = await extractAbstract(patent.id);
+      // Fetch patent details (abstract, inventors, assignee)
+      const details = await extractPatentDetails(patent.id);
       
       // Add enhanced data to patent
       enhancedPatents.push({
         ...patent,
-        abstract,
+        abstract: details.abstract,
+        inventors: details.inventors,
+        assignee: details.assignee,
         images: images,
         featured: patent.id === 'US-10794647-B2' // Example featured patent
       });
@@ -659,6 +705,8 @@ async function enhancePatentsWithImages(patents) {
       enhancedPatents.push({
         ...patent,
         abstract: `Error processing patent ${patent.id}: ${error.message}`,
+        inventors: [],
+        assignee: `Error processing patent ${patent.id}: ${error.message}`,
         images: [{
           thumbnail: `/images/patents/placeholder.svg`,
           hires: `/images/patents/placeholder.svg`,
@@ -675,5 +723,6 @@ export default {
   processPatentImagesEnhanced,
   enhancePatentsWithImages,
   ImageAnalyzer,
-  extractAbstract
+  extractAbstract,
+  extractPatentDetails
 };
