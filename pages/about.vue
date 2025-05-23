@@ -24,7 +24,7 @@
             </div>
             <div class="md:col-span-3">
               <p class="mb-3 font-crimson text-dobbin-gray">
-                For over 20 years, Geoff Dobbin has assisted independent inventors and other creators of intellectual property with protecting their "babies." He understands just how invested you can feel after all the hard work that went into your creation.
+                For over 25 years, Geoff Dobbin has assisted independent inventors and other creators of intellectual property with protecting their "babies." He understands just how invested you can feel after all the hard work that went into your creation.
               </p>
               <p class="mb-3 font-crimson text-dobbin-gray">
                 Although he founded Dobbin IP Law P.C. when he moved to Utah in 2004, Geoff has been practicing intellectual property law and representing creators in need of patents, copyrights and trademarks since 1998. With a degree in physics that gives him a solid scientific background to understand many different technical fields, he is quick on the uptake and easily grasps new concepts and ideas, no matter how complex.
@@ -82,7 +82,8 @@
             </div>
             <div class="md:col-span-1 order-1 md:order-2">
               <!-- Chris' profile image goes here when we recieve it -->
-              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full"> -->
+              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full rounded shadow-md"> -->
+              <img src="/img/chris_the_paralegal.jpg" alt="Chris Dobbin's paralegal" class="w-full rounded shadow-md">
             </div>
           </div>
         </div>
@@ -97,7 +98,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useHead({
   title: 'About Us | Dobbin IP Law P.C.',
   meta: [
-    { name: 'description', content: 'Learn about the team at Dobbin IP Law, specializing in patents, trademarks, and copyrights for over 20 years.' }
+    { name: 'description', content: 'Learn about the team at Dobbin IP Law, specializing in patents, trademarks, and copyrights for over 25 years.' }
   ]
 })
 </script>

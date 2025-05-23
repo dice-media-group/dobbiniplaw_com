@@ -102,7 +102,7 @@
                         <li>Preparing and filing of application;</li>
                         <li>Communication with draftsman to create drawings;</li>
                         <li>Alternatively, education and explanation of drawing requirements to client</li>
-                        <li>Add'l drawings included at $20/sheet.</li>
+                        <li>Additional drawings included at $30/sheet plus draftsman's fees.</li>
                       </ul>
                     </div>
                   </div>
