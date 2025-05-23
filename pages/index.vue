@@ -4,22 +4,22 @@
     <VideoModal 
       :is-open="isVideoModalOpen" 
       :video-src="videoModalSrc" 
-      video-title="Patent Attorney Geoff Dobbin Explains IP Law"
+      :video-title="videoModalTitle"
       @close="closeVideoModal" 
     />
 
     <!-- Home Banner Component -->
-    <HomeBanner @open-video="openVideoModal" />
+    <HomeBanner @open-video="openEducationalVideo" />
     
     <!-- Video Testimonial Component -->
     <VideoTestimonial 
-      thumbnail-url="https://img.youtube.com/vi/ljNiDscQ-Vw/maxresdefault.jpg"
-      thumbnail-alt="Video thumbnail: Tips for Choosing a Patent Attorney"
-      quote="Geoff helped us secure patents that were essential to our $2M funding round. His clear explanation of complex IP concepts made the process so much easier than I expected."
-      attribution="- Lee Von Gunten, CEO of Watchdog Manufacturing"
+      thumbnail-url="https://img.youtube.com/vi/18gFVGE2Za0/0.jpg"
+      thumbnail-alt="Video testimonial from Dr. Mark J. Hagmann, CTO of NewPath Research"
+      quote="Geoffrey Dobbin has been my patent attorney for the past six years and I am highly impressed by his ability to understand a wide range of complex technologies and describe them clearly, suggest appropriate strategies for intellectual property, and his adroitness in communicating with the USPTO."
+      attribution="- Dr. Mark J. Hagmann, CTO, NewPath Research, LLC"
       cta-link="/testimonials"
       cta-text="See what other clients say"
-      @open-video="openVideoModal"
+      @open-video="openTestimonialVideo"
     />
     
     <!-- Process Steps Component -->
@@ -69,11 +69,19 @@ import ConsultationForm from '../components/ConsultationForm.vue';
 // Video modal state
 const isVideoModalOpen = ref(false);
 const videoModalSrc = ref('');
+const videoModalTitle = ref('');
 
-// Methods to handle the video modal
-function openVideoModal() {
-  // YouTube embed URL with autoplay parameter
+// Method to open educational video (from HomeBanner)
+function openEducationalVideo() {
   videoModalSrc.value = 'https://www.youtube.com/embed/ljNiDscQ-Vw?autoplay=1';
+  videoModalTitle.value = 'Tips for Choosing a Patent Attorney';
+  isVideoModalOpen.value = true;
+}
+
+// Method to open testimonial video (from VideoTestimonial)
+function openTestimonialVideo() {
+  videoModalSrc.value = 'https://www.youtube.com/embed/18gFVGE2Za0?autoplay=1';
+  videoModalTitle.value = 'Client Testimonial - Dr. Mark J. Hagmann';
   isVideoModalOpen.value = true;
 }
 
@@ -81,6 +89,7 @@ function closeVideoModal() {
   isVideoModalOpen.value = false;
   // Reset video src to stop playback
   videoModalSrc.value = '';
+  videoModalTitle.value = '';
 }
 
 // Content for process steps
@@ -101,19 +110,19 @@ const processSteps = [
 
 // Content for attorney profile
 const attorneyParagraphs = [
-  "For over 20 years, Geoff Dobbin has assisted independent inventors and other creators with protecting their intellectual property. With a background in physics, he quickly grasps complex concepts across diverse industries.",
+  "For over 25 years, Geoff Dobbin has assisted independent inventors and other creators with protecting their intellectual property. With a background in physics, he quickly grasps complex concepts across diverse industries.",
   "Since founding Dobbin IP Law P.C. in 2004, Geoff has focused on making patent law accessible to independent inventors and small businesses. He believes that clear communication and strategic guidance are just as important as legal expertise."
 ];
 
 const attorneyStats = [
   {
     label: "Patents Secured",
-    value: "100+",
+    value: "250+",
     icon: "M12 6v6m0 0v6m0-6h6m-6 0H6"
   },
   {
     label: "Years of Experience",
-    value: "20+",
+    value: "25+",
     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
   }
 ];

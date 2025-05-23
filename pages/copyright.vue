@@ -27,7 +27,7 @@
           
           <div class="mb-10">
             <p class="mb-4 font-crimson">
-              For some, registering a copyright is the preferred way to protect what you have created. Here at Dobbin IP Law, we can help you with the process of registering copyrights just as we have been doing for over 20 years. We provide professional support so that authors and artists alike can have the best possible protection for their work.
+              For some, registering a copyright is the preferred way to protect what you have created. Here at Dobbin IP Law, we can help you with the process of registering copyrights just as we have been doing for over 25 years. We provide professional support so that authors and artists alike can have the best possible protection for their work.
             </p>
           </div>
         </div>
