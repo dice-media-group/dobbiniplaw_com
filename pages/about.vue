@@ -82,7 +82,8 @@
             </div>
             <div class="md:col-span-1 order-1 md:order-2">
               <!-- Chris' profile image goes here when we recieve it -->
-              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full"> -->
+              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full rounded shadow-md"> -->
+              <img src="/img/chris_the_paralegal.jpg" alt="Chris Dobbin's paralegal" class="w-full rounded shadow-md">
             </div>
           </div>
         </div>
