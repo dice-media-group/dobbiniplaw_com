@@ -4,7 +4,12 @@
 import { ImageProcessor } from './ImageProcessor.js';
 import { MetadataExtractor } from './MetadataExtractor.js';
 import { FileSystemHelper } from './FileSystemHelper.js';
-import config from './config.js';
+import { getValidatedConfig } from './config.js';
+import { Logger, ProcessingError } from './utils.js';
+
+// Get validated configuration
+const config = getValidatedConfig();
+const logger = new Logger(false, 'PatentProcessing');
 
 /**
  * Extract abstract from HTML file (maintained for backward compatibility)
@@ -12,9 +17,14 @@ import config from './config.js';
  * @returns {Promise<string>} Abstract text
  */
 export async function extractAbstract(patentId) {
-  const metadataExtractor = new MetadataExtractor(config);
-  const details = await metadataExtractor.extractPatentDetails(patentId);
-  return details.abstract;
+  try {
+    const metadataExtractor = new MetadataExtractor(config);
+    const details = await metadataExtractor.extractPatentDetails(patentId);
+    return details.abstract;
+  } catch (error) {
+    logger.error(`Failed to extract abstract for ${patentId}`, error);
+    throw new ProcessingError(`Failed to extract abstract`, patentId, error);
+  }
 }
 
 /**
@@ -23,8 +33,13 @@ export async function extractAbstract(patentId) {
  * @returns {Promise<Object>} Object containing abstract, inventors, and assignee
  */
 export async function extractPatentDetails(patentId) {
-  const metadataExtractor = new MetadataExtractor(config);
-  return await metadataExtractor.extractPatentDetails(patentId);
+  try {
+    const metadataExtractor = new MetadataExtractor(config);
+    return await metadataExtractor.extractPatentDetails(patentId);
+  } catch (error) {
+    logger.error(`Failed to extract patent details for ${patentId}`, error);
+    throw new ProcessingError(`Failed to extract patent details`, patentId, error);
+  }
 }
 
 /**
@@ -33,8 +48,19 @@ export async function extractPatentDetails(patentId) {
  * @returns {Promise<Array<Object>>} Array of image objects with thumbnail and hires properties
  */
 export async function processPatentImagesEnhanced(patentId) {
-  const imageProcessor = new ImageProcessor(config);
-  return await imageProcessor.processPatentImages(patentId);
+  try {
+    const imageProcessor = new ImageProcessor(config);
+    return await imageProcessor.processPatentImages(patentId);
+  } catch (error) {
+    logger.error(`Failed to process images for ${patentId}`, error);
+    
+    // Return placeholder instead of throwing to prevent pipeline failure
+    return [{
+      thumbnail: `/images/patents/placeholder.svg`,
+      hires: `/images/patents/placeholder.svg`,
+      caption: 'No image available'
+    }];
+  }
 }
 
 /**
@@ -43,12 +69,18 @@ export async function processPatentImagesEnhanced(patentId) {
  * @returns {Promise<Array<Object>>} Enhanced patent objects with image paths
  */
 export async function enhancePatentsWithImages(patents) {
+  if (!Array.isArray(patents)) {
+    throw new ProcessingError('Patents must be an array');
+  }
+  
   const imageProcessor = new ImageProcessor(config);
   const metadataExtractor = new MetadataExtractor(config);
   const enhancedPatents = [];
   
+  logger.info(`Starting enhancement of ${patents.length} patents`);
+  
   for (const patent of patents) {
-    console.log(`\nEnhancing data for patent ${patent.id}`);
+    logger.debug(`Enhancing patent ${patent.id}`);
     
     try {
       // Process patent images
@@ -64,11 +96,14 @@ export async function enhancePatentsWithImages(patents) {
         inventors: details.inventors,
         assignee: details.assignee,
         images: images,
-        featured: patent.id === 'US-10794647-B2' // Example featured patent
+        featured: patent.id === 'US-10794647-B2', // Example featured patent
+        lastProcessed: new Date().toISOString()
       });
       
     } catch (error) {
-      console.error(`Error enhancing patent ${patent.id}:`, error);
+      logger.error(`Error enhancing patent ${patent.id}`, error);
+      
+      // Add patent with error information instead of failing completely
       enhancedPatents.push({
         ...patent,
         abstract: `Error processing patent ${patent.id}: ${error.message}`,
@@ -78,19 +113,27 @@ export async function enhancePatentsWithImages(patents) {
           thumbnail: `/images/patents/placeholder.svg`,
           hires: `/images/patents/placeholder.svg`,
           caption: 'No image available'
-        }]
+        }],
+        processingError: true,
+        lastProcessed: new Date().toISOString()
       });
     }
   }
   
+  logger.success(`Enhanced ${enhancedPatents.length} patents`);
   return enhancedPatents;
 }
 
 // Export the ImageAnalyzer as a class for backward compatibility
 export class ImageAnalyzer {
   static async getImageMetadata(imagePath) {
-    const imageProcessor = new ImageProcessor(config);
-    return await imageProcessor.getImageMetadata(imagePath);
+    try {
+      const imageProcessor = new ImageProcessor(config);
+      return await imageProcessor.getImageMetadata(imagePath);
+    } catch (error) {
+      logger.error(`Failed to get image metadata for ${imagePath}`, error);
+      throw new ProcessingError(`Failed to get image metadata`, null, error);
+    }
   }
   
   static extractFigureNumber(filename) {

@@ -12,7 +12,14 @@
     "process-patents-with-images": "node scripts/process-patents-with-images-runner.js false",
     "process-patents-with-downloads": "node scripts/process-patents-with-images-runner.js true",
     "process-patents-firefox": "node scripts/process-patents-firefox-runner.js",
-    "process-patents-firefox-test": "TEST_MODE=true TEST_COUNT=5 node scripts/process-patents-firefox-runner.js"
+    "process-patents-firefox-test": "TEST_MODE=true TEST_COUNT=5 node scripts/process-patents-firefox-runner.js",
+    "process-patents-improved": "node scripts/improvedPatentExtractionRunner.js",
+    "process-patents-improved-test": "TEST_MODE=true TEST_COUNT=5 VERBOSE=true node scripts/improvedPatentExtractionRunner.js",
+    "process-patents-improved-verbose": "VERBOSE=true node scripts/improvedPatentExtractionRunner.js",
+    "test-patent-config": "node scripts/test-configuration.js",
+    "update-patent-images": "node scripts/update-patent-images.js",
+    "update-patent-images-verbose": "node scripts/update-patent-images.js --verbose",
+    "update-patent-images-dry-run": "node scripts/update-patent-images.js --dry-run --verbose"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",

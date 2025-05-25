@@ -1,0 +1,142 @@
+{
+  "categoryId": "household",
+  "patents": [
+    {
+      "id": "US-10023078-B2",
+      "title": "safety seat Temperature compensated transmission line based liquid",
+      "publicationDate": "2018-07-17",
+      "imagePages": 0,
+      "abstract": "The invention provides\n a seatbelt threader device with a sheath receiving at least one or both\n of the lap and shoulder straps of a seatbelt therein, and a male \ncomponent of a seatbelt buckle at a distal end thereof, so that the male\n component can be inserted through the slot of the child safety seat.",
+      "featured": true,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig0.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig1.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig2.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig3.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig4.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig5.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig6.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig7.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig7.png",
+          "caption": "Figure 7"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig8.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig8.png",
+          "caption": "Figure 8"
+        },
+        {
+          "thumbnail": "/images/patents/US-10023078-B2/fig9.png",
+          "hires": "/images/patents/US-10023078-B2/hires/fig9.png",
+          "caption": "Figure 9"
+        }
+      ],
+      "inventors": [
+        "Matthew A. Kitt"
+      ],
+      "assignee": "Individual"
+    }
+  ],
+  "subcategories": {
+    "furniture": {
+      "id": "furniture",
+      "name": "Furniture",
+      "patentCount": 1,
+      "patents": [
+        {
+          "id": "US-10023078-B2",
+          "title": "safety seat Temperature compensated transmission line based liquid",
+          "publicationDate": "2018-07-17",
+          "imagePages": 0,
+          "abstract": "The invention provides\n a seatbelt threader device with a sheath receiving at least one or both\n of the lap and shoulder straps of a seatbelt therein, and a male \ncomponent of a seatbelt buckle at a distal end thereof, so that the male\n component can be inserted through the slot of the child safety seat.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig0.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig1.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig2.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig3.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig4.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig5.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig6.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig7.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig7.png",
+              "caption": "Figure 7"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig8.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig8.png",
+              "caption": "Figure 8"
+            },
+            {
+              "thumbnail": "/images/patents/US-10023078-B2/fig9.png",
+              "hires": "/images/patents/US-10023078-B2/hires/fig9.png",
+              "caption": "Figure 9"
+            }
+          ],
+          "inventors": [
+            "Matthew A. Kitt"
+          ],
+          "assignee": "Individual"
+        }
+      ]
+    }
+  }
+}

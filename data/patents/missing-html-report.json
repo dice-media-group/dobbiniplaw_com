@@ -1,0 +1,649 @@
+{
+  "generatedAt": "2025-05-24T17:12:49.946Z",
+  "totalPatents": 255,
+  "missingHtmlFiles": [
+    {
+      "patentId": "US-8832986-B2",
+      "issue": "HTML file not found",
+      "abstract": "HTML file not found for US-8832986-B2",
+      "assignee": "HTML file not found for US-8832986-B2"
+    }
+  ],
+  "processingErrors": [],
+  "imageErrors": [
+    {
+      "patentId": "US-D1012542-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D899547-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D889588-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D882015-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D884819-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D872779-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D879907-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D854339-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D843725-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D845793-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D843128-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D887055-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D838387-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D832610-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D836852-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D829418-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D799852-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D811032-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D795982-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D787569-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D787570-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D779012-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D779227-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D778082-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D778083-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D771765-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D775482-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D769398-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D769399-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D769397-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D762277-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D763396-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D746586-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D728725-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D722672-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-8832986-B2",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D707781-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D697653-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D695801-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D693420-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D676961-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D667915-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D662430-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D662167-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D652468-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D648413-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D645113-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D644293-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D643497-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D642647-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D642652-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D640342-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D639986-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D636947-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D639470-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D636453-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D628282-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D634418-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D633617-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D623786-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D622802-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D623785-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D620544-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D620545-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D620546-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D615143-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D616057-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D615144-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D614719-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D614720-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D614721-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D610667-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D614722-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D602555-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600304-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600771-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600308-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600306-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600307-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600305-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600310-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600303-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D600309-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D596693-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D594083-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D593633-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D594084-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D593634-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D593635-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D564927-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D495870-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-D510209-S",
+      "issue": "No images found, using placeholder"
+    },
+    {
+      "patentId": "US-6883261-B2",
+      "issue": "No images found, using placeholder"
+    }
+  ],
+  "successfulPatents": [
+    "US-12243306-B1",
+    "US-12108227-B2",
+    "US-12260863-B1",
+    "US-12086847-B2",
+    "US-12243080-B2",
+    "US-12090381-B2",
+    "US-12094235-B2",
+    "US-11967167-B1",
+    "US-11964211-B2",
+    "US-11927774-B2",
+    "US-11991510-B2",
+    "US-11956608-B2",
+    "US-12208797-B2",
+    "US-12208798-B2",
+    "US-11926321-B1",
+    "US-11896729-B2",
+    "US-12246105-B2",
+    "US-D1012542-S",
+    "US-11622835-B1",
+    "US-12076202-B2",
+    "US-11793617-B2",
+    "US-11427133-B2",
+    "US-11525266-B2",
+    "US-11495137-B2",
+    "US-11826445-B2",
+    "US-11219582-B2",
+    "US-11350581-B2",
+    "US-11826444-B2",
+    "US-11207214-B2",
+    "US-11033945-B2",
+    "US-D899547-S",
+    "US-11022296-B2",
+    "US-10932986-B2",
+    "US-D889588-S",
+    "US-10794647-B2",
+    "US-10695259-B2",
+    "US-D882015-S",
+    "US-D884819-S",
+    "US-10610059-B2",
+    "US-10533834-B2",
+    "US-D872779-S",
+    "US-D879907-S",
+    "US-10456903-B2",
+    "US-10443970-B2",
+    "US-10463952-B2",
+    "US-10401382-B2",
+    "US-10408389-B2",
+    "US-10670198-B2",
+    "US-D854339-S",
+    "US-10359245-B2",
+    "US-10401383-B2",
+    "US-10323813-B2",
+    "US-10336231-B2",
+    "US-10316884-B2",
+    "US-10292527-B2",
+    "US-D845793-S",
+    "US-D843725-S",
+    "US-10228209-B2",
+    "US-D843128-S",
+    "US-10197356-B2",
+    "US-10174933-B2",
+    "US-D838387-S",
+    "US-D887055-S",
+    "US-10168118-B2",
+    "US-D832610-S",
+    "US-D836852-S",
+    "US-10114054-B1",
+    "US-10050428-B2",
+    "US-D829418-S",
+    "US-10018494-B2",
+    "US-10023078-B2",
+    "US-10024064-B2",
+    "US-10017018-B2",
+    "US-10011995-B2",
+    "US-10563407-B2",
+    "US-9945545-B2",
+    "US-9927461-B2",
+    "US-10006933-B2",
+    "US-9885736-B2",
+    "US-D799852-S",
+    "US-D811032-S",
+    "US-9682466-B2",
+    "US-D795982-S",
+    "US-9680270-B2",
+    "US-9587895-B1",
+    "US-D787570-S",
+    "US-D787569-S",
+    "US-9566557-B2",
+    "US-D779012-S",
+    "US-D779227-S",
+    "US-9534371-B2",
+    "US-D778082-S",
+    "US-D778083-S",
+    "US-D775482-S",
+    "US-D771765-S",
+    "US-10036160-B2",
+    "US-D769398-S",
+    "US-9472685-B2",
+    "US-9468804-B2",
+    "US-9453696-B2",
+    "US-D769397-S",
+    "US-D769399-S",
+    "US-9683799-B2",
+    "US-9442078-B2",
+    "US-9435608-B2",
+    "US-9265130-B2",
+    "US-D763396-S",
+    "US-D762277-S",
+    "US-9228797-B2",
+    "US-D746586-S",
+    "US-9228794-B2",
+    "US-9157699-B2",
+    "US-9085937-B2",
+    "US-10017990-B2",
+    "US-9075081-B2",
+    "US-D728725-S",
+    "US-9080825-B2",
+    "US-8961554-B2",
+    "US-8962962-B2",
+    "US-D722672-S",
+    "US-8939602-B2",
+    "US-8943728-B2",
+    "US-8939334-B2",
+    "US-8832986-B2",
+    "US-8800189-B2",
+    "US-8844184-B2",
+    "US-8776626-B2",
+    "US-8757283-B2",
+    "US-D707781-S",
+    "US-8640373-B2",
+    "US-8754773-B1",
+    "US-D697653-S",
+    "US-8596504-B2",
+    "US-D693420-S",
+    "US-D695801-S",
+    "US-8544704-B2",
+    "US-8555562-B2",
+    "US-8567120-B2",
+    "US-8544153-B2",
+    "US-8510976-B2",
+    "US-8492966-B2",
+    "US-8484882-B2",
+    "US-8342072-B2",
+    "US-D676961-S",
+    "US-8539871-B1",
+    "US-8307747-B2",
+    "US-D667915-S",
+    "US-8262248-B2",
+    "US-8261649-B2",
+    "US-D662430-S",
+    "US-8166692-B2",
+    "US-8201489-B2",
+    "US-D662167-S",
+    "US-8161861-B2",
+    "US-8069601-B1",
+    "US-D652468-S",
+    "US-8061071-B2",
+    "US-8029007-B2",
+    "US-D648413-S",
+    "US-8014136-B2",
+    "US-8006425-B2",
+    "US-D645113-S",
+    "US-8001881-B2",
+    "US-D643497-S",
+    "US-D644293-S",
+    "US-D640342-S",
+    "US-D642652-S",
+    "US-D642647-S",
+    "US-D636947-S",
+    "US-D639986-S",
+    "US-D639470-S",
+    "US-7958660-B2",
+    "US-7908780-B2",
+    "US-D636453-S",
+    "US-D633617-S",
+    "US-D628282-S",
+    "US-D634418-S",
+    "US-D623786-S",
+    "US-D622802-S",
+    "US-D623785-S",
+    "US-7776636-B2",
+    "US-7762018-B1",
+    "US-D620544-S",
+    "US-D620546-S",
+    "US-7728345-B2",
+    "US-D620545-S",
+    "US-D616057-S",
+    "US-D615144-S",
+    "US-D615143-S",
+    "US-D614719-S",
+    "US-D614720-S",
+    "US-7704074-B2",
+    "US-D614721-S",
+    "US-D610667-S",
+    "US-D614722-S",
+    "US-7651047-B2",
+    "US-7651268-B2",
+    "US-7661623-B2",
+    "US-7621063-B2",
+    "US-7645086-B2",
+    "US-7647719-B2",
+    "US-D602555-S",
+    "US-7613578-B2",
+    "US-7619328-B2",
+    "US-D600308-S",
+    "US-D600304-S",
+    "US-D600771-S",
+    "US-D600305-S",
+    "US-D600307-S",
+    "US-D600306-S",
+    "US-D600309-S",
+    "US-D600310-S",
+    "US-D600303-S",
+    "US-D596693-S",
+    "US-7574823-B2",
+    "US-7798045-B1",
+    "US-D593633-S",
+    "US-D594084-S",
+    "US-D594083-S",
+    "US-D593634-S",
+    "US-D593635-S",
+    "US-7530808-B2",
+    "US-7434345-B2",
+    "US-7476049-B2",
+    "US-7485116-B2",
+    "US-D564927-S",
+    "US-7408472-B2",
+    "US-7356958-B2",
+    "US-7271420-B2",
+    "US-7320427-B2",
+    "US-7283230-B2",
+    "US-7100320-B2",
+    "US-7156786-B1",
+    "US-7267457-B2",
+    "US-6860053-B2",
+    "US-D495870-S",
+    "US-D510209-S",
+    "US-6725594-B2",
+    "US-6785994-B2",
+    "US-6651371-B2",
+    "US-7152355-B2",
+    "US-7966760-B2",
+    "US-6874267-B2",
+    "US-6602124-B2",
+    "US-6481136-B1",
+    "US-6571503-B2",
+    "US-6883261-B2",
+    "US-6748689-B2",
+    "US-7174666-B2",
+    "US-7207131-B2",
+    "US-6422561-B1",
+    "US-6434874-B1",
+    "US-6212815-B1",
+    "US-6634131-B1",
+    "US-6418656-B1"
+  ],
+  "statistics": {
+    "successRate": 100,
+    "missingHtmlRate": 0,
+    "processingTime": 20731
+  }
+}
