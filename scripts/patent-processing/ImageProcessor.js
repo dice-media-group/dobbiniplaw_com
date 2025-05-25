@@ -1,5 +1,6 @@
-// ImageProcessor.js
-// Handles image analysis and processing for patents
+// ImageProcessor.js - COMPREHENSIVE ENHANCED VERSION  
+// Handles image analysis and processing for patents with COMPLETE design patent support
+// FIXES: Leading zero logic, S→S1 suffix mapping, multiple search locations
 
 import path from 'path';
 import fs from 'fs';
@@ -9,6 +10,94 @@ export class ImageProcessor {
   constructor(config) {
     this.config = config;
     this.fileHelper = new FileSystemHelper(config);
+  }
+
+  /**
+   * COMPREHENSIVE FIX: Extract all possible base patent IDs for image matching 
+   * Handles the discovered S → S1 suffix mapping and leading zero requirements
+   * @param {string} patentId - Patent ID with hyphens (e.g., "US-D510209-S")
+   * @param {string} formattedId - Patent ID without hyphens (e.g., "USD510209S")
+   * @returns {Array<string>} Array of possible base IDs to search for
+   */
+  extractPatentBaseIds(patentId, formattedId) {
+    console.log(`🔍 Extracting base IDs from: ${patentId} (formatted: ${formattedId})`);
+    
+    const baseIds = [];
+    
+    // Handle Design Patents (US-D######-S format)
+    if (patentId.includes('-D') && patentId.endsWith('-S')) {
+      const match = patentId.match(/US-D(\d+)-S/);
+      if (match) {
+        const patentNumber = match[1]; // "510209"
+        
+        // CRITICAL: 6-digit design patents need leading zero, 7-digit don't
+        if (patentNumber.length === 6) {
+          baseIds.push(`USD0${patentNumber}`); // USD0510209 (PRIMARY FORMAT)
+        } else if (patentNumber.length === 7) {
+          baseIds.push(`USD${patentNumber}`);  // USD1234567 (for 7-digit)
+        }
+        
+        // Also try without leading zero as fallback
+        baseIds.push(`USD${patentNumber}`); // USD510209
+        
+        console.log(`🎨 Design patent base IDs: ${baseIds.join(', ')}`);
+        return baseIds;
+      }
+    }
+    
+    // Handle Utility Patents (US-#######-B1/B2 format)  
+    if (formattedId.match(/B[12]$/)) {
+      const baseId = formattedId.replace(/B[12]$/, '');
+      
+      // For utility patents, also try with leading zero if 7 digits
+      const match = baseId.match(/US(\d+)/);
+      if (match && match[1].length === 7) {
+        baseIds.push(`US0${match[1]}`); // US06883261
+      }
+      
+      baseIds.push(baseId); // US6883261
+      
+      console.log(`⚙️ Utility patent base IDs: ${baseIds.join(', ')}`);
+      return baseIds;
+    }
+    
+    // Fallback: use the formatted ID as-is
+    baseIds.push(formattedId);
+    console.log(`📄 Using full formatted ID as base: ${formattedId}`);
+    return baseIds;
+  }
+
+  /**
+   * COMPREHENSIVE: Get all possible formatted ID variations for file system search
+   * Handles the S → S1 suffix mapping discovered in the analysis
+   * @param {string} patentId - Patent ID with hyphens (e.g., "US-D510209-S")
+   * @param {string} formattedId - Patent ID without hyphens (e.g., "USD510209S")
+   * @returns {Array<string>} Array of possible formatted IDs for file directory search
+   */
+  getFormattedIdVariations(patentId, formattedId) {
+    const variations = [formattedId]; // Always include the original
+    
+    // Handle Design Patents: S → S1 mapping
+    if (patentId.includes('-D') && patentId.endsWith('-S')) {
+      // TrophyWall.pdf: US-D510209-S → formattedId: USD510209S
+      // File System: USD510209S1 (add "1" suffix)
+      const s1Variation = formattedId.replace(/S$/, 'S1');
+      variations.push(s1Variation);
+      
+      console.log(`🔄 S→S1 mapping: ${formattedId} → ${s1Variation}`);
+    }
+    
+    return variations;
+  }
+
+  /**
+   * ENHANCED: Check if filename matches any of the possible base IDs
+   * @param {string} filename - Image filename to check
+   * @param {Array<string>} baseIds - Array of possible base IDs
+   * @returns {boolean} True if filename matches any base ID
+   */
+  filenameMatchesBaseIds(filename, baseIds) {
+    return baseIds.some(baseId => filename.includes(baseId));
   }
 
   /**
@@ -39,29 +128,60 @@ export class ImageProcessor {
   }
 
   /**
+   * Determine image quality/priority based on filename and source
+   * @param {string} filename - Image filename
+   * @param {string} source - Source type ('central', 'patent_images', etc.)
+   * @returns {number} Priority score (higher is better quality)
+   */
+  getImagePriority(filename, source = 'unknown') {
+    let priority = 0;
+    
+    // Source-based priority
+    if (source === 'central') priority += 50;
+    else if (source === 'patent_images') priority += 40;
+    else if (source === 'supporting') priority += 20;
+    else if (source === 'patent_subdir') priority += 10;
+    
+    // USPTO format files get bonus points
+    if (filename.match(/US\w?\d+-\d+-D\d+\.png$/i)) {
+      priority += 100;
+    }
+    
+    // Named files get medium priority bonus
+    if (!filename.startsWith('unnamed')) {
+      priority += 20;
+    }
+    
+    return priority;
+  }
+
+  /**
    * Get basic image metadata without loading the full image
    * @param {string} imagePath - Path to the image file
+   * @param {string} source - Source type
    * @returns {Promise<Object>} Object with image metadata
    */
-  async getImageMetadata(imagePath) {
+  async getImageMetadata(imagePath, source = 'unknown') {
     try {
-      // Get file stats
       const stats = await this.fileHelper.getStats(imagePath);
+      const filename = path.basename(imagePath);
       
       return {
         path: imagePath,
-        filename: path.basename(imagePath),
+        filename: filename,
         size: stats.size,
-        // Extract figure number from filename
-        figureNum: this.extractFigureNumber(path.basename(imagePath))
+        priority: this.getImagePriority(filename, source),
+        source: source,
+        figureNum: this.extractFigureNumber(filename)
       };
     } catch (error) {
       console.error(`Error getting metadata for ${imagePath}:`, error.message);
-      // Return basic info if metadata extraction fails
       return {
         path: imagePath,
         filename: path.basename(imagePath),
         size: 0,
+        priority: 0,
+        source: source,
         figureNum: this.extractFigureNumber(path.basename(imagePath))
       };
     }
@@ -69,74 +189,95 @@ export class ImageProcessor {
 
   /**
    * Determine if an image is high-resolution based on its properties
-   * @param {Object} imageMetadata - Image metadata object
-   * @param {Array<Object>} otherImages - Array of other image metadata for comparison
-   * @returns {boolean} True if the image is high-resolution
    */
   isHighResolution(imageMetadata, otherImages = []) {
-    // If there are similar images to compare (same figure number)
+    // Source-based determination
+    if (imageMetadata.source === 'central' || imageMetadata.source === 'patent_images') {
+      return true;
+    }
+    
+    // Size-based determination
+    if (imageMetadata.size > 100000) { // 100KB
+      return true;
+    }
+    
+    // Priority-based determination
+    if (imageMetadata.priority > 50) {
+      return true;
+    }
+    
+    // Compare with similar images
     const similarImages = otherImages.filter(img => 
       img.figureNum === imageMetadata.figureNum && 
       img.path !== imageMetadata.path
     );
     
     if (similarImages.length > 0) {
-      // Compare with similar images - if this is significantly larger, it's high-res
       for (const other of similarImages) {
         const sizeRatio = imageMetadata.size / other.size;
-        
-        // If this image is at least 1.5x larger
-        if (sizeRatio > 1.5) {
-          return true;
-        }
+        if (sizeRatio > 1.5) return true;
       }
-    }
-    
-    // If file is large in absolute terms
-    if (imageMetadata.size > 100000) { // 100KB
-      return true;
-    }
-    
-    // Default for central images directory files - likely high-res
-    if (imageMetadata.path.includes(this.config.CENTRAL_IMAGES_DIR)) {
-      return true;
     }
     
     return false;
   }
 
   /**
-   * Find all potential image files for a patent
-   * @param {string} patentId - Patent ID with hyphens
-   * @param {string} formattedId - Patent ID without hyphens
-   * @returns {Promise<Array<Object>>} Array of image metadata objects
+   * ENHANCED: Find ALL patent subdirectories
    */
-  async findAllPatentImages(patentId, formattedId) {
-    const allImages = [];
-    const patentIdBase = formattedId.replace(/([A-Z]\d+)$/, ''); // For example, US12260863 from US12260863B1
+  async findAllPatentSubdirectories() {
+    try {
+      const items = await this.fileHelper.readDirectory(this.config.LOCAL_PATENT_DIR);
+      const subdirs = [];
+      
+      for (const item of items) {
+        if (item.startsWith('patents-')) {
+          const fullPath = path.join(this.config.LOCAL_PATENT_DIR, item);
+          
+          try {
+            const stats = await this.fileHelper.getStats(fullPath);
+            if (stats.isDirectory()) {
+              subdirs.push(fullPath);
+              console.log(`✅ Found patent subdirectory: ${item}`);
+            }
+          } catch (error) {
+            console.warn(`⚠️ Could not access ${item}: ${error.message}`);
+          }
+        }
+      }
+      
+      subdirs.sort();
+      console.log(`📁 Total patent subdirectories found: ${subdirs.length}`);
+      return subdirs;
+    } catch (error) {
+      console.error('❌ Error finding patent subdirectories:', error);
+      return [];
+    }
+  }
+
+  /**
+   * FIXED: Process high-resolution images directory with enhanced matching
+   */
+  async processHighResImagesDirectory(imagesDir, baseIds, seenFigureNums, allImages, sourceType) {
+    let imagesFound = 0;
     
-    // 1. Check central images directory for high-res images
-    console.log(`Checking central images directory: ${this.config.CENTRAL_IMAGES_DIR}`);
-    let centralImagesFound = 0;
-    if (await this.fileHelper.fileExists(this.config.CENTRAL_IMAGES_DIR)) {
-      const centralFiles = await this.fileHelper.readDirectory(this.config.CENTRAL_IMAGES_DIR);
+    if (await this.fileHelper.fileExists(imagesDir)) {
+      const imageFiles = await this.fileHelper.readDirectory(imagesDir);
       
-      console.log(`Looking for images matching base ID: ${patentIdBase}`);
+      console.log(`🔍 Looking for PNG images matching base IDs: [${baseIds.join(', ')}] in ${path.basename(imagesDir)}`);
+      console.log(`📂 Directory contains ${imageFiles.length} total files`);
       
-      // Find matching images (only include actual image files, exclude duplicates)
-      let seenFigureNums = new Set();
-      
-      // Match pattern with date component if available
-      const matchingCentralImages = centralFiles.filter(filename => {
-        // Skip non-image files
-        if (!filename.match(/\.(png|jpg|jpeg|gif|tiff|webp)$/i)) return false;
+      const matchingImages = imageFiles.filter(filename => {
+        // Skip non-PNG files  
+        if (!filename.match(/\.png$/i)) return false;
         
-        // Must match our patent ID base
-        if (!filename.includes(patentIdBase)) return false;
+        // ENHANCED: Must match ANY of our possible base IDs
+        const matches = this.filenameMatchesBaseIds(filename, baseIds);
+        if (!matches) return false;
         
         // Skip if not a file
         try {
-          if (!fs.statSync(path.join(this.config.CENTRAL_IMAGES_DIR, filename)).isFile()) return false;
+          if (!fs.statSync(path.join(imagesDir, filename)).isFile()) return false;
         } catch (err) {
           return false;
         }
@@ -145,110 +286,158 @@ export class ImageProcessor {
         const figNum = this.extractFigureNumber(filename);
         if (figNum === null) return false;
         
-        // Only include unique figure numbers
-        if (seenFigureNums.has(figNum)) return false;
+        // Only include unique figure numbers per source type
+        const figureKey = `${sourceType}-${figNum}`;
+        if (seenFigureNums.has(figureKey)) return false;
         
-        seenFigureNums.add(figNum);
+        seenFigureNums.add(figureKey);
         return true;
       });
       
-      centralImagesFound = matchingCentralImages.length;
-      console.log(`Found ${centralImagesFound} unique high-res images in central directory`);
+      imagesFound = matchingImages.length;
       
-      // Add to all images collection
-      for (const filename of matchingCentralImages) {
-        const imagePath = path.join(this.config.CENTRAL_IMAGES_DIR, filename);
-        const metadata = await this.getImageMetadata(imagePath);
-        allImages.push({
-          ...metadata,
-          source: 'central'
-        });
-      }
-    }
-    
-    // 2. Check patent-specific supporting directory for thumbnails
-    const supportingDir = path.join(this.config.LOCAL_PATENT_DIR, `${formattedId}_files`);
-    console.log(`Checking supporting directory: ${supportingDir}`);
-    
-    let supportingImagesFound = 0;
-    let seenSupportingFigureNums = new Set();
-    
-    if (await this.fileHelper.fileExists(supportingDir)) {
-      await this.processSupportingDirectory(supportingDir, seenSupportingFigureNums, allImages);
-      supportingImagesFound += seenSupportingFigureNums.size;
-    }
-    
-    // 3. Check additional "patents-" directories
-    const subdirs = await this.fileHelper.findPatentSubdirectories();
-    for (const dir of subdirs) {
-      // Check for supporting directories in each patents- folder
-      const subSupportingDir = path.join(dir, `${formattedId}_files`);
-      if (await this.fileHelper.fileExists(subSupportingDir)) {
-        console.log(`Checking supporting directory in ${path.basename(dir)}: ${subSupportingDir}`);
-        await this.processSupportingDirectory(subSupportingDir, seenSupportingFigureNums, allImages);
-      }
-      
-      // Also check for images directly in the patents- directory
-      const patentFiles = await this.fileHelper.readDirectory(dir);
-      const patentImages = patentFiles.filter(filename => {
-        // Must be an image file
-        if (!filename.match(/\.(png|jpg|jpeg|gif|tiff|webp)$/i)) return false;
-        
-        // Must include the patent ID
-        if (!filename.includes(formattedId) && !filename.includes(patentIdBase)) return false;
-        
-        // Must be a file
-        try {
-          if (!fs.statSync(path.join(dir, filename)).isFile()) return false;
-        } catch (err) {
-          return false;
+      if (imagesFound > 0) {
+        console.log(`🎯 FOUND ${imagesFound} unique PNG images in ${path.basename(imagesDir)}`);
+        console.log(`📋 Matching files: ${matchingImages.slice(0, 3).join(', ')}${matchingImages.length > 3 ? `... (+${matchingImages.length - 3} more)` : ''}`);
+      } else {
+        console.log(`❌ No matching PNG images found in ${path.basename(imagesDir)}`);
+        // Debug: show what files were actually found
+        const pngFiles = imageFiles.filter(f => f.match(/\.png$/i)).slice(0, 5);
+        if (pngFiles.length > 0) {
+          console.log(`🔍 Debug - PNG files in directory: ${pngFiles.join(', ')}`);
         }
-        
-        // Extract figure number
-        const figNum = this.extractFigureNumber(filename);
-        if (figNum === null) return false;
-        
-        // Only include unique figure numbers
-        if (seenSupportingFigureNums.has(figNum)) return false;
-        
-        seenSupportingFigureNums.add(figNum);
-        return true;
-      });
-      
-      console.log(`Found ${patentImages.length} patent images directly in ${path.basename(dir)}`);
+      }
       
       // Add to all images collection
-      for (const filename of patentImages) {
-        const imagePath = path.join(dir, filename);
-        const metadata = await this.getImageMetadata(imagePath);
-        allImages.push({
-          ...metadata,
-          source: 'patent_subdir'
-        });
-        supportingImagesFound++;
+      for (const filename of matchingImages) {
+        const imagePath = path.join(imagesDir, filename);
+        const metadata = await this.getImageMetadata(imagePath, sourceType);
+        allImages.push(metadata);
+      }
+    } else {
+      console.log(`❌ Directory does not exist: ${imagesDir}`);
+    }
+    
+    return imagesFound;
+  }
+
+  /**
+   * COMPREHENSIVE FIX: Find all potential PNG image files for a patent
+   * Now searches all discovered locations with proper suffix handling
+   * @param {string} patentId - Patent ID with hyphens
+   * @param {string} formattedId - Patent ID without hyphens
+   * @returns {Promise<Array<Object>>} Array of image metadata objects
+   */
+  async findAllPatentImages(patentId, formattedId) {
+    const allImages = [];
+    
+    // Get all possible base IDs for image matching (with leading zeros, etc.)
+    const baseIds = this.extractPatentBaseIds(patentId, formattedId);
+    
+    // Get all possible formatted ID variations for directory search (S → S1 mapping)
+    const formattedIdVariations = this.getFormattedIdVariations(patentId, formattedId);
+    
+    let seenFigureNums = new Set();
+    
+    console.log(`🎯 Searching for images:`);
+    console.log(`   Base IDs: [${baseIds.join(', ')}]`);
+    console.log(`   Directory formats: [${formattedIdVariations.join(', ')}]`);
+    
+    // 1. 🏆 HIGH PRIORITY: Check patent-pX/images/ directories for high-res images
+    console.log(`\n1️⃣ Searching high-resolution images in patent subdirectories...`);
+    const subdirs = await this.findAllPatentSubdirectories();
+    
+    let highResFound = 0;
+    for (const dir of subdirs) {
+      const patentImagesDir = path.join(dir, 'images');
+      const found = await this.processHighResImagesDirectory(
+        patentImagesDir,
+        baseIds,
+        seenFigureNums,
+        allImages,
+        'patent_images'
+      );
+      highResFound += found;
+      
+      if (found > 0) {
+        console.log(`🎯 Found ${found} high-res images in ${path.basename(dir)}/images/`);
       }
     }
     
-    console.log(`Found ${supportingImagesFound} total supporting images`);
+    // 2. 📎 Check patent-specific supporting directories (with S1 suffix support)
+    console.log(`\n2️⃣ Searching supporting directories...`);
+    let supportingFound = 0;
+    
+    for (const formattedVariation of formattedIdVariations) {
+      // Try main directory
+      const supportingDir = path.join(this.config.LOCAL_PATENT_DIR, `${formattedVariation}_files`);
+      if (await this.fileHelper.fileExists(supportingDir)) {
+        console.log(`📂 Checking: ${formattedVariation}_files/`);
+        await this.processSupportingDirectory(supportingDir, baseIds, seenFigureNums, allImages);
+        supportingFound++;
+      }
+      
+      // Try subdirectories
+      for (const dir of subdirs) {
+        const subSupportingDir = path.join(dir, `${formattedVariation}_files`);
+        if (await this.fileHelper.fileExists(subSupportingDir)) {
+          console.log(`📂 Checking: ${path.basename(dir)}/${formattedVariation}_files/`);
+          await this.processSupportingDirectory(subSupportingDir, baseIds, seenFigureNums, allImages);
+          supportingFound++;
+        }
+      }
+    }
+    
+    // 3. 🎯 Check central images directory
+    console.log(`\n3️⃣ Checking central images directory...`);
+    const centralImagesFound = await this.processHighResImagesDirectory(
+      this.config.CENTRAL_IMAGES_DIR, 
+      baseIds, 
+      seenFigureNums, 
+      allImages, 
+      'central'
+    );
+    
+    console.log(`\n📊 SEARCH RESULTS for ${patentId}:`);
+    console.log(`   • High-res images (patents-pX/images/): ${highResFound}`);
+    console.log(`   • Supporting directories found: ${supportingFound}`);
+    console.log(`   • Central images: ${centralImagesFound}`);
+    console.log(`   • Total unique images: ${allImages.length}`);
+    
+    if (allImages.length === 0) {
+      console.log(`❌ NO IMAGES FOUND for ${patentId} - will use placeholder`);
+      
+      // Debug information for troubleshooting
+      console.log(`🔍 Debug info:`);
+      console.log(`   • Patent ID: ${patentId}`);
+      console.log(`   • Formatted: ${formattedId}`);
+      console.log(`   • Expected base IDs: ${baseIds.join(', ')}`);
+      console.log(`   • Expected directories: ${formattedIdVariations.map(v => `${v}_files`).join(', ')}`);
+    } else {
+      // Group by source for summary
+      const bySources = allImages.reduce((acc, img) => {
+        acc[img.source] = (acc[img.source] || 0) + 1;
+        return acc;
+      }, {});
+      console.log(`   • By source: ${Object.entries(bySources).map(([k,v]) => `${k}:${v}`).join(', ')}`);
+    }
     
     return allImages;
   }
 
   /**
-   * Process a directory containing supporting images
-   * @param {string} dirPath - Directory path
-   * @param {Set<number>} seenFigureNums - Set of already seen figure numbers
-   * @param {Array<Object>} allImages - Array to add found images to
-   * @returns {Promise<void>}
+   * ENHANCED: Process a directory containing supporting PNG images
    */
-  async processSupportingDirectory(dirPath, seenFigureNums, allImages) {
+  async processSupportingDirectory(dirPath, baseIds, seenFigureNums, allImages) {
     try {
       const supportingFiles = await this.fileHelper.readDirectory(dirPath);
       
-      // Find image files in supporting directory (excluding duplicates)
       const supportingImages = supportingFiles.filter(filename => {
-        // Skip non-image files
-        if (!filename.match(/\.(png|jpg|jpeg|gif|tiff|webp)$/i)) return false;
+        // Skip non-PNG files
+        if (!filename.match(/\.png$/i)) return false;
+        
+        // Skip account_data subdirectory files
+        if (filename.includes('account_data')) return false;
         
         // Skip if not a file
         try {
@@ -257,30 +446,44 @@ export class ImageProcessor {
           return false;
         }
         
+        // ENHANCED: Must match ANY of our possible base IDs OR be a generic unnamed file
+        const matchesBaseId = this.filenameMatchesBaseIds(filename, baseIds);
+        const isGenericFile = filename.startsWith('unnamed');
+        
+        if (!matchesBaseId && !isGenericFile) {
+          return false;
+        }
+        
         // Extract figure number to check for duplicates
         const figNum = this.extractFigureNumber(filename);
-        if (figNum === null) return false;
+        if (figNum === null && !isGenericFile) return false;
         
-        // Skip variants (like file_002.png)
-        if (filename.includes('_002') || filename.includes('_003')) return false;
+        // For generic unnamed files, create a pseudo figure number
+        let figureKey;
+        if (isGenericFile) {
+          // Use filename as key for unnamed files to avoid conflicts
+          figureKey = `supporting-${filename}`;
+        } else {
+          figureKey = `supporting-${figNum}`;
+        }
         
-        // Include only if we haven't seen this figure number yet
-        if (seenFigureNums.has(figNum)) return false;
+        if (seenFigureNums.has(figureKey)) return false;
         
-        seenFigureNums.add(figNum);
+        seenFigureNums.add(figureKey);
         return true;
       });
       
-      console.log(`Found ${supportingImages.length} unique thumbnail images in ${path.basename(dirPath)}`);
+      console.log(`📎 Found ${supportingImages.length} PNG images in ${path.basename(dirPath)}`);
+      
+      if (supportingImages.length > 0) {
+        console.log(`   Files: ${supportingImages.join(', ')}`);
+      }
       
       // Add to all images collection
       for (const filename of supportingImages) {
         const imagePath = path.join(dirPath, filename);
-        const metadata = await this.getImageMetadata(imagePath);
-        allImages.push({
-          ...metadata,
-          source: 'supporting'
-        });
+        const metadata = await this.getImageMetadata(imagePath, 'supporting');
+        allImages.push(metadata);
       }
     } catch (error) {
       console.error(`Error processing supporting directory ${dirPath}:`, error);
@@ -289,14 +492,11 @@ export class ImageProcessor {
 
   /**
    * Process all patent images with enhanced analysis
-   * @param {string} patentId - Patent ID with hyphens (e.g., US-12270996-B2)
-   * @returns {Promise<Array<Object>>} Array of image objects with thumbnail and hires properties
    */
   async processPatentImages(patentId) {
     try {
-      console.log(`\nProcessing images for patent ${patentId}...`);
+      console.log(`\n🎯 Processing images for patent ${patentId}...`);
       
-      // Format the patent ID (with and without hyphens)
       const patentIdWithHyphens = patentId;
       const formattedId = patentId.replace(/-/g, '');
       
@@ -304,8 +504,7 @@ export class ImageProcessor {
       const publicPatentDir = path.join(this.config.PUBLIC_PATENTS_DIR, patentIdWithHyphens);
       const publicHiResDir = path.join(publicPatentDir, 'hires');
       
-      // Clean existing directories if they exist
-      console.log(`Cleaning existing directories for ${patentId}...`);
+      console.log(`🧹 Cleaning directories for ${patentId}...`);
       if (fs.existsSync(publicPatentDir)) {
         await this.fileHelper.cleanDirectory(publicPatentDir);
       } else {
@@ -319,50 +518,34 @@ export class ImageProcessor {
       // Find all potential images for this patent
       const allImages = await this.findAllPatentImages(patentId, formattedId);
       
-      // Now analyze and categorize all the images
-      console.log(`Analyzing ${allImages.length} total images for ${patentId}...`);
+      if (allImages.length === 0) {
+        console.log(`❌ No images found for ${patentId}, using placeholder`);
+        return [{
+          thumbnail: `/images/patents/placeholder.svg`,
+          hires: `/images/patents/placeholder.svg`,
+          caption: 'No image available'
+        }];
+      }
+      
+      console.log(`\n🔄 Analyzing ${allImages.length} images for ${patentId}...`);
       
       // Group images by figure number
       const imagesByFigure = {};
       for (const img of allImages) {
-        if (img.figureNum === null) continue; // Skip images without figure numbers
+        // Handle both numbered figures and unnamed files
+        const figKey = img.figureNum !== null ? img.figureNum : `unnamed-${img.filename}`;
         
-        const figNum = img.figureNum;
-        if (!imagesByFigure[figNum]) {
-          imagesByFigure[figNum] = [];
+        if (!imagesByFigure[figKey]) {
+          imagesByFigure[figKey] = [];
         }
-        imagesByFigure[figNum].push(img);
+        imagesByFigure[figKey].push(img);
       }
       
-      // For each figure, determine which is high-res and which is regular
-      const highResImages = [];
-      const regularImages = [];
+      // Process images for each figure
+      return await this.copyAndFormatImages(patentIdWithHyphens, imagesByFigure, publicPatentDir, publicHiResDir);
       
-      for (const [figNum, images] of Object.entries(imagesByFigure)) {
-        if (images.length === 1) {
-          // If only one image for this figure, decide based on absolute criteria
-          const img = images[0];
-          if (this.isHighResolution(img)) {
-            highResImages.push(img);
-          } else {
-            regularImages.push(img);
-          }
-        } else if (images.length > 1) {
-          // If multiple images for this figure, compare them
-          // Sort by size (largest first)
-          images.sort((a, b) => b.size - a.size);
-          
-          // The largest is likely high-res, others are regular
-          highResImages.push(images[0]);
-          regularImages.push(...images.slice(1));
-        }
-      }
-      
-      console.log(`Categorized ${highResImages.length} high-res images and ${regularImages.length} regular images`);
-      
-      return await this.copyAndFormatImages(patentIdWithHyphens, highResImages, regularImages, publicPatentDir, publicHiResDir);
     } catch (error) {
-      console.error(`Error processing images for ${patentId}:`, error);
+      console.error(`❌ Error processing images for ${patentId}:`, error);
       return [{
         thumbnail: `/images/patents/placeholder.svg`,
         hires: `/images/patents/placeholder.svg`,
@@ -372,119 +555,63 @@ export class ImageProcessor {
   }
 
   /**
-   * Copy and format images for the patent
-   * @param {string} patentIdWithHyphens - Patent ID with hyphens
-   * @param {Array<Object>} highResImages - Array of high-res image metadata
-   * @param {Array<Object>} regularImages - Array of regular image metadata
-   * @param {string} publicPatentDir - Public patent directory path
-   * @param {string} publicHiResDir - Public high-res directory path
-   * @returns {Promise<Array<Object>>} Array of image objects with thumbnail and hires properties
+   * ENHANCED: Copy and format images for the patent
    */
-  async copyAndFormatImages(patentIdWithHyphens, highResImages, regularImages, publicPatentDir, publicHiResDir) {
-    // Copy the images to public directory
+  async copyAndFormatImages(patentIdWithHyphens, imagesByFigure, publicPatentDir, publicHiResDir) {
     const imagePaths = [];
     
-    // Process the images by figure number
-    const processedFigures = new Set();
+    console.log(`📋 Processing ${Object.keys(imagesByFigure).length} figure groups...`);
     
-    // First process regular images
-    for (const img of regularImages) {
-      if (img.figureNum === null) continue; // Skip images without figure numbers
+    for (const [figKey, images] of Object.entries(imagesByFigure)) {
+      // Sort images by priority (highest first)
+      images.sort((a, b) => b.priority - a.priority);
       
-      const figNum = img.figureNum;
+      const bestImage = images[0];
+      const isUnnamedFile = figKey.startsWith('unnamed-');
       
-      // Skip if we already processed this figure
-      if (processedFigures.has(figNum)) continue;
-      processedFigures.add(figNum);
-      
-      const destFilename = `fig${figNum}${path.extname(img.filename)}`;
-      const destPath = path.join(publicPatentDir, destFilename);
-      const thumbnailPath = `/images/patents/${patentIdWithHyphens}/${destFilename}`;
-      
-      console.log(`Copying regular image: ${img.filename} -> ${destFilename}`);
-      await this.fileHelper.copyFile(img.path, destPath);
-      
-      // Find a matching high-res image for this figure
-      const matchingHiRes = highResImages.find(hi => hi.figureNum === figNum);
-      let hiresPath = thumbnailPath; // Default to thumbnail if no hi-res exists
-      
-      if (matchingHiRes) {
-        const hiResFilename = `fig${figNum}${path.extname(matchingHiRes.filename)}`;
-        const hiResDestPath = path.join(publicHiResDir, hiResFilename);
-        hiresPath = `/images/patents/${patentIdWithHyphens}/hires/${hiResFilename}`;
-        
-        console.log(`Copying matching high-res image: ${matchingHiRes.filename} -> hires/${hiResFilename}`);
-        await this.fileHelper.copyFile(matchingHiRes.path, hiResDestPath);
+      // Determine figure number for filename
+      let figNum;
+      if (isUnnamedFile) {
+        // For unnamed files, use a sequential number
+        const unnamedIndex = Object.keys(imagesByFigure)
+          .filter(k => k.startsWith('unnamed-'))
+          .indexOf(figKey) + 1;
+        figNum = 100 + unnamedIndex; // Start unnamed at 101, 102, etc.
+      } else {
+        figNum = parseInt(figKey);
       }
       
-      // Add to image paths with the new format
-      imagePaths.push({
-        thumbnail: thumbnailPath,
-        hires: hiresPath,
-        caption: `Figure ${figNum}`
-      });
-    }
-    
-    // Now process any high-res images that don't have a regular counterpart
-    for (const img of highResImages) {
-      if (img.figureNum === null) continue; // Skip images without figure numbers
-      
-      const figNum = img.figureNum;
-      
-      // Skip if we already processed this figure
-      if (processedFigures.has(figNum)) continue;
-      processedFigures.add(figNum);
-      
-      const destFilename = `fig${figNum}${path.extname(img.filename)}`;
+      const destFilename = `fig${figNum}.png`;
       const thumbnailDestPath = path.join(publicPatentDir, destFilename);
       const hiResDestPath = path.join(publicHiResDir, destFilename);
       
       const thumbnailPath = `/images/patents/${patentIdWithHyphens}/${destFilename}`;
       const hiresPath = `/images/patents/${patentIdWithHyphens}/hires/${destFilename}`;
       
-      // Copy high-res to both locations
-      console.log(`Copying high-res image as both regular and hi-res: ${img.filename}`);
-      await this.fileHelper.copyFile(img.path, hiResDestPath);
-      await this.fileHelper.copyFile(img.path, thumbnailDestPath);
+      console.log(`📁 Copying ${bestImage.filename} -> fig${figNum}.png (priority: ${bestImage.priority}, source: ${bestImage.source})`);
       
-      // Add to image paths
+      // Copy best image to both locations
+      await this.fileHelper.copyFile(bestImage.path, thumbnailDestPath);
+      await this.fileHelper.copyFile(bestImage.path, hiResDestPath);
+      
       imagePaths.push({
         thumbnail: thumbnailPath,
         hires: hiresPath,
-        caption: `Figure ${figNum}`
+        caption: `Figure ${figNum}`,
+        source: bestImage.source,
+        originalFilename: bestImage.filename
       });
     }
     
-    // Sort image paths by figure number
+    // Sort by figure number
     imagePaths.sort((a, b) => {
       const figNumA = parseInt(a.caption.match(/\d+/)[0]);
       const figNumB = parseInt(b.caption.match(/\d+/)[0]);
       return figNumA - figNumB;
     });
     
-    // Log all the actual figures we found
-    console.log(`Generated ${imagePaths.length} image entries for patent ${patentIdWithHyphens}`);
+    console.log(`✅ Generated ${imagePaths.length} image entries for ${patentIdWithHyphens}`);
     
-    if (imagePaths.length > 0) {
-      const figureNumbers = imagePaths.map(p => {
-        const match = p.caption.match(/Figure (\d+)/);
-        return match ? match[1] : '';
-      }).join(', ');
-      
-      console.log(`Figure numbers included: ${figureNumbers}`);
-    }
-    
-    // Use placeholders if no images were found
-    if (imagePaths.length === 0) {
-      console.log(`No images found for ${patentIdWithHyphens}, using placeholder`);
-      imagePaths.push({
-        thumbnail: `/images/patents/placeholder.svg`,
-        hires: `/images/patents/placeholder.svg`,
-        caption: 'No image available'
-      });
-    }
-    
-    // Return the image paths with the new format
     return imagePaths;
   }
 }
