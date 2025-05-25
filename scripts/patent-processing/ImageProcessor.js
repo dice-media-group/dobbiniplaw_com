@@ -1,6 +1,7 @@
 // ImageProcessor.js - COMPREHENSIVE ENHANCED VERSION  
 // Handles image analysis and processing for patents with COMPLETE design patent support
 // FIXES: Leading zero logic, S→S1 suffix mapping, multiple search locations
+// FIX: Only allow US*.png files from supporting directories (no unnamed*.png)
 
 import path from 'path';
 import fs from 'fs';
@@ -101,6 +102,24 @@ export class ImageProcessor {
   }
 
   /**
+   * FIXED: Check if filename is a valid US*.png thumbnail image
+   * Only allows US*.png files, no unnamed*.png files
+   * @param {string} filename - Image filename to check
+   * @param {Array<string>} baseIds - Array of possible base IDs
+   * @returns {boolean} True if filename is a valid US*.png thumbnail
+   */
+  isValidThumbnailImage(filename, baseIds) {
+    // Must be PNG
+    if (!filename.match(/\.png$/i)) return false;
+    
+    // Must start with "US" (no unnamed*.png files allowed)
+    if (!filename.startsWith('US')) return false;
+    
+    // Must match one of our base IDs
+    return this.filenameMatchesBaseIds(filename, baseIds);
+  }
+
+  /**
    * Extract figure number from filename
    * @param {string} filename - Image filename
    * @returns {number|null} Figure number or null if not found
@@ -147,9 +166,9 @@ export class ImageProcessor {
       priority += 100;
     }
     
-    // Named files get medium priority bonus
-    if (!filename.startsWith('unnamed')) {
-      priority += 20;
+    // US*.png files get bonus (as opposed to unnamed files)
+    if (filename.startsWith('US')) {
+      priority += 30;
     }
     
     return priority;
@@ -264,16 +283,12 @@ export class ImageProcessor {
     if (await this.fileHelper.fileExists(imagesDir)) {
       const imageFiles = await this.fileHelper.readDirectory(imagesDir);
       
-      console.log(`🔍 Looking for PNG images matching base IDs: [${baseIds.join(', ')}] in ${path.basename(imagesDir)}`);
+      console.log(`🔍 Looking for US*.png images matching base IDs: [${baseIds.join(', ')}] in ${path.basename(imagesDir)}`);
       console.log(`📂 Directory contains ${imageFiles.length} total files`);
       
       const matchingImages = imageFiles.filter(filename => {
-        // Skip non-PNG files  
-        if (!filename.match(/\.png$/i)) return false;
-        
-        // ENHANCED: Must match ANY of our possible base IDs
-        const matches = this.filenameMatchesBaseIds(filename, baseIds);
-        if (!matches) return false;
+        // FIXED: Only allow valid US*.png thumbnail images
+        if (!this.isValidThumbnailImage(filename, baseIds)) return false;
         
         // Skip if not a file
         try {
@@ -297,14 +312,15 @@ export class ImageProcessor {
       imagesFound = matchingImages.length;
       
       if (imagesFound > 0) {
-        console.log(`🎯 FOUND ${imagesFound} unique PNG images in ${path.basename(imagesDir)}`);
+        console.log(`🎯 FOUND ${imagesFound} unique US*.png images in ${path.basename(imagesDir)}`);
         console.log(`📋 Matching files: ${matchingImages.slice(0, 3).join(', ')}${matchingImages.length > 3 ? `... (+${matchingImages.length - 3} more)` : ''}`);
       } else {
-        console.log(`❌ No matching PNG images found in ${path.basename(imagesDir)}`);
+        console.log(`❌ No matching US*.png images found in ${path.basename(imagesDir)}`);
         // Debug: show what files were actually found
         const pngFiles = imageFiles.filter(f => f.match(/\.png$/i)).slice(0, 5);
         if (pngFiles.length > 0) {
           console.log(`🔍 Debug - PNG files in directory: ${pngFiles.join(', ')}`);
+          console.log(`❌ Note: Skipping unnamed*.png files - only US*.png files are allowed`);
         }
       }
       
@@ -339,7 +355,7 @@ export class ImageProcessor {
     
     let seenFigureNums = new Set();
     
-    console.log(`🎯 Searching for images:`);
+    console.log(`🎯 Searching for US*.png images only (no unnamed*.png):`);
     console.log(`   Base IDs: [${baseIds.join(', ')}]`);
     console.log(`   Directory formats: [${formattedIdVariations.join(', ')}]`);
     
@@ -360,12 +376,12 @@ export class ImageProcessor {
       highResFound += found;
       
       if (found > 0) {
-        console.log(`🎯 Found ${found} high-res images in ${path.basename(dir)}/images/`);
+        console.log(`🎯 Found ${found} high-res US*.png images in ${path.basename(dir)}/images/`);
       }
     }
     
     // 2. 📎 Check patent-specific supporting directories (with S1 suffix support)
-    console.log(`\n2️⃣ Searching supporting directories...`);
+    console.log(`\n2️⃣ Searching supporting directories for US*.png thumbnails...`);
     let supportingFound = 0;
     
     for (const formattedVariation of formattedIdVariations) {
@@ -402,10 +418,11 @@ export class ImageProcessor {
     console.log(`   • High-res images (patents-pX/images/): ${highResFound}`);
     console.log(`   • Supporting directories found: ${supportingFound}`);
     console.log(`   • Central images: ${centralImagesFound}`);
-    console.log(`   • Total unique images: ${allImages.length}`);
+    console.log(`   • Total unique US*.png images: ${allImages.length}`);
+    console.log(`   • Note: unnamed*.png files are filtered out`);
     
     if (allImages.length === 0) {
-      console.log(`❌ NO IMAGES FOUND for ${patentId} - will use placeholder`);
+      console.log(`❌ NO US*.png IMAGES FOUND for ${patentId} - will use placeholder`);
       
       // Debug information for troubleshooting
       console.log(`🔍 Debug info:`);
@@ -413,6 +430,8 @@ export class ImageProcessor {
       console.log(`   • Formatted: ${formattedId}`);
       console.log(`   • Expected base IDs: ${baseIds.join(', ')}`);
       console.log(`   • Expected directories: ${formattedIdVariations.map(v => `${v}_files`).join(', ')}`);
+      console.log(`   • Looking for: US*.png files matching base IDs`);
+      console.log(`   • Filtering out: unnamed*.png files`);
     } else {
       // Group by source for summary
       const bySources = allImages.reduce((acc, img) => {
@@ -426,15 +445,22 @@ export class ImageProcessor {
   }
 
   /**
-   * ENHANCED: Process a directory containing supporting PNG images
+   * FIXED: Process a directory containing supporting PNG images
+   * Only includes US*.png files, filters out unnamed*.png files
    */
   async processSupportingDirectory(dirPath, baseIds, seenFigureNums, allImages) {
     try {
       const supportingFiles = await this.fileHelper.readDirectory(dirPath);
       
       const supportingImages = supportingFiles.filter(filename => {
-        // Skip non-PNG files
-        if (!filename.match(/\.png$/i)) return false;
+        // FIXED: Only allow valid US*.png thumbnail images
+        if (!this.isValidThumbnailImage(filename, baseIds)) {
+          // Log filtered out files for debugging
+          if (filename.startsWith('unnamed') && filename.match(/\.png$/i)) {
+            console.log(`🚫 Filtering out unnamed file: ${filename}`);
+          }
+          return false;
+        }
         
         // Skip account_data subdirectory files
         if (filename.includes('account_data')) return false;
@@ -446,37 +472,29 @@ export class ImageProcessor {
           return false;
         }
         
-        // ENHANCED: Must match ANY of our possible base IDs OR be a generic unnamed file
-        const matchesBaseId = this.filenameMatchesBaseIds(filename, baseIds);
-        const isGenericFile = filename.startsWith('unnamed');
-        
-        if (!matchesBaseId && !isGenericFile) {
-          return false;
-        }
-        
         // Extract figure number to check for duplicates
         const figNum = this.extractFigureNumber(filename);
-        if (figNum === null && !isGenericFile) return false;
+        if (figNum === null) return false;
         
-        // For generic unnamed files, create a pseudo figure number
-        let figureKey;
-        if (isGenericFile) {
-          // Use filename as key for unnamed files to avoid conflicts
-          figureKey = `supporting-${filename}`;
-        } else {
-          figureKey = `supporting-${figNum}`;
-        }
-        
+        const figureKey = `supporting-${figNum}`;
         if (seenFigureNums.has(figureKey)) return false;
         
         seenFigureNums.add(figureKey);
         return true;
       });
       
-      console.log(`📎 Found ${supportingImages.length} PNG images in ${path.basename(dirPath)}`);
+      // Count filtered out files for reporting
+      const unnamedFiles = supportingFiles.filter(f => 
+        f.startsWith('unnamed') && f.match(/\.png$/i)
+      );
+      
+      console.log(`📎 Found ${supportingImages.length} US*.png images in ${path.basename(dirPath)}`);
+      if (unnamedFiles.length > 0) {
+        console.log(`🚫 Filtered out ${unnamedFiles.length} unnamed*.png files`);
+      }
       
       if (supportingImages.length > 0) {
-        console.log(`   Files: ${supportingImages.join(', ')}`);
+        console.log(`   US*.png files: ${supportingImages.join(', ')}`);
       }
       
       // Add to all images collection
@@ -519,7 +537,7 @@ export class ImageProcessor {
       const allImages = await this.findAllPatentImages(patentId, formattedId);
       
       if (allImages.length === 0) {
-        console.log(`❌ No images found for ${patentId}, using placeholder`);
+        console.log(`❌ No US*.png images found for ${patentId}, using placeholder`);
         return [{
           thumbnail: `/images/patents/placeholder.svg`,
           hires: `/images/patents/placeholder.svg`,
@@ -527,13 +545,12 @@ export class ImageProcessor {
         }];
       }
       
-      console.log(`\n🔄 Analyzing ${allImages.length} images for ${patentId}...`);
+      console.log(`\n🔄 Analyzing ${allImages.length} US*.png images for ${patentId}...`);
       
       // Group images by figure number
       const imagesByFigure = {};
       for (const img of allImages) {
-        // Handle both numbered figures and unnamed files
-        const figKey = img.figureNum !== null ? img.figureNum : `unnamed-${img.filename}`;
+        const figKey = img.figureNum;
         
         if (!imagesByFigure[figKey]) {
           imagesByFigure[figKey] = [];
@@ -567,19 +584,7 @@ export class ImageProcessor {
       images.sort((a, b) => b.priority - a.priority);
       
       const bestImage = images[0];
-      const isUnnamedFile = figKey.startsWith('unnamed-');
-      
-      // Determine figure number for filename
-      let figNum;
-      if (isUnnamedFile) {
-        // For unnamed files, use a sequential number
-        const unnamedIndex = Object.keys(imagesByFigure)
-          .filter(k => k.startsWith('unnamed-'))
-          .indexOf(figKey) + 1;
-        figNum = 100 + unnamedIndex; // Start unnamed at 101, 102, etc.
-      } else {
-        figNum = parseInt(figKey);
-      }
+      const figNum = parseInt(figKey);
       
       const destFilename = `fig${figNum}.png`;
       const thumbnailDestPath = path.join(publicPatentDir, destFilename);
@@ -611,6 +616,7 @@ export class ImageProcessor {
     });
     
     console.log(`✅ Generated ${imagePaths.length} image entries for ${patentIdWithHyphens}`);
+    console.log(`🎯 Only US*.png files were included - unnamed*.png files were filtered out`);
     
     return imagePaths;
   }
