@@ -50,8 +50,8 @@ async function runImprovedExtraction() {
     // Save to JSON files
     savePatentData(categorizedPatents);
     
-    // Also save the complete list of patents to all-patents.json
-    const allPatentsPath = path.join(__dirname, '../content/patents/all-patents.json');
+    // Also save the complete list of patents to all-patents.json in the data directory
+    const allPatentsPath = path.join(__dirname, '../data/patents/all-patents.json');
     fs.writeFileSync(allPatentsPath, JSON.stringify({ patents: enhancedPatents }, null, 2));
     console.log(`Saved all patents to ${allPatentsPath}`);
     

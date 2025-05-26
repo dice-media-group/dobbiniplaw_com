@@ -291,8 +291,8 @@ async function loadPatentData() {
       categoryFilter.value = categoryFromQuery;
     }
     
-    // Fetch categories
-    const categoriesModule = await import('~/content/patents/categories.json');
+    // Fetch categories from the data directory
+    const categoriesModule = await import('~/data/patents/categories.json');
     categories.value = categoriesModule.default.categories.sort((a, b) => a.order - b.order);
     console.log(`Loaded ${categories.value.length} categories:`, categories.value.map(c => c.name).join(', '));
     
@@ -302,8 +302,8 @@ async function loadPatentData() {
     // Build a list of promises to load all categories in parallel
     const loadPromises = categories.value.map(async (category) => {
       try {
-        // Try to import the category-specific JSON file
-        const module = await import(`~/content/patents/${category.id}.json`);
+        // Try to import the category-specific JSON file from data directory
+        const module = await import(`~/data/patents/${category.id}.json`);
         patentsMap.value[category.id] = module.default.patents || [];
         
         // Tag each patent with its category
@@ -331,7 +331,7 @@ async function loadPatentData() {
     if (!patentsLoaded) {
       try {
         console.log('Attempting to load from all-patents.json...');
-        const allPatentsModule = await import('~/content/patents/all-patents.json');
+        const allPatentsModule = await import('~/data/patents/all-patents.json');
         const allPatents = allPatentsModule.default.patents || [];
         
         if (allPatents.length > 0) {

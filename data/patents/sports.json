@@ -1,0 +1,122 @@
+{
+  "categoryId": "sports",
+  "patents": [
+    {
+      "id": "US-6434874-B1",
+      "title": "Digit support 10 Word search based board game",
+      "publicationDate": "2002-08-20",
+      "imagePages": 0,
+      "abstract": "A digit support for AR\n family receivers designed to reside in a gap left between a receiver's \npistol grip and trigger guard. The support fills the gap and ideally \nseparates a user's digit from the gap, thereby protecting the user's \ndigit from injury due to prolonged contact with the walls forming said \ngap. The digit support is easily installed without removal of any \ncomponents of or attachments to the receiver and in its best mode allows\n for the simultaneous opening of the receiver's trigger guard. In the \nbest mode, the support is a body molded from a rubber compound having \ndimensions to fit snugly in the gap left between the trigger guard and \nthe pistol grip. Ideally, the remaining exposed surface extends slightly\n higher than the depth of the gap and is cylindrically domed. Also in \nthe best mode, the side of the body abutting the trigger guard mount \nshould have a concavity designed to fit around the trigger guard mount \nso as to encompass said mount.",
+      "featured": true,
+      "images": [
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig0.png",
+          "hires": "/images/patents/US-6434874-B1/fig0.png",
+          "caption": "Figure 0"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig1.png",
+          "hires": "/images/patents/US-6434874-B1/fig1.png",
+          "caption": "Figure 1"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig2.png",
+          "hires": "/images/patents/US-6434874-B1/fig2.png",
+          "caption": "Figure 2"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig3.png",
+          "hires": "/images/patents/US-6434874-B1/fig3.png",
+          "caption": "Figure 3"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig4.png",
+          "hires": "/images/patents/US-6434874-B1/fig4.png",
+          "caption": "Figure 4"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig5.png",
+          "hires": "/images/patents/US-6434874-B1/fig5.png",
+          "caption": "Figure 5"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig6.png",
+          "hires": "/images/patents/US-6434874-B1/fig6.png",
+          "caption": "Figure 6"
+        },
+        {
+          "thumbnail": "/images/patents/US-6434874-B1/fig7.png",
+          "hires": "/images/patents/US-6434874-B1/fig7.png",
+          "caption": "Figure 7"
+        }
+      ],
+      "inventors": [
+        "Stephen Charles Hines"
+      ],
+      "assignee": "Mindspeed Technologies LLC"
+    }
+  ],
+  "subcategories": {
+    "games": {
+      "id": "games",
+      "name": "Games",
+      "patentCount": 1,
+      "patents": [
+        {
+          "id": "US-6434874-B1",
+          "title": "Digit support 10 Word search based board game",
+          "publicationDate": "2002-08-20",
+          "imagePages": 0,
+          "abstract": "A digit support for AR\n family receivers designed to reside in a gap left between a receiver's \npistol grip and trigger guard. The support fills the gap and ideally \nseparates a user's digit from the gap, thereby protecting the user's \ndigit from injury due to prolonged contact with the walls forming said \ngap. The digit support is easily installed without removal of any \ncomponents of or attachments to the receiver and in its best mode allows\n for the simultaneous opening of the receiver's trigger guard. In the \nbest mode, the support is a body molded from a rubber compound having \ndimensions to fit snugly in the gap left between the trigger guard and \nthe pistol grip. Ideally, the remaining exposed surface extends slightly\n higher than the depth of the gap and is cylindrically domed. Also in \nthe best mode, the side of the body abutting the trigger guard mount \nshould have a concavity designed to fit around the trigger guard mount \nso as to encompass said mount.",
+          "featured": false,
+          "images": [
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig0.png",
+              "hires": "/images/patents/US-6434874-B1/fig0.png",
+              "caption": "Figure 0"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig1.png",
+              "hires": "/images/patents/US-6434874-B1/fig1.png",
+              "caption": "Figure 1"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig2.png",
+              "hires": "/images/patents/US-6434874-B1/fig2.png",
+              "caption": "Figure 2"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig3.png",
+              "hires": "/images/patents/US-6434874-B1/fig3.png",
+              "caption": "Figure 3"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig4.png",
+              "hires": "/images/patents/US-6434874-B1/fig4.png",
+              "caption": "Figure 4"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig5.png",
+              "hires": "/images/patents/US-6434874-B1/fig5.png",
+              "caption": "Figure 5"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig6.png",
+              "hires": "/images/patents/US-6434874-B1/fig6.png",
+              "caption": "Figure 6"
+            },
+            {
+              "thumbnail": "/images/patents/US-6434874-B1/fig7.png",
+              "hires": "/images/patents/US-6434874-B1/fig7.png",
+              "caption": "Figure 7"
+            }
+          ],
+          "inventors": [
+            "Stephen Charles Hines"
+          ],
+          "assignee": "Mindspeed Technologies LLC"
+        }
+      ]
+    }
+  }
+}
