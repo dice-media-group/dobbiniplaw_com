@@ -43,7 +43,8 @@ export function categorizePatentsIntoSubcategories(categorizedPatents, subcatego
  * @returns {Promise<void>}
  */
 export async function savePatentData(categorizedPatents) {
-  const outputDir = path.join(__dirname, '../../content/patents');
+  // Updated to use data directory instead of content directory
+  const outputDir = path.join(__dirname, '../../data/patents');
   
   // Load subcategories
   const subcategoryDefs = await subcategoryProcessor.loadSubcategoryDefinitions(outputDir);
