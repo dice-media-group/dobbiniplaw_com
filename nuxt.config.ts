@@ -81,6 +81,11 @@ export default defineNuxtConfig({
           `,
           type: 'text/javascript',
           body: true
+        },
+        {
+          src: 'https://analytics.ahrefs.com/analytics.js',
+          'data-key': 'M7WkZkAk9jpGiNl2gaQUoQ',
+          async: true
         }
       ]
     }
@@ -181,5 +186,12 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2025-04-08'
+  compatibilityDate: '2025-04-08',
+
+  runtimeConfig: {
+    public: {
+      gtag: process.env.NUXT_PUBLIC_GTAG,
+      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
+    }
+  }
 })
