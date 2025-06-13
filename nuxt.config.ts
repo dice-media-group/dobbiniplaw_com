@@ -81,6 +81,11 @@ export default defineNuxtConfig({
           `,
           type: 'text/javascript',
           body: true
+        },
+        {
+          src: 'https://analytics.ahrefs.com/analytics.js',
+          'data-key': 'M7WkZkAk9jpGiNl2gaQUoQ',
+          async: true
         }
       ]
     }
@@ -185,7 +190,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      gtag: process.env.NUXT_PUBLIC_GTAG || 'G-XXXXXXXXXX' // Replace with your actual GA4 ID
+      gtag: process.env.NUXT_PUBLIC_GTAG,
+      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
     }
   }
 })
