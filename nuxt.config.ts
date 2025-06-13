@@ -181,5 +181,11 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2025-04-08'
+  compatibilityDate: '2025-04-08',
+
+  runtimeConfig: {
+    public: {
+      gtag: process.env.NUXT_PUBLIC_GTAG || 'G-XXXXXXXXXX' // Replace with your actual GA4 ID
+    }
+  }
 })
