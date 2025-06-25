@@ -128,15 +128,13 @@ export default defineNuxtConfig({
   routeRules: {
     // Homepage
     '/': { prerender: true },
-    // Ensure consistent trailing slash behavior (choose one approach)
-    '/about': { redirect: '/about/' }, 
-    '/contact': { redirect: '/contact/' },
-    '/patents': { redirect: '/patents/' },
-    '/testimonials': { redirect: '/testimonials/' },
-    '/terms-of-service': { redirect: '/terms-of-service/' },
-    '/privacy-policy': { redirect: '/privacy-policy/' },
-    '/bio-fees': { redirect: '/bio-fees/' },
-    // Add any other routes showing 301s in Ahrefs
+    // Remove all these redirects:
+    // '/about': { redirect: '/about/' }, 
+    // '/contact': { redirect: '/contact/' },
+    // '/patents': { redirect: '/patents/' },
+    // '/terms-of-service': { redirect: '/terms-of-service/' },
+    // '/privacy-policy': { redirect: '/privacy-policy/' },
+    // '/bio-fees': { redirect: '/bio-fees/' },
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
