@@ -81,12 +81,8 @@ export default defineNuxtConfig({
           `,
           type: 'text/javascript',
           body: true
-        },
-        {
-          src: 'https://analytics.ahrefs.com/analytics.js',
-          'data-key': 'M7WkZkAk9jpGiNl2gaQUoQ',
-          async: true
         }
+        // Remove the Ahrefs script - it's handled by the plugin now
       ]
     }
   },
@@ -112,7 +108,7 @@ export default defineNuxtConfig({
         '/',
         '/about',
         '/contact',
-        '/services',
+        '/services', 
         '/patents',
         '/trademarks',
         '/copyright',
@@ -126,6 +122,19 @@ export default defineNuxtConfig({
         '/terms-of-service'
       ]
     }
+  },
+
+  // Add this section to fix 301 redirects
+  routeRules: {
+    // Homepage
+    '/': { prerender: true },
+    // Remove all these redirects:
+    // '/about': { redirect: '/about/' }, 
+    // '/contact': { redirect: '/contact/' },
+    // '/patents': { redirect: '/patents/' },
+    // '/terms-of-service': { redirect: '/terms-of-service/' },
+    // '/privacy-policy': { redirect: '/privacy-policy/' },
+    // '/bio-fees': { redirect: '/bio-fees/' },
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
