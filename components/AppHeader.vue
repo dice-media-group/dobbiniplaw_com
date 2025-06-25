@@ -8,7 +8,7 @@
           <a href="mailto:getinfo@dobbiniplaw.com" class="text-sm font-crimson text-white font-medium hover:text-gray-200">getinfo@dobbiniplaw.com</a>
           <div class="flex space-x-3">
             <a href="https://www.facebook.com/DobbinIPLaw/" target="_blank" rel="noopener" aria-label="Facebook" class="text-white hover:text-gray-200 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-y w-7" fill="currentColor" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
               </svg>
             </a>
@@ -40,15 +40,14 @@
           <NuxtLink to="/about" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">ABOUT US</NuxtLink>
           <NuxtLink to="/prior-work" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green">PRIOR WORK</NuxtLink>
           <div class="relative group">
-            <NuxtLink to="#" class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green flex items-center">
+            <button class="nav-link py-4 px-3 lg:px-5 uppercase text-sm font-crimson tracking-wider text-dobbin-gray hover:text-dobbin-bright-green flex items-center">
               RESOURCES
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-            </NuxtLink>
-            <!-- Dropdown menu with Helpful Links added -->
+            </button>
+            <!-- Dropdown menu -->
             <div class="hidden group-hover:block absolute z-10 bg-white shadow-lg w-48 py-2">
-              <NuxtLink to="#" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Intellectual Property</NuxtLink>
               <NuxtLink to="/patents" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Patents</NuxtLink>
               <NuxtLink to="/trademarks" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Trademarks</NuxtLink>
               <NuxtLink to="/copyright" class="block px-4 py-2 text-sm text-dobbin-gray hover:text-dobbin-bright-green font-crimson">Copyright</NuxtLink>
@@ -89,7 +88,6 @@
         <div class="py-2">
           <div class="text-dobbin-gray font-crimson uppercase text-sm tracking-wider mb-1">RESOURCES</div>
           <div class="pl-4">
-            <NuxtLink to="#" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Intellectual Property</NuxtLink>
             <NuxtLink to="/patents" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Patents</NuxtLink>
             <NuxtLink to="/trademarks" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Trademarks</NuxtLink>
             <NuxtLink to="/copyright" class="block nav-link py-1 text-dobbin-gray hover:text-dobbin-bright-green font-crimson text-sm" @click="mobileMenuOpen = false">Copyright</NuxtLink>
