@@ -223,16 +223,68 @@
 </template>
 
 <script setup>
-import { useHead } from '#app';
 import PatentFAQ from '~/components/PatentFAQ.vue';
 
-// SEO metadata
-useHead({
-  title: 'Patent Information | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Patent information and services to protect your inventions. Secure patents for your innovations with Dobbin IP Law P.C.' }
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'Patent Services & Information',
+  description: 'Protect your inventions with professional patent services. Utility patents, design patents, and plant patents. Expert patent attorney with 25+ years experience serving Utah inventors.',
+  path: '/patents/',
+  keywords: 'patent attorney Utah, patent services, utility patents, design patents, patent application, invention protection, USPTO registration, patent lawyer West Valley City'
+})
+
+// Add structured data for patent services
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Patent Legal Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Utility Patent Applications",
+          "description": "Full utility patent prosecution and filing services for inventions and processes"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Design Patent Applications", 
+          "description": "Design patent protection for ornamental and aesthetic features of products"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Patent Searches",
+          "description": "Patentability and freedom to operate opinions"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Provisional Patent Applications",
+          "description": "Cost-effective provisional patent filing to establish early filing dates"
+        }
+      }
+    ]
+  },
+  "knowsAbout": [
+    "Patent Law",
+    "USPTO Procedures",
+    "Patent Prosecution",
+    "Utility Patents",
+    "Design Patents", 
+    "Plant Patents",
+    "Patent Searches",
+    "Prior Art Analysis"
   ]
-});
+})
 </script>
 
 <style scoped>

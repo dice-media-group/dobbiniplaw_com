@@ -66,12 +66,84 @@
 import HeroBanner from '../components/HeroBanner.vue';
 import { ref } from 'vue';
 
-useHead({
-  title: 'Testimonials | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Read what our clients say about working with Dobbin IP Law P.C. on patents, trademarks, and copyrights.' }
-  ]
-});
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'Client Testimonials & Reviews',
+  description: 'Read authentic testimonials from satisfied clients about our patent, trademark, and intellectual property legal services. 12+ years of client relationships and successful IP protection.',
+  path: '/testimonials/',
+  keywords: 'client testimonials, patent attorney reviews, IP lawyer testimonials, client feedback, satisfied clients, patent attorney Utah reviews'
+})
+
+// Add structured data for testimonials/reviews
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "4",
+    "bestRating": "5",
+    "worstRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Lee Von Gunten"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "We've been working with Geoff and staff for over 12 years with total confidence in the professionality and completeness of their services at fair costs through all of our patent and trademark work."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Matthew Prestwich"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Geoff gave me straight answers, explaining even the most complicated Intellectual Property issues in easy to understand language. His work is of the highest quality and is delivered in a timely manner."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Craig Charlton"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Geoff is a knowledgeable and diligent intellectual property attorney who is also a pleasure to deal with. I would not hesitate in recommending Geoff."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Mark J. Hagmann"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Geoffrey Dobbin has been my patent attorney for the past six years and I am highly impressed by his ability to understand a wide range of complex technologies and describe them clearly."
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Client Success Stories",
+    "description": "Long-term client relationships spanning 6-12+ years"
+  }
+})
 
 // Define testimonials directly
 const testimonials = ref([

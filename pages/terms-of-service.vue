@@ -111,6 +111,47 @@
   </div>
 </template>
 
+<script setup>
+import HeroBanner from '../components/HeroBanner.vue';
+
+// Add SEO for terms of service (focused on compliance, not marketing)
+useSEO({
+  title: 'Terms of Service',
+  description: 'Terms of Service for Dobbin IP Law P.C. website and legal services. Review our terms and conditions for using our website and engaging our intellectual property legal services.',
+  path: '/terms-of-service/',
+  keywords: 'terms of service, legal terms, website terms, attorney terms of service, IP law terms',
+  type: 'article',
+  robots: 'index, follow' // Can be indexed but won't rank high
+})
+
+// Add structured data for legal document
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "WebPage"],
+  "mainEntity": {
+    "@type": "Article",
+    "headline": "Terms of Service",
+    "articleSection": "Legal",
+    "about": "Terms and conditions for website use and legal services",
+    "dateModified": "2024-01-01", // Update with actual last modified date
+    "author": {
+      "@type": "LegalService",
+      "name": "Dobbin IP Law P.C."
+    }
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dobbiniplaw.com/"
+  },
+  "governmentBenefitsInfo": {
+    "@type": "GovernmentService",
+    "serviceArea": {
+      "@type": "AdministrativeArea",
+      "name": "Utah"
+    }
+  }
+})
+</script>
+
 <style>
 .bg-dobbin-navy {
   background-color: #0c1559;

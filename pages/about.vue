@@ -95,10 +95,60 @@
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 
-useHead({
-  title: 'About Us | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Learn about the team at Dobbin IP Law, specializing in patents, trademarks, and copyrights for over 25 years.' }
+// Replace the old useHead with enhanced SEO
+useSEO({
+  title: 'About Us',
+  description: 'Meet Geoff Dobbin, intellectual property attorney with over 25 years of experience protecting patents, trademarks, and copyrights. Serving Utah inventors and creators since 2004.',
+  path: '/about/',
+  keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
+})
+
+// Add structured data for the attorney and law firm
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "Attorney"],
+  "founder": {
+    "@type": "Person",
+    "name": "Geoff Dobbin",
+    "jobTitle": "Intellectual Property Attorney",
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Colorado",
+        "degree": "J.D."
+      },
+      {
+        "@type": "CollegeOrUniversity", 
+        "name": "Alfred University",
+        "degree": "B.A. Physics"
+      }
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Utah State Bar"
+      },
+      {
+        "@type": "Organization",
+        "name": "U.S. Patent & Trademark Office"
+      }
+    ],
+    "yearsOfExperience": "25+"
+  },
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Chris",
+      "jobTitle": "Certified Paralegal"
+    }
+  ],
+  "foundingDate": "2004",
+  "knowsAbout": [
+    "Patent Law",
+    "Trademark Law", 
+    "Copyright Law",
+    "Intellectual Property Protection",
+    "Physics",
+    "Technical Patent Applications"
   ]
 })
 </script>

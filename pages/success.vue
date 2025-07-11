@@ -36,10 +36,24 @@
 </template>
 
 <script setup>
-useHead({
-  title: 'Form Submitted | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Thank you for contacting Dobbin IP Law. Your message has been successfully received.' }
-  ]
+import HeroBanner from '../components/HeroBanner.vue';
+
+// Enhanced SEO with noindex (keep out of search results)
+useSEO({
+  title: 'Thank You - Message Received',
+  description: 'Thank you for contacting Dobbin IP Law. Your message has been successfully received and we will respond promptly.',
+  path: '/success/',
+  keywords: '', // No keywords needed for this page
+  robots: 'noindex, nofollow' // Important: Keep out of search results
+})
+
+// Minimal structured data (since page shouldn't be indexed)
+useStructuredData({
+  "@type": ["LocalBusiness", "WebPage"],
+  "mainEntity": {
+    "@type": "WebPage",
+    "name": "Contact Form Success Page",
+    "description": "Confirmation page for contact form submissions"
+  }
 })
 </script>

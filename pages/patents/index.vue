@@ -132,19 +132,35 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
-import { useHead } from '#app';
 import { useRoute, useRouter } from 'vue-router';
 import PatentHero from '~/components/patents/PatentHero.vue';
 import PatentCarousel from '~/components/patents/PatentCarousel.vue';
 import PatentDetailModal from '~/components/patents/PatentDetailModal.vue';
 
-// SEO metadata
-useHead({
-  title: 'Patent Browser | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Explore our extensive patent portfolio in an interactive, Netflix-style browser. View patents by category, with detailed images and information.' }
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'Patent Portfolio Browser',
+  description: 'Explore Dobbin IP Law\'s extensive patent portfolio in an interactive browser. Browse our successful patent applications by category with detailed images and information.',
+  path: '/patents/',
+  keywords: 'patent portfolio, patent browser, intellectual property showcase, design patents, utility patents, patent applications, IP law examples, patent gallery'
+})
+
+// Add structured data for the patent portfolio
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Patent Services Portfolio",
+    "description": "Examples of our successful patent applications across multiple industries"
+  },
+  "knowsAbout": [
+    "Patent Applications",
+    "Design Patents", 
+    "Utility Patents",
+    "Patent Prosecution",
+    "Intellectual Property Portfolio Management"
   ]
-});
+})
 
 // Get route and router
 const route = useRoute();
