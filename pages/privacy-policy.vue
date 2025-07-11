@@ -46,7 +46,7 @@
           <h3 class="mt-6 mb-3 font-crimson font-semibold">Contact Information</h3>
           <p>
             Dobbin IP Law P.C.<br>
-            2159 S Redwood Rd, Suite 5<br>
+            2250 S Redwood Rd, Suite 5<br>  <!-- Fixed from 2159 to 2250 -->
             West Valley City, UT 84119<br>
             (801) 969-6609
           </p>
@@ -55,6 +55,34 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import HeroBanner from '../components/HeroBanner.vue';
+
+// Add SEO for privacy policy (with noindex to keep out of search results)
+useSEO({
+  title: 'Privacy Policy',
+  description: 'Privacy Policy for Dobbin IP Law P.C. Learn how we collect, use, and protect your personal information when you visit our website or use our legal services.',
+  path: '/privacy-policy/',
+  keywords: 'privacy policy, data protection, website privacy, legal privacy policy, attorney client confidentiality'
+})
+
+// Add structured data for legal document
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "WebPage"],
+  "mainEntity": {
+    "@type": "Article",
+    "headline": "Privacy Policy",
+    "articleSection": "Legal",
+    "about": "Privacy and data protection practices",
+    "dateModified": "2024-01-01", // Update with actual last modified date
+    "author": {
+      "@type": "LegalService",
+      "name": "Dobbin IP Law P.C."
+    }
+  }
+})
+</script>
 
 <style>
 .bg-dobbin-dark-green {

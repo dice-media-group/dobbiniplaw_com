@@ -130,23 +130,57 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import CopyrightFAQ from '~/components/CopyrightFAQ.vue';
 
-export default {
-  name: 'CopyrightPage',
-  components: {
-    CopyrightFAQ
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'Copyright Registration Services',
+  description: 'Professional copyright registration services for authors, artists, and creators. Protect your creative works including literature, art, music, and more. 25+ years experience serving Utah clients.',
+  path: '/copyright/',
+  keywords: 'copyright registration, copyright attorney Utah, copyright lawyer, protect creative works, author copyright, artist copyright, copyright services, intellectual property protection'
+})
+
+// Add structured data for copyright services
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog", 
+    "name": "Copyright Legal Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Copyright Registration",
+          "description": "Professional copyright registration for authors, artists, and creators",
+          "serviceType": "Legal Service",
+          "provider": {
+            "@type": "LegalService",
+            "name": "Dobbin IP Law P.C."
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "Copyright Consultation",
+          "description": "Expert guidance on copyright protection and fair use",
+          "serviceType": "Legal Consultation"
+        }
+      }
+    ]
   },
-  head() {
-    return {
-      title: 'Copyright Information | Dobbin IP Law P.C.',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Copyright information and services to protect your creative works. Register copyrights for your literature, art, music, and other creative works with Dobbin IP Law P.C.' }
-      ]
-    }
-  }
-}
+  "knowsAbout": [
+    "Copyright Law",
+    "Copyright Registration", 
+    "Fair Use",
+    "Creative Works Protection",
+    "Author Rights",
+    "Artist Rights"
+  ]
+})
 </script>
 
 <style scoped>

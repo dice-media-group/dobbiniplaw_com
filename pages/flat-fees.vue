@@ -404,6 +404,51 @@ import { ref, nextTick, defineAsyncComponent } from 'vue';
 // Lazy load the components for better performance
 const HeroBanner = defineAsyncComponent(() => import('../components/HeroBanner.vue'));
 
+// Replace the old useHead with this new useSEO call
+useSEO({
+  title: 'Flat Fee Schedule',
+  description: 'Our transparent flat fee pricing for intellectual property services including design patents, trademarks, copyrights, and more.',
+  path: '/flat-fees/',
+  keywords: 'intellectual property fees, patent fees, trademark fees, copyright fees, flat fee schedule, IP law pricing'
+})
+
+// Add structured data for this specific page
+useStructuredData({
+  // Add any page-specific schema data here
+  "@type": ["LocalBusiness", "LegalService"],
+  "priceRange": "$160-$1050",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Flat Fee IP Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Design Patent Application",
+          "price": "$480"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trademark Registration",
+          "price": "$830"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Copyright Registration",
+          "price": "$205"
+        }
+      }
+    ]
+  }
+})
+
 // State to manage which sections are open
 const openSections = ref({
   utility: true,  // Start with this section open
@@ -452,18 +497,6 @@ const getSectionStyle = (section) => {
     };
   }
 };
-
-// SEO optimization
-useHead({
-  title: 'Flat Fee Schedule | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Our transparent flat fee pricing for intellectual property services including design patents, trademarks, copyrights, and more.' },
-    { name: 'keywords', content: 'intellectual property fees, patent fees, trademark fees, copyright fees, flat fee schedule, IP law pricing' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://dobbiniplaw.com/flat-fees' }
-  ]
-});
 </script>
 
 <style scoped>

@@ -42,7 +42,7 @@ Ads appearing on any of our websites may be delivered to users by advertising pa
 Although most changes are likely to be minor, Dobbin IP Law may change its Privacy Policy from time to time, and in Dobbin IP Law's sole discretion. Dobbin IP Law encourages visitors to frequently check this page for any changes to its Privacy Policy. If you have a dobbiniplaw.com account, you might also receive an alert informing you of these changes. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
 
 Dobbin IP Law P.C.  
-2159 S Redwood Rd, Suite 5  
+2250 S Redwood Rd, Suite 5  
 West Valley City, UT 84119  
 (801) 969-6609
 

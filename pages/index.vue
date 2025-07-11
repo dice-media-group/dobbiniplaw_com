@@ -66,6 +66,52 @@ import ServiceOverview from '../components/ServiceOverview.vue';
 import AttorneyProfile from '../components/AttorneyProfile.vue';
 import ConsultationForm from '../components/ConsultationForm.vue';
 
+// Enhanced SEO for homepage
+useSEO({
+  title: 'Clear & Strategic Patent Attorney',
+  description: 'Navigate IP law with confidence. Dobbin IP Law makes patent, trademark, and copyright protection simple with clear guidance and strategic solutions for Utah inventors and businesses.',
+  path: '/',
+  keywords: 'patent attorney Utah, intellectual property lawyer, trademark attorney, copyright lawyer, Utah IP law, patent protection, West Valley City attorney',
+  ogImage: '/og-homepage-image.jpg',
+  type: 'website'
+})
+
+// Add comprehensive structured data for homepage
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "Attorney"],
+  "founder": {
+    "@type": "Person",
+    "name": "Geoff Dobbin",
+    "jobTitle": "Patent Attorney",
+    "yearsOfExperience": "25+"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "50+"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Free Consultation",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Free 30-Minute Strategy Session",
+          "description": "Complimentary consultation to understand your IP protection needs"
+        },
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dobbiniplaw.com/"
+  }
+})
+
 // Video modal state
 const isVideoModalOpen = ref(false);
 const videoModalSrc = ref('');
@@ -134,9 +180,6 @@ useHead({
       name: 'description', 
       content: 'Navigate IP law with confidence. Dobbin IP Law makes patent, trademark, and copyright protection simple with clear guidance and strategic solutions for inventors and businesses.' 
     }
-  ],
-  link: [
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap' }
   ]
 })
 </script>

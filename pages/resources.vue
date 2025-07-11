@@ -136,10 +136,54 @@
 </template>
 
 <script setup>
-useHead({
-  title: 'IP Resources | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Resources and information about patents, trademarks, and copyrights to help you understand intellectual property protection.' }
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'IP Resources & Educational Content',
+  description: 'Comprehensive intellectual property resources, FAQs, and educational content about patents, trademarks, and copyrights. Learn about IP protection with expert guidance from Utah IP attorney.',
+  path: '/resources/',
+  keywords: 'IP resources, patent information, trademark guide, copyright education, intellectual property FAQ, patent attorney resources, IP law education, Utah IP resources'
+})
+
+// Add structured data for educational content
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "WebPage"],
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is intellectual property?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intellectual property (IP) refers to creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce. IP is protected by law through patents, copyrights, trademarks, and trade secrets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between patents, trademarks, and copyrights?",
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "Patents protect inventions and innovations. Trademarks protect brand names, logos, and slogans used to identify products or services. Copyrights protect original works of authorship, such as books, music, art, and software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to get a patent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The patent process typically takes 2-3 years from filing to issuance, though it can be longer for complex technologies. Factors affecting the timeline include the backlog at the USPTO, the complexity of the invention, and how quickly you respond to office actions."
+        }
+      }
+    ]
+  },
+  "educationalUse": "Legal Education",
+  "knowsAbout": [
+    "Patent Law Education",
+    "Trademark Law Resources",
+    "Copyright Law Information", 
+    "Intellectual Property FAQ",
+    "USPTO Resources",
+    "IP Protection Strategies"
   ]
 })
 </script>
