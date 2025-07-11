@@ -135,11 +135,46 @@
 </template>
 
 <script setup>
-useHead({
-  title: 'Contact Us | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Contact Dobbin IP Law for a strategy session about your patent, trademark, and copyright needs.' }
-  ]
+// Replace the old useHead with enhanced SEO
+useSEO({
+  title: 'Contact Us',
+  description: 'Contact Dobbin IP Law in West Valley City, UT for a free 30-minute strategy session. Expert patent, trademark, and copyright legal services. Call (801) 969-6609.',
+  path: '/contact/',
+  keywords: 'contact IP lawyer, patent attorney Utah, trademark lawyer West Valley City, copyright attorney, intellectual property consultation, free legal consultation'
+})
+
+// Add structured data for contact page
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService", "ContactPage"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+18019696609",
+    "contactType": "customer service",
+    "email": "getinfo@dobbiniplaw.com",
+    "availableLanguage": "English",
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:30",
+      "closes": "17:30"
+    }
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Free Consultation",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Free 30-Minute Strategy Session",
+          "description": "Complimentary consultation with intellectual property attorney"
+        },
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
 })
 
 // Client-side validation for the human check

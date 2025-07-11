@@ -127,16 +127,76 @@
 </template>
 
 <script setup>
-import { useHead } from '#app';
 import TrademarkFAQ from '~/components/TrademarkFAQ.vue';
 
-// SEO metadata
-useHead({
-  title: 'Trademark Information | Dobbin IP Law P.C.',
-  meta: [
-    { name: 'description', content: 'Trademark information and services to protect your brand. Secure trademarks for your business with Dobbin IP Law P.C.' }
-  ]
-});
+// Enhanced SEO with the new composable
+useSEO({
+  title: 'Trademark Registration & Brand Protection',
+  description: 'Protect your brand with professional trademark registration services. Utah trademark attorney with expertise in federal trademark applications, trade dress, and brand protection strategies.',
+  path: '/trademarks/',
+  keywords: 'trademark attorney Utah, trademark registration, brand protection, federal trademark, trademark lawyer, trademark search, trade dress protection, Utah trademark services'
+})
+
+// Add structured data for trademark services
+useStructuredData({
+  "@type": ["LocalBusiness", "LegalService"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Trademark Legal Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Federal Trademark Registration",
+          "description": "Complete federal trademark application and prosecution services through USPTO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trademark Search & Clearance",
+          "description": "Comprehensive trademark searches and clearance opinions before filing"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trade Dress Protection",
+          "description": "Protection for distinctive packaging, product design, and overall commercial impression"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trademark Monitoring & Enforcement",
+          "description": "Ongoing trademark monitoring and enforcement services to protect your brand"
+        }
+      }
+    ]
+  },
+  "knowsAbout": [
+    "Federal Trademark Registration",
+    "USPTO Procedures",
+    "Trademark Prosecution",
+    "Brand Protection",
+    "Trade Dress",
+    "Trademark Opposition",
+    "Trademark Cancellation",
+    "International Trademark Protection"
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "USPTO Registration",
+    "recognizedBy": {
+      "@type": "Organization",
+      "name": "United States Patent and Trademark Office"
+    }
+  }
+})
 </script>
 
 <style scoped>
