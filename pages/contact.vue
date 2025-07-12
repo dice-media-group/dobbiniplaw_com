@@ -143,6 +143,9 @@ useSEO({
   keywords: 'contact IP lawyer, patent attorney Utah, trademark lawyer West Valley City, copyright attorney, intellectual property consultation, free legal consultation'
 })
 
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 // Add structured data for contact page
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService", "ContactPage"],

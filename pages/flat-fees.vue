@@ -412,6 +412,9 @@ useSEO({
   path: '/flat-fees/',
   keywords: 'intellectual property fees, patent fees, trademark fees, copyright fees, flat fee schedule, IP law pricing'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for this specific page
 useStructuredData({

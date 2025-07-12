@@ -74,7 +74,10 @@ useSEO({
   keywords: 'client testimonials, patent attorney reviews, IP lawyer testimonials, client feedback, satisfied clients, patent attorney Utah reviews'
 })
 
-// Add structured data for testimonials/reviews
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
+// Now this will work:
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService"],
   "aggregateRating": {

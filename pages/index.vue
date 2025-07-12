@@ -76,40 +76,10 @@ useSEO({
   type: 'website'
 })
 
-// Add comprehensive structured data for homepage
+// 🆕 ADD: Test structured data on homepage only
 useStructuredData({
-  "@type": ["LocalBusiness", "LegalService", "Attorney"],
-  "founder": {
-    "@type": "Person",
-    "name": "Geoff Dobbin",
-    "jobTitle": "Patent Attorney",
-    "yearsOfExperience": "25+"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "50+"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Free Consultation",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Free 30-Minute Strategy Session",
-          "description": "Complimentary consultation to understand your IP protection needs"
-        },
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    ]
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dobbiniplaw.com/"
-  }
+  "@type": "LegalService", // More specific than LocalBusiness
+  "serviceType": "Intellectual Property Law"
 })
 
 // Video modal state

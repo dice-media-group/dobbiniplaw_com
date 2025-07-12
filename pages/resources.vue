@@ -143,6 +143,9 @@ useSEO({
   path: '/resources/',
   keywords: 'IP resources, patent information, trademark guide, copyright education, intellectual property FAQ, patent attorney resources, IP law education, Utah IP resources'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for educational content
 useStructuredData({

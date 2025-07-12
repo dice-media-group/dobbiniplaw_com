@@ -141,6 +141,10 @@ useSEO({
   keywords: 'copyright registration, copyright attorney Utah, copyright lawyer, protect creative works, author copyright, artist copyright, copyright services, intellectual property protection'
 })
 
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
+
 // Add structured data for copyright services
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService"],

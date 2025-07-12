@@ -23,6 +23,9 @@ useSEO({
   path: '/services/',
   keywords: 'intellectual property services, patent services Utah, trademark registration, copyright protection, IP attorney services, patent lawyer Utah, trademark attorney'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for service offerings
 useStructuredData({
