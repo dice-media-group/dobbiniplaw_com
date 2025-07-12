@@ -6,9 +6,9 @@ export const useSEO = (options = {}) => {
     keywords = '',
     ogImage = '/img/geoff-dobbin.jpg',
     type = 'website',
-    author = 'Dobbin IP Law P.C.',      // ← ADD this line
-    publishedTime = null,               // ← ADD this line  
-    modifiedTime = null                 // ← ADD this line
+    author = 'Dobbin IP Law P.C.',
+    publishedTime = null,
+    modifiedTime = null
   } = options
 
   const baseUrl = 'https://dobbiniplaw.com'
@@ -34,18 +34,20 @@ export const useSEO = (options = {}) => {
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: fullTitle },
       { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: `${baseUrl}${ogImage}` }, // ← ADD this line
+      { name: 'twitter:image', content: `${baseUrl}${ogImage}` },
       
-      // 🆕 ADD: Local SEO (Utah-based law firm)
+      // Local SEO (Utah-based law firm)
       { name: 'geo.region', content: 'US-UT' },
       { name: 'geo.placename', content: 'West Valley City' },
-      { name: 'geo.position', content: '40.73315967932904;-111.9405988853505' }, // ← Complete coordinates
+      { name: 'geo.position', content: '40.73315967932904;-111.9405988853505' },
       
       // Additional SEO meta tags
       { name: 'robots', content: 'index, follow' },
       { name: 'author', content: author },
       { name: 'language', content: 'en-US' },
       { name: 'hreflang', content: 'en-US' },
+      
+      // Article/Page-specific meta (conditional)
       ...(publishedTime ? [{ property: 'article:published_time', content: publishedTime }] : []),
       ...(modifiedTime ? [{ property: 'article:modified_time', content: modifiedTime }] : []),
       ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
@@ -61,7 +63,7 @@ export const useBaseSchema = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Dobbin IP Law P.C.",
-    "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg", // ← Fix image path
+    "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
     "@id": "https://dobbiniplaw.com/",
     "url": "https://dobbiniplaw.com/",
     "telephone": "+18019696609",

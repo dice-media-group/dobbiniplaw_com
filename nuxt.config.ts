@@ -24,7 +24,10 @@ export default defineNuxtConfig({
   router: {
     options: {
       // Disable Vue Router's own scroll behavior
-      scrollBehavior: () => false
+      scrollBehavior: () => false,
+      strict: true,
+      // Force trailing slashes
+      trailingSlash: true
     }
   },
 
@@ -106,21 +109,34 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
-        '/about',
-        '/contact',
-        '/services', 
-        '/patents',
-        '/trademarks',
-        '/copyright',
-        '/prior-work',
-        '/resources',
-        '/testimonials',
-        '/helpful-links',
-        '/flat-fees',
-        '/success',
-        '/privacy-policy',
-        '/terms-of-service'
+        '/about/',           // ✅ Added trailing slash
+        '/contact/',         // ✅ Added trailing slash
+        '/services/',        // ✅ Added trailing slash
+        '/patents/',         // ✅ Added trailing slash
+        '/trademarks/',      // ✅ Added trailing slash
+        '/copyright/',       // ✅ Added trailing slash
+        '/prior-work/',      // ✅ Added trailing slash
+        '/resources/',       // ✅ Added trailing slash
+        '/testimonials/',    // ✅ Added trailing slash
+        '/helpful-links/',   // ✅ Added trailing slash
+        '/flat-fees/',       // ✅ Added trailing slash
+        '/success/',         // ✅ Added trailing slash
+        '/privacy-policy/',  // ✅ Added trailing slash
+        '/terms-of-service/' // ✅ Added trailing slash
+      ],
+      // Exclude pages that shouldn't be prerendered
+      ignore: [
+        '/success/', // Thank you page - only accessible after form submission
+        '/drafts/**' // Also exclude any draft pages
       ]
+    }
+  },
+
+  // Alternative approach - use routes configuration
+  hooks: {
+    'prerender:routes'(ctx) {
+      // Remove success page from prerendering
+      ctx.routes = ctx.routes.filter(route => !route.includes('/success'))
     }
   },
 
@@ -135,6 +151,19 @@ export default defineNuxtConfig({
     // '/terms-of-service': { redirect: '/terms-of-service/' },
     // '/privacy-policy': { redirect: '/privacy-policy/' },
     // '/bio-fees': { redirect: '/bio-fees/' },
+    '/about': { redirect: '/about/', status: 301 },
+    '/contact': { redirect: '/contact/', status: 301 },
+    '/services': { redirect: '/services/', status: 301 },
+    '/patents': { redirect: '/patents/', status: 301 },
+    '/trademarks': { redirect: '/trademarks/', status: 301 },
+    '/copyright': { redirect: '/copyright/', status: 301 },
+    '/prior-work': { redirect: '/prior-work/', status: 301 },
+    '/resources': { redirect: '/resources/', status: 301 },
+    '/testimonials': { redirect: '/testimonials/', status: 301 },
+    '/helpful-links': { redirect: '/helpful-links/', status: 301 },
+    '/flat-fees': { redirect: '/flat-fees/', status: 301 },
+    '/privacy-policy': { redirect: '/privacy-policy/', status: 301 },
+    '/terms-of-service': { redirect: '/terms-of-service/', status: 301 }
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
