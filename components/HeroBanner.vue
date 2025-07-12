@@ -15,7 +15,7 @@
         
         <div v-if="hasContent" class="text-white">
           <slot>
-            <p class="mb-4 font-crimson text-white">We are committed to continue serving you in these trying times. We will stay open for business and will be using telephone and video calls. Please call and let us know how we can best help you at (801) 969-6609.</p>
+            <p class="mb-4 font-crimson text-white">With over 25 years of experience protecting intellectual property, we're here to help inventors and creators secure their innovations. Call us today to discuss how we can protect your valuable ideas and creations.</p>
           </slot>
         </div>
       </div>
@@ -49,10 +49,10 @@ defineProps({
     type: String,
     default: 'text-xl'
   },
-  // 🆕 NEW: Flexible heading tag (defaults to H2 now)
+  // 🆕 NEW: Flexible heading tag (defaults to H2 for SEO)
   titleTag: {
     type: String,
-    default: 'h2'  // Changed from H1 to H2
+    default: 'h2'  // SEO improvement: defaults to H2
   }
 });
 </script>
