@@ -31,6 +31,9 @@ useSEO({
   keywords: 'patent portfolio, patent examples, successful patents, patent attorney work samples, firearm patents, LED patents, laboratory equipment patents, Utah patent attorney portfolio'
 })
 
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 // Add structured data for the portfolio
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService", "WebPage"],
@@ -46,7 +49,7 @@ useStructuredData({
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Patent Services Portfolio",
+    "name": "Patent Services Portfolio", 
     "description": "Examples of successful patent applications across diverse technical fields"
   },
   "knowsAbout": [

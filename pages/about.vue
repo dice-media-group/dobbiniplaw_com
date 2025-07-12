@@ -1,16 +1,18 @@
 <template>
   <div>
-    <!-- Use the reusable hero banner component with just title -->
+    <!-- Use H2 for HeroBanner -->
     <HeroBanner title="About Dobbin IP Law">
       <p class="font-crimson text-white">
-        We are committed to continue serving you in these trying times. We are still open for business and will be using telephonic and video calls. Please call and let's see how we can best help you!
+        With over 25 years of experience protecting intellectual property, we're here to help inventors and creators secure their innovations. Call us today to discuss how we can protect your valuable ideas and creations.
       </p>
     </HeroBanner>
     
-    <!-- Geoff Section -->
+    <!-- Add main H1 for the page -->
     <section class="py-6">
       <div class="container mx-auto">
         <div class="mx-auto px-4 max-w-[1140px]">
+          <h1 class="sr-only">About Dobbin IP Law - Meet Our Intellectual Property Attorney Team</h1>
+          
           <h2 class="text-xl font-crimson text-dobbin-dark-green border-b border-gray-200 pb-1 mb-1">Geoff</h2>
           <p class="mb-4 italic text-sm font-crimson text-dobbin-gray">
             Intellectual property attorney protects inventions and other creations
@@ -95,7 +97,7 @@
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 
-// Replace the old useHead with enhanced SEO
+// Enhanced SEO with the new composable
 useSEO({
   title: 'About Us',
   description: 'Meet Geoff Dobbin, intellectual property attorney with over 25 years of experience protecting patents, trademarks, and copyrights. Serving Utah inventors and creators since 2004.',
@@ -103,7 +105,10 @@ useSEO({
   keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
 })
 
-// Add structured data for the attorney and law firm
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
+// Now this will work perfectly:
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService", "Attorney"],
   "founder": {

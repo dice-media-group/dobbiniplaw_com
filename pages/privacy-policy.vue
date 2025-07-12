@@ -66,6 +66,9 @@ useSEO({
   path: '/privacy-policy/',
   keywords: 'privacy policy, data protection, website privacy, legal privacy policy, attorney client confidentiality'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for legal document
 useStructuredData({

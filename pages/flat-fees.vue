@@ -1,14 +1,15 @@
 <template>
   <div>
-    <HeroBanner title="Flat Fee Schedule">
+    <HeroBanner title="Flat Fee Schedule" titleTag="h2">
       <p class="font-crimson text-white">
         Our transparent flat fee pricing structure helps you understand costs upfront for intellectual property services.
       </p>
     </HeroBanner>
     
-    <!-- Main content with circuit board background -->
+    <!-- Add the actual H1 for the page in the main content -->
     <section class="py-8 circuit-board-bg">
       <div class="container mx-auto px-4 max-w-6xl">
+        <h1 class="sr-only">Flat Fee Schedule for Intellectual Property Services</h1>
         <div class="prose prose-lg max-w-none">
           <p class="mb-6">
             We offer the following flat fee services, based upon Geoff's prepayment
@@ -411,6 +412,9 @@ useSEO({
   path: '/flat-fees/',
   keywords: 'intellectual property fees, patent fees, trademark fees, copyright fees, flat fee schedule, IP law pricing'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for this specific page
 useStructuredData({

@@ -46,6 +46,9 @@ useSEO({
   keywords: '', // No keywords needed for this page
   robots: 'noindex, nofollow' // Important: Keep out of search results
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Minimal structured data (since page shouldn't be indexed)
 useStructuredData({

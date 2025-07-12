@@ -12,6 +12,9 @@ useSEO({
   path: '/helpful-links/',
   keywords: 'IP resources, patent search tools, trademark databases, USPTO links, intellectual property resources, patent office links, inventor resources'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for the resource page
 useStructuredData({
