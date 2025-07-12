@@ -1,14 +1,12 @@
 <template>
   <div>
-    <!-- Hero Banner Section -->
-    <section class="bg-dobbin-dark-green text-white py-12 w-full">
-      <div class="container mx-auto">
-        <div class="mx-auto px-4 max-w-[1140px]">
-          <h1 class="text-3xl mb-3 font-crimson text-white">Trademark Information</h1>
-          <h2 class="text-xl mb-4 font-crimson text-white">With Frequently Asked Questions</h2>
-        </div>
-      </div>
-    </section>
+    <!-- Replace the custom hero section with HeroBanner component -->
+    <HeroBanner 
+      title="Trademark Information" 
+      subtitle="With Frequently Asked Questions"
+      titleTag="h1"
+      :hasContent="false"
+    />
     
     <!-- Introduction Section -->
     <section class="py-8">
@@ -22,7 +20,7 @@
           </div>
           
           <div class="mb-6">
-            <h3 class="text-xl font-bold mb-4 font-crimson">Utah Attorney Protecting Your Brand Nationally</h3>
+            <h2 class="text-xl font-bold mb-4 font-crimson">Utah Attorney Protecting Your Brand Nationally</h2>
           </div>
           
           <div class="mb-10">
@@ -38,7 +36,7 @@
     <section class="py-8">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h3 class="text-xl font-bold mb-4 font-crimson">About Trademarks</h3>
+          <h2 class="text-xl font-bold mb-4 font-crimson">About Trademarks</h2>
           <p class="mb-4 font-crimson">
             A trademark is anything you use to identify your goods and/or services to the world, just as your own name identifies you. Most are words, some form of graphic design, or a combination of word and design. They can either be registered by the federal government or, where available, a state government. They can also be established by using the mark appropriately. Therefore, that there are two trademark classifications: common law and registered.
           </p>
@@ -53,7 +51,7 @@
     <section class="py-8">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h3 class="text-xl font-bold mb-4 font-crimson">Trademarks Symbols and Types</h3>
+          <h2 class="text-xl font-bold mb-4 font-crimson">Trademarks Symbols and Types</h2>
           <p class="mb-4 font-crimson">
             There are several different trademark symbols. They include:
           </p>
@@ -70,7 +68,7 @@
     <section class="py-8">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h3 class="text-xl font-bold mb-4 font-crimson">Trade Dress</h3>
+          <h2 class="text-xl font-bold mb-4 font-crimson">Trade Dress</h2>
           <p class="mb-6 font-crimson">
             The image and identity you create as a whole when packaging your goods for sale or when advertising your serves is called a "trade dress." While not a mark, per se, a distinctive trade dress is protectable under Federal and most state laws.
           </p>
@@ -127,6 +125,7 @@
 </template>
 
 <script setup>
+import HeroBanner from '~/components/HeroBanner.vue';
 import TrademarkFAQ from '~/components/TrademarkFAQ.vue';
 
 // Enhanced SEO with the new composable
@@ -136,6 +135,9 @@ useSEO({
   path: '/trademarks/',
   keywords: 'trademark attorney Utah, trademark registration, brand protection, federal trademark, trademark lawyer, trademark search, trade dress protection, Utah trademark services'
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for trademark services
 useStructuredData({

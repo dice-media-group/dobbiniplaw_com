@@ -123,6 +123,9 @@ useSEO({
   type: 'article',
   robots: 'index, follow' // Can be indexed but won't rank high
 })
+// ✅ ADD: Import the structured data function
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 
 // Add structured data for legal document
 useStructuredData({

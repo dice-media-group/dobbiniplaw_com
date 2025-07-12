@@ -233,6 +233,8 @@ useSEO({
   keywords: 'patent attorney Utah, patent services, utility patents, design patents, patent application, invention protection, USPTO registration, patent lawyer West Valley City'
 })
 
+const { useStructuredData } = await import('~/composables/useSEO.js')
+
 // Add structured data for patent services
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService"],
