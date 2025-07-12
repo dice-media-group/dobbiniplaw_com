@@ -24,10 +24,7 @@ export default defineNuxtConfig({
   router: {
     options: {
       // Disable Vue Router's own scroll behavior
-      scrollBehavior: () => false,
-      strict: true,
-      // Force trailing slashes
-      trailingSlash: true
+      scrollBehavior: () => false
     }
   },
 
@@ -109,41 +106,35 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
-        '/about/',           // ✅ Added trailing slash
-        '/contact/',         // ✅ Added trailing slash
-        '/services/',        // ✅ Added trailing slash
-        '/patents/',         // ✅ Added trailing slash
-        '/trademarks/',      // ✅ Added trailing slash
-        '/copyright/',       // ✅ Added trailing slash
-        '/prior-work/',      // ✅ Added trailing slash
-        '/resources/',       // ✅ Added trailing slash
-        '/testimonials/',    // ✅ Added trailing slash
-        '/helpful-links/',   // ✅ Added trailing slash
-        '/flat-fees/',       // ✅ Added trailing slash
-        '/success/',         // ✅ Added trailing slash
-        '/privacy-policy/',  // ✅ Added trailing slash
-        '/terms-of-service/' // ✅ Added trailing slash
-      ],
-      // Exclude pages that shouldn't be prerendered
-      ignore: [
-        '/success/', // Thank you page - only accessible after form submission
-        '/drafts/**' // Also exclude any draft pages
+        '/about',
+        '/contact',
+        '/services', 
+        '/patents',
+        '/trademarks',
+        '/copyright',
+        '/prior-work',
+        '/resources',
+        '/testimonials',
+        '/helpful-links',
+        '/flat-fees',
+        '/success',
+        '/privacy-policy',
+        '/terms-of-service'
       ]
-    }
-  },
-
-  // Alternative approach - use routes configuration
-  hooks: {
-    'prerender:routes'(ctx) {
-      // Remove success page from prerendering
-      ctx.routes = ctx.routes.filter(route => !route.includes('/success'))
     }
   },
 
   // Add this section to fix 301 redirects
   routeRules: {
     // Homepage
-    '/': { prerender: true }
+    '/': { prerender: true },
+    // Remove all these redirects:
+    // '/about': { redirect: '/about/' }, 
+    // '/contact': { redirect: '/contact/' },
+    // '/patents': { redirect: '/patents/' },
+    // '/terms-of-service': { redirect: '/terms-of-service/' },
+    // '/privacy-policy': { redirect: '/privacy-policy/' },
+    // '/bio-fees': { redirect: '/bio-fees/' },
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
