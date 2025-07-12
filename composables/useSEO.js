@@ -39,6 +39,7 @@ export const useSEO = (options = {}) => {
       { name: 'robots', content: 'index, follow' },
       { name: 'author', content: 'Dobbin IP Law P.C.' },
       { name: 'language', content: 'en-US' },
+      { name: 'hreflang', content: 'en-US' }
     ],
     link: [
       { rel: 'canonical', href: canonicalUrl }
