@@ -123,7 +123,20 @@ export default defineNuxtConfig({
         '/success/',         // ✅ Added trailing slash
         '/privacy-policy/',  // ✅ Added trailing slash
         '/terms-of-service/' // ✅ Added trailing slash
+      ],
+      // Exclude pages that shouldn't be prerendered
+      ignore: [
+        '/success/', // Thank you page - only accessible after form submission
+        '/drafts/**' // Also exclude any draft pages
       ]
+    }
+  },
+
+  // Alternative approach - use routes configuration
+  hooks: {
+    'prerender:routes'(ctx) {
+      // Remove success page from prerendering
+      ctx.routes = ctx.routes.filter(route => !route.includes('/success'))
     }
   },
 
