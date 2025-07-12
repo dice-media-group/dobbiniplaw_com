@@ -143,27 +143,7 @@ export default defineNuxtConfig({
   // Add this section to fix 301 redirects
   routeRules: {
     // Homepage
-    '/': { prerender: true },
-    // Remove all these redirects:
-    // '/about': { redirect: '/about/' }, 
-    // '/contact': { redirect: '/contact/' },
-    // '/patents': { redirect: '/patents/' },
-    // '/terms-of-service': { redirect: '/terms-of-service/' },
-    // '/privacy-policy': { redirect: '/privacy-policy/' },
-    // '/bio-fees': { redirect: '/bio-fees/' },
-    '/about': { redirect: '/about/', status: 301 },
-    '/contact': { redirect: '/contact/', status: 301 },
-    '/services': { redirect: '/services/', status: 301 },
-    '/patents': { redirect: '/patents/', status: 301 },
-    '/trademarks': { redirect: '/trademarks/', status: 301 },
-    '/copyright': { redirect: '/copyright/', status: 301 },
-    '/prior-work': { redirect: '/prior-work/', status: 301 },
-    '/resources': { redirect: '/resources/', status: 301 },
-    '/testimonials': { redirect: '/testimonials/', status: 301 },
-    '/helpful-links': { redirect: '/helpful-links/', status: 301 },
-    '/flat-fees': { redirect: '/flat-fees/', status: 301 },
-    '/privacy-policy': { redirect: '/privacy-policy/', status: 301 },
-    '/terms-of-service': { redirect: '/terms-of-service/', status: 301 }
+    '/': { prerender: true }
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
