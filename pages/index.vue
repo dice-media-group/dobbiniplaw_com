@@ -172,16 +172,6 @@ const attorneyStats = [
     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
   }
 ];
-
-useHead({
-  title: 'Dobbin IP Law P.C. | Clear & Strategic Patent Attorney | Utah',
-  meta: [
-    { 
-      name: 'description', 
-      content: 'Navigate IP law with confidence. Dobbin IP Law makes patent, trademark, and copyright protection simple with clear guidance and strategic solutions for inventors and businesses.' 
-    }
-  ]
-})
 </script>
 
 <style>
