@@ -100,7 +100,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 // Enhanced SEO with the new composable
 useSEO({
   title: 'About Us',
-  description: 'Meet Geoff Dobbin, intellectual property attorney with over 25 years of experience protecting patents, trademarks, and copyrights. Serving Utah inventors and creators since 2004.',
+  description: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience. Learn about our firm\'s commitment to protecting inventors with clear, strategic legal counsel.',
   path: '/about/',
   keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
 })

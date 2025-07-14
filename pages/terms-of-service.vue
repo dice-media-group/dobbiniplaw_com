@@ -3,6 +3,7 @@
     <!-- Hero section with navy background -->
     <HeroBanner 
       title="Terms of Service" 
+      titleTag="h1"
       bgColor="bg-dobbin-navy"
       titleSize="text-5xl"
     >
@@ -117,7 +118,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 // Add SEO for terms of service (focused on compliance, not marketing)
 useSEO({
   title: 'Terms of Service',
-  description: 'Terms of Service for Dobbin IP Law P.C. website and legal services. Review our terms and conditions for using our website and engaging our intellectual property legal services.',
+  description: 'Review the Terms of Service for the Dobbin IP Law P.C. website. These terms govern the use of our site and intellectual property legal services.',
   path: '/terms-of-service/',
   keywords: 'terms of service, legal terms, website terms, attorney terms of service, IP law terms',
   type: 'article',

@@ -131,7 +131,7 @@ import TrademarkFAQ from '~/components/TrademarkFAQ.vue';
 // Enhanced SEO with the new composable
 useSEO({
   title: 'Trademark Registration & Brand Protection',
-  description: 'Protect your brand with professional trademark registration services. Utah trademark attorney with expertise in federal trademark applications, trade dress, and brand protection strategies.',
+  description: 'Secure your brand with our trademark registration services. Our Utah trademark attorney helps with federal applications and brand protection. Get your free consultation.',
   path: '/trademarks/',
   keywords: 'trademark attorney Utah, trademark registration, brand protection, federal trademark, trademark lawyer, trademark search, trade dress protection, Utah trademark services'
 })
