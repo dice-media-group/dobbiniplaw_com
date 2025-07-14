@@ -3,6 +3,7 @@
     <!-- Hero section with navy background -->
     <HeroBanner 
       title="Terms of Service" 
+      titleTag="h1"
       bgColor="bg-dobbin-navy"
       titleSize="text-5xl"
     >

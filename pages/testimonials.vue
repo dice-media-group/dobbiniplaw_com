@@ -2,7 +2,7 @@
   <div>
     <!-- Use the reusable hero banner component with title and content -->
     <HeroBanner 
-      title="Testimonials" 
+      title="Testimonials"   titleTag="h1"
     >
       <p class="mb-4 font-crimson text-white"></p>
     </HeroBanner>

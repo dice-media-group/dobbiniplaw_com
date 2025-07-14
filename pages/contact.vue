@@ -2,7 +2,7 @@
   <div class="contact-page">
     <!-- Header Section -->
     <!-- Use the reusable hero banner component with just title -->
-    <HeroBanner title="Contact Us">
+    <HeroBanner title="Contact Us" titleTag="h1">
       <p class="font-crimson text-white"></p>
     </HeroBanner>
     

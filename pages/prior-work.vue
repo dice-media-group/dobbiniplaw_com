@@ -1,6 +1,6 @@
 <template>
   <div class="prior-work-page">
-    <HeroBanner title="Prior Work">
+    <HeroBanner title="Prior Work" titleTag="h1">
       <p class="font-crimson text-white">
       </p>
     </HeroBanner>

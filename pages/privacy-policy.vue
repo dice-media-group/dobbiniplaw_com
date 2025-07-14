@@ -5,6 +5,7 @@
       title="Privacy Policy" 
       bgColor="bg-dobbin-navy"
       titleSize="text-5xl"
+      titleTag="h1"
     >
       <p class="mb-4 font-crimson text-white"></p>
     </HeroBanner>

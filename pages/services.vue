@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Use the reusable hero banner component -->
-    <HeroBanner title="Our Services">
+    <HeroBanner title="Our Services" titleTag="h1">
       <p class="font-crimson text-white">
         At Dobbin IP Law, we offer a range of intellectual property services including patents, trademarks, and copyrights. Contact us to discuss how we can help protect your intellectual property.
       </p>
