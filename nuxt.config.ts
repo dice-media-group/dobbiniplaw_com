@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content', 
     '@nuxtjs/tailwindcss', 
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxtjs/sitemap'
   ],
   
   content: {
@@ -204,5 +205,10 @@ export default defineNuxtConfig({
       gtag: process.env.NUXT_PUBLIC_GTAG,
       ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
     }
+  },
+
+  sitemap: {
+    siteUrl: 'https://dobbiniplaw.com',
+    // You can customize routes, exclude, etc.
   }
 })
