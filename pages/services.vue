@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Use the reusable hero banner component -->
-    <HeroBanner title="Our Services">
+    <HeroBanner title="Our Services" titleTag="h1">
       <p class="font-crimson text-white">
         At Dobbin IP Law, we offer a range of intellectual property services including patents, trademarks, and copyrights. Contact us to discuss how we can help protect your intellectual property.
       </p>
@@ -19,7 +19,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 // Enhanced SEO with the new composable
 useSEO({
   title: 'Our IP Services',
-  description: 'Comprehensive intellectual property services including patent applications, trademark registration, copyright protection, and IP strategy. 25+ years protecting Utah inventors and businesses.',
+  description: 'We offer comprehensive IP services, including patent applications, trademark registration, and copyright protection. Protecting Utah inventors for over 25 years.',
   path: '/services/',
   keywords: 'intellectual property services, patent services Utah, trademark registration, copyright protection, IP attorney services, patent lawyer Utah, trademark attorney'
 })
