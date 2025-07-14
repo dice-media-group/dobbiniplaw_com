@@ -135,6 +135,8 @@ export default defineNuxtConfig({
     // '/terms-of-service': { redirect: '/terms-of-service/' },
     // '/privacy-policy': { redirect: '/privacy-policy/' },
     // '/bio-fees': { redirect: '/bio-fees/' },
+    '/': { headers: { 'X-Robots-Tag': 'all' } },
+    '/drafts/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
