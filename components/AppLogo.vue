@@ -22,12 +22,12 @@
     </div>
     
     <!-- Logo text -->
-    <h1 
+    <span 
       class="text-3xl md:text-5xl text-dobbin-dark-green tracking-wider font-crimson text-center md:text-left mt-2 md:mt-0"
       :class="{ 'hidden': !logoError }"
     >
       DOBBIN IP LAW
-    </h1>
+    </span>
   </div>
 </template>
 

@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content', 
     '@nuxtjs/tailwindcss', 
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxtjs/sitemap'
   ],
   
   content: {
@@ -135,6 +136,8 @@ export default defineNuxtConfig({
     // '/terms-of-service': { redirect: '/terms-of-service/' },
     // '/privacy-policy': { redirect: '/privacy-policy/' },
     // '/bio-fees': { redirect: '/bio-fees/' },
+    '/': { headers: { 'X-Robots-Tag': 'all' } },
+    '/drafts/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
   },
 
   // Generate static HTML for improved SEO and to ensure forms are detected
@@ -202,5 +205,10 @@ export default defineNuxtConfig({
       gtag: process.env.NUXT_PUBLIC_GTAG,
       ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
     }
+  },
+
+  sitemap: {
+    siteUrl: 'https://dobbiniplaw.com',
+    // You can customize routes, exclude, etc.
   }
 })
