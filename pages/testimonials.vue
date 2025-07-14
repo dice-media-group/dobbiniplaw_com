@@ -69,7 +69,7 @@ import { ref } from 'vue';
 // Enhanced SEO with the new composable
 useSEO({
   title: 'Client Testimonials & Reviews',
-  description: 'Read authentic testimonials from satisfied clients about our patent, trademark, and intellectual property legal services. 12+ years of client relationships and successful IP protection.',
+  description: 'See what our clients say. Read testimonials about our patent, trademark, and IP legal services from Utah inventors and businesses we\'ve helped protect.',
   path: '/testimonials/',
   keywords: 'client testimonials, patent attorney reviews, IP lawyer testimonials, client feedback, satisfied clients, patent attorney Utah reviews'
 })

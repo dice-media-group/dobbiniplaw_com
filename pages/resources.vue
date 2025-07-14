@@ -139,7 +139,7 @@
 // Enhanced SEO with the new composable
 useSEO({
   title: 'IP Resources & Educational Content',
-  description: 'Comprehensive intellectual property resources, FAQs, and educational content about patents, trademarks, and copyrights. Learn about IP protection with expert guidance from Utah IP attorney.',
+  description: 'Learn about intellectual property with our free resources. Find expert answers to your questions about patents, trademarks, and copyrights from a Utah IP attorney.',
   path: '/resources/',
   keywords: 'IP resources, patent information, trademark guide, copyright education, intellectual property FAQ, patent attorney resources, IP law education, Utah IP resources'
 })

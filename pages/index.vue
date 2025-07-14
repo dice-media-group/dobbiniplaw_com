@@ -69,7 +69,7 @@ import ConsultationForm from '../components/ConsultationForm.vue';
 // Enhanced SEO for homepage
 useSEO({
   title: 'Clear & Strategic Patent Attorney',
-  description: 'Navigate IP law with confidence. Dobbin IP Law makes patent, trademark, and copyright protection simple with clear guidance and strategic solutions for Utah inventors and businesses.',
+  description: 'Utah IP attorney providing clear, strategic patent, trademark, & copyright protection. We simplify the IP process for inventors & businesses. Get a free consultation.',
   path: '/',
   keywords: 'patent attorney Utah, intellectual property lawyer, trademark attorney, copyright lawyer, Utah IP law, patent protection, West Valley City attorney',
   ogImage: '/og-homepage-image.jpg',

@@ -26,7 +26,7 @@ import PatentCarousel from '~/components/PatentCarousel.vue';
 // Add enhanced SEO for the prior work portfolio page
 useSEO({
   title: 'Patent Portfolio & Prior Work',
-  description: 'With 25+ years of success, Dobbins IP Law protects innovations across diverse industries. View our patent portfolio & see our work in firearms, semiconductors & more.',
+  description: 'View our patent portfolio and see examples of our prior work. We have 25+ years of success protecting innovations across diverse industries. See our experience.',
   path: '/prior-work/',
   keywords: 'patent portfolio, patent examples, successful patents, patent attorney work samples, firearm patents, LED patents, laboratory equipment patents, Utah patent attorney portfolio'
 })
