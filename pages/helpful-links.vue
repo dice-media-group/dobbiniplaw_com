@@ -9,7 +9,7 @@ import HelpfulLinks from '../components/HelpfulLinks.vue';
 useSEO({
   title: 'Helpful Links & Resources',
   description: 'Save time with our curated guide to essential IP resources. Find direct links to the USPTO, U.S. Copyright Office & other key sites for inventors & creators.',
-  path: '/helpful-links/',
+  path: '/helpful-links',
   keywords: 'IP resources, patent search tools, trademark databases, USPTO links, intellectual property resources, patent office links, inventor resources'
 })
 // ✅ ADD: Import the structured data function

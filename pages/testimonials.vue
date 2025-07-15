@@ -70,7 +70,7 @@ import { ref } from 'vue';
 useSEO({
   title: 'Client Testimonials & Reviews',
   description: 'See what our clients say. Read testimonials about our patent, trademark, and IP legal services from Utah inventors and businesses we\'ve helped protect.',
-  path: '/testimonials/',
+  path: '/testimonials',
   keywords: 'client testimonials, patent attorney reviews, IP lawyer testimonials, client feedback, satisfied clients, patent attorney Utah reviews'
 })
 

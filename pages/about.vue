@@ -101,7 +101,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useSEO({
   title: 'About Us',
   description: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience. Learn about our firm\'s commitment to protecting inventors with clear, strategic legal counsel.',
-  path: '/about/',
+  path: '/about',
   keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
 })
 

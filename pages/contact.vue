@@ -139,7 +139,7 @@
 useSEO({
   title: 'Contact Us',
   description: 'Contact Dobbin IP Law in West Valley City, UT for a free 30-min strategy session. Get expert patent, trademark, and copyright legal advice. Call (801) 969-6609.',
-  path: '/contact/',
+  path: '/contact',
   keywords: 'contact IP lawyer, patent attorney Utah, trademark lawyer West Valley City, copyright attorney, intellectual property consultation, free legal consultation'
 })
 

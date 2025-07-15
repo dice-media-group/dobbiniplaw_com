@@ -119,7 +119,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useSEO({
   title: 'Terms of Service',
   description: 'Review the Terms of Service for the Dobbin IP Law P.C. website. These terms govern the use of our site and intellectual property legal services.',
-  path: '/terms-of-service/',
+  path: '/terms-of-service',
   keywords: 'terms of service, legal terms, website terms, attorney terms of service, IP law terms',
   type: 'article',
   robots: 'index, follow' // Can be indexed but won't rank high

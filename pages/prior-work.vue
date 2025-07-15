@@ -27,7 +27,7 @@ import PatentCarousel from '~/components/PatentCarousel.vue';
 useSEO({
   title: 'Patent Portfolio & Prior Work',
   description: 'View our patent portfolio and see examples of our prior work. We have 25+ years of success protecting innovations across diverse industries. See our experience.',
-  path: '/prior-work/',
+  path: '/prior-work',
   keywords: 'patent portfolio, patent examples, successful patents, patent attorney work samples, firearm patents, LED patents, laboratory equipment patents, Utah patent attorney portfolio'
 })
 

@@ -132,7 +132,7 @@ import TrademarkFAQ from '~/components/TrademarkFAQ.vue';
 useSEO({
   title: 'Trademark Registration & Brand Protection',
   description: 'Secure your brand with our trademark registration services. Our Utah trademark attorney helps with federal applications and brand protection. Get your free consultation.',
-  path: '/trademarks/',
+  path: '/trademarks',
   keywords: 'trademark attorney Utah, trademark registration, brand protection, federal trademark, trademark lawyer, trademark search, trade dress protection, Utah trademark services'
 })
 // ✅ ADD: Import the structured data function
