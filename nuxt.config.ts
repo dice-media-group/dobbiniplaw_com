@@ -25,7 +25,8 @@ export default defineNuxtConfig({
   router: {
     options: {
       // Disable Vue Router's own scroll behavior
-      scrollBehavior: () => false
+      scrollBehavior: () => false,
+      trailingSlash: false // <--- Set to false
     }
   },
 
@@ -109,7 +110,7 @@ export default defineNuxtConfig({
         '/',
         '/about',
         '/contact',
-        '/services', 
+        '/services',
         '/patents',
         '/trademarks',
         '/copyright',
@@ -209,6 +210,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     siteUrl: 'https://dobbiniplaw.com',
+    trailingSlash: false, // <--- Set to false
     // You can customize routes, exclude, etc.
   }
 })
