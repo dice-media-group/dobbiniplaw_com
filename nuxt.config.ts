@@ -3,11 +3,47 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
+    '@nuxtjs/seo', // 🆕 Add this first for comprehensive SEO
     '@nuxt/content', 
     '@nuxtjs/tailwindcss', 
-    '@nuxt/image',
-    '@nuxtjs/sitemap'
+    '@nuxt/image'
+    // Removed '@nuxtjs/sitemap' - included in @nuxtjs/seo
   ],
+
+  // 🆕 Add site configuration for @nuxtjs/seo
+  site: {
+    url: 'https://dobbiniplaw.com',
+    name: 'Dobbin IP Law P.C.',
+    description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
+    defaultLocale: 'en'
+  },
+
+  // 🆕 Add comprehensive SEO configuration
+  seo: {
+    redirectToCanonicalSiteUrl: true,
+  },
+
+  // 🆕 Add robots configuration
+  robots: {
+    sitemap: 'https://dobbiniplaw.com/sitemap.xml',
+    rules: [
+      {
+        UserAgent: '*',
+        Allow: '/',
+        Disallow: ['/drafts/', '/admin/', '/.well-known/']
+      }
+    ]
+  },
+
+  // 🆕 Enhanced sitemap configuration
+  sitemap: {
+    siteUrl: 'https://dobbiniplaw.com',
+    autoLastmod: true,
+    exclude: ['/drafts/**', '/admin/**'],
+    sources: [
+      '/sitemap.xml'
+    ]
+  },
   
   content: {
     documentDriven: true,
@@ -21,12 +57,11 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // Router configuration
+  // 🔧 Fix trailing slash issues (CRITICAL for canonicals)
   router: {
     options: {
-      // Disable Vue Router's own scroll behavior
       scrollBehavior: () => false,
-      trailingSlash: false // <--- Set to false
+      trailingSlash: false
     }
   },
 
@@ -43,15 +78,11 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Dobbin IP Law specializes in obtaining patents to protect your invention, copyrights to protect your authorship, and trademarks to protect your marketing.' }
       ],
       link: [
-        // Favicon links
         { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
         { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192' },
         { rel: 'apple-touch-icon', href: '/favicon-180x180.png' },
-        
-        // Crimson Text font from Google Fonts
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
       ],
-      // Add the script for form handling
       script: [
         {
           innerHTML: `
@@ -68,15 +99,12 @@ export default defineNuxtConfig({
           type: 'text/javascript',
           body: true
         },
-        // Add a custom script for fixing scroll behavior
         {
           innerHTML: `
-            // Force scroll to top on page load
             window.addEventListener('load', function() {
               window.scrollTo(0, 0);
             });
             
-            // Helper function to force scroll to top
             window.forceScrollToTop = function() {
               window.scrollTo(0, 0);
             }
@@ -84,12 +112,24 @@ export default defineNuxtConfig({
           type: 'text/javascript',
           body: true
         }
-        // Remove the Ahrefs script - it's handled by the plugin now
       ]
     }
   },
 
-  // For FontAwesome to work correctly with Nuxt 3
+  // Image optimization for Core Web Vitals
+  image: {
+    formats: ['webp', 'avif'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280
+    },
+    quality: 85,
+    densities: [1, 2]
+  },
+
   build: {
     transpile: [
       '@fortawesome/fontawesome-svg-core',
@@ -98,12 +138,11 @@ export default defineNuxtConfig({
     ]
   },
 
-  // Generate static site for Netlify
   ssr: true,
   
-  // Static site generation settings
   nitro: {
     preset: 'netlify',
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
       routes: [
@@ -126,77 +165,24 @@ export default defineNuxtConfig({
     }
   },
 
-  // Add this section to fix 301 redirects
+  // 🔧 Fix route rules to prevent canonicals pointing to redirects
   routeRules: {
-    // Homepage
-    '/': { prerender: true },
-    // Remove all these redirects:
-    // '/about': { redirect: '/about/' }, 
-    // '/contact': { redirect: '/contact/' },
-    // '/patents': { redirect: '/patents/' },
-    // '/terms-of-service': { redirect: '/terms-of-service/' },
-    // '/privacy-policy': { redirect: '/privacy-policy/' },
-    // '/bio-fees': { redirect: '/bio-fees/' },
-    '/': { headers: { 'X-Robots-Tag': 'all' } },
+    '/': { prerender: true, headers: { 'X-Robots-Tag': 'index, follow' } },
+    '/about': { prerender: true },
+    '/contact': { prerender: true },
+    '/patents': { prerender: true },
+    '/trademarks': { prerender: true },
+    '/copyright': { prerender: true },
+    '/services': { prerender: true },
+    '/testimonials': { prerender: true },
+    '/flat-fees': { prerender: true },
+    '/resources': { prerender: true },
+    '/helpful-links': { prerender: true },
+    '/prior-work': { prerender: true },
+    '/privacy-policy': { prerender: true },
+    '/terms-of-service': { prerender: true },
+    '/success': { prerender: true },
     '/drafts/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-  },
-
-  // Generate static HTML for improved SEO and to ensure forms are detected
-  generate: {
-    routes: ['/success', '/flat-fees']
-  },
-
-  // Performance optimizations
-  optimization: {
-    splitChunks: {
-      maxSize: 300000,
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.(css|vue)$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    }
-  },
-
-  // Improve build performance
-  vite: {
-    optimizeDeps: {
-      include: [
-        'vue',
-        'vue-router',
-        '@fortawesome/fontawesome-svg-core',
-        '@fortawesome/free-solid-svg-icons'
-      ]
-    },
-    build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'fontawesome': [
-              '@fortawesome/fontawesome-svg-core',
-              '@fortawesome/free-solid-svg-icons',
-              '@fortawesome/vue-fontawesome'
-            ]
-          }
-        }
-      }
-    }
-  },
-
-  hooks: {
-    'nitro:config': (nitroConfig) => {
-      if (nitroConfig.dev) {
-        return
-      }
-      // Improve static rendering
-      nitroConfig.prerender = nitroConfig.prerender || {}
-      nitroConfig.prerender.ignore = nitroConfig.prerender.ignore || []
-      nitroConfig.prerender.ignore.push(/** any route patterns to ignore **/)
-    }
   },
 
   compatibilityDate: '2025-04-08',
@@ -206,11 +192,5 @@ export default defineNuxtConfig({
       gtag: process.env.NUXT_PUBLIC_GTAG,
       ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
     }
-  },
-
-  sitemap: {
-    siteUrl: 'https://dobbiniplaw.com',
-    trailingSlash: false, // <--- Set to false
-    // You can customize routes, exclude, etc.
   }
 })
