@@ -15,43 +15,40 @@ export const useSEO = (options = {}) => {
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
   const canonicalUrl = `${baseUrl}${path}`
 
-  useHead({
+  // Use the new @nuxtjs/seo composables for better SEO
+  useSeoMeta({
     title: fullTitle,
-    meta: [
-      { name: 'description', content: description },
-      ...(keywords ? [{ name: 'keywords', content: keywords }] : []),
-      
-      // Open Graph for social media
-      { property: 'og:title', content: fullTitle },
-      { property: 'og:description', content: description },
-      { property: 'og:type', content: type },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:image', content: `${baseUrl}${ogImage}` },
-      { property: 'og:site_name', content: 'Dobbin IP Law P.C.' },
-      { property: 'og:locale', content: 'en_US' },
-      
-      // Twitter Cards
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: fullTitle },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: `${baseUrl}${ogImage}` },
-      
-      // Local SEO (Utah-based law firm)
-      { name: 'geo.region', content: 'US-UT' },
-      { name: 'geo.placename', content: 'West Valley City' },
-      { name: 'geo.position', content: '40.73315967932904;-111.9405988853505' },
-      
-      // Additional SEO meta tags
-      { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: author },
-      { name: 'language', content: 'en-US' },
-      { name: 'hreflang', content: 'en-US' },
-      
-      // Article/Page-specific meta (conditional)
-      ...(publishedTime ? [{ property: 'article:published_time', content: publishedTime }] : []),
-      ...(modifiedTime ? [{ property: 'article:modified_time', content: modifiedTime }] : []),
-      ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
-    ],
+    description: description,
+    keywords: keywords,
+    
+    // Open Graph for social media
+    ogTitle: fullTitle,
+    ogDescription: description,
+    ogType: type,
+    ogUrl: canonicalUrl,
+    ogImage: `${baseUrl}${ogImage}`,
+    ogSiteName: 'Dobbin IP Law P.C.',
+    ogLocale: 'en_US',
+    
+    // Twitter Cards
+    twitterCard: 'summary_large_image',
+    twitterTitle: fullTitle,
+    twitterDescription: description,
+    twitterImage: `${baseUrl}${ogImage}`,
+    
+    // Additional SEO meta tags
+    robots: 'index, follow',
+    author: author,
+    language: 'en-US',
+    
+    // Article/Page-specific meta (conditional)
+    ...(publishedTime && { 'article:published_time': publishedTime }),
+    ...(modifiedTime && { 'article:modified_time': modifiedTime }),
+    ...(type === 'article' && { 'article:author': author })
+  })
+
+  // Set canonical URL
+  useHead({
     link: [
       { rel: 'canonical', href: canonicalUrl }
     ]
@@ -61,7 +58,7 @@ export const useSEO = (options = {}) => {
 export const useBaseSchema = () => {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "LegalService",
     "name": "Dobbin IP Law P.C.",
     "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
     "@id": "https://dobbiniplaw.com/",
@@ -75,6 +72,11 @@ export const useBaseSchema = () => {
       "addressRegion": "UT",
       "postalCode": "84119",
       "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.73315967932904,
+      "longitude": -111.9405988853505
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -93,7 +95,7 @@ export const useBaseSchema = () => {
     ],
     "priceRange": "$$",
     "areaServed": "Utah",
-    "serviceType": "Legal Services",
+    "serviceType": "Intellectual Property Law",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Intellectual Property Legal Services",
@@ -123,6 +125,13 @@ export const useBaseSchema = () => {
           }
         }
       ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Geoffrey Dobbin",
+      "jobTitle": "Patent Attorney",
+      "description": "Patent attorney with 25+ years experience and physics background",
+      "alumniOf": "University of Utah College of Law"
     }
   }
 }
@@ -131,12 +140,5 @@ export const useStructuredData = (additionalData = {}) => {
   const baseSchema = useBaseSchema()
   const schema = { ...baseSchema, ...additionalData }
   
-  useHead({
-    script: [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(schema)
-      }
-    ]
-  })
+  useSchemaOrg([schema])
 }
