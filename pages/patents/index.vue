@@ -141,7 +141,7 @@ import PatentDetailModal from '~/components/patents/PatentDetailModal.vue';
 useSEO({
   title: 'Patent Portfolio Browser',
   description: 'Explore Dobbin IP Law\'s extensive patent portfolio in an interactive browser. Browse our successful patent applications by category with detailed images and information.',
-  path: '/patents/',
+  path: '/patents',
   keywords: 'patent portfolio, patent browser, intellectual property showcase, design patents, utility patents, patent applications, IP law examples, patent gallery'
 })
 

@@ -409,7 +409,7 @@ const HeroBanner = defineAsyncComponent(() => import('../components/HeroBanner.v
 useSEO({
   title: 'Flat Fee Schedule',
   description: 'Our transparent flat fee pricing for intellectual property services including design patents, trademarks, copyrights, and more.',
-  path: '/flat-fees/',
+  path: '/flat-fees',
   keywords: 'intellectual property fees, patent fees, trademark fees, copyright fees, flat fee schedule, IP law pricing'
 })
 // ✅ ADD: Import the structured data function

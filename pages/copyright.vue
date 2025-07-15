@@ -137,7 +137,7 @@ import CopyrightFAQ from '~/components/CopyrightFAQ.vue';
 useSEO({
   title: 'Copyright Registration Services',
   description: 'Protect your creative works with our expert copyright registration services. A Utah IP lawyer helping authors, artists, & creators for over 25 years. Secure your IP.',
-  path: '/copyright/',
+  path: '/copyright',
   keywords: 'copyright registration, copyright attorney Utah, copyright lawyer, protect creative works, author copyright, artist copyright, copyright services, intellectual property protection'
 })
 

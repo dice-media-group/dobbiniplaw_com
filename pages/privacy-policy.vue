@@ -64,7 +64,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useSEO({
   title: 'Privacy Policy',
   description: 'Privacy Policy for Dobbin IP Law P.C. Learn how we collect, use, and protect your personal information when you visit our website or use our legal services.',
-  path: '/privacy-policy/',
+  path: '/privacy-policy',
   keywords: 'privacy policy, data protection, website privacy, legal privacy policy, attorney client confidentiality'
 })
 // ✅ ADD: Import the structured data function

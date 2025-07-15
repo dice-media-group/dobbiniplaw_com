@@ -140,7 +140,7 @@
 useSEO({
   title: 'IP Resources & Educational Content',
   description: 'Learn about intellectual property with our free resources. Find expert answers to your questions about patents, trademarks, and copyrights from a Utah IP attorney.',
-  path: '/resources/',
+  path: '/resources',
   keywords: 'IP resources, patent information, trademark guide, copyright education, intellectual property FAQ, patent attorney resources, IP law education, Utah IP resources'
 })
 // ✅ ADD: Import the structured data function
