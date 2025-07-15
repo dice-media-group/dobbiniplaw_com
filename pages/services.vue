@@ -20,7 +20,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useSEO({
   title: 'Our IP Services',
   description: 'We offer comprehensive IP services, including patent applications, trademark registration, and copyright protection. Protecting Utah inventors for over 25 years.',
-  path: '/services/',
+  path: '/services',
   keywords: 'intellectual property services, patent services Utah, trademark registration, copyright protection, IP attorney services, patent lawyer Utah, trademark attorney'
 })
 // ✅ ADD: Import the structured data function

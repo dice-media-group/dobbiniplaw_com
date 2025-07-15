@@ -229,7 +229,7 @@ import PatentFAQ from '~/components/PatentFAQ.vue';
 useSEO({
   title: 'Patent Services & Information',
   description: 'Protect your invention with our expert patent services. Our Utah patent attorney has 25+ years of experience with utility, design, and plant patent applications.',
-  path: '/patents/',
+  path: '/patents',
   keywords: 'patent attorney Utah, patent services, utility patents, design patents, patent application, invention protection, USPTO registration, patent lawyer West Valley City'
 })
 

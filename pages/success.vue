@@ -43,7 +43,7 @@ import HeroBanner from '../components/HeroBanner.vue';
 useSEO({
   title: 'Thank You - Message Received',
   description: 'Thank you for contacting Dobbin IP Law. Your message has been successfully received and we will respond promptly.',
-  path: '/success/',
+  path: '/success',
   keywords: '', // No keywords needed for this page
   robots: 'noindex, nofollow' // Important: Keep out of search results
 })
