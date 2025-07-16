@@ -16,45 +16,41 @@ export const useSEO = (options = {}) => {
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
   const canonicalUrl = `${baseUrl}${path}`
 
-  // Use the new @nuxtjs/seo composables for better SEO
-  useSeoMeta({
-    title: fullTitle,
-    description: description,
-    keywords: keywords,
-    
-    // 🔧 Explicitly set robots for indexability
-    robots: robots,
-    
-    // Open Graph for social media
-    ogTitle: fullTitle,
-    ogDescription: description,
-    ogType: type,
-    ogUrl: canonicalUrl,
-    ogImage: `${baseUrl}${ogImage}`,
-    ogSiteName: 'Dobbin IP Law P.C.',
-    ogLocale: 'en_US',
-    
-    // Twitter Cards
-    twitterCard: 'summary_large_image',
-    twitterTitle: fullTitle,
-    twitterDescription: description,
-    twitterImage: `${baseUrl}${ogImage}`,
-    
-    // Additional SEO meta tags
-    author: author,
-    language: 'en-US',
-    
-    // Article/Page-specific meta (conditional)
-    ...(publishedTime && { 'article:published_time': publishedTime }),
-    ...(modifiedTime && { 'article:modified_time': modifiedTime }),
-    ...(type === 'article' && { 'article:author': author })
-  })
-
-  // Set canonical URL and additional robots directive
+  // 🔧 Use direct useHead instead of useSeoMeta to ensure robots tags work
   useHead({
+    title: fullTitle,
     meta: [
-      // 🔧 Ensure robots meta tag is properly set
-      { name: 'robots', content: robots }
+      { name: 'description', content: description },
+      { name: 'keywords', content: keywords },
+      
+      // 🔧 Multiple robots directives for maximum compatibility
+      { name: 'robots', content: robots },
+      { name: 'googlebot', content: robots },
+      { name: 'bingbot', content: robots },
+      
+      // Open Graph
+      { property: 'og:title', content: fullTitle },
+      { property: 'og:description', content: description },
+      { property: 'og:type', content: type },
+      { property: 'og:url', content: canonicalUrl },
+      { property: 'og:image', content: `${baseUrl}${ogImage}` },
+      { property: 'og:site_name', content: 'Dobbin IP Law P.C.' },
+      { property: 'og:locale', content: 'en_US' },
+      
+      // Twitter Cards
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: fullTitle },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: `${baseUrl}${ogImage}` },
+      
+      // Additional SEO meta tags
+      { name: 'author', content: author },
+      { name: 'language', content: 'en-US' },
+      
+      // Article/Page-specific meta (conditional)
+      ...(publishedTime ? [{ property: 'article:published_time', content: publishedTime }] : []),
+      ...(modifiedTime ? [{ property: 'article:modified_time', content: modifiedTime }] : []),
+      ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
     ],
     link: [
       { rel: 'canonical', href: canonicalUrl }
