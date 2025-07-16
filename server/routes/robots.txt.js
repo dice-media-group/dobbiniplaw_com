@@ -4,14 +4,12 @@ export default defineEventHandler((event) => {
 User-agent: *
 Allow: /
 
-# Block unnecessary paths
+# Only block truly unnecessary paths
 Disallow: /drafts/
 Disallow: /admin/
 Disallow: /.well-known/
-Disallow: /api/
-Disallow: /*?*
 
-# Important pages for crawling
+# Allow all important content
 Allow: /patents
 Allow: /trademarks  
 Allow: /copyright
@@ -20,11 +18,16 @@ Allow: /contact
 Allow: /services
 Allow: /testimonials
 Allow: /resources
+Allow: /helpful-links
+Allow: /flat-fees
+Allow: /prior-work
+Allow: /privacy-policy
+Allow: /terms-of-service
 
-# Crawl delay for bots
+# Be crawler-friendly
 Crawl-delay: 1
 
-# Sitemaps
+# Sitemap location
 Sitemap: https://dobbiniplaw.com/sitemap.xml
 `.trim()
 

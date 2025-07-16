@@ -8,7 +8,8 @@ export const useSEO = (options = {}) => {
     type = 'website',
     author = 'Dobbin IP Law P.C.',
     publishedTime = null,
-    modifiedTime = null
+    modifiedTime = null,
+    robots = 'index, follow' // 🔧 Default to indexable
   } = options
 
   const baseUrl = 'https://dobbiniplaw.com'
@@ -20,6 +21,9 @@ export const useSEO = (options = {}) => {
     title: fullTitle,
     description: description,
     keywords: keywords,
+    
+    // 🔧 Explicitly set robots for indexability
+    robots: robots,
     
     // Open Graph for social media
     ogTitle: fullTitle,
@@ -37,7 +41,6 @@ export const useSEO = (options = {}) => {
     twitterImage: `${baseUrl}${ogImage}`,
     
     // Additional SEO meta tags
-    robots: 'index, follow',
     author: author,
     language: 'en-US',
     
@@ -47,8 +50,12 @@ export const useSEO = (options = {}) => {
     ...(type === 'article' && { 'article:author': author })
   })
 
-  // Set canonical URL
+  // Set canonical URL and additional robots directive
   useHead({
+    meta: [
+      // 🔧 Ensure robots meta tag is properly set
+      { name: 'robots', content: robots }
+    ],
     link: [
       { rel: 'canonical', href: canonicalUrl }
     ]
