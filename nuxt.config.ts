@@ -171,8 +171,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 Route rules - ensure no trailing slashes
+  // 🔧 Simplified route rules - let middleware handle trailing slash redirects
   routeRules: {
+    // Prerender all main pages
     '/': { prerender: true },
     '/about': { prerender: true },
     '/contact': { prerender: true },
@@ -189,23 +190,10 @@ export default defineNuxtConfig({
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
     '/seo-test': { prerender: true },
+    
     // Block problematic paths
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
-    '/admin/**': { index: false, robots: 'noindex, nofollow' },
-    // 🔧 Redirect any trailing slash URLs to non-trailing slash versions
-    '/about/': { redirect: '/about', prerender: false },
-    '/contact/': { redirect: '/contact', prerender: false },
-    '/patents/': { redirect: '/patents', prerender: false },
-    '/trademarks/': { redirect: '/trademarks', prerender: false },
-    '/copyright/': { redirect: '/copyright', prerender: false },
-    '/services/': { redirect: '/services', prerender: false },
-    '/testimonials/': { redirect: '/testimonials', prerender: false },
-    '/flat-fees/': { redirect: '/flat-fees', prerender: false },
-    '/resources/': { redirect: '/resources', prerender: false },
-    '/helpful-links/': { redirect: '/helpful-links', prerender: false },
-    '/prior-work/': { redirect: '/prior-work', prerender: false },
-    '/privacy-policy/': { redirect: '/privacy-policy', prerender: false },
-    '/terms-of-service/': { redirect: '/terms-of-service', prerender: false }
+    '/admin/**': { index: false, robots: 'noindex, nofollow' }
   },
 
   compatibilityDate: '2025-04-08',

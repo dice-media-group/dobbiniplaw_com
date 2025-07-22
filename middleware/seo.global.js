@@ -3,26 +3,49 @@ export default defineNuxtRouteMiddleware((to) => {
   // Only run on client side to avoid SSR issues
   if (process.server) return
 
-  // Fix trailing slash issues - redirect /about/ to /about
-  if (to.path.endsWith('/') && to.path.length > 1) {
-    return navigateTo(to.path.slice(0, -1), { redirectCode: 301 })
+  const originalPath = to.path
+  let redirectNeeded = false
+  let newPath = originalPath
+  let newQuery = { ...to.query }
+
+  // 1. Fix trailing slash issues - redirect /about/ to /about (but NOT root)
+  if (originalPath.endsWith('/') && originalPath.length > 1) {
+    newPath = originalPath.slice(0, -1)
+    redirectNeeded = true
   }
 
-  // Clean up query parameters to prevent duplicate pages
-  const allowedParams = ['page', 'category'] // Add any legitimate query params
+  // 2. Fix double slashes
+  if (originalPath.includes('//')) {
+    newPath = originalPath.replace(/\/+/g, '/')
+    redirectNeeded = true
+  }
+
+  // 3. Clean up query parameters to prevent duplicate pages
+  const allowedParams = ['page', 'category', 'search', 'filter'] // Add any legitimate query params
   const cleanQuery = {}
   
   for (const [key, value] of Object.entries(to.query)) {
-    if (allowedParams.includes(key)) {
+    if (allowedParams.includes(key) && value) {
       cleanQuery[key] = value
     }
   }
 
-  // If we removed any query parameters, redirect to clean URL
+  // 4. Check if query parameters were cleaned
   if (Object.keys(to.query).length !== Object.keys(cleanQuery).length) {
+    newQuery = cleanQuery
+    redirectNeeded = true
+  }
+
+  // Perform redirect if needed
+  if (redirectNeeded) {
+    console.log(`SEO Redirect: ${originalPath} → ${newPath}`)
+    
     return navigateTo({
-      path: to.path,
-      query: cleanQuery
-    }, { redirectCode: 301 })
+      path: newPath,
+      query: newQuery
+    }, { 
+      redirectCode: 301,
+      replace: true // Use replace to avoid back button issues
+    })
   }
 })
