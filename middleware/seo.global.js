@@ -1,51 +1,32 @@
-// middleware/seo.global.js
+// middleware/seo.global.js - FIXED to prevent circular redirects
 export default defineNuxtRouteMiddleware((to) => {
-  // Only run on client side to avoid SSR issues
+  // Skip middleware on server to avoid SSR conflicts
   if (process.server) return
 
   const originalPath = to.path
-  let redirectNeeded = false
-  let newPath = originalPath
-  let newQuery = { ...to.query }
 
-  // 1. Fix trailing slash issues - redirect /about/ to /about (but NOT root)
+  // 🔧 CRITICAL: Only redirect FROM trailing slash TO non-trailing slash
+  // Never redirect the other direction to avoid circular redirects
   if (originalPath.endsWith('/') && originalPath.length > 1) {
-    newPath = originalPath.slice(0, -1)
-    redirectNeeded = true
-  }
-
-  // 2. Fix double slashes
-  if (originalPath.includes('//')) {
-    newPath = originalPath.replace(/\/+/g, '/')
-    redirectNeeded = true
-  }
-
-  // 3. Clean up query parameters to prevent duplicate pages
-  const allowedParams = ['page', 'category', 'search', 'filter'] // Add any legitimate query params
-  const cleanQuery = {}
-  
-  for (const [key, value] of Object.entries(to.query)) {
-    if (allowedParams.includes(key) && value) {
-      cleanQuery[key] = value
-    }
-  }
-
-  // 4. Check if query parameters were cleaned
-  if (Object.keys(to.query).length !== Object.keys(cleanQuery).length) {
-    newQuery = cleanQuery
-    redirectNeeded = true
-  }
-
-  // Perform redirect if needed
-  if (redirectNeeded) {
-    console.log(`SEO Redirect: ${originalPath} → ${newPath}`)
+    const cleanPath = originalPath.slice(0, -1)
     
-    return navigateTo({
-      path: newPath,
-      query: newQuery
-    }, { 
+    console.log(`SEO Redirect: ${originalPath} → ${cleanPath}`)
+    
+    return navigateTo(cleanPath, { 
       redirectCode: 301,
-      replace: true // Use replace to avoid back button issues
+      replace: true
     })
   }
+
+  // Fix double slashes if they exist
+  if (originalPath.includes('//')) {
+    const cleanPath = originalPath.replace(/\/+/g, '/')
+    return navigateTo(cleanPath, { 
+      redirectCode: 301,
+      replace: true
+    })
+  }
+
+  // Note: Removed query parameter cleaning to avoid complexity
+  // Let @nuxtjs/seo handle query normalization
 })

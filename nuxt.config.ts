@@ -3,27 +3,30 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/seo', // 🆕 Add this first for comprehensive SEO
+    '@nuxtjs/seo',
     '@nuxt/content', 
     '@nuxtjs/tailwindcss', 
     '@nuxt/image'
-    // Removed '@nuxtjs/sitemap' - included in @nuxtjs/seo
   ],
 
-  // 🆕 Add site configuration for @nuxtjs/seo
+  // 🔧 CRITICAL: Configure @nuxtjs/seo to NOT redirect in the opposite direction
   site: {
-    url: 'https://dobbiniplaw.com', // 🔧 No trailing slash
+    url: 'https://dobbiniplaw.com',
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
     indexable: true,
-    trailingSlash: false // 🔧 CRITICAL: No trailing slashes site-wide
+    trailingSlash: false
   },
 
-  // 🔧 Enhanced robots configuration
+  // 🔧 SEO module configuration to prevent conflicts
+  seo: {
+    redirectToCanonicalSiteUrl: false, // DISABLE automatic redirects that might conflict
+  },
+
   robots: {
     credits: false,
-    sitemap: 'https://dobbiniplaw.com/sitemap.xml', // 🔧 No trailing slash
+    sitemap: 'https://dobbiniplaw.com/sitemap.xml',
     groups: [
       {
         userAgent: ['*'],
@@ -33,10 +36,9 @@ export default defineNuxtConfig({
     ]
   },
 
-  // 🔧 Enhanced sitemap configuration - NO TRAILING SLASHES
   sitemap: {
-    siteUrl: 'https://dobbiniplaw.com', // 🔧 No trailing slash
-    trailingSlash: false, // 🔧 CRITICAL: Ensure sitemap URLs have no trailing slashes
+    siteUrl: 'https://dobbiniplaw.com',
+    trailingSlash: false,
     autoLastmod: true,
     exclude: ['/drafts/**', '/admin/**'],
     defaults: {
@@ -57,11 +59,12 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // 🔧 Router configuration - NO TRAILING SLASHES
+  // 🔧 CRITICAL: Ensure router doesn't add trailing slashes
   router: {
     options: {
       scrollBehavior: () => false,
-      trailingSlash: false // 🔧 CRITICAL: No trailing slashes in routing
+      trailingSlash: false,
+      strict: true // Enforce exact matching to prevent automatic trailing slash addition
     }
   },
 
@@ -76,12 +79,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
         { name: 'description', content: 'Dobbin IP Law specializes in obtaining patents to protect your invention, copyrights to protect your authorship, and trademarks to protect your marketing.' },
-        // 🔧 Multiple robots directives for maximum crawler compatibility
-        { name: 'robots', content: 'index, follow' },
-        { name: 'googlebot', content: 'index, follow' },
-        { name: 'bingbot', content: 'index, follow' },
-        { name: 'msnbot', content: 'index, follow' },
-        { name: 'slurp', content: 'index, follow' }
+        { name: 'robots', content: 'index, follow' }
       ],
       link: [
         { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
@@ -122,7 +120,6 @@ export default defineNuxtConfig({
     }
   },
 
-  // Image optimization for Core Web Vitals
   image: {
     formats: ['webp', 'avif'],
     screens: {
@@ -152,8 +149,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/', // Root stays as is
-        '/about', // 🔧 No trailing slashes
+        '/',
+        '/about',
         '/contact',
         '/services',
         '/patents',
@@ -171,9 +168,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 Simplified route rules - let middleware handle trailing slash redirects
+  // 🔧 MINIMAL route rules to avoid conflicts
   routeRules: {
-    // Prerender all main pages
+    // Only specify what's absolutely necessary
     '/': { prerender: true },
     '/about': { prerender: true },
     '/contact': { prerender: true },
@@ -189,9 +186,8 @@ export default defineNuxtConfig({
     '/privacy-policy': { prerender: true },
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
-    '/seo-test': { prerender: true },
     
-    // Block problematic paths
+    // Block admin areas
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
     '/admin/**': { index: false, robots: 'noindex, nofollow' }
   },

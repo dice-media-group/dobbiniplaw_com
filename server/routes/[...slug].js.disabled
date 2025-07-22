@@ -1,0 +1,18 @@
+// server/routes/[...slug].js - Catch-all route to prevent server-side trailing slash redirects
+export default defineEventHandler(async (event) => {
+  const url = getRequestURL(event)
+  const pathname = url.pathname
+  
+  // If this is a request for a trailing slash URL, redirect to non-trailing slash
+  if (pathname.endsWith('/') && pathname.length > 1) {
+    const cleanPath = pathname.slice(0, -1)
+    
+    // Send 301 redirect to clean URL
+    await sendRedirect(event, cleanPath, 301)
+    return
+  }
+  
+  // For all other requests, let Nuxt handle normally
+  // This just ensures we don't accidentally create trailing slash versions
+  return
+})
