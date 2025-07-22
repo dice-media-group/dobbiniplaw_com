@@ -9,19 +9,14 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
-  // 🔧 CRITICAL: Configure @nuxtjs/seo to NOT redirect in the opposite direction
+  // 🔧 MINIMAL configuration to avoid conflicts
   site: {
     url: 'https://dobbiniplaw.com',
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
-    indexable: true,
-    trailingSlash: false
-  },
-
-  // 🔧 SEO module configuration to prevent conflicts
-  seo: {
-    redirectToCanonicalSiteUrl: false, // DISABLE automatic redirects that might conflict
+    indexable: true
+    // Removed trailingSlash setting to let Nuxt handle naturally
   },
 
   robots: {
@@ -38,7 +33,6 @@ export default defineNuxtConfig({
 
   sitemap: {
     siteUrl: 'https://dobbiniplaw.com',
-    trailingSlash: false,
     autoLastmod: true,
     exclude: ['/drafts/**', '/admin/**'],
     defaults: {
@@ -59,12 +53,11 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // 🔧 CRITICAL: Ensure router doesn't add trailing slashes
+  // 🔧 DEFAULT router settings to avoid conflicts
   router: {
     options: {
-      scrollBehavior: () => false,
-      trailingSlash: false,
-      strict: true // Enforce exact matching to prevent automatic trailing slash addition
+      scrollBehavior: () => false
+      // Removed trailingSlash and strict settings that might cause conflicts
     }
   },
 
@@ -85,7 +78,7 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
         { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192' },
         { rel: 'apple-touch-icon', href: '/favicon-180x180.png' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600iconic,700,700italic&subset=latin&display=swap' }
       ],
       script: [
         {
@@ -168,9 +161,8 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 MINIMAL route rules to avoid conflicts
+  // 🔧 MINIMAL route rules
   routeRules: {
-    // Only specify what's absolutely necessary
     '/': { prerender: true },
     '/about': { prerender: true },
     '/contact': { prerender: true },
@@ -187,7 +179,7 @@ export default defineNuxtConfig({
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
     
-    // Block admin areas
+    // Only block admin areas
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
     '/admin/**': { index: false, robots: 'noindex, nofollow' }
   },

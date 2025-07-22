@@ -9,33 +9,30 @@ export const useSEO = (options = {}) => {
     author = 'Dobbin IP Law P.C.',
     publishedTime = null,
     modifiedTime = null,
-    robots = 'index, follow' // 🔧 Default to indexable
+    robots = 'index, follow'
   } = options
 
   const baseUrl = 'https://dobbiniplaw.com'
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
   
-  // 🔧 CRITICAL: Ensure canonical URL NEVER has trailing slash
-  const cleanPath = path === '/' ? '/' : path.replace(/\/+$/, '') // Remove trailing slashes except for root
-  const canonicalUrl = `${baseUrl}${cleanPath}`
+  // 🔧 SIMPLIFIED: Use path as-is for now to avoid redirect conflicts
+  const canonicalUrl = `${baseUrl}${path}`
 
-  // 🔧 Use direct useHead instead of useSeoMeta to ensure robots tags work
+  // 🔧 Use direct useHead for better compatibility
   useHead({
     title: fullTitle,
     meta: [
       { name: 'description', content: description },
       { name: 'keywords', content: keywords },
       
-      // 🔧 Multiple robots directives for maximum compatibility
+      // Basic robots directives
       { name: 'robots', content: robots },
-      { name: 'googlebot', content: robots },
-      { name: 'bingbot', content: robots },
       
       // Open Graph
       { property: 'og:title', content: fullTitle },
       { property: 'og:description', content: description },
       { property: 'og:type', content: type },
-      { property: 'og:url', content: canonicalUrl }, // 🔧 Clean URL here too
+      { property: 'og:url', content: canonicalUrl },
       { property: 'og:image', content: `${baseUrl}${ogImage}` },
       { property: 'og:site_name', content: 'Dobbin IP Law P.C.' },
       { property: 'og:locale', content: 'en_US' },
@@ -56,7 +53,6 @@ export const useSEO = (options = {}) => {
       ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
     ],
     link: [
-      // 🔧 CANONICAL URL WITH NO TRAILING SLASH
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
@@ -68,8 +64,8 @@ export const useBaseSchema = () => {
     "@type": "LegalService",
     "name": "Dobbin IP Law P.C.",
     "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
-    "@id": "https://dobbiniplaw.com",  // 🔧 No trailing slash in @id
-    "url": "https://dobbiniplaw.com", // 🔧 No trailing slash in URL
+    "@id": "https://dobbiniplaw.com",
+    "url": "https://dobbiniplaw.com",
     "telephone": "+18019696609",
     "email": "getinfo@dobbiniplaw.com",
     "address": {
