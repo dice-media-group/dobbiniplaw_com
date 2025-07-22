@@ -14,7 +14,10 @@ export const useSEO = (options = {}) => {
 
   const baseUrl = 'https://dobbiniplaw.com'
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
-  const canonicalUrl = `${baseUrl}${path}`
+  
+  // 🔧 CRITICAL: Ensure canonical URL NEVER has trailing slash
+  const cleanPath = path === '/' ? '/' : path.replace(/\/+$/, '') // Remove trailing slashes except for root
+  const canonicalUrl = `${baseUrl}${cleanPath}`
 
   // 🔧 Use direct useHead instead of useSeoMeta to ensure robots tags work
   useHead({
@@ -32,7 +35,7 @@ export const useSEO = (options = {}) => {
       { property: 'og:title', content: fullTitle },
       { property: 'og:description', content: description },
       { property: 'og:type', content: type },
-      { property: 'og:url', content: canonicalUrl },
+      { property: 'og:url', content: canonicalUrl }, // 🔧 Clean URL here too
       { property: 'og:image', content: `${baseUrl}${ogImage}` },
       { property: 'og:site_name', content: 'Dobbin IP Law P.C.' },
       { property: 'og:locale', content: 'en_US' },
@@ -53,6 +56,7 @@ export const useSEO = (options = {}) => {
       ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
     ],
     link: [
+      // 🔧 CANONICAL URL WITH NO TRAILING SLASH
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
@@ -64,8 +68,8 @@ export const useBaseSchema = () => {
     "@type": "LegalService",
     "name": "Dobbin IP Law P.C.",
     "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
-    "@id": "https://dobbiniplaw.com/",
-    "url": "https://dobbiniplaw.com/",
+    "@id": "https://dobbiniplaw.com",  // 🔧 No trailing slash in @id
+    "url": "https://dobbiniplaw.com", // 🔧 No trailing slash in URL
     "telephone": "+18019696609",
     "email": "getinfo@dobbiniplaw.com",
     "address": {
