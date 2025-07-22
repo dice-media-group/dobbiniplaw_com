@@ -1,0 +1,23 @@
+# Netlify redirects to prevent trailing slash issues
+# This file should be in the public directory
+
+# Redirect all trailing slash URLs to non-trailing slash versions
+/about/           /about           301!
+/contact/         /contact         301!
+/patents/         /patents         301!
+/trademarks/      /trademarks      301!
+/copyright/       /copyright       301!
+/services/        /services        301!
+/testimonials/    /testimonials    301!
+/flat-fees/       /flat-fees       301!
+/resources/       /resources       301!
+/helpful-links/   /helpful-links   301!
+/prior-work/      /prior-work      301!
+/privacy-policy/  /privacy-policy  301!
+/terms-of-service/ /terms-of-service 301!
+/success/         /success         301!
+/seo-test/        /seo-test        301!
+/patent-browser/  /patent-browser  301!
+
+# Catch-all for any other trailing slash URLs
+/*/ /:splat 301!
