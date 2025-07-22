@@ -12,17 +12,18 @@ export default defineNuxtConfig({
 
   // 🆕 Add site configuration for @nuxtjs/seo
   site: {
-    url: 'https://dobbiniplaw.com',
+    url: 'https://dobbiniplaw.com', // 🔧 No trailing slash
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
-    indexable: true // 🔧 CRITICAL: Explicitly set site as indexable
+    indexable: true,
+    trailingSlash: false // 🔧 CRITICAL: No trailing slashes site-wide
   },
 
-  // 🔧 More explicit robots configuration to fix indexability
+  // 🔧 Enhanced robots configuration
   robots: {
     credits: false,
-    sitemap: 'https://dobbiniplaw.com/sitemap.xml',
+    sitemap: 'https://dobbiniplaw.com/sitemap.xml', // 🔧 No trailing slash
     groups: [
       {
         userAgent: ['*'],
@@ -32,9 +33,10 @@ export default defineNuxtConfig({
     ]
   },
 
-  // 🔧 Enhanced sitemap configuration with explicit indexability
+  // 🔧 Enhanced sitemap configuration - NO TRAILING SLASHES
   sitemap: {
-    siteUrl: 'https://dobbiniplaw.com',
+    siteUrl: 'https://dobbiniplaw.com', // 🔧 No trailing slash
+    trailingSlash: false, // 🔧 CRITICAL: Ensure sitemap URLs have no trailing slashes
     autoLastmod: true,
     exclude: ['/drafts/**', '/admin/**'],
     defaults: {
@@ -55,11 +57,11 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // 🔧 Fix trailing slash issues (CRITICAL for canonicals)
+  // 🔧 Router configuration - NO TRAILING SLASHES
   router: {
     options: {
       scrollBehavior: () => false,
-      trailingSlash: false
+      trailingSlash: false // 🔧 CRITICAL: No trailing slashes in routing
     }
   },
 
@@ -150,8 +152,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/',
-        '/about',
+        '/', // Root stays as is
+        '/about', // 🔧 No trailing slashes
         '/contact',
         '/services',
         '/patents',
@@ -169,8 +171,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 Simplified route rules - let default robots meta tags handle indexing
+  // 🔧 Simplified route rules - let middleware handle trailing slash redirects
   routeRules: {
+    // Prerender all main pages
     '/': { prerender: true },
     '/about': { prerender: true },
     '/contact': { prerender: true },
@@ -186,10 +189,11 @@ export default defineNuxtConfig({
     '/privacy-policy': { prerender: true },
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
-    // Only explicitly block drafts
+    '/seo-test': { prerender: true },
+    
+    // Block problematic paths
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
-    '/admin/**': { index: false, robots: 'noindex, nofollow' },
-    '/seo-test': { prerender: true }, // 🆕 Add the test page
+    '/admin/**': { index: false, robots: 'noindex, nofollow' }
   },
 
   compatibilityDate: '2025-04-08',
