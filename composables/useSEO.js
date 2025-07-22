@@ -15,17 +15,15 @@ export const useSEO = (options = {}) => {
   const baseUrl = 'https://dobbiniplaw.com'
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
   
-  // 🔧 SIMPLIFIED: Use path as-is for now to avoid redirect conflicts
-  const canonicalUrl = `${baseUrl}${path}`
+  // 🔧 SAFE: Ensure canonical URLs never have trailing slashes
+  const cleanPath = path === '/' ? '/' : path.replace(/\/+$/, '')
+  const canonicalUrl = `${baseUrl}${cleanPath}`
 
-  // 🔧 Use direct useHead for better compatibility
   useHead({
     title: fullTitle,
     meta: [
       { name: 'description', content: description },
       { name: 'keywords', content: keywords },
-      
-      // Basic robots directives
       { name: 'robots', content: robots },
       
       // Open Graph
@@ -53,6 +51,7 @@ export const useSEO = (options = {}) => {
       ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
     ],
     link: [
+      // 🔧 CANONICAL always points to clean URL (no trailing slash)
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
