@@ -55,12 +55,12 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // 🔧 ENHANCED router settings for consistent URL handling
+  // 🔧 SIMPLIFIED router settings - removed problematic strict mode
   router: {
     options: {
-      scrollBehavior: () => false,
-      strict: true,  // 🎯 Enable strict routing
-      trailingSlash: false  // 🎯 CRITICAL: Disable trailing slashes in router
+      scrollBehavior: () => false
+      // 🚨 REMOVED: strict: true (was causing navigation issues)
+      // 🚨 REMOVED: trailingSlash: false (redundant with site config)
     }
   },
 
@@ -164,7 +164,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 ENHANCED route rules with canonical URL enforcement
+  // 🔧 SIMPLIFIED route rules - keep only essential redirects
   routeRules: {
     '/': { prerender: true },
     '/about': { prerender: true },
@@ -182,21 +182,12 @@ export default defineNuxtConfig({
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
     
-    // 🎯 CRITICAL: Add redirect rules for trailing slash URLs
-    '/about/': { redirect: '/about', prerender: false },
-    '/contact/': { redirect: '/contact', prerender: false },
-    '/patents/': { redirect: '/patents', prerender: false },
-    '/trademarks/': { redirect: '/trademarks', prerender: false },
-    '/copyright/': { redirect: '/copyright', prerender: false },
-    '/services/': { redirect: '/services', prerender: false },
-    '/testimonials/': { redirect: '/testimonials', prerender: false },
-    '/flat-fees/': { redirect: '/flat-fees', prerender: false },
-    '/resources/': { redirect: '/resources', prerender: false },
-    '/helpful-links/': { redirect: '/helpful-links', prerender: false },
-    '/prior-work/': { redirect: '/prior-work', prerender: false },
-    '/privacy-policy/': { redirect: '/privacy-policy', prerender: false },
-    '/terms-of-service/': { redirect: '/terms-of-service', prerender: false },
-    '/success/': { redirect: '/success', prerender: false },
+    // 🎯 SIMPLIFIED: Keep only the most problematic trailing slash redirects
+    // Let middleware handle the rest to avoid conflicts
+    '/about/': { redirect: '/about' },
+    '/contact/': { redirect: '/contact' },
+    '/copyright/': { redirect: '/copyright' },
+    '/trademarks/': { redirect: '/trademarks' },
     
     // Block admin areas
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
