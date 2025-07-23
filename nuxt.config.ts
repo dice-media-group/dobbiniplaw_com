@@ -9,14 +9,14 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
-  // 🔧 MINIMAL configuration to avoid conflicts
+  // 🔧 ENHANCED configuration for consistent URL handling
   site: {
     url: 'https://dobbiniplaw.com',
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
-    indexable: true
-    // Removed trailingSlash setting to let Nuxt handle naturally
+    indexable: true,
+    trailingSlash: false  // 🎯 CRITICAL: Explicitly disable trailing slashes
   },
 
   robots: {
@@ -38,7 +38,9 @@ export default defineNuxtConfig({
     defaults: {
       changefreq: 'monthly',
       priority: 0.8
-    }
+    },
+    // 🎯 CRITICAL: Ensure sitemap URLs don't have trailing slashes
+    strictNuxtContentPaths: true
   },
   
   content: {
@@ -53,11 +55,12 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // 🔧 DEFAULT router settings to avoid conflicts
+  // 🔧 ENHANCED router settings for consistent URL handling
   router: {
     options: {
-      scrollBehavior: () => false
-      // Removed trailingSlash and strict settings that might cause conflicts
+      scrollBehavior: () => false,
+      strict: true,  // 🎯 Enable strict routing
+      trailingSlash: false  // 🎯 CRITICAL: Disable trailing slashes in router
     }
   },
 
@@ -78,7 +81,7 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
         { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192' },
         { rel: 'apple-touch-icon', href: '/favicon-180x180.png' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600iconic,700,700italic&subset=latin&display=swap' }
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
       ],
       script: [
         {
@@ -161,7 +164,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // 🔧 MINIMAL route rules
+  // 🔧 ENHANCED route rules with canonical URL enforcement
   routeRules: {
     '/': { prerender: true },
     '/about': { prerender: true },
@@ -179,7 +182,23 @@ export default defineNuxtConfig({
     '/terms-of-service': { prerender: true },
     '/success': { prerender: true },
     
-    // Only block admin areas
+    // 🎯 CRITICAL: Add redirect rules for trailing slash URLs
+    '/about/': { redirect: '/about', prerender: false },
+    '/contact/': { redirect: '/contact', prerender: false },
+    '/patents/': { redirect: '/patents', prerender: false },
+    '/trademarks/': { redirect: '/trademarks', prerender: false },
+    '/copyright/': { redirect: '/copyright', prerender: false },
+    '/services/': { redirect: '/services', prerender: false },
+    '/testimonials/': { redirect: '/testimonials', prerender: false },
+    '/flat-fees/': { redirect: '/flat-fees', prerender: false },
+    '/resources/': { redirect: '/resources', prerender: false },
+    '/helpful-links/': { redirect: '/helpful-links', prerender: false },
+    '/prior-work/': { redirect: '/prior-work', prerender: false },
+    '/privacy-policy/': { redirect: '/privacy-policy', prerender: false },
+    '/terms-of-service/': { redirect: '/terms-of-service', prerender: false },
+    '/success/': { redirect: '/success', prerender: false },
+    
+    // Block admin areas
     '/drafts/**': { index: false, robots: 'noindex, nofollow' },
     '/admin/**': { index: false, robots: 'noindex, nofollow' }
   },

@@ -15,10 +15,42 @@ export const useSEO = (options = {}) => {
   const baseUrl = 'https://dobbiniplaw.com'
   const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
   
-  // 🔧 SAFE: Ensure canonical URLs never have trailing slashes
-  const cleanPath = path === '/' ? '/' : path.replace(/\/+$/, '')
+  // 🔧 BULLETPROOF: Ensure canonical URLs never have trailing slashes
+  // Handle both current path and passed path parameter
+  const route = useRoute()
+  const currentPath = path || route.path
+  const cleanPath = currentPath === '/' ? '/' : currentPath.replace(/\/+$/, '')
   const canonicalUrl = `${baseUrl}${cleanPath}`
 
+  // 🎯 CRITICAL: Also set canonical in useSeoMeta for @nuxtjs/seo module
+  useSeoMeta({
+    title: fullTitle,
+    description: description,
+    ogTitle: fullTitle,
+    ogDescription: description,
+    ogType: type,
+    ogUrl: canonicalUrl,
+    ogImage: `${baseUrl}${ogImage}`,
+    ogSiteName: 'Dobbin IP Law P.C.',
+    ogLocale: 'en_US',
+    
+    twitterCard: 'summary_large_image',
+    twitterTitle: fullTitle,
+    twitterDescription: description,
+    twitterImage: `${baseUrl}${ogImage}`,
+    
+    robots: robots,
+    keywords: keywords,
+    author: author,
+    language: 'en-US',
+    
+    // Article-specific meta (conditional)
+    ...(publishedTime && { articlePublishedTime: publishedTime }),
+    ...(modifiedTime && { articleModifiedTime: modifiedTime }),
+    ...(type === 'article' && { articleAuthor: author })
+  })
+
+  // 🎯 DUAL APPROACH: Also use useHead for backward compatibility
   useHead({
     title: fullTitle,
     meta: [
@@ -55,6 +87,13 @@ export const useSEO = (options = {}) => {
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
+
+  // 🎯 RETURN: Provide the canonical URL for debugging
+  return {
+    canonicalUrl,
+    cleanPath,
+    fullTitle
+  }
 }
 
 export const useBaseSchema = () => {

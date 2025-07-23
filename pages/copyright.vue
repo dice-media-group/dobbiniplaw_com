@@ -115,9 +115,9 @@
                 Please do not hesitate to call us if you have questions regarding your particular project. We would love to set up your complementary strategy session where we can discuss the particulars of your case and help you with any possible issues. If you would like answers to more questions about copyrights, please see the FAQ section below.
               </p>
               <div class="text-center mt-8">
-                <a href="/contact" class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson">
+                <NuxtLink to="/contact" class="bg-dobbin-green hover:bg-dobbin-dark-green text-white py-3 px-6 rounded-md inline-block font-crimson">
                   Schedule a Strategy Session
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
