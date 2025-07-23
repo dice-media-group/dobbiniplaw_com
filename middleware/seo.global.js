@@ -1,8 +1,7 @@
 // middleware/seo.global.js - REMOVED
-// @nuxtjs/seo handles all URL normalization automatically
-// No manual middleware needed for trailing slashes or redirects
+// This file is no longer needed - trailing slash handling moved to trailing-slash.global.js
+// Keeping empty to prevent import errors
 
 export default defineNuxtRouteMiddleware(() => {
-  // ✅ Let @nuxtjs/seo handle everything
-  // This file exists only to prevent 404s if referenced elsewhere
+  // Empty - @nuxtjs/seo handles SEO automatically
 })
