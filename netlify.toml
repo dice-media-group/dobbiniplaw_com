@@ -1,109 +1,14 @@
 [build]
-  command = "npm rebuild && npm run generate"
+  command = "npm run generate"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# 🎯 CRITICAL: Handle trailing slash redirects at CDN level
-[[redirects]]
-  from = "/about/"
-  to = "/about"
-  status = 301
-  force = true
+# ✅ MINIMAL - let @nuxtjs/seo and Nuxt handle SEO redirects
+# Only add redirects for specific business needs, not SEO
 
-[[redirects]]
-  from = "/contact/"
-  to = "/contact"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/patents/"
-  to = "/patents"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/trademarks/"
-  to = "/trademarks"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/copyright/"
-  to = "/copyright"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/services/"
-  to = "/services"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/testimonials/"
-  to = "/testimonials"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/flat-fees/"
-  to = "/flat-fees"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources/"
-  to = "/resources"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/helpful-links/"
-  to = "/helpful-links"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/prior-work/"
-  to = "/prior-work"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacy-policy/"
-  to = "/privacy-policy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terms-of-service/"
-  to = "/terms-of-service"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/success/"
-  to = "/success"
-  status = 301
-  force = true
-
-# 🎯 ADDITIONAL: Handle common URL variations
-[[redirects]]
-  from = "/home"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/home/"
-  to = "/"
-  status = 301
-  force = true
-
-# SPA fallback (lowest priority)
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -128,18 +128,14 @@
 import HeroBanner from '~/components/HeroBanner.vue';
 import TrademarkFAQ from '~/components/TrademarkFAQ.vue';
 
-// Enhanced SEO with the new composable
+// ✅ CLEAN SEO implementation
 useSEO({
   title: 'Trademark Registration & Brand Protection',
   description: 'Secure your brand with our trademark registration services. Our Utah trademark attorney helps with federal applications and brand protection. Get your free consultation.',
-  path: '/trademarks',
   keywords: 'trademark attorney Utah, trademark registration, brand protection, federal trademark, trademark lawyer, trademark search, trade dress protection, Utah trademark services'
 })
-// ✅ ADD: Import the structured data function
-const { useStructuredData } = await import('~/composables/useSEO.js')
 
-
-// Add structured data for trademark services
+// ✅ CLEAN structured data
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService"],
   "hasOfferCatalog": {
@@ -169,14 +165,6 @@ useStructuredData({
           "name": "Trade Dress Protection",
           "description": "Protection for distinctive packaging, product design, and overall commercial impression"
         }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Trademark Monitoring & Enforcement",
-          "description": "Ongoing trademark monitoring and enforcement services to protect your brand"
-        }
       }
     ]
   },
@@ -185,19 +173,8 @@ useStructuredData({
     "USPTO Procedures",
     "Trademark Prosecution",
     "Brand Protection",
-    "Trade Dress",
-    "Trademark Opposition",
-    "Trademark Cancellation",
-    "International Trademark Protection"
-  ],
-  "hasCredential": {
-    "@type": "EducationalOccupationalCredential",
-    "credentialCategory": "USPTO Registration",
-    "recognizedBy": {
-      "@type": "Organization",
-      "name": "United States Patent and Trademark Office"
-    }
-  }
+    "Trade Dress"
+  ]
 })
 </script>
 

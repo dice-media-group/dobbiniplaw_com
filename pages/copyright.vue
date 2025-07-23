@@ -133,19 +133,14 @@
 <script setup>
 import CopyrightFAQ from '~/components/CopyrightFAQ.vue';
 
-// Enhanced SEO with the new composable
+// ✅ CLEAN SEO implementation - no manual path handling
 useSEO({
   title: 'Copyright Registration Services',
   description: 'Protect your creative works with our expert copyright registration services. A Utah IP lawyer helping authors, artists, & creators for over 25 years. Secure your IP.',
-  path: '/copyright',
   keywords: 'copyright registration, copyright attorney Utah, copyright lawyer, protect creative works, author copyright, artist copyright, copyright services, intellectual property protection'
 })
 
-// ✅ ADD: Import the structured data function
-const { useStructuredData } = await import('~/composables/useSEO.js')
-
-
-// Add structured data for copyright services
+// ✅ CLEAN structured data - let the composable handle the details
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService"],
   "hasOfferCatalog": {
@@ -157,21 +152,7 @@ useStructuredData({
         "itemOffered": {
           "@type": "Service",
           "name": "Copyright Registration",
-          "description": "Professional copyright registration for authors, artists, and creators",
-          "serviceType": "Legal Service",
-          "provider": {
-            "@type": "LegalService",
-            "name": "Dobbin IP Law P.C."
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service", 
-          "name": "Copyright Consultation",
-          "description": "Expert guidance on copyright protection and fair use",
-          "serviceType": "Legal Consultation"
+          "description": "Professional copyright registration for authors, artists, and creators"
         }
       }
     ]
@@ -180,9 +161,7 @@ useStructuredData({
     "Copyright Law",
     "Copyright Registration", 
     "Fair Use",
-    "Creative Works Protection",
-    "Author Rights",
-    "Artist Rights"
+    "Creative Works Protection"
   ]
 })
 </script>
