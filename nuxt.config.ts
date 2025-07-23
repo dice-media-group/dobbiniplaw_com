@@ -1,4 +1,4 @@
-// nuxt.config.ts - CLEAN and PROPER setup
+// nuxt.config.ts - FIXED SEO configuration
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -20,10 +20,8 @@ export default defineNuxtConfig({
     indexable: true
   },
 
-  // ✅ Let @nuxtjs/seo handle SEO automatically
-  seo: {
-    redirectToCanonicalSiteUrl: true
-  },
+  // 🚨 REMOVED: seo.redirectToCanonicalSiteUrl - this was causing issues
+  // Let our custom useSEO composable handle canonical URLs manually
 
   // ✅ Basic content configuration
   content: {

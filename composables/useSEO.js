@@ -1,4 +1,4 @@
-// composables/useSEO.js - CLEAN and PROPER implementation
+// composables/useSEO.js - FIXED canonical URL generation
 export const useSEO = (options = {}) => {
   const {
     title,
@@ -11,9 +11,12 @@ export const useSEO = (options = {}) => {
 
   const route = useRoute()
   const currentPath = path || route.path
-  const fullUrl = `https://dobbiniplaw.com${currentPath}`
+  
+  // 🎯 CRITICAL FIX: Ensure canonical URLs never have trailing slashes
+  const cleanPath = currentPath === '/' ? '/' : currentPath.replace(/\/+$/, '')
+  const canonicalUrl = `https://dobbiniplaw.com${cleanPath}`
 
-  // ✅ ONLY use @nuxtjs/seo - clean and simple
+  // ✅ Use @nuxtjs/seo but force clean canonical URL
   useSeoMeta({
     title: title || 'Protecting Your Work',
     description,
@@ -25,7 +28,7 @@ export const useSEO = (options = {}) => {
     ogTitle: title || 'Protecting Your Work',
     ogDescription: description,
     ogType: type,
-    ogUrl: fullUrl,
+    ogUrl: canonicalUrl, // 🎯 Force clean URL
     ogImage: `https://dobbiniplaw.com${ogImage}`,
     ogSiteName: 'Dobbin IP Law P.C.',
     ogLocale: 'en_US',
@@ -37,8 +40,14 @@ export const useSEO = (options = {}) => {
     twitterImage: `https://dobbiniplaw.com${ogImage}`
   })
 
-  // ✅ @nuxtjs/seo handles canonical URLs automatically
-  // ✅ No manual URL manipulation needed
+  // 🎯 CRITICAL: Also manually set canonical link to override @nuxtjs/seo
+  useHead({
+    link: [
+      { rel: 'canonical', href: canonicalUrl }
+    ]
+  })
+
+  return { canonicalUrl }
 }
 
 // ✅ CLEAN structured data helper
