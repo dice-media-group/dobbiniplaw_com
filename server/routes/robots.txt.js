@@ -1,33 +1,15 @@
-// server/routes/robots.txt.js
+// server/routes/robots.txt.js - CLEAN implementation
+// @nuxtjs/seo handles robots.txt automatically, but we can override if needed
 export default defineEventHandler((event) => {
   const robotsTxt = `
 User-agent: *
 Allow: /
 
-# Block unnecessary paths
+# Block admin paths
 Disallow: /drafts/
 Disallow: /admin/
-Disallow: /.well-known/
 
-# Allow all important content (NO trailing slashes)
-Allow: /patents
-Allow: /trademarks  
-Allow: /copyright
-Allow: /about
-Allow: /contact
-Allow: /services
-Allow: /testimonials
-Allow: /resources
-Allow: /helpful-links
-Allow: /flat-fees
-Allow: /prior-work
-Allow: /privacy-policy
-Allow: /terms-of-service
-
-# Crawler settings
-Crawl-delay: 1
-
-# Sitemap location (NO trailing slash)
+# Sitemap (handled automatically by @nuxtjs/seo)
 Sitemap: https://dobbiniplaw.com/sitemap.xml
 `.trim()
 

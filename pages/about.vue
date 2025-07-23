@@ -76,15 +76,13 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div class="md:col-span-3 order-2 md:order-1">
               <p class="mb-3 font-crimson text-dobbin-gray">
-                Chris is Dobbin IP Law’s Certified Paralegal (CP®) and Notary Public, and he assists Mr. Dobbin with legal research, document drafting, coordinating with clients on various patents, trademarks, and copyright matters, and in general helps keep the office running. Outside of the office, Chris enjoys volunteering with youth, the outdoors, film photography, and board games.
+                Chris is Dobbin IP Law's Certified Paralegal (CP®) and Notary Public, and he assists Mr. Dobbin with legal research, document drafting, coordinating with clients on various patents, trademarks, and copyright matters, and in general helps keep the office running. Outside of the office, Chris enjoys volunteering with youth, the outdoors, film photography, and board games.
               </p>
               <p class="font-crimson text-dobbin-gray">
                 CP® is a registered trademark owned by the National Association of Legal Assistants, Inc. and is used with authorization.
               </p>
             </div>
             <div class="md:col-span-1 order-1 md:order-2">
-              <!-- Chris' profile image goes here when we recieve it -->
-              <!-- <img src="https://placehold.co/300x300?text=Chris" alt="Chris" class="w-full rounded shadow-md"> -->
               <img src="/img/chris_the_paralegal.jpg" alt="Chris Dobbin's paralegal" class="w-full rounded shadow-md">
             </div>
           </div>
@@ -97,18 +95,14 @@
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 
-// Enhanced SEO with the new composable
+// ✅ CLEAN SEO implementation
 useSEO({
   title: 'About Us',
   description: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience. Learn about our firm\'s commitment to protecting inventors with clear, strategic legal counsel.',
-  path: '/about',
   keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
 })
 
-// ✅ ADD: Import the structured data function
-const { useStructuredData } = await import('~/composables/useSEO.js')
-
-// Now this will work perfectly:
+// ✅ CLEAN structured data
 useStructuredData({
   "@type": ["LocalBusiness", "LegalService", "Attorney"],
   "founder": {
@@ -146,15 +140,7 @@ useStructuredData({
       "jobTitle": "Certified Paralegal"
     }
   ],
-  "foundingDate": "2004",
-  "knowsAbout": [
-    "Patent Law",
-    "Trademark Law", 
-    "Copyright Law",
-    "Intellectual Property Protection",
-    "Physics",
-    "Technical Patent Applications"
-  ]
+  "foundingDate": "2004"
 })
 </script>
 

@@ -1,10 +1,14 @@
 [build]
-  command = "npm rebuild && npm run generate"
+  command = "npm run generate"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
+# ✅ MINIMAL - let @nuxtjs/seo and Nuxt handle SEO redirects
+# Only add redirects for specific business needs, not SEO
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
