@@ -1,4 +1,4 @@
-// nuxt.config.ts - FIXED configuration to prevent redirect loops
+// nuxt.config.ts - FIXED to prevent pre-rendering trailing slash pages
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -94,19 +94,53 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ Deployment configuration
+  // ✅ Deployment configuration with CRITICAL FIX
   nitro: {
     preset: 'netlify',
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: true
+      crawlLinks: true,
+      // ✅ CRITICAL: Ignore trailing slash URLs during prerendering
+      ignore: [
+        '/about/',
+        '/contact/',
+        '/patents/',
+        '/trademarks/',
+        '/copyright/',
+        '/services/',
+        '/testimonials/',
+        '/flat-fees/',
+        '/helpful-links/',
+        '/prior-work/',
+        '/terms-of-service/',
+        '/privacy-policy/',
+        '/patent-browser/',
+        '/seo-test/',
+        // Generic pattern to catch any other trailing slashes
+        /.*\/$/
+      ]
     }
   },
 
   // ✅ MINIMAL route rules - only for admin areas
   routeRules: {
     '/drafts/**': { index: false, robots: false },
-    '/admin/**': { index: false, robots: false }
+    '/admin/**': { index: false, robots: false },
+    // ✅ CRITICAL: Explicitly disable prerendering for trailing slash routes
+    '/about/': { prerender: false },
+    '/contact/': { prerender: false },
+    '/patents/': { prerender: false },
+    '/trademarks/': { prerender: false },
+    '/copyright/': { prerender: false },
+    '/services/': { prerender: false },
+    '/testimonials/': { prerender: false },
+    '/flat-fees/': { prerender: false },
+    '/helpful-links/': { prerender: false },
+    '/prior-work/': { prerender: false },
+    '/terms-of-service/': { prerender: false },
+    '/privacy-policy/': { prerender: false },
+    '/patent-browser/': { prerender: false },
+    '/seo-test/': { prerender: false }
   },
 
   compatibilityDate: '2025-04-08',

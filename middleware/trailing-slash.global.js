@@ -1,8 +1,10 @@
-// middleware/trailing-slash.global.js - SAFE client-side only implementation
+// middleware/trailing-slash.global.js - DISABLED for SSG compatibility
 export default defineNuxtRouteMiddleware((to, from) => {
-  // ⚠️ CRITICAL: Only handle pure client-side navigation
-  // Server handles initial requests and redirects via netlify.toml
-  if (process.client && from && to.path !== from.path) {
+  // ⚠️ CRITICAL: Completely disable during SSG build process
+  // Let server-side redirects in netlify.toml handle everything
+  
+  // Only run for actual user navigation in browser (not during build)
+  if (process.client && from && to.path !== from.path && window.location) {
     const path = to.path
     
     // Remove trailing slashes (except root) for client-side navigation only
