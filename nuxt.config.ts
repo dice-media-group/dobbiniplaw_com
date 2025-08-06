@@ -1,4 +1,4 @@
-// nuxt.config.ts - DISABLE SEO module to test if that's causing redirects
+// nuxt.config.ts - DISABLE prerendering to isolate the issue
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -19,6 +19,9 @@ export default defineNuxtConfig({
     trailingSlash: false,
     indexable: true
   },
+
+  // ✅ DISABLE SERVER-SIDE RENDERING for testing
+  ssr: false,
 
   // ✅ Basic content configuration
   content: {
@@ -76,12 +79,13 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ Deployment configuration
+  // ✅ Deployment configuration - DISABLE prerendering
   nitro: {
     preset: 'netlify',
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: true
+      routes: [], // Don't prerender any routes
+      crawlLinks: false // Don't crawl for additional routes
     }
   },
 
