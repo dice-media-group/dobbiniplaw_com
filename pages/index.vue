@@ -66,20 +66,28 @@ import ServiceOverview from '../components/ServiceOverview.vue';
 import AttorneyProfile from '../components/AttorneyProfile.vue';
 import ConsultationForm from '../components/ConsultationForm.vue';
 
-// Enhanced SEO for homepage
-useSEO({
-  title: 'Clear & Strategic Patent Attorney',
-  description: 'Utah IP attorney providing clear, strategic patent, trademark, & copyright protection. We simplify the IP process for inventors & businesses. Get a free consultation.',
-  path: '/',
-  keywords: 'patent attorney Utah, intellectual property lawyer, trademark attorney, copyright lawyer, Utah IP law, patent protection, West Valley City attorney',
-  ogImage: '/og-homepage-image.jpg',
-  type: 'website'
-})
+// ✅ TEMPORARILY DISABLED - testing redirect issues
+// useSEO({
+//   title: 'Clear & Strategic Patent Attorney',
+//   description: 'Utah IP attorney providing clear, strategic patent, trademark, & copyright protection. We simplify the IP process for inventors & businesses. Get a free consultation.',
+//   path: '/',
+//   keywords: 'patent attorney Utah, intellectual property lawyer, trademark attorney, copyright lawyer, Utah IP law, patent protection, West Valley City attorney',
+//   ogImage: '/og-homepage-image.jpg',
+//   type: 'website'
+// })
 
-// 🆕 ADD: Test structured data on homepage only
-useStructuredData({
-  "@type": "LegalService", // More specific than LocalBusiness
-  "serviceType": "Intellectual Property Law"
+// ✅ TEMPORARILY DISABLED - testing redirect issues
+// useStructuredData({
+//   "@type": "LegalService", // More specific than LocalBusiness
+//   "serviceType": "Intellectual Property Law"
+// })
+
+// Basic head setup without SEO module
+useHead({
+  title: 'Clear & Strategic Patent Attorney | Dobbin IP Law P.C.',
+  meta: [
+    { name: 'description', content: 'Utah IP attorney providing clear, strategic patent, trademark, & copyright protection. We simplify the IP process for inventors & businesses.' }
+  ]
 })
 
 // Video modal state
