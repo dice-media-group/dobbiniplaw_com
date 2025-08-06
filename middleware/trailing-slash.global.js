@@ -10,7 +10,10 @@ export default defineNuxtRouteMiddleware((to) => {
     if (path.endsWith('/') && path.length > 1) {
       const cleanPath = withoutTrailingSlash(path, true)
       
-      return navigateTo(cleanPath, { 
+      // Preserve query parameters and hash
+      const fullCleanUrl = cleanPath + (to.search || '') + (to.hash || '')
+      
+      return navigateTo(fullCleanUrl, { 
         redirectCode: 301,
         replace: true
       })

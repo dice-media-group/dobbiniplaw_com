@@ -13,6 +13,7 @@ export const useSEO = (options = {}) => {
   const currentPath = path || route.path
   
   // 🎯 CRITICAL FIX: Ensure canonical URLs never have trailing slashes
+  // Always remove trailing slashes except for root path
   const cleanPath = currentPath === '/' ? '/' : currentPath.replace(/\/+$/, '')
   const canonicalUrl = `https://dobbiniplaw.com${cleanPath}`
 

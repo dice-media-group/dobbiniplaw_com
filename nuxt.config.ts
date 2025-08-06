@@ -20,6 +20,13 @@ export default defineNuxtConfig({
     indexable: true
   },
 
+  // ✅ Sitemap configuration to ensure no trailing slashes
+  sitemap: {
+    strictNuxtContentPaths: true,
+    includeAppSources: true,
+    trailingSlash: false
+  },
+
   // 🚨 REMOVED: seo.redirectToCanonicalSiteUrl - this was causing issues
   // Let our custom useSEO composable handle canonical URLs manually
 

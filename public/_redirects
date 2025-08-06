@@ -1,8 +1,8 @@
-# Netlify redirects - SIMPLIFIED to avoid conflicts with Nuxt middleware
-# Only handle specific cases that might not be caught by Nuxt
+# Netlify redirects - STANDARDIZED URL structure without trailing slashes
 
 # Handle any server-level issues
 /home  /  301
 /index /  301
 
-# Let Nuxt handle all other redirects to avoid conflicts
+# Remove trailing slashes from all URLs except root
+/*/ /:splat 301!
