@@ -44,6 +44,10 @@ The carousel has a robust fallback system:
 - If that fails, it uses a default image based on patent number
 - As a last resort, it displays a placeholder with an error message
 
+## Patent Trophy Wall
+
+The patent "trophy wall" will display the extensive number of patents submitted by the firm.
+
 ## Development
 
 ```bash
