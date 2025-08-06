@@ -1,4 +1,4 @@
-// nuxt.config.ts - FIXED SEO configuration
+// nuxt.config.ts - FIXED configuration to prevent redirect loops
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
-    trailingSlash: false,
+    trailingSlash: false, // ✅ Enforce no trailing slashes
     indexable: true
   },
 
@@ -24,11 +24,19 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true,
     includeAppSources: true,
-    trailingSlash: false
+    trailingSlash: false, // ✅ Critical: no trailing slashes in sitemap
+    xsl: false, // Disable XSL for better compatibility
+    defaults: {
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString()
+    }
   },
 
-  // 🚨 REMOVED: seo.redirectToCanonicalSiteUrl - this was causing issues
-  // Let our custom useSEO composable handle canonical URLs manually
+  // ✅ CRITICAL: Disable automatic redirects to prevent conflicts with netlify.toml
+  seo: {
+    redirectToCanonicalSiteUrl: false // ✅ Let server handle redirects
+  },
 
   // ✅ Basic content configuration
   content: {

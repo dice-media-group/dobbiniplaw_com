@@ -5,10 +5,24 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# ✅ MINIMAL - let @nuxtjs/seo and Nuxt handle SEO redirects
-# Only add redirects for specific business needs, not SEO
+# ✅ CRITICAL: Server-level trailing slash redirects (handles before SPA)
+# This must come BEFORE the SPA fallback to prevent redirect loops
 
-# SPA fallback
+# Remove trailing slashes from all paths except root
+[[redirects]]
+  from = "/*/"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# Keep specific exceptions for directories that need trailing slashes
+[[redirects]]
+  from = "/admin/*/"
+  to = "/admin/:splat"
+  status = 301
+  force = true
+
+# SPA fallback for unmatched routes (must be LAST)
 [[redirects]]
   from = "/*"
   to = "/index.html"

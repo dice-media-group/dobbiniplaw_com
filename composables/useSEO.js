@@ -1,4 +1,6 @@
-// composables/useSEO.js - FIXED canonical URL generation
+// composables/useSEO.js - FIXED canonical URL generation with no trailing slashes
+import { withoutTrailingSlash } from 'ufo'
+
 export const useSEO = (options = {}) => {
   const {
     title,
@@ -12,9 +14,8 @@ export const useSEO = (options = {}) => {
   const route = useRoute()
   const currentPath = path || route.path
   
-  // 🎯 CRITICAL FIX: Ensure canonical URLs never have trailing slashes
-  // Always remove trailing slashes except for root path
-  const cleanPath = currentPath === '/' ? '/' : currentPath.replace(/\/+$/, '')
+  // 🎯 CRITICAL FIX: Always ensure canonical URLs never have trailing slashes
+  const cleanPath = withoutTrailingSlash(currentPath, true)
   const canonicalUrl = `https://dobbiniplaw.com${cleanPath}`
 
   // ✅ Use @nuxtjs/seo but force clean canonical URL
@@ -41,7 +42,7 @@ export const useSEO = (options = {}) => {
     twitterImage: `https://dobbiniplaw.com${ogImage}`
   })
 
-  // 🎯 CRITICAL: Also manually set canonical link to override @nuxtjs/seo
+  // 🎯 CRITICAL: Override any automatic canonical generation
   useHead({
     link: [
       { rel: 'canonical', href: canonicalUrl }
@@ -59,7 +60,7 @@ export const useBaseSchema = () => {
     "name": "Dobbin IP Law P.C.",
     "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
     "@id": "https://dobbiniplaw.com",
-    "url": "https://dobbiniplaw.com",
+    "url": "https://dobbiniplaw.com", // No trailing slash
     "telephone": "+18019696609",
     "email": "getinfo@dobbiniplaw.com",
     "address": {

@@ -1,21 +1,22 @@
-// middleware/trailing-slash.global.js - PROPER implementation for trailing slash redirects
-import { withoutTrailingSlash } from 'ufo'
-
-export default defineNuxtRouteMiddleware((to) => {
-  // Only run on client side to avoid SSR conflicts
-  if (process.client) {
+// middleware/trailing-slash.global.js - SAFE client-side only implementation
+export default defineNuxtRouteMiddleware((to, from) => {
+  // ⚠️ CRITICAL: Only handle pure client-side navigation
+  // Server handles initial requests and redirects via netlify.toml
+  if (process.client && from && to.path !== from.path) {
     const path = to.path
     
-    // 🎯 SIMPLE: Remove trailing slashes (except root) and redirect
+    // Remove trailing slashes (except root) for client-side navigation only
     if (path.endsWith('/') && path.length > 1) {
-      const cleanPath = withoutTrailingSlash(path, true)
+      const cleanPath = path.slice(0, -1)
       
-      // Preserve query parameters and hash
-      const fullCleanUrl = cleanPath + (to.search || '') + (to.hash || '')
-      
-      return navigateTo(fullCleanUrl, { 
-        redirectCode: 301,
-        replace: true
+      // Use navigateTo with replace to avoid history pollution and external conflicts
+      return navigateTo({
+        path: cleanPath,
+        query: to.query,
+        hash: to.hash
+      }, { 
+        replace: true, // Don't add to history
+        external: false // Keep internal to Nuxt router
       })
     }
   }
