@@ -1,8 +1,8 @@
-// nuxt.config.ts - Handle trailing slash redirects via Nuxt route rules
+// nuxt.config.ts - MINIMAL config to test basic functionality
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  // ✅ MINIMAL modules - let @nuxtjs/seo handle SEO
+  // ✅ MINIMAL modules
   modules: [
     '@nuxtjs/seo',
     '@nuxt/content',
@@ -16,25 +16,20 @@ export default defineNuxtConfig({
     name: 'Dobbin IP Law P.C.',
     description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
     defaultLocale: 'en',
-    trailingSlash: false, // ✅ Enforce no trailing slashes
+    trailingSlash: false,
     indexable: true
   },
 
-  // ✅ Sitemap configuration to ensure no trailing slashes
+  // ✅ Sitemap configuration
   sitemap: {
     includeAppSources: true,
-    trailingSlash: false, // ✅ Critical: no trailing slashes in sitemap
-    xsl: false, // Disable XSL for better compatibility
+    trailingSlash: false,
+    xsl: false,
     defaults: {
       changefreq: 'monthly',
       priority: 0.8,
       lastmod: new Date().toISOString()
     }
-  },
-
-  // ✅ CRITICAL: Disable automatic redirects to prevent conflicts
-  seo: {
-    redirectToCanonicalSiteUrl: false // ✅ Handle manually
   },
 
   // ✅ Basic content configuration
@@ -93,7 +88,7 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ Deployment configuration - simplified
+  // ✅ Deployment configuration
   nitro: {
     preset: 'netlify',
     compressPublicAssets: true,
@@ -102,30 +97,10 @@ export default defineNuxtConfig({
     }
   },
 
-  // ✅ Route rules - handle trailing slash redirects here
+  // ✅ MINIMAL route rules - NO redirects for now
   routeRules: {
-    // Admin areas
     '/drafts/**': { index: false, robots: false },
-    '/admin/**': { index: false, robots: false },
-    
-    // ✅ CRITICAL: Redirect trailing slash URLs via route rules
-    '/about/': { redirect: { to: '/about', statusCode: 301 } },
-    '/contact/': { redirect: { to: '/contact', statusCode: 301 } },
-    '/patents/': { redirect: { to: '/patents', statusCode: 301 } },
-    '/trademarks/': { redirect: { to: '/trademarks', statusCode: 301 } },
-    '/copyright/': { redirect: { to: '/copyright', statusCode: 301 } },
-    '/services/': { redirect: { to: '/services', statusCode: 301 } },
-    '/testimonials/': { redirect: { to: '/testimonials', statusCode: 301 } },
-    '/flat-fees/': { redirect: { to: '/flat-fees', statusCode: 301 } },
-    '/helpful-links/': { redirect: { to: '/helpful-links', statusCode: 301 } },
-    '/prior-work/': { redirect: { to: '/prior-work', statusCode: 301 } },
-    '/terms-of-service/': { redirect: { to: '/terms-of-service', statusCode: 301 } },
-    '/privacy-policy/': { redirect: { to: '/privacy-policy', statusCode: 301 } },
-    '/patent-browser/': { redirect: { to: '/patent-browser', statusCode: 301 } },
-    '/seo-test/': { redirect: { to: '/seo-test', statusCode: 301 } },
-    '/resources/': { redirect: { to: '/resources', statusCode: 301 } },
-    '/success/': { redirect: { to: '/success', statusCode: 301 } },
-    '/seo-diagnostic/': { redirect: { to: '/seo-diagnostic', statusCode: 301 } }
+    '/admin/**': { index: false, robots: false }
   },
 
   compatibilityDate: '2025-04-08',
