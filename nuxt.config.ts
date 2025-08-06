@@ -1,4 +1,4 @@
-// nuxt.config.ts - FIXED to prevent pre-rendering trailing slash pages
+// nuxt.config.ts - Handle trailing slash redirects via Nuxt route rules
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -22,7 +22,6 @@ export default defineNuxtConfig({
 
   // ✅ Sitemap configuration to ensure no trailing slashes
   sitemap: {
-    strictNuxtContentPaths: true,
     includeAppSources: true,
     trailingSlash: false, // ✅ Critical: no trailing slashes in sitemap
     xsl: false, // Disable XSL for better compatibility
@@ -33,9 +32,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // ✅ CRITICAL: Disable automatic redirects to prevent conflicts with netlify.toml
+  // ✅ CRITICAL: Disable automatic redirects to prevent conflicts
   seo: {
-    redirectToCanonicalSiteUrl: false // ✅ Let server handle redirects
+    redirectToCanonicalSiteUrl: false // ✅ Handle manually
   },
 
   // ✅ Basic content configuration
@@ -94,53 +93,39 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ Deployment configuration with CRITICAL FIX
+  // ✅ Deployment configuration - simplified
   nitro: {
     preset: 'netlify',
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: true,
-      // ✅ CRITICAL: Ignore trailing slash URLs during prerendering
-      ignore: [
-        '/about/',
-        '/contact/',
-        '/patents/',
-        '/trademarks/',
-        '/copyright/',
-        '/services/',
-        '/testimonials/',
-        '/flat-fees/',
-        '/helpful-links/',
-        '/prior-work/',
-        '/terms-of-service/',
-        '/privacy-policy/',
-        '/patent-browser/',
-        '/seo-test/',
-        // Generic pattern to catch any other trailing slashes
-        /.*\/$/
-      ]
+      crawlLinks: true
     }
   },
 
-  // ✅ MINIMAL route rules - only for admin areas
+  // ✅ Route rules - handle trailing slash redirects here
   routeRules: {
+    // Admin areas
     '/drafts/**': { index: false, robots: false },
     '/admin/**': { index: false, robots: false },
-    // ✅ CRITICAL: Explicitly disable prerendering for trailing slash routes
-    '/about/': { prerender: false },
-    '/contact/': { prerender: false },
-    '/patents/': { prerender: false },
-    '/trademarks/': { prerender: false },
-    '/copyright/': { prerender: false },
-    '/services/': { prerender: false },
-    '/testimonials/': { prerender: false },
-    '/flat-fees/': { prerender: false },
-    '/helpful-links/': { prerender: false },
-    '/prior-work/': { prerender: false },
-    '/terms-of-service/': { prerender: false },
-    '/privacy-policy/': { prerender: false },
-    '/patent-browser/': { prerender: false },
-    '/seo-test/': { prerender: false }
+    
+    // ✅ CRITICAL: Redirect trailing slash URLs via route rules
+    '/about/': { redirect: { to: '/about', statusCode: 301 } },
+    '/contact/': { redirect: { to: '/contact', statusCode: 301 } },
+    '/patents/': { redirect: { to: '/patents', statusCode: 301 } },
+    '/trademarks/': { redirect: { to: '/trademarks', statusCode: 301 } },
+    '/copyright/': { redirect: { to: '/copyright', statusCode: 301 } },
+    '/services/': { redirect: { to: '/services', statusCode: 301 } },
+    '/testimonials/': { redirect: { to: '/testimonials', statusCode: 301 } },
+    '/flat-fees/': { redirect: { to: '/flat-fees', statusCode: 301 } },
+    '/helpful-links/': { redirect: { to: '/helpful-links', statusCode: 301 } },
+    '/prior-work/': { redirect: { to: '/prior-work', statusCode: 301 } },
+    '/terms-of-service/': { redirect: { to: '/terms-of-service', statusCode: 301 } },
+    '/privacy-policy/': { redirect: { to: '/privacy-policy', statusCode: 301 } },
+    '/patent-browser/': { redirect: { to: '/patent-browser', statusCode: 301 } },
+    '/seo-test/': { redirect: { to: '/seo-test', statusCode: 301 } },
+    '/resources/': { redirect: { to: '/resources', statusCode: 301 } },
+    '/success/': { redirect: { to: '/success', statusCode: 301 } },
+    '/seo-diagnostic/': { redirect: { to: '/seo-diagnostic', statusCode: 301 } }
   },
 
   compatibilityDate: '2025-04-08',
