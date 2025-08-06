@@ -1,4 +1,4 @@
-// composables/useSEO.js - FIXED canonical URL generation with no trailing slashes
+// composables/useSEO.js - FIXED to use actual deployment URL
 import { withoutTrailingSlash } from 'ufo'
 
 export const useSEO = (options = {}) => {
@@ -12,11 +12,14 @@ export const useSEO = (options = {}) => {
   } = options
 
   const route = useRoute()
+  const runtimeConfig = useRuntimeConfig()
   const currentPath = path || route.path
   
-  // 🎯 CRITICAL FIX: Always ensure canonical URLs never have trailing slashes
+  // 🎯 CRITICAL FIX: Use actual site URL from config, not hardcoded
+  // This works for both staging and production
+  const siteUrl = runtimeConfig.public.siteUrl || runtimeConfig.app.baseURL || 'https://dobbiniplaw.com'
   const cleanPath = withoutTrailingSlash(currentPath, true)
-  const canonicalUrl = `https://dobbiniplaw.com${cleanPath}`
+  const canonicalUrl = `${siteUrl}${cleanPath}`
 
   // ✅ Use @nuxtjs/seo but force clean canonical URL
   useSeoMeta({
@@ -31,7 +34,7 @@ export const useSEO = (options = {}) => {
     ogDescription: description,
     ogType: type,
     ogUrl: canonicalUrl, // 🎯 Force clean URL
-    ogImage: `https://dobbiniplaw.com${ogImage}`,
+    ogImage: `${siteUrl}${ogImage}`,
     ogSiteName: 'Dobbin IP Law P.C.',
     ogLocale: 'en_US',
     
@@ -39,10 +42,10 @@ export const useSEO = (options = {}) => {
     twitterCard: 'summary_large_image',
     twitterTitle: title || 'Protecting Your Work',
     twitterDescription: description,
-    twitterImage: `https://dobbiniplaw.com${ogImage}`
+    twitterImage: `${siteUrl}${ogImage}`
   })
 
-  // 🎯 CRITICAL: Override any automatic canonical generation
+  // 🎯 CRITICAL: Also manually set canonical link to override @nuxtjs/seo
   useHead({
     link: [
       { rel: 'canonical', href: canonicalUrl }
@@ -54,13 +57,16 @@ export const useSEO = (options = {}) => {
 
 // ✅ CLEAN structured data helper
 export const useBaseSchema = () => {
+  const runtimeConfig = useRuntimeConfig()
+  const siteUrl = runtimeConfig.public.siteUrl || runtimeConfig.app.baseURL || 'https://dobbiniplaw.com'
+  
   return {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Dobbin IP Law P.C.",
-    "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
-    "@id": "https://dobbiniplaw.com",
-    "url": "https://dobbiniplaw.com", // No trailing slash
+    "image": `${siteUrl}/img/geoff-dobbin.jpg`,
+    "@id": siteUrl,
+    "url": siteUrl, // No trailing slash
     "telephone": "+18019696609",
     "email": "getinfo@dobbiniplaw.com",
     "address": {

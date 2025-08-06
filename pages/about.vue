@@ -95,52 +95,60 @@
 <script setup>
 import HeroBanner from '../components/HeroBanner.vue';
 
-// ✅ CLEAN SEO implementation
-useSEO({
-  title: 'About Us',
-  description: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience. Learn about our firm\'s commitment to protecting inventors with clear, strategic legal counsel.',
-  keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
-})
+// ✅ TEMPORARILY DISABLED - testing redirect issues
+// useSEO({
+//   title: 'About Us',
+//   description: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience. Learn about our firm\'s commitment to protecting inventors with clear, strategic legal counsel.',
+//   keywords: 'Geoff Dobbin attorney, intellectual property lawyer Utah, patent attorney experience, trademark lawyer background, IP law firm team, Utah patent attorney'
+// })
 
-// ✅ CLEAN structured data
-useStructuredData({
-  "@type": ["LocalBusiness", "LegalService", "Attorney"],
-  "founder": {
-    "@type": "Person",
-    "name": "Geoff Dobbin",
-    "jobTitle": "Intellectual Property Attorney",
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Colorado",
-        "degree": "J.D."
-      },
-      {
-        "@type": "CollegeOrUniversity", 
-        "name": "Alfred University",
-        "degree": "B.A. Physics"
-      }
-    ],
-    "memberOf": [
-      {
-        "@type": "Organization",
-        "name": "Utah State Bar"
-      },
-      {
-        "@type": "Organization",
-        "name": "U.S. Patent & Trademark Office"
-      }
-    ],
-    "yearsOfExperience": "25+"
-  },
-  "employee": [
-    {
-      "@type": "Person",
-      "name": "Chris",
-      "jobTitle": "Certified Paralegal"
-    }
-  ],
-  "foundingDate": "2004"
+// ✅ TEMPORARILY DISABLED - testing redirect issues  
+// useStructuredData({
+//   "@type": ["LocalBusiness", "LegalService", "Attorney"],
+//   "founder": {
+//     "@type": "Person",
+//     "name": "Geoff Dobbin",
+//     "jobTitle": "Intellectual Property Attorney",
+//     "alumniOf": [
+//       {
+//         "@type": "CollegeOrUniversity",
+//         "name": "University of Colorado",
+//         "degree": "J.D."
+//       },
+//       {
+//         "@type": "CollegeOrUniversity", 
+//         "name": "Alfred University",
+//         "degree": "B.A. Physics"
+//       }
+//     ],
+//     "memberOf": [
+//       {
+//         "@type": "Organization",
+//         "name": "Utah State Bar"
+//       },
+//       {
+//         "@type": "Organization",
+//         "name": "U.S. Patent & Trademark Office"
+//       }
+//     ],
+//     "yearsOfExperience": "25+"
+//   },
+//   "employee": [
+//     {
+//       "@type": "Person",
+//       "name": "Chris",
+//       "jobTitle": "Certified Paralegal"
+//     }
+//   ],
+//   "foundingDate": "2004"
+// })
+
+// Basic head setup without SEO module
+useHead({
+  title: 'About Us | Dobbin IP Law P.C.',
+  meta: [
+    { name: 'description', content: 'Meet Geoff Dobbin, a Utah IP attorney with 25+ years of experience.' }
+  ]
 })
 </script>
 

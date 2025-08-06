@@ -1,10 +1,10 @@
-// nuxt.config.ts - MINIMAL config to test basic functionality
+// nuxt.config.ts - DISABLE SEO module to test if that's causing redirects
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  // ✅ MINIMAL modules
+  // ✅ MINIMAL modules - TEMPORARILY DISABLE SEO
   modules: [
-    '@nuxtjs/seo',
+    // '@nuxtjs/seo', // DISABLED for testing
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxt/image'
@@ -18,18 +18,6 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     trailingSlash: false,
     indexable: true
-  },
-
-  // ✅ Sitemap configuration
-  sitemap: {
-    includeAppSources: true,
-    trailingSlash: false,
-    xsl: false,
-    defaults: {
-      changefreq: 'monthly',
-      priority: 0.8,
-      lastmod: new Date().toISOString()
-    }
   },
 
   // ✅ Basic content configuration
@@ -97,7 +85,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // ✅ MINIMAL route rules - NO redirects for now
+  // ✅ MINIMAL route rules - NO redirects
   routeRules: {
     '/drafts/**': { index: false, robots: false },
     '/admin/**': { index: false, robots: false }
@@ -108,7 +96,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       gtag: process.env.NUXT_PUBLIC_GTAG,
-      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
+      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY,
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://dobbiniplaw.com'
     }
   }
 })
