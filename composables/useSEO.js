@@ -1,8 +1,9 @@
 export const useSEO = (options = {}) => {
+  const route = useRoute()
   const {
     title,
     description,
-    path,
+    path = route.path,
     keywords = '',
     ogImage = '/img/geoff-dobbin.jpg',
     type = 'website',
@@ -56,6 +57,12 @@ export const useSEO = (options = {}) => {
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
+
+  // Return useful values for components that need them
+  return {
+    canonicalUrl,
+    fullTitle
+  }
 }
 
 export const useBaseSchema = () => {
