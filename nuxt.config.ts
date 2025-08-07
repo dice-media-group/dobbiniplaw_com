@@ -1,76 +1,95 @@
-// nuxt.config.ts - PROPER SPA configuration for Netlify
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  // ✅ MINIMAL modules - TEMPORARILY DISABLE SEO
   modules: [
-    // '@nuxtjs/seo', // DISABLED for testing
-    '@nuxt/content',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image'
+    '@nuxt/content', 
+    '@nuxtjs/tailwindcss', 
+    '@nuxt/image',
+    '@nuxtjs/sitemap'
   ],
-
-  // ✅ SINGLE source of truth for site configuration
-  site: {
-    url: 'https://dobbiniplaw.com',
-    name: 'Dobbin IP Law P.C.',
-    description: 'Utah patent attorney providing clear, strategic IP protection for inventors and businesses',
-    defaultLocale: 'en',
-    trailingSlash: false,
-    indexable: true
-  },
-
-  // ✅ PROPER SPA MODE configuration
-  ssr: false,
-  app: {
-    baseURL: '/',
-    buildAssetsDir: '/_nuxt/',
-    head: {
-      titleTemplate: '%s | Dobbin IP Law P.C.',
-      title: 'Protecting Your Work',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-        { name: 'format-detection', content: 'telephone=no' }
-      ],
-      link: [
-        { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
-        { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192' },
-        { rel: 'apple-touch-icon', href: '/favicon-180x180.png' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
-      ]
-    }
-  },
-
-  // ✅ Basic content configuration
+  
   content: {
     documentDriven: true,
     highlight: {
       theme: 'github-light'
     }
-  },
+  },  
 
-  // ✅ Styling
   css: [
     '~/assets/css/main.css',
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  // ✅ Image optimization
-  image: {
-    formats: ['webp', 'avif'],
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280
-    },
-    quality: 85,
-    densities: [1, 2]
+  // Router configuration
+  router: {
+    options: {
+      // Disable Vue Router's own scroll behavior
+      scrollBehavior: () => false,
+      trailingSlash: false // <--- Set to false
+    }
   },
 
-  // ✅ Build configuration
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    },
+    head: {
+      title: 'Dobbin IP Law P.C. | Protecting Your Work',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
+        { name: 'description', content: 'Dobbin IP Law specializes in obtaining patents to protect your invention, copyrights to protect your authorship, and trademarks to protect your marketing.' }
+      ],
+      link: [
+        // Favicon links
+        { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32' },
+        { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192' },
+        { rel: 'apple-touch-icon', href: '/favicon-180x180.png' },
+        
+        // Crimson Text font from Google Fonts
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic&subset=latin&display=swap' }
+      ],
+      // Add the script for form handling
+      script: [
+        {
+          innerHTML: `
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        },
+        // Add a custom script for fixing scroll behavior
+        {
+          innerHTML: `
+            // Force scroll to top on page load
+            window.addEventListener('load', function() {
+              window.scrollTo(0, 0);
+            });
+            
+            // Helper function to force scroll to top
+            window.forceScrollToTop = function() {
+              window.scrollTo(0, 0);
+            }
+          `,
+          type: 'text/javascript',
+          body: true
+        }
+        // Remove the Ahrefs script - it's handled by the plugin now
+      ]
+    }
+  },
+
+  // For FontAwesome to work correctly with Nuxt 3
   build: {
     transpile: [
       '@fortawesome/fontawesome-svg-core',
@@ -79,16 +98,105 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ NETLIFY SPA deployment
+  // Generate static site for Netlify
+  ssr: true,
+  
+  // Static site generation settings
   nitro: {
     preset: 'netlify',
-    compressPublicAssets: true
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/about',
+        '/contact',
+        '/services',
+        '/patents',
+        '/trademarks',
+        '/copyright',
+        '/prior-work',
+        '/resources',
+        '/testimonials',
+        '/helpful-links',
+        '/flat-fees',
+        '/success',
+        '/privacy-policy',
+        '/terms-of-service'
+      ]
+    }
   },
 
-  // ✅ MINIMAL route rules
+  // Add this section to fix 301 redirects
   routeRules: {
-    '/drafts/**': { index: false, robots: false },
-    '/admin/**': { index: false, robots: false }
+    // Homepage
+    '/': { prerender: true },
+    // Remove all these redirects:
+    // '/about': { redirect: '/about/' }, 
+    // '/contact': { redirect: '/contact/' },
+    // '/patents': { redirect: '/patents/' },
+    // '/terms-of-service': { redirect: '/terms-of-service/' },
+    // '/privacy-policy': { redirect: '/privacy-policy/' },
+    // '/bio-fees': { redirect: '/bio-fees/' },
+    '/': { headers: { 'X-Robots-Tag': 'all' } },
+    '/drafts/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+  },
+
+  // Generate static HTML for improved SEO and to ensure forms are detected
+  generate: {
+    routes: ['/success', '/flat-fees']
+  },
+
+  // Performance optimizations
+  optimization: {
+    splitChunks: {
+      maxSize: 300000,
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.(css|vue)$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
+
+  // Improve build performance
+  vite: {
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-solid-svg-icons'
+      ]
+    },
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'fontawesome': [
+              '@fortawesome/fontawesome-svg-core',
+              '@fortawesome/free-solid-svg-icons',
+              '@fortawesome/vue-fontawesome'
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  hooks: {
+    'nitro:config': (nitroConfig) => {
+      if (nitroConfig.dev) {
+        return
+      }
+      // Improve static rendering
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.ignore = nitroConfig.prerender.ignore || []
+      nitroConfig.prerender.ignore.push(/** any route patterns to ignore **/)
+    }
   },
 
   compatibilityDate: '2025-04-08',
@@ -96,8 +204,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       gtag: process.env.NUXT_PUBLIC_GTAG,
-      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY,
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://dobbiniplaw.com'
+      ahrefsKey: process.env.NUXT_PUBLIC_AHREFS_KEY
     }
+  },
+
+  sitemap: {
+    siteUrl: 'https://dobbiniplaw.com',
+    trailingSlash: false, // <--- Set to false
+    // You can customize routes, exclude, etc.
   }
 })

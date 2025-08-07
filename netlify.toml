@@ -1,9 +1,11 @@
 [build]
-  command = "npm run generate"
+  command = "npm rebuild && npm run generate"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# ✅ NO REDIRECTS - let Nuxt SPA handle everything
-# The SPA fallback redirect was causing infinite loops
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

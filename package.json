@@ -12,9 +12,7 @@
     "process-patents-with-images": "node scripts/process-patents-with-images-runner.js false",
     "process-patents-with-downloads": "node scripts/process-patents-with-images-runner.js true",
     "process-patents-firefox": "node scripts/process-patents-firefox-runner.js",
-    "process-patents-firefox-test": "TEST_MODE=true TEST_COUNT=5 node scripts/process-patents-firefox-runner.js",
-    "verify-links": "node scripts/verify-internal-links.js",
-    "test-trailing-slash": "node scripts/test-trailing-slash-setup.js"
+    "process-patents-firefox-test": "TEST_MODE=true TEST_COUNT=5 node scripts/process-patents-firefox-runner.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -22,7 +20,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.5",
     "@nuxt/content": "^3.4.0",
     "@nuxt/image": "^1.10.0",
-    "@nuxtjs/seo": "^3.1.0",
+    "@nuxtjs/sitemap": "^7.4.3",
     "@nuxtjs/tailwindcss": "^6.11.0",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",

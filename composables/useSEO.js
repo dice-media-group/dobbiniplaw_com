@@ -1,6 +1,3 @@
-// composables/useSEO.js - FIXED to use actual deployment URL
-import { withoutTrailingSlash } from 'ufo'
-
 export const useSEO = (options = {}) => {
   const {
     title,
@@ -8,111 +5,138 @@ export const useSEO = (options = {}) => {
     path,
     keywords = '',
     ogImage = '/img/geoff-dobbin.jpg',
-    type = 'website'
+    type = 'website',
+    author = 'Dobbin IP Law P.C.',
+    publishedTime = null,
+    modifiedTime = null
   } = options
 
-  const route = useRoute()
-  const runtimeConfig = useRuntimeConfig()
-  const currentPath = path || route.path
-  
-  // 🎯 CRITICAL FIX: Use actual site URL from config, not hardcoded
-  // This works for both staging and production
-  const siteUrl = runtimeConfig.public.siteUrl || runtimeConfig.app.baseURL || 'https://dobbiniplaw.com'
-  const cleanPath = withoutTrailingSlash(currentPath, true)
-  const canonicalUrl = `${siteUrl}${cleanPath}`
+  const baseUrl = 'https://dobbiniplaw.com'
+  const fullTitle = title ? `${title} | Dobbin IP Law P.C.` : 'Dobbin IP Law P.C. | Protecting Your Work'
+  const canonicalUrl = `${baseUrl}${path}`
 
-  // ✅ Use @nuxtjs/seo but force clean canonical URL
-  useSeoMeta({
-    title: title || 'Protecting Your Work',
-    description,
-    keywords,
-    robots: 'index, follow',
-    author: 'Dobbin IP Law P.C.',
-    
-    // Open Graph
-    ogTitle: title || 'Protecting Your Work',
-    ogDescription: description,
-    ogType: type,
-    ogUrl: canonicalUrl, // 🎯 Force clean URL
-    ogImage: `${siteUrl}${ogImage}`,
-    ogSiteName: 'Dobbin IP Law P.C.',
-    ogLocale: 'en_US',
-    
-    // Twitter Cards
-    twitterCard: 'summary_large_image',
-    twitterTitle: title || 'Protecting Your Work',
-    twitterDescription: description,
-    twitterImage: `${siteUrl}${ogImage}`
-  })
-
-  // 🎯 CRITICAL: Also manually set canonical link to override @nuxtjs/seo
   useHead({
+    title: fullTitle,
+    meta: [
+      { name: 'description', content: description },
+      ...(keywords ? [{ name: 'keywords', content: keywords }] : []),
+      
+      // Open Graph for social media
+      { property: 'og:title', content: fullTitle },
+      { property: 'og:description', content: description },
+      { property: 'og:type', content: type },
+      { property: 'og:url', content: canonicalUrl },
+      { property: 'og:image', content: `${baseUrl}${ogImage}` },
+      { property: 'og:site_name', content: 'Dobbin IP Law P.C.' },
+      { property: 'og:locale', content: 'en_US' },
+      
+      // Twitter Cards
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: fullTitle },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: `${baseUrl}${ogImage}` },
+      
+      // Local SEO (Utah-based law firm)
+      { name: 'geo.region', content: 'US-UT' },
+      { name: 'geo.placename', content: 'West Valley City' },
+      { name: 'geo.position', content: '40.73315967932904;-111.9405988853505' },
+      
+      // Additional SEO meta tags
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: author },
+      { name: 'language', content: 'en-US' },
+      { name: 'hreflang', content: 'en-US' },
+      
+      // Article/Page-specific meta (conditional)
+      ...(publishedTime ? [{ property: 'article:published_time', content: publishedTime }] : []),
+      ...(modifiedTime ? [{ property: 'article:modified_time', content: modifiedTime }] : []),
+      ...(type === 'article' ? [{ property: 'article:author', content: author }] : [])
+    ],
     link: [
       { rel: 'canonical', href: canonicalUrl }
     ]
   })
-
-  return { canonicalUrl }
 }
 
-// ✅ CLEAN structured data helper
 export const useBaseSchema = () => {
-  const runtimeConfig = useRuntimeConfig()
-  const siteUrl = runtimeConfig.public.siteUrl || runtimeConfig.app.baseURL || 'https://dobbiniplaw.com'
-  
   return {
     "@context": "https://schema.org",
-    "@type": "LegalService",
+    "@type": "LocalBusiness",
     "name": "Dobbin IP Law P.C.",
-    "image": `${siteUrl}/img/geoff-dobbin.jpg`,
-    "@id": siteUrl,
-    "url": siteUrl, // No trailing slash
+    "image": "https://dobbiniplaw.com/img/geoff-dobbin.jpg",
+    "@id": "https://dobbiniplaw.com/",
+    "url": "https://dobbiniplaw.com/",
     "telephone": "+18019696609",
     "email": "getinfo@dobbiniplaw.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "2250 S Redwood Rd, Suite 5",
-      "addressLocality": "West Valley City",
+      "streetAddress": "2975 Executive Parkway, Suite 204",
+      "addressLocality": "Lehi",
       "addressRegion": "UT",
       "postalCode": "84119",
       "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 40.73315967932904,
-      "longitude": -111.9405988853505
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
         "Tuesday",
-        "Wednesday",
+        "Wednesday", 
         "Thursday",
         "Friday"
       ],
-      "opens": "09:30",
-      "closes": "17:30"
+      "opens": "08:30",
+      "closes": "17:00"
     },
     "sameAs": [
-      "https://www.facebook.com/DobbinIPLaw/",
-      "https://x.com/dobbiniplaw"
+      "https://www.facebook.com/dobbiniplaw/",
+      "https://www.linkedin.com/in/geoffdobbin/"
     ],
     "priceRange": "$$",
     "areaServed": "Utah",
-    "serviceType": "Intellectual Property Law",
-    "founder": {
-      "@type": "Person",
-      "name": "Geoffrey Dobbin",
-      "jobTitle": "Patent Attorney",
-      "description": "Patent attorney with 25+ years experience and physics background"
+    "serviceType": "Legal Services",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Intellectual Property Legal Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Patent Services",
+            "description": "Design patents, utility patents, and patent prosecution"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Trademark Services",
+            "description": "Trademark registration and protection"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Copyright Services",
+            "description": "Copyright registration and protection"
+          }
+        }
+      ]
     }
   }
 }
 
-// ✅ SIMPLE structured data helper
 export const useStructuredData = (additionalData = {}) => {
   const baseSchema = useBaseSchema()
   const schema = { ...baseSchema, ...additionalData }
   
-  useSchemaOrg([schema])
+  useHead({
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(schema)
+      }
+    ]
+  })
 }
