@@ -5,11 +5,5 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# ✅ REMOVE all trailing slash redirects - let Nuxt handle everything
-# Only keep the SPA fallback
-
-# SPA fallback for unmatched routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# ✅ NO REDIRECTS - let Nuxt SPA handle everything
+# The SPA fallback redirect was causing infinite loops

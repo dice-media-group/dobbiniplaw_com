@@ -1,4 +1,4 @@
-// nuxt.config.ts - DISABLE prerendering to isolate the issue
+// nuxt.config.ts - PROPER SPA configuration for Netlify
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -20,25 +20,11 @@ export default defineNuxtConfig({
     indexable: true
   },
 
-  // ✅ DISABLE SERVER-SIDE RENDERING for testing
+  // ✅ PROPER SPA MODE configuration
   ssr: false,
-
-  // ✅ Basic content configuration
-  content: {
-    documentDriven: true,
-    highlight: {
-      theme: 'github-light'
-    }
-  },
-
-  // ✅ Styling
-  css: [
-    '~/assets/css/main.css',
-    '@fortawesome/fontawesome-svg-core/styles.css'
-  ],
-
-  // ✅ STANDARD app configuration
   app: {
+    baseURL: '/',
+    buildAssetsDir: '/_nuxt/',
     head: {
       titleTemplate: '%s | Dobbin IP Law P.C.',
       title: 'Protecting Your Work',
@@ -55,6 +41,20 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  // ✅ Basic content configuration
+  content: {
+    documentDriven: true,
+    highlight: {
+      theme: 'github-light'
+    }
+  },
+
+  // ✅ Styling
+  css: [
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
 
   // ✅ Image optimization
   image: {
@@ -79,17 +79,13 @@ export default defineNuxtConfig({
     ]
   },
 
-  // ✅ Deployment configuration - DISABLE prerendering
+  // ✅ NETLIFY SPA deployment
   nitro: {
     preset: 'netlify',
-    compressPublicAssets: true,
-    prerender: {
-      routes: [], // Don't prerender any routes
-      crawlLinks: false // Don't crawl for additional routes
-    }
+    compressPublicAssets: true
   },
 
-  // ✅ MINIMAL route rules - NO redirects
+  // ✅ MINIMAL route rules
   routeRules: {
     '/drafts/**': { index: false, robots: false },
     '/admin/**': { index: false, robots: false }
